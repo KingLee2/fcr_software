@@ -1,0 +1,675 @@
+[0.000000] (-) TimerEvent: {}
+[0.000147] (-) JobUnselected: {'identifier': 'fields2cover'}
+[0.000171] (-) JobUnselected: {'identifier': 'higher_layer_mvibot'}
+[0.000185] (-) JobUnselected: {'identifier': 'ira_laser_tools'}
+[0.000196] (-) JobUnselected: {'identifier': 'lower_layer_mvibot'}
+[0.000206] (-) JobUnselected: {'identifier': 'mission_layer_mvibot'}
+[0.000215] (-) JobUnselected: {'identifier': 'opennav_coverage'}
+[0.000224] (-) JobUnselected: {'identifier': 'opennav_coverage_bt'}
+[0.000232] (-) JobUnselected: {'identifier': 'opennav_coverage_demo'}
+[0.000241] (-) JobUnselected: {'identifier': 'opennav_coverage_navigator'}
+[0.000250] (-) JobUnselected: {'identifier': 'opennav_row_coverage'}
+[0.000259] (-) JobUnselected: {'identifier': 'pointcloud_to_laserscan'}
+[0.000268] (-) JobUnselected: {'identifier': 'realsense2_camera'}
+[0.000276] (-) JobUnselected: {'identifier': 'realsense2_camera_msgs'}
+[0.000285] (-) JobUnselected: {'identifier': 'realsense2_description'}
+[0.000293] (-) JobUnselected: {'identifier': 'sllidar_ros2'}
+[0.000302] (-) JobUnselected: {'identifier': 'tf2_web_republisher'}
+[0.000310] (-) JobUnselected: {'identifier': 'tf2_web_republisher_interfaces'}
+[0.000321] (opennav_coverage_msgs) JobQueued: {'identifier': 'opennav_coverage_msgs', 'dependencies': OrderedDict()}
+[0.000680] (opennav_coverage_msgs) JobStarted: {'identifier': 'opennav_coverage_msgs'}
+[0.005959] (opennav_coverage_msgs) JobProgress: {'identifier': 'opennav_coverage_msgs', 'progress': 'cmake'}
+[0.006354] (opennav_coverage_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/mvibot/floorCleaningRobot_ws/src/opennav_coverage/opennav_coverage_msgs', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'XDG_SESSION_TYPE': 'wayland', 'ROS_APT_SOURCE_VERSION': '1.1.0', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2939', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'mvibot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/mvibot:@/tmp/.ICE-unix/2913,unix/mvibot:/tmp/.ICE-unix/2913', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/b7a177f3_03ee_4737_8328_c3bdd1e2124b', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.IPMDD3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.117', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.046227] (opennav_coverage_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.088016] (opennav_coverage_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.098714] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.099861] (-) TimerEvent: {}
+[0.164963] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.175723] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.176012] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.176572] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.184316] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.200042] (-) TimerEvent: {}
+[0.280241] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.287774] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.288057] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.288693] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.290824] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.300113] (-) TimerEvent: {}
+[0.396261] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[0.400205] (-) TimerEvent: {}
+[0.449486] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.468920] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found builtin_interfaces: 2.0.3 (/opt/ros/jazzy/share/builtin_interfaces/cmake)\n'}
+[0.492989] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.500355] (-) TimerEvent: {}
+[0.502042] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.513623] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.525861] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.538228] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)\n'}
+[0.593478] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)\n'}
+[0.600526] (-) TimerEvent: {}
+[0.604989] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.6 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[0.609118] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found action_msgs: 2.0.3 (/opt/ros/jazzy/share/action_msgs/cmake)\n'}
+[0.700645] (-) TimerEvent: {}
+[0.800878] (-) TimerEvent: {}
+[0.901106] (-) TimerEvent: {}
+[1.001329] (-) TimerEvent: {}
+[1.101664] (-) TimerEvent: {}
+[1.132822] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)\n'}
+[1.201794] (-) TimerEvent: {}
+[1.302193] (-) TimerEvent: {}
+[1.402547] (-) TimerEvent: {}
+[1.502851] (-) TimerEvent: {}
+[1.603168] (-) TimerEvent: {}
+[1.703383] (-) TimerEvent: {}
+[1.775165] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.803548] (-) TimerEvent: {}
+[1.903757] (-) TimerEvent: {}
+[2.003960] (-) TimerEvent: {}
+[2.025018] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.027618] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)\n'}
+[2.104145] (-) TimerEvent: {}
+[2.128016] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found PythonExtra: /usr/bin/python3  \n'}
+[2.204329] (-) TimerEvent: {}
+[2.304653] (-) TimerEvent: {}
+[2.404973] (-) TimerEvent: {}
+[2.491543] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[2.505152] (-) TimerEvent: {}
+[2.549195] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Configuring done (2.5s)\n'}
+[2.592277] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[2.601287] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs\n'}
+[2.605244] (-) TimerEvent: {}
+[2.609659] (opennav_coverage_msgs) CommandEnded: {'returncode': 0}
+[2.610077] (opennav_coverage_msgs) JobProgress: {'identifier': 'opennav_coverage_msgs', 'progress': 'build'}
+[2.610631] (opennav_coverage_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs', '--', '-j8', '-l8'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'XDG_SESSION_TYPE': 'wayland', 'ROS_APT_SOURCE_VERSION': '1.1.0', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2939', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'mvibot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/mvibot:@/tmp/.ICE-unix/2913,unix/mvibot:/tmp/.ICE-unix/2913', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/b7a177f3_03ee_4737_8328_c3bdd1e2124b', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.IPMDD3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.117', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[2.650345] (opennav_coverage_msgs) StdoutLine: {'line': b'[  1%] \x1b[34m\x1b[1mGenerating type hashes for ROS interfaces\x1b[0m\n'}
+[2.656249] (opennav_coverage_msgs) StdoutLine: {'line': b'[  1%] Built target ament_cmake_python_symlink_opennav_coverage_msgs\n'}
+[2.705350] (-) TimerEvent: {}
+[2.805710] (-) TimerEvent: {}
+[2.820713] (opennav_coverage_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[2.821295] (opennav_coverage_msgs) StdoutLine: {'line': b'creating opennav_coverage_msgs.egg-info\n'}
+[2.835439] (opennav_coverage_msgs) StdoutLine: {'line': b'writing opennav_coverage_msgs.egg-info/PKG-INFO\n'}
+[2.835562] (opennav_coverage_msgs) StdoutLine: {'line': b'writing dependency_links to opennav_coverage_msgs.egg-info/dependency_links.txt\n'}
+[2.835647] (opennav_coverage_msgs) StdoutLine: {'line': b'writing top-level names to opennav_coverage_msgs.egg-info/top_level.txt\n'}
+[2.835705] (opennav_coverage_msgs) StdoutLine: {'line': b"writing manifest file 'opennav_coverage_msgs.egg-info/SOURCES.txt'\n"}
+[2.876946] (opennav_coverage_msgs) StdoutLine: {'line': b"reading manifest file 'opennav_coverage_msgs.egg-info/SOURCES.txt'\n"}
+[2.877304] (opennav_coverage_msgs) StdoutLine: {'line': b"writing manifest file 'opennav_coverage_msgs.egg-info/SOURCES.txt'\n"}
+[2.897275] (opennav_coverage_msgs) StdoutLine: {'line': b'[  1%] Built target ament_cmake_python_build_opennav_coverage_msgs_egg\n'}
+[2.905859] (-) TimerEvent: {}
+[3.006140] (-) TimerEvent: {}
+[3.106469] (-) TimerEvent: {}
+[3.143236] (opennav_coverage_msgs) StdoutLine: {'line': b'[  1%] Built target opennav_coverage_msgs__rosidl_generator_type_description\n'}
+[3.151152] (opennav_coverage_msgs) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[3.158470] (opennav_coverage_msgs) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[3.206643] (-) TimerEvent: {}
+[3.306953] (-) TimerEvent: {}
+[3.407283] (-) TimerEvent: {}
+[3.507597] (-) TimerEvent: {}
+[3.607846] (-) TimerEvent: {}
+[3.708210] (-) TimerEvent: {}
+[3.808459] (-) TimerEvent: {}
+[3.908791] (-) TimerEvent: {}
+[4.009124] (-) TimerEvent: {}
+[4.110085] (-) TimerEvent: {}
+[4.175864] (opennav_coverage_msgs) StdoutLine: {'line': b'[  2%] Built target opennav_coverage_msgs__cpp\n'}
+[4.210266] (-) TimerEvent: {}
+[4.310797] (-) TimerEvent: {}
+[4.373538] (opennav_coverage_msgs) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/coordinate__functions.c.o\x1b[0m\n'}
+[4.373687] (opennav_coverage_msgs) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/coordinate__description.c.o\x1b[0m\n'}
+[4.373741] (opennav_coverage_msgs) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/coordinates__description.c.o\x1b[0m\n'}
+[4.373788] (opennav_coverage_msgs) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/coordinate__type_support.c.o\x1b[0m\n'}
+[4.373834] (opennav_coverage_msgs) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/coordinates__type_support.c.o\x1b[0m\n'}
+[4.373881] (opennav_coverage_msgs) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/coordinates__functions.c.o\x1b[0m\n'}
+[4.373936] (opennav_coverage_msgs) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/headland_mode__description.c.o\x1b[0m\n'}
+[4.373983] (opennav_coverage_msgs) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/headland_mode__functions.c.o\x1b[0m\n'}
+[4.407155] (opennav_coverage_msgs) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/headland_mode__type_support.c.o\x1b[0m\n'}
+[4.407369] (opennav_coverage_msgs) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/swath_mode__description.c.o\x1b[0m\n'}
+[4.410624] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/swath_mode__functions.c.o\x1b[0m\n'}
+[4.410818] (-) TimerEvent: {}
+[4.414465] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/swath_mode__type_support.c.o\x1b[0m\n'}
+[4.416914] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/row_swath_mode__description.c.o\x1b[0m\n'}
+[4.429159] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/row_swath_mode__functions.c.o\x1b[0m\n'}
+[4.435811] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/route_mode__description.c.o\x1b[0m\n'}
+[4.436135] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/row_swath_mode__type_support.c.o\x1b[0m\n'}
+[4.442571] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/route_mode__functions.c.o\x1b[0m\n'}
+[4.450964] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/route_mode__type_support.c.o\x1b[0m\n'}
+[4.457084] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/path_mode__functions.c.o\x1b[0m\n'}
+[4.458404] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/path_mode__description.c.o\x1b[0m\n'}
+[4.466796] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/path_mode__type_support.c.o\x1b[0m\n'}
+[4.472257] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 18%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/swath__description.c.o\x1b[0m\n'}
+[4.482097] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 19%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/swath__functions.c.o\x1b[0m\n'}
+[4.485959] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/swath__type_support.c.o\x1b[0m\n'}
+[4.486212] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/path_components__description.c.o\x1b[0m\n'}
+[4.498454] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 21%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/path_components__functions.c.o\x1b[0m\n'}
+[4.500227] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/msg/detail/path_components__type_support.c.o\x1b[0m\n'}
+[4.500454] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/action/detail/compute_coverage_path__description.c.o\x1b[0m\n'}
+[4.510933] (-) TimerEvent: {}
+[4.513317] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/action/detail/compute_coverage_path__functions.c.o\x1b[0m\n'}
+[4.522162] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 24%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/action/detail/navigate_complete_coverage__description.c.o\x1b[0m\n'}
+[4.522371] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/action/detail/compute_coverage_path__type_support.c.o\x1b[0m\n'}
+[4.534650] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/action/detail/navigate_complete_coverage__functions.c.o\x1b[0m\n'}
+[4.535822] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_c.dir/rosidl_generator_c/opennav_coverage_msgs/action/detail/navigate_complete_coverage__type_support.c.o\x1b[0m\n'}
+[4.611060] (-) TimerEvent: {}
+[4.679897] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 27%] \x1b[32m\x1b[1mLinking C shared library libopennav_coverage_msgs__rosidl_generator_c.so\x1b[0m\n'}
+[4.711241] (-) TimerEvent: {}
+[4.729848] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 27%] Built target opennav_coverage_msgs__rosidl_generator_c\n'}
+[4.737944] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 27%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.738164] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 27%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[4.738993] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 28%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.739198] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 30%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.739291] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 30%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[4.739627] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 31%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.811316] (-) TimerEvent: {}
+[4.911572] (-) TimerEvent: {}
+[5.011896] (-) TimerEvent: {}
+[5.112182] (-) TimerEvent: {}
+[5.212445] (-) TimerEvent: {}
+[5.312744] (-) TimerEvent: {}
+[5.413055] (-) TimerEvent: {}
+[5.476355] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opennav_coverage_msgs/msg/headland_mode__type_support.cpp.o\x1b[0m\n'}
+[5.477493] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opennav_coverage_msgs/msg/coordinate__type_support.cpp.o\x1b[0m\n'}
+[5.477632] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opennav_coverage_msgs/msg/coordinates__type_support.cpp.o\x1b[0m\n'}
+[5.513152] (-) TimerEvent: {}
+[5.614192] (-) TimerEvent: {}
+[5.714464] (-) TimerEvent: {}
+[5.782135] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opennav_coverage_msgs/msg/detail/coordinate__type_support.cpp.o\x1b[0m\n'}
+[5.814568] (-) TimerEvent: {}
+[5.850163] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opennav_coverage_msgs/msg/swath_mode__type_support.cpp.o\x1b[0m\n'}
+[5.853885] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 36%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opennav_coverage_msgs/msg/row_swath_mode__type_support.cpp.o\x1b[0m\n'}
+[5.889490] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opennav_coverage_msgs/msg/detail/coordinates__type_support.cpp.o\x1b[0m\n'}
+[5.914681] (-) TimerEvent: {}
+[6.021220] (-) TimerEvent: {}
+[6.121499] (-) TimerEvent: {}
+[6.147996] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opennav_coverage_msgs/msg/route_mode__type_support.cpp.o\x1b[0m\n'}
+[6.154507] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/opennav_coverage_msgs/msg/coordinate__type_support.cpp.o\x1b[0m\n'}
+[6.207505] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 39%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/opennav_coverage_msgs/msg/coordinates__type_support.cpp.o\x1b[0m\n'}
+[6.221601] (-) TimerEvent: {}
+[6.255361] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 39%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opennav_coverage_msgs/msg/detail/headland_mode__type_support.cpp.o\x1b[0m\n'}
+[6.258156] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/opennav_coverage_msgs/msg/headland_mode__type_support.cpp.o\x1b[0m\n'}
+[6.274079] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opennav_coverage_msgs/msg/detail/swath_mode__type_support.cpp.o\x1b[0m\n'}
+[6.309791] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/opennav_coverage_msgs/msg/swath_mode__type_support.cpp.o\x1b[0m\n'}
+[6.321707] (-) TimerEvent: {}
+[6.330876] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opennav_coverage_msgs/msg/path_mode__type_support.cpp.o\x1b[0m\n'}
+[6.380568] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/opennav_coverage_msgs/msg/row_swath_mode__type_support.cpp.o\x1b[0m\n'}
+[6.421808] (-) TimerEvent: {}
+[6.435134] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/opennav_coverage_msgs/msg/route_mode__type_support.cpp.o\x1b[0m\n'}
+[6.484464] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/opennav_coverage_msgs/msg/path_mode__type_support.cpp.o\x1b[0m\n'}
+[6.509720] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opennav_coverage_msgs/msg/swath__type_support.cpp.o\x1b[0m\n'}
+[6.521906] (-) TimerEvent: {}
+[6.532959] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/opennav_coverage_msgs/msg/swath__type_support.cpp.o\x1b[0m\n'}
+[6.580642] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/opennav_coverage_msgs/msg/path_components__type_support.cpp.o\x1b[0m\n'}
+[6.580911] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opennav_coverage_msgs/msg/detail/coordinate__type_support.c.o\x1b[0m\n'}
+[6.622011] (-) TimerEvent: {}
+[6.623810] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opennav_coverage_msgs/msg/detail/coordinates__type_support.c.o\x1b[0m\n'}
+[6.631754] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 49%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/opennav_coverage_msgs/action/compute_coverage_path__type_support.cpp.o\x1b[0m\n'}
+[6.631945] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opennav_coverage_msgs/msg/detail/headland_mode__type_support.c.o\x1b[0m\n'}
+[6.654766] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opennav_coverage_msgs/msg/detail/row_swath_mode__type_support.cpp.o\x1b[0m\n'}
+[6.673097] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opennav_coverage_msgs/msg/path_components__type_support.cpp.o\x1b[0m\n'}
+[6.676073] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opennav_coverage_msgs/msg/detail/swath_mode__type_support.c.o\x1b[0m\n'}
+[6.703146] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/opennav_coverage_msgs/action/navigate_complete_coverage__type_support.cpp.o\x1b[0m\n'}
+[6.721078] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 54%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opennav_coverage_msgs/msg/detail/row_swath_mode__type_support.c.o\x1b[0m\n'}
+[6.722056] (-) TimerEvent: {}
+[6.745134] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opennav_coverage_msgs/msg/detail/route_mode__type_support.cpp.o\x1b[0m\n'}
+[6.770065] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 56%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opennav_coverage_msgs/msg/detail/route_mode__type_support.c.o\x1b[0m\n'}
+[6.772715] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 57%] \x1b[32m\x1b[1mLinking CXX shared library libopennav_coverage_msgs__rosidl_typesupport_c.so\x1b[0m\n'}
+[6.817320] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 58%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opennav_coverage_msgs/msg/detail/path_mode__type_support.c.o\x1b[0m\n'}
+[6.822160] (-) TimerEvent: {}
+[6.823690] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 58%] Built target opennav_coverage_msgs__rosidl_typesupport_c\n'}
+[6.835105] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opennav_coverage_msgs/action/compute_coverage_path__type_support.cpp.o\x1b[0m\n'}
+[6.859746] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opennav_coverage_msgs/msg/detail/swath__type_support.c.o\x1b[0m\n'}
+[6.882372] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opennav_coverage_msgs/msg/detail/path_mode__type_support.cpp.o\x1b[0m\n'}
+[6.904537] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opennav_coverage_msgs/msg/detail/path_components__type_support.c.o\x1b[0m\n'}
+[6.922262] (-) TimerEvent: {}
+[6.966097] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opennav_coverage_msgs/action/detail/compute_coverage_path__type_support.c.o\x1b[0m\n'}
+[7.022361] (-) TimerEvent: {}
+[7.061523] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 62%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opennav_coverage_msgs/msg/detail/swath__type_support.cpp.o\x1b[0m\n'}
+[7.069806] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opennav_coverage_msgs/action/detail/navigate_complete_coverage__type_support.c.o\x1b[0m\n'}
+[7.083094] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opennav_coverage_msgs/action/navigate_complete_coverage__type_support.cpp.o\x1b[0m\n'}
+[7.093148] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/coordinate__type_support.cpp.o\x1b[0m\n'}
+[7.122474] (-) TimerEvent: {}
+[7.165757] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 63%] \x1b[32m\x1b[1mLinking C shared library libopennav_coverage_msgs__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[7.200164] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 64%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opennav_coverage_msgs/msg/detail/path_components__type_support.cpp.o\x1b[0m\n'}
+[7.209589] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 64%] Built target opennav_coverage_msgs__rosidl_typesupport_introspection_c\n'}
+[7.219220] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 65%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/coordinates__type_support.cpp.o\x1b[0m\n'}
+[7.222634] (-) TimerEvent: {}
+[7.245886] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/headland_mode__type_support.cpp.o\x1b[0m\n'}
+[7.263451] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 67%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opennav_coverage_msgs/msg/detail/coordinate__type_support_c.cpp.o\x1b[0m\n'}
+[7.323102] (-) TimerEvent: {}
+[7.423462] (-) TimerEvent: {}
+[7.526901] (-) TimerEvent: {}
+[7.632578] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 67%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opennav_coverage_msgs/msg/detail/coordinates__type_support_c.cpp.o\x1b[0m\n'}
+[7.634225] (-) TimerEvent: {}
+[7.737806] (-) TimerEvent: {}
+[7.842157] (-) TimerEvent: {}
+[7.944701] (-) TimerEvent: {}
+[8.047741] (-) TimerEvent: {}
+[8.152170] (-) TimerEvent: {}
+[8.256325] (-) TimerEvent: {}
+[8.357756] (-) TimerEvent: {}
+[8.467317] (-) TimerEvent: {}
+[8.568811] (-) TimerEvent: {}
+[8.669949] (-) TimerEvent: {}
+[8.770403] (-) TimerEvent: {}
+[8.809511] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 68%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opennav_coverage_msgs/msg/detail/headland_mode__type_support_c.cpp.o\x1b[0m\n'}
+[8.870521] (-) TimerEvent: {}
+[8.970846] (-) TimerEvent: {}
+[9.008205] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opennav_coverage_msgs/action/detail/compute_coverage_path__type_support.cpp.o\x1b[0m\n'}
+[9.020795] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opennav_coverage_msgs/msg/detail/swath_mode__type_support_c.cpp.o\x1b[0m\n'}
+[9.032083] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/swath_mode__type_support.cpp.o\x1b[0m\n'}
+[9.065588] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opennav_coverage_msgs/action/detail/navigate_complete_coverage__type_support.cpp.o\x1b[0m\n'}
+[9.070958] (-) TimerEvent: {}
+[9.167098] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opennav_coverage_msgs/msg/detail/row_swath_mode__type_support_c.cpp.o\x1b[0m\n'}
+[9.171078] (-) TimerEvent: {}
+[9.220777] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 73%] \x1b[32m\x1b[1mLinking CXX shared library libopennav_coverage_msgs__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[9.271198] (-) TimerEvent: {}
+[9.278571] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/row_swath_mode__type_support.cpp.o\x1b[0m\n'}
+[9.349802] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 73%] Built target opennav_coverage_msgs__rosidl_typesupport_cpp\n'}
+[9.361322] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opennav_coverage_msgs/msg/detail/route_mode__type_support_c.cpp.o\x1b[0m\n'}
+[9.373101] (-) TimerEvent: {}
+[9.473419] (-) TimerEvent: {}
+[9.503765] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 74%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/route_mode__type_support.cpp.o\x1b[0m\n'}
+[9.573531] (-) TimerEvent: {}
+[9.673843] (-) TimerEvent: {}
+[9.679299] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/path_mode__type_support.cpp.o\x1b[0m\n'}
+[9.696872] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opennav_coverage_msgs/msg/detail/path_mode__type_support_c.cpp.o\x1b[0m\n'}
+[9.773965] (-) TimerEvent: {}
+[9.823085] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/swath__type_support.cpp.o\x1b[0m\n'}
+[9.874092] (-) TimerEvent: {}
+[9.975102] (-) TimerEvent: {}
+[9.987003] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opennav_coverage_msgs/msg/detail/swath__type_support_c.cpp.o\x1b[0m\n'}
+[10.025336] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/path_components__type_support.cpp.o\x1b[0m\n'}
+[10.076099] (-) TimerEvent: {}
+[10.176412] (-) TimerEvent: {}
+[10.256810] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opennav_coverage_msgs/msg/detail/path_components__type_support_c.cpp.o\x1b[0m\n'}
+[10.277104] (-) TimerEvent: {}
+[10.327905] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/action/detail/dds_fastrtps/compute_coverage_path__type_support.cpp.o\x1b[0m\n'}
+[10.337152] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opennav_coverage_msgs/action/detail/compute_coverage_path__type_support_c.cpp.o\x1b[0m\n'}
+[10.355078] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 81%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/action/detail/dds_fastrtps/navigate_complete_coverage__type_support.cpp.o\x1b[0m\n'}
+[10.377214] (-) TimerEvent: {}
+[10.477539] (-) TimerEvent: {}
+[10.484272] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding CXX object CMakeFiles/opennav_coverage_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opennav_coverage_msgs/action/detail/navigate_complete_coverage__type_support_c.cpp.o\x1b[0m\n'}
+[10.578105] (-) TimerEvent: {}
+[10.678407] (-) TimerEvent: {}
+[10.779108] (-) TimerEvent: {}
+[10.801811] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 83%] \x1b[32m\x1b[1mLinking CXX shared library libopennav_coverage_msgs__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[10.879231] (-) TimerEvent: {}
+[10.948260] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 83%] Built target opennav_coverage_msgs__rosidl_typesupport_introspection_cpp\n'}
+[10.979350] (-) TimerEvent: {}
+[11.079645] (-) TimerEvent: {}
+[11.117063] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 84%] \x1b[32m\x1b[1mLinking CXX shared library libopennav_coverage_msgs__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[11.179760] (-) TimerEvent: {}
+[11.188017] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 84%] Built target opennav_coverage_msgs__rosidl_typesupport_fastrtps_c\n'}
+[11.279884] (-) TimerEvent: {}
+[11.380224] (-) TimerEvent: {}
+[11.480577] (-) TimerEvent: {}
+[11.579812] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 85%] \x1b[32m\x1b[1mLinking CXX shared library libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[11.580657] (-) TimerEvent: {}
+[11.649830] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 85%] Built target opennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[11.664175] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 85%] Built target opennav_coverage_msgs\n'}
+[11.679663] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 86%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[11.680746] (-) TimerEvent: {}
+[11.781006] (-) TimerEvent: {}
+[11.881347] (-) TimerEvent: {}
+[11.981660] (-) TimerEvent: {}
+[12.081976] (-) TimerEvent: {}
+[12.182329] (-) TimerEvent: {}
+[12.282665] (-) TimerEvent: {}
+[12.383002] (-) TimerEvent: {}
+[12.483348] (-) TimerEvent: {}
+[12.583667] (-) TimerEvent: {}
+[12.683994] (-) TimerEvent: {}
+[12.784331] (-) TimerEvent: {}
+[12.884647] (-) TimerEvent: {}
+[12.984977] (-) TimerEvent: {}
+[13.085329] (-) TimerEvent: {}
+[13.185660] (-) TimerEvent: {}
+[13.286000] (-) TimerEvent: {}
+[13.380987] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 86%] Built target opennav_coverage_msgs__py\n'}
+[13.386212] (-) TimerEvent: {}
+[13.400665] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_py.dir/rosidl_generator_py/opennav_coverage_msgs/msg/_coordinate_s.c.o\x1b[0m\n'}
+[13.400873] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_py.dir/rosidl_generator_py/opennav_coverage_msgs/msg/_route_mode_s.c.o\x1b[0m\n'}
+[13.400964] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_py.dir/rosidl_generator_py/opennav_coverage_msgs/msg/_headland_mode_s.c.o\x1b[0m\n'}
+[13.401054] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_py.dir/rosidl_generator_py/opennav_coverage_msgs/msg/_row_swath_mode_s.c.o\x1b[0m\n'}
+[13.401146] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_py.dir/rosidl_generator_py/opennav_coverage_msgs/msg/_coordinates_s.c.o\x1b[0m\n'}
+[13.401222] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_py.dir/rosidl_generator_py/opennav_coverage_msgs/msg/_path_mode_s.c.o\x1b[0m\n'}
+[13.401296] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_py.dir/rosidl_generator_py/opennav_coverage_msgs/msg/_swath_mode_s.c.o\x1b[0m\n'}
+[13.403973] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_py.dir/rosidl_generator_py/opennav_coverage_msgs/msg/_swath_s.c.o\x1b[0m\n'}
+[13.488105] (-) TimerEvent: {}
+[13.548917] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 94%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_py.dir/rosidl_generator_py/opennav_coverage_msgs/action/_compute_coverage_path_s.c.o\x1b[0m\n'}
+[13.549076] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 94%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_py.dir/rosidl_generator_py/opennav_coverage_msgs/msg/_path_components_s.c.o\x1b[0m\n'}
+[13.550267] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 94%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs__rosidl_generator_py.dir/rosidl_generator_py/opennav_coverage_msgs/action/_navigate_complete_coverage_s.c.o\x1b[0m\n'}
+[13.588258] (-) TimerEvent: {}
+[13.688609] (-) TimerEvent: {}
+[13.713898] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 95%] \x1b[32m\x1b[1mLinking C shared library libopennav_coverage_msgs__rosidl_generator_py.so\x1b[0m\n'}
+[13.753466] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 95%] Built target opennav_coverage_msgs__rosidl_generator_py\n'}
+[13.767933] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/opennav_coverage_msgs/_opennav_coverage_msgs_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[13.768135] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/opennav_coverage_msgs/_opennav_coverage_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[13.768218] (opennav_coverage_msgs) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding C object CMakeFiles/opennav_coverage_msgs_s__rosidl_typesupport_c.dir/rosidl_generator_py/opennav_coverage_msgs/_opennav_coverage_msgs_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[13.788809] (-) TimerEvent: {}
+[13.889121] (-) TimerEvent: {}
+[13.911275] (opennav_coverage_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/opennav_coverage_msgs/opennav_coverage_msgs_s__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[13.911464] (opennav_coverage_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/opennav_coverage_msgs/opennav_coverage_msgs_s__rosidl_typesupport_c.so\x1b[0m\n'}
+[13.911548] (opennav_coverage_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/opennav_coverage_msgs/opennav_coverage_msgs_s__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[13.935019] (opennav_coverage_msgs) StdoutLine: {'line': b'[100%] Built target opennav_coverage_msgs_s__rosidl_typesupport_c\n'}
+[13.935235] (opennav_coverage_msgs) StdoutLine: {'line': b'[100%] Built target opennav_coverage_msgs_s__rosidl_typesupport_introspection_c\n'}
+[13.935326] (opennav_coverage_msgs) StdoutLine: {'line': b'[100%] Built target opennav_coverage_msgs_s__rosidl_typesupport_fastrtps_c\n'}
+[13.944426] (opennav_coverage_msgs) CommandEnded: {'returncode': 0}
+[13.944915] (opennav_coverage_msgs) JobProgress: {'identifier': 'opennav_coverage_msgs', 'progress': 'install'}
+[13.951622] (opennav_coverage_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'XDG_SESSION_TYPE': 'wayland', 'ROS_APT_SOURCE_VERSION': '1.1.0', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2939', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'mvibot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/mvibot:@/tmp/.ICE-unix/2913,unix/mvibot:/tmp/.ICE-unix/2913', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/b7a177f3_03ee_4737_8328_c3bdd1e2124b', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.IPMDD3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.117', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[13.957754] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[13.958262] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[13.958499] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/ament_index/resource_index/rosidl_interfaces/opennav_coverage_msgs\n'}
+[13.964926] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/Coordinate.json\n'}
+[13.971777] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/Coordinates.json\n'}
+[13.979824] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/HeadlandMode.json\n'}
+[13.987150] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/SwathMode.json\n'}
+[13.989176] (-) TimerEvent: {}
+[13.994181] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/RowSwathMode.json\n'}
+[14.001164] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/RouteMode.json\n'}
+[14.007219] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/PathMode.json\n'}
+[14.013238] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/Swath.json\n'}
+[14.019259] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/PathComponents.json\n'}
+[14.025013] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/action/ComputeCoveragePath.json\n'}
+[14.031053] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/action/NavigateCompleteCoverage.json\n'}
+[14.037730] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/compute_coverage_path.h\n'}
+[14.043877] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/compute_coverage_path__functions.h\n'}
+[14.049641] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/compute_coverage_path__struct.h\n'}
+[14.055676] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/compute_coverage_path__type_support.h\n'}
+[14.061539] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/navigate_complete_coverage__functions.h\n'}
+[14.067537] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/navigate_complete_coverage__struct.h\n'}
+[14.073324] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/navigate_complete_coverage__type_support.h\n'}
+[14.079559] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/navigate_complete_coverage.h\n'}
+[14.085376] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/coordinate.h\n'}
+[14.089261] (-) TimerEvent: {}
+[14.091819] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/coordinates.h\n'}
+[14.098695] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinate__functions.h\n'}
+[14.104874] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinate__struct.h\n'}
+[14.110868] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinate__type_support.h\n'}
+[14.116972] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinates__functions.h\n'}
+[14.123256] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinates__struct.h\n'}
+[14.130661] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinates__type_support.h\n'}
+[14.137438] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/headland_mode__functions.h\n'}
+[14.145843] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/headland_mode__struct.h\n'}
+[14.152309] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/headland_mode__type_support.h\n'}
+[14.160049] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_components__functions.h\n'}
+[14.165850] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_components__struct.h\n'}
+[14.171646] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_components__type_support.h\n'}
+[14.177712] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_mode__functions.h\n'}
+[14.183501] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_mode__struct.h\n'}
+[14.189464] (-) TimerEvent: {}
+[14.189692] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_mode__type_support.h\n'}
+[14.197693] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/route_mode__functions.h\n'}
+[14.204621] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/route_mode__struct.h\n'}
+[14.210872] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/route_mode__type_support.h\n'}
+[14.217214] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/row_swath_mode__functions.h\n'}
+[14.223113] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/row_swath_mode__struct.h\n'}
+[14.228647] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/row_swath_mode__type_support.h\n'}
+[14.234762] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath__functions.h\n'}
+[14.240427] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath__struct.h\n'}
+[14.246376] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath__type_support.h\n'}
+[14.252172] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath_mode__functions.h\n'}
+[14.258013] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath_mode__struct.h\n'}
+[14.263867] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath_mode__type_support.h\n'}
+[14.269625] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/headland_mode.h\n'}
+[14.275606] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/path_components.h\n'}
+[14.281284] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/path_mode.h\n'}
+[14.287168] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[14.289561] (-) TimerEvent: {}
+[14.293811] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/route_mode.h\n'}
+[14.300693] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/row_swath_mode.h\n'}
+[14.306628] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/swath.h\n'}
+[14.312540] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/swath_mode.h\n'}
+[14.318590] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/environment/library_path.sh\n'}
+[14.324639] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/environment/library_path.dsv\n'}
+[14.331065] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/compute_coverage_path__rosidl_typesupport_fastrtps_c.h\n'}
+[14.337167] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/navigate_complete_coverage__rosidl_typesupport_fastrtps_c.h\n'}
+[14.343065] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinate__rosidl_typesupport_fastrtps_c.h\n'}
+[14.348837] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinates__rosidl_typesupport_fastrtps_c.h\n'}
+[14.354974] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/headland_mode__rosidl_typesupport_fastrtps_c.h\n'}
+[14.360957] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_components__rosidl_typesupport_fastrtps_c.h\n'}
+[14.366736] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_mode__rosidl_typesupport_fastrtps_c.h\n'}
+[14.372697] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/route_mode__rosidl_typesupport_fastrtps_c.h\n'}
+[14.378639] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/row_swath_mode__rosidl_typesupport_fastrtps_c.h\n'}
+[14.384616] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath__rosidl_typesupport_fastrtps_c.h\n'}
+[14.389677] (-) TimerEvent: {}
+[14.390436] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath_mode__rosidl_typesupport_fastrtps_c.h\n'}
+[14.398909] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[14.405885] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/compute_coverage_path.hpp\n'}
+[14.411723] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/compute_coverage_path__builder.hpp\n'}
+[14.418188] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/compute_coverage_path__struct.hpp\n'}
+[14.424793] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/compute_coverage_path__traits.hpp\n'}
+[14.430904] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/compute_coverage_path__type_support.hpp\n'}
+[14.437247] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/navigate_complete_coverage__builder.hpp\n'}
+[14.442944] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/navigate_complete_coverage__struct.hpp\n'}
+[14.448443] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/navigate_complete_coverage__traits.hpp\n'}
+[14.454337] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/navigate_complete_coverage__type_support.hpp\n'}
+[14.460228] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/navigate_complete_coverage.hpp\n'}
+[14.465972] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/coordinate.hpp\n'}
+[14.472084] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/coordinates.hpp\n'}
+[14.478365] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinate__builder.hpp\n'}
+[14.484160] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinate__struct.hpp\n'}
+[14.489795] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinate__traits.hpp\n'}
+[14.489918] (-) TimerEvent: {}
+[14.497904] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinate__type_support.hpp\n'}
+[14.504232] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinates__builder.hpp\n'}
+[14.510689] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinates__struct.hpp\n'}
+[14.516723] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinates__traits.hpp\n'}
+[14.523763] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinates__type_support.hpp\n'}
+[14.529897] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/headland_mode__builder.hpp\n'}
+[14.536074] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/headland_mode__struct.hpp\n'}
+[14.541901] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/headland_mode__traits.hpp\n'}
+[14.547880] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/headland_mode__type_support.hpp\n'}
+[14.554002] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_components__builder.hpp\n'}
+[14.560240] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_components__struct.hpp\n'}
+[14.565956] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_components__traits.hpp\n'}
+[14.571708] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_components__type_support.hpp\n'}
+[14.577517] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_mode__builder.hpp\n'}
+[14.583360] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_mode__struct.hpp\n'}
+[14.589287] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_mode__traits.hpp\n'}
+[14.590009] (-) TimerEvent: {}
+[14.596407] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_mode__type_support.hpp\n'}
+[14.602816] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/route_mode__builder.hpp\n'}
+[14.608726] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/route_mode__struct.hpp\n'}
+[14.614852] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/route_mode__traits.hpp\n'}
+[14.620661] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/route_mode__type_support.hpp\n'}
+[14.626739] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/row_swath_mode__builder.hpp\n'}
+[14.632868] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/row_swath_mode__struct.hpp\n'}
+[14.639063] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/row_swath_mode__traits.hpp\n'}
+[14.645090] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/row_swath_mode__type_support.hpp\n'}
+[14.650856] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath__builder.hpp\n'}
+[14.656765] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath__struct.hpp\n'}
+[14.662860] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath__traits.hpp\n'}
+[14.668747] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath__type_support.hpp\n'}
+[14.674649] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath_mode__builder.hpp\n'}
+[14.680457] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath_mode__struct.hpp\n'}
+[14.686451] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath_mode__traits.hpp\n'}
+[14.690169] (-) TimerEvent: {}
+[14.693839] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath_mode__type_support.hpp\n'}
+[14.700678] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/headland_mode.hpp\n'}
+[14.706888] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/path_components.hpp\n'}
+[14.712770] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/path_mode.hpp\n'}
+[14.718498] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[14.724354] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/route_mode.hpp\n'}
+[14.730129] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/row_swath_mode.hpp\n'}
+[14.735714] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/swath.hpp\n'}
+[14.741400] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/swath_mode.hpp\n'}
+[14.747799] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/compute_coverage_path__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.753515] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/navigate_complete_coverage__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.759210] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinate__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.765127] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinates__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.770816] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/headland_mode__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.776635] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_components__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.782444] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_mode__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.788161] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/route_mode__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.790237] (-) TimerEvent: {}
+[14.794756] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/row_swath_mode__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.801306] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.807340] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath_mode__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.813488] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[14.820274] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/compute_coverage_path__rosidl_typesupport_introspection_c.h\n'}
+[14.826980] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/navigate_complete_coverage__rosidl_typesupport_introspection_c.h\n'}
+[14.832854] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinate__rosidl_typesupport_introspection_c.h\n'}
+[14.838757] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinates__rosidl_typesupport_introspection_c.h\n'}
+[14.844604] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/headland_mode__rosidl_typesupport_introspection_c.h\n'}
+[14.850758] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_components__rosidl_typesupport_introspection_c.h\n'}
+[14.856527] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_mode__rosidl_typesupport_introspection_c.h\n'}
+[14.862594] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/route_mode__rosidl_typesupport_introspection_c.h\n'}
+[14.868627] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/row_swath_mode__rosidl_typesupport_introspection_c.h\n'}
+[14.874463] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath__rosidl_typesupport_introspection_c.h\n'}
+[14.880455] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath_mode__rosidl_typesupport_introspection_c.h\n'}
+[14.886258] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[14.890321] (-) TimerEvent: {}
+[14.892888] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/compute_coverage_path__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.899849] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/action/detail/navigate_complete_coverage__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.905944] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinate__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.912237] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/coordinates__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.919141] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/headland_mode__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.925019] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_components__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.930750] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/path_mode__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.936476] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/route_mode__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.942340] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/row_swath_mode__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.948219] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.953998] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/include/opennav_coverage_msgs/opennav_coverage_msgs/msg/detail/swath_mode__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.960055] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/environment/pythonpath.sh\n'}
+[14.966143] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/environment/pythonpath.dsv\n'}
+[14.972269] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs-0.0.1-py3.12.egg-info/PKG-INFO\n'}
+[14.978064] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs-0.0.1-py3.12.egg-info/SOURCES.txt\n'}
+[14.983883] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs-0.0.1-py3.12.egg-info/dependency_links.txt\n'}
+[14.989880] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs-0.0.1-py3.12.egg-info/top_level.txt\n'}
+[14.990408] (-) TimerEvent: {}
+[14.997452] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/__init__.py\n'}
+[15.003989] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/_opennav_coverage_msgs_s.ep.rosidl_typesupport_c.c\n'}
+[15.009804] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/_opennav_coverage_msgs_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[15.015832] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/_opennav_coverage_msgs_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[15.021432] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/action/__init__.py\n'}
+[15.027185] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/action/_compute_coverage_path.py\n'}
+[15.033185] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/action/_compute_coverage_path_s.c\n'}
+[15.039270] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/action/_navigate_complete_coverage.py\n'}
+[15.044850] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/action/_navigate_complete_coverage_s.c\n'}
+[15.050747] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/__init__.py\n'}
+[15.056505] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_coordinate.py\n'}
+[15.062451] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_coordinate_s.c\n'}
+[15.068371] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_coordinates.py\n'}
+[15.074110] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_coordinates_s.c\n'}
+[15.080039] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_headland_mode.py\n'}
+[15.085872] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_headland_mode_s.c\n'}
+[15.090529] (-) TimerEvent: {}
+[15.091485] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_path_components.py\n'}
+[15.098635] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_path_components_s.c\n'}
+[15.104819] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_path_mode.py\n'}
+[15.110588] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_path_mode_s.c\n'}
+[15.116615] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_route_mode.py\n'}
+[15.122399] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_route_mode_s.c\n'}
+[15.129040] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_row_swath_mode.py\n'}
+[15.135007] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_row_swath_mode_s.c\n'}
+[15.141038] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_swath.py\n'}
+[15.146846] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_swath_mode.py\n'}
+[15.152609] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_swath_mode_s.c\n'}
+[15.158409] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_swath_s.c\n'}
+[15.164156] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/opennav_coverage_msgs_s__rosidl_typesupport_c.so\n'}
+[15.169684] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/opennav_coverage_msgs_s__rosidl_typesupport_fastrtps_c.so\n'}
+[15.175501] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/opennav_coverage_msgs_s__rosidl_typesupport_introspection_c.so\n'}
+[15.181598] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/opennav_coverage_msgs_s__rosidl_typesupport_fastrtps_c.so\n'}
+[15.181735] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/opennav_coverage_msgs_s__rosidl_typesupport_introspection_c.so\n'}
+[15.181806] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/opennav_coverage_msgs_s__rosidl_typesupport_c.so\n'}
+[15.181889] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/Coordinate.idl\n'}
+[15.188098] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/Coordinates.idl\n'}
+[15.190697] (-) TimerEvent: {}
+[15.194835] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/HeadlandMode.idl\n'}
+[15.201676] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/SwathMode.idl\n'}
+[15.207741] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/RowSwathMode.idl\n'}
+[15.213808] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/RouteMode.idl\n'}
+[15.219695] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/PathMode.idl\n'}
+[15.225620] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/Swath.idl\n'}
+[15.231341] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/PathComponents.idl\n'}
+[15.237123] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/action/ComputeCoveragePath.idl\n'}
+[15.242955] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/action/NavigateCompleteCoverage.idl\n'}
+[15.248698] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/Coordinate.msg\n'}
+[15.254376] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/Coordinates.msg\n'}
+[15.260141] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/HeadlandMode.msg\n'}
+[15.265762] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/SwathMode.msg\n'}
+[15.271955] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/RowSwathMode.msg\n'}
+[15.277946] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/RouteMode.msg\n'}
+[15.284163] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/PathMode.msg\n'}
+[15.290286] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/Swath.msg\n'}
+[15.290783] (-) TimerEvent: {}
+[15.297408] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/msg/PathComponents.msg\n'}
+[15.303903] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/action/ComputeCoveragePath.action\n'}
+[15.309974] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/action/NavigateCompleteCoverage.action\n'}
+[15.316248] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/ament_index/resource_index/package_run_dependencies/opennav_coverage_msgs\n'}
+[15.322286] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/ament_index/resource_index/parent_prefix_path/opennav_coverage_msgs\n'}
+[15.328170] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/environment/ament_prefix_path.sh\n'}
+[15.333896] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/environment/ament_prefix_path.dsv\n'}
+[15.339738] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/environment/path.sh\n'}
+[15.345657] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/environment/path.dsv\n'}
+[15.351590] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/local_setup.bash\n'}
+[15.357757] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/local_setup.sh\n'}
+[15.363791] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/local_setup.zsh\n'}
+[15.370026] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/local_setup.dsv\n'}
+[15.376055] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/package.dsv\n'}
+[15.381746] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/ament_index/resource_index/packages/opennav_coverage_msgs\n'}
+[15.387618] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[15.390901] (-) TimerEvent: {}
+[15.394277] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[15.401281] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[15.407757] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[15.414011] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[15.420097] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[15.425717] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[15.431909] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/opennav_coverage_msgsConfig.cmake\n'}
+[15.438095] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/opennav_coverage_msgsConfig-version.cmake\n'}
+[15.444635] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/package.xml\n'}
+[15.450778] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_generator_c.so\n'}
+[15.451217] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_generator_c.so" to ""\n'}
+[15.451314] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[15.451648] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[15.451745] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[15.452330] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[15.452427] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_introspection_c.so\n'}
+[15.452592] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[15.452653] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_c.so\n'}
+[15.452820] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_c.so" to ""\n'}
+[15.452896] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[15.453513] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[15.453573] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_cpp.so\n'}
+[15.453997] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[15.491014] (-) TimerEvent: {}
+[15.508203] (opennav_coverage_msgs) StdoutLine: {'line': b"Listing '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs'...\n"}
+[15.508354] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/__init__.py'...\n"}
+[15.508405] (opennav_coverage_msgs) StdoutLine: {'line': b"Listing '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/action'...\n"}
+[15.508451] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/action/__init__.py'...\n"}
+[15.508497] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/action/_compute_coverage_path.py'...\n"}
+[15.508541] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/action/_navigate_complete_coverage.py'...\n"}
+[15.508585] (opennav_coverage_msgs) StdoutLine: {'line': b"Listing '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg'...\n"}
+[15.508630] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/__init__.py'...\n"}
+[15.508675] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_coordinate.py'...\n"}
+[15.508719] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_coordinates.py'...\n"}
+[15.508765] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_headland_mode.py'...\n"}
+[15.508820] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_path_components.py'...\n"}
+[15.508872] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_path_mode.py'...\n"}
+[15.508916] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_route_mode.py'...\n"}
+[15.508964] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_row_swath_mode.py'...\n"}
+[15.509008] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_swath.py'...\n"}
+[15.509065] (opennav_coverage_msgs) StdoutLine: {'line': b"Compiling '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages/opennav_coverage_msgs/msg/_swath_mode.py'...\n"}
+[15.513125] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_generator_py.so\n'}
+[15.513555] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_generator_py.so" to ""\n'}
+[15.513673] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/export_opennav_coverage_msgs__rosidl_generator_cExport.cmake\n'}
+[15.513775] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/export_opennav_coverage_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[15.513868] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/export_opennav_coverage_msgs__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[15.513928] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/export_opennav_coverage_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[15.513997] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/export_opennav_coverage_msgs__rosidl_generator_cppExport.cmake\n'}
+[15.514084] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/export_opennav_coverage_msgs__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[15.514166] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/export_opennav_coverage_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[15.514229] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/opennav_coverage_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[15.514308] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/opennav_coverage_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[15.514398] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/opennav_coverage_msgs__rosidl_typesupport_cExport.cmake\n'}
+[15.514459] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/opennav_coverage_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[15.514522] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/opennav_coverage_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[15.514605] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/opennav_coverage_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[15.514667] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/opennav_coverage_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[15.514744] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/opennav_coverage_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[15.514820] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/export_opennav_coverage_msgs__rosidl_generator_pyExport.cmake\n'}
+[15.514868] (opennav_coverage_msgs) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/share/opennav_coverage_msgs/cmake/export_opennav_coverage_msgs__rosidl_generator_pyExport-noconfig.cmake\n'}
+[15.516635] (opennav_coverage_msgs) CommandEnded: {'returncode': 0}
+[15.530718] (opennav_coverage_msgs) JobEnded: {'identifier': 'opennav_coverage_msgs', 'rc': 0}
+[15.531243] (-) EventReactorShutdown: {}

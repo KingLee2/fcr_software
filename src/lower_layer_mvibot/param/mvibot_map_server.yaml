@@ -1,0 +1,19 @@
+map_server:
+  ros__parameters:
+    yaml_filename: /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/maps/28_11ok.yaml
+    topic_name: "map"
+    frame_id: "map"
+
+map_saver:
+  ros__parameters:
+    save_map_timeout: 5.0    #Timeout to attempt saving the map (seconds).
+    free_thresh_default: 0.25       #Free space maximum probability threshold value for occupancy grid.
+    occupied_thresh_default: 0.65    #Occupied space minimum probability threshold value for occupancy grid.
+
+costmap_filter_info_server:
+  ros__parameters:
+    type: 1
+    filter_info_topic: "costmap_filter_info"
+    mask_topic: "filter_mask"
+    base: 0.0
+    multiplier: 0.25

@@ -1,0 +1,939 @@
+[0.000000] (-) TimerEvent: {}
+[0.000120] (-) JobUnselected: {'identifier': 'higher_layer_mvibot'}
+[0.000147] (-) JobUnselected: {'identifier': 'ira_laser_tools'}
+[0.000163] (-) JobUnselected: {'identifier': 'lower_layer_mvibot'}
+[0.000173] (-) JobUnselected: {'identifier': 'mission_layer_mvibot'}
+[0.000181] (-) JobUnselected: {'identifier': 'opennav_coverage'}
+[0.000190] (-) JobUnselected: {'identifier': 'opennav_coverage_bt'}
+[0.000198] (-) JobUnselected: {'identifier': 'opennav_coverage_demo'}
+[0.000206] (-) JobUnselected: {'identifier': 'opennav_coverage_msgs'}
+[0.000214] (-) JobUnselected: {'identifier': 'opennav_coverage_navigator'}
+[0.000222] (-) JobUnselected: {'identifier': 'opennav_row_coverage'}
+[0.000231] (-) JobUnselected: {'identifier': 'pointcloud_to_laserscan'}
+[0.000239] (-) JobUnselected: {'identifier': 'realsense2_camera'}
+[0.000247] (-) JobUnselected: {'identifier': 'realsense2_camera_msgs'}
+[0.000255] (-) JobUnselected: {'identifier': 'realsense2_description'}
+[0.000263] (-) JobUnselected: {'identifier': 'sllidar_ros2'}
+[0.000271] (-) JobUnselected: {'identifier': 'tf2_web_republisher'}
+[0.000278] (-) JobUnselected: {'identifier': 'tf2_web_republisher_interfaces'}
+[0.000288] (fields2cover) JobQueued: {'identifier': 'fields2cover', 'dependencies': OrderedDict()}
+[0.000651] (fields2cover) JobStarted: {'identifier': 'fields2cover'}
+[0.005832] (fields2cover) JobProgress: {'identifier': 'fields2cover', 'progress': 'cmake'}
+[0.006446] (fields2cover) Command: {'cmd': ['/usr/bin/cmake', '/home/mvibot/floorCleaningRobot_ws/src/Fields2Cover', '-DCMAKE_INSTALL_PREFIX=/home/mvibot/floorCleaningRobot_ws/install/fields2cover'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/fields2cover', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'XDG_SESSION_TYPE': 'wayland', 'ROS_APT_SOURCE_VERSION': '1.1.0', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2939', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'mvibot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/mvibot:@/tmp/.ICE-unix/2913,unix/mvibot:/tmp/.ICE-unix/2913', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/b7a177f3_03ee_4737_8328_c3bdd1e2124b', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.IPMDD3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.117', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/fields2cover', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.053771] (fields2cover) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.064141] (fields2cover) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.099899] (-) TimerEvent: {}
+[0.136412] (fields2cover) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.143196] (fields2cover) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.143350] (fields2cover) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.143600] (fields2cover) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.199997] (-) TimerEvent: {}
+[0.300436] (-) TimerEvent: {}
+[0.401001] (-) TimerEvent: {}
+[0.501658] (-) TimerEvent: {}
+[0.602304] (-) TimerEvent: {}
+[0.702960] (-) TimerEvent: {}
+[0.803585] (-) TimerEvent: {}
+[0.904223] (-) TimerEvent: {}
+[1.004870] (-) TimerEvent: {}
+[1.105495] (-) TimerEvent: {}
+[1.206062] (-) TimerEvent: {}
+[1.306722] (-) TimerEvent: {}
+[1.407352] (-) TimerEvent: {}
+[1.507864] (-) TimerEvent: {}
+[1.608495] (-) TimerEvent: {}
+[1.709170] (-) TimerEvent: {}
+[1.809791] (-) TimerEvent: {}
+[1.910383] (-) TimerEvent: {}
+[2.011061] (-) TimerEvent: {}
+[2.111732] (-) TimerEvent: {}
+[2.212233] (-) TimerEvent: {}
+[2.312720] (-) TimerEvent: {}
+[2.413217] (-) TimerEvent: {}
+[2.513803] (-) TimerEvent: {}
+[2.614309] (-) TimerEvent: {}
+[2.714871] (-) TimerEvent: {}
+[2.815347] (-) TimerEvent: {}
+[2.915813] (-) TimerEvent: {}
+[3.016468] (-) TimerEvent: {}
+[3.117164] (-) TimerEvent: {}
+[3.217790] (-) TimerEvent: {}
+[3.318328] (-) TimerEvent: {}
+[3.418963] (-) TimerEvent: {}
+[3.519570] (-) TimerEvent: {}
+[3.620226] (-) TimerEvent: {}
+[3.720862] (-) TimerEvent: {}
+[3.821478] (-) TimerEvent: {}
+[3.922072] (-) TimerEvent: {}
+[4.022545] (-) TimerEvent: {}
+[4.122823] (-) TimerEvent: {}
+[4.223120] (-) TimerEvent: {}
+[4.251188] (fields2cover) StderrLine: {'line': b'\x1b[0mCMake Deprecation Warning at /home/mvibot/floorCleaningRobot_ws/build/fields2cover/_deps/json-src/CMakeLists.txt:1 (cmake_minimum_required):\n'}
+[4.251348] (fields2cover) StderrLine: {'line': b'  Compatibility with CMake < 3.5 will be removed from a future version of\n'}
+[4.251401] (fields2cover) StderrLine: {'line': b'  CMake.\n'}
+[4.251447] (fields2cover) StderrLine: {'line': b'\n'}
+[4.251491] (fields2cover) StderrLine: {'line': b'  Update the VERSION argument <min> value or use a ...<max> suffix to tell\n'}
+[4.251535] (fields2cover) StderrLine: {'line': b'  CMake that the project does not need compatibility with older versions.\n'}
+[4.251578] (fields2cover) StderrLine: {'line': b'\n'}
+[4.251627] (fields2cover) StderrLine: {'line': b'\x1b[0m\n'}
+[4.255436] (fields2cover) StdoutLine: {'line': b'-- Using the single-header code from /home/mvibot/floorCleaningRobot_ws/build/fields2cover/_deps/json-src/single_include/\n'}
+[4.323215] (-) TimerEvent: {}
+[4.423526] (-) TimerEvent: {}
+[4.523950] (-) TimerEvent: {}
+[4.624415] (-) TimerEvent: {}
+[4.724913] (-) TimerEvent: {}
+[4.825500] (-) TimerEvent: {}
+[4.926166] (-) TimerEvent: {}
+[5.026849] (-) TimerEvent: {}
+[5.127483] (-) TimerEvent: {}
+[5.228144] (-) TimerEvent: {}
+[5.328804] (-) TimerEvent: {}
+[5.429351] (-) TimerEvent: {}
+[5.530092] (-) TimerEvent: {}
+[5.630781] (-) TimerEvent: {}
+[5.731458] (-) TimerEvent: {}
+[5.832117] (-) TimerEvent: {}
+[5.932599] (-) TimerEvent: {}
+[6.033097] (-) TimerEvent: {}
+[6.133751] (-) TimerEvent: {}
+[6.234224] (-) TimerEvent: {}
+[6.334684] (-) TimerEvent: {}
+[6.435126] (-) TimerEvent: {}
+[6.535673] (-) TimerEvent: {}
+[6.636224] (-) TimerEvent: {}
+[6.736802] (-) TimerEvent: {}
+[6.837284] (-) TimerEvent: {}
+[6.937728] (-) TimerEvent: {}
+[7.038253] (-) TimerEvent: {}
+[7.138647] (-) TimerEvent: {}
+[7.238898] (-) TimerEvent: {}
+[7.339158] (-) TimerEvent: {}
+[7.382698] (fields2cover) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[7.391243] (fields2cover) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[7.439288] (-) TimerEvent: {}
+[7.463768] (fields2cover) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[7.471427] (fields2cover) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[7.471672] (fields2cover) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[7.472277] (fields2cover) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[7.539396] (-) TimerEvent: {}
+[7.639819] (-) TimerEvent: {}
+[7.740264] (-) TimerEvent: {}
+[7.840926] (-) TimerEvent: {}
+[7.941548] (-) TimerEvent: {}
+[8.042162] (-) TimerEvent: {}
+[8.142833] (-) TimerEvent: {}
+[8.243350] (-) TimerEvent: {}
+[8.344050] (-) TimerEvent: {}
+[8.444720] (-) TimerEvent: {}
+[8.545359] (-) TimerEvent: {}
+[8.646053] (-) TimerEvent: {}
+[8.746590] (-) TimerEvent: {}
+[8.847542] (-) TimerEvent: {}
+[8.948211] (-) TimerEvent: {}
+[9.048719] (-) TimerEvent: {}
+[9.149309] (-) TimerEvent: {}
+[9.249793] (-) TimerEvent: {}
+[9.350254] (-) TimerEvent: {}
+[9.450740] (-) TimerEvent: {}
+[9.551175] (-) TimerEvent: {}
+[9.651643] (-) TimerEvent: {}
+[9.752171] (-) TimerEvent: {}
+[9.852713] (-) TimerEvent: {}
+[9.953191] (-) TimerEvent: {}
+[10.053667] (-) TimerEvent: {}
+[10.154084] (-) TimerEvent: {}
+[10.254518] (-) TimerEvent: {}
+[10.354966] (-) TimerEvent: {}
+[10.455414] (-) TimerEvent: {}
+[10.555843] (-) TimerEvent: {}
+[10.656269] (-) TimerEvent: {}
+[10.756746] (-) TimerEvent: {}
+[10.857241] (-) TimerEvent: {}
+[10.957720] (-) TimerEvent: {}
+[11.058164] (-) TimerEvent: {}
+[11.158586] (-) TimerEvent: {}
+[11.258883] (-) TimerEvent: {}
+[11.359136] (-) TimerEvent: {}
+[11.459469] (-) TimerEvent: {}
+[11.560031] (-) TimerEvent: {}
+[11.660511] (-) TimerEvent: {}
+[11.760938] (-) TimerEvent: {}
+[11.861486] (-) TimerEvent: {}
+[11.961969] (-) TimerEvent: {}
+[12.062571] (-) TimerEvent: {}
+[12.163188] (-) TimerEvent: {}
+[12.263762] (-) TimerEvent: {}
+[12.364359] (-) TimerEvent: {}
+[12.464945] (-) TimerEvent: {}
+[12.565644] (-) TimerEvent: {}
+[12.666302] (-) TimerEvent: {}
+[12.766975] (-) TimerEvent: {}
+[12.867456] (-) TimerEvent: {}
+[12.968063] (-) TimerEvent: {}
+[13.068553] (-) TimerEvent: {}
+[13.168910] (-) TimerEvent: {}
+[13.269145] (-) TimerEvent: {}
+[13.369458] (-) TimerEvent: {}
+[13.469883] (-) TimerEvent: {}
+[13.570564] (-) TimerEvent: {}
+[13.671196] (-) TimerEvent: {}
+[13.771834] (-) TimerEvent: {}
+[13.872473] (-) TimerEvent: {}
+[13.973160] (-) TimerEvent: {}
+[14.073831] (-) TimerEvent: {}
+[14.174474] (-) TimerEvent: {}
+[14.275158] (-) TimerEvent: {}
+[14.375835] (-) TimerEvent: {}
+[14.476500] (-) TimerEvent: {}
+[14.577156] (-) TimerEvent: {}
+[14.677729] (-) TimerEvent: {}
+[14.778325] (-) TimerEvent: {}
+[14.878984] (-) TimerEvent: {}
+[14.979477] (-) TimerEvent: {}
+[15.079966] (-) TimerEvent: {}
+[15.180531] (-) TimerEvent: {}
+[15.280969] (-) TimerEvent: {}
+[15.381329] (-) TimerEvent: {}
+[15.481707] (-) TimerEvent: {}
+[15.581965] (-) TimerEvent: {}
+[15.655833] (fields2cover) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development Development.Module Development.Embed \n'}
+[15.682072] (-) TimerEvent: {}
+[15.782288] (-) TimerEvent: {}
+[15.821605] (fields2cover) StdoutLine: {'line': b'-- Found Python3: /usr/include/python3.12 (found version "3.12.3") found components: NumPy Interpreter Development.Module \n'}
+[15.827752] (fields2cover) StdoutLine: {'line': b'-- Found GDAL: /usr/lib/x86_64-linux-gnu/libgdal.so (found suitable version "3.8.4", minimum required is "3.0") \n'}
+[15.882411] (-) TimerEvent: {}
+[15.915008] (fields2cover) StdoutLine: {'line': b'-- Found GTest: /usr/lib/x86_64-linux-gnu/cmake/GTest/GTestConfig.cmake (found version "1.14.0")  \n'}
+[15.917976] (fields2cover) StdoutLine: {'line': b'-- Configuring done (15.9s)\n'}
+[15.950239] (fields2cover) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[15.957456] (fields2cover) StdoutLine: {'line': b'-- Build files have been written to: /home/mvibot/floorCleaningRobot_ws/build/fields2cover\n'}
+[15.963558] (fields2cover) CommandEnded: {'returncode': 0}
+[15.963950] (fields2cover) JobProgress: {'identifier': 'fields2cover', 'progress': 'build'}
+[15.964471] (fields2cover) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/mvibot/floorCleaningRobot_ws/build/fields2cover', '--', '-j8', '-l8'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/fields2cover', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'XDG_SESSION_TYPE': 'wayland', 'ROS_APT_SOURCE_VERSION': '1.1.0', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2939', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'mvibot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/mvibot:@/tmp/.ICE-unix/2913,unix/mvibot:/tmp/.ICE-unix/2913', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/b7a177f3_03ee_4737_8328_c3bdd1e2124b', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.IPMDD3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.117', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/fields2cover', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[15.982526] (-) TimerEvent: {}
+[16.000858] (fields2cover) StdoutLine: {'line': b'[  2%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/utilities/utilities.cpp.o\x1b[0m\n'}
+[16.001062] (fields2cover) StdoutLine: {'line': b'[  4%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/dubins_state_space/dubins_state_space.cpp.o\x1b[0m\n'}
+[16.001204] (fields2cover) StdoutLine: {'line': b'[  4%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/cc00_dubins_state_space.cpp.o\x1b[0m\n'}
+[16.001284] (fields2cover) StdoutLine: {'line': b'[  5%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/cc00_reeds_shepp_state_space.cpp.o\x1b[0m\n'}
+[16.001352] (fields2cover) StdoutLine: {'line': b'[  4%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/reeds_shepp_state_space/reeds_shepp_state_space.cpp.o\x1b[0m\n'}
+[16.001419] (fields2cover) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/cc0pm_dubins_state_space.cpp.o\x1b[0m\n'}
+[16.001488] (fields2cover) StdoutLine: {'line': b'[  5%] \x1b[32mBuilding CXX object _deps/tinyxml2-build/CMakeFiles/tinyxml2.dir/tinyxml2.cpp.o\x1b[0m\n'}
+[16.001950] (fields2cover) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/cc_dubins_state_space.cpp.o\x1b[0m\n'}
+[16.082668] (-) TimerEvent: {}
+[16.186841] (-) TimerEvent: {}
+[16.287169] (-) TimerEvent: {}
+[16.387501] (-) TimerEvent: {}
+[16.487803] (-) TimerEvent: {}
+[16.537719] (fields2cover) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/ccpm0_dubins_state_space.cpp.o\x1b[0m\n'}
+[16.587920] (-) TimerEvent: {}
+[16.688228] (-) TimerEvent: {}
+[16.787299] (fields2cover) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/ccpmpm_dubins_state_space.cpp.o\x1b[0m\n'}
+[16.788319] (-) TimerEvent: {}
+[16.801259] (fields2cover) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/configuration.cpp.o\x1b[0m\n'}
+[16.859434] (fields2cover) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/hc00_reeds_shepp_state_space.cpp.o\x1b[0m\n'}
+[16.888441] (-) TimerEvent: {}
+[16.988762] (-) TimerEvent: {}
+[17.089053] (-) TimerEvent: {}
+[17.111644] (fields2cover) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/hc0pm_reeds_shepp_state_space.cpp.o\x1b[0m\n'}
+[17.128407] (fields2cover) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/hc_cc_circle.cpp.o\x1b[0m\n'}
+[17.189171] (-) TimerEvent: {}
+[17.263017] (fields2cover) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/hc_cc_state_space.cpp.o\x1b[0m\n'}
+[17.289688] (-) TimerEvent: {}
+[17.335752] (fields2cover) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/hc_reeds_shepp_state_space.cpp.o\x1b[0m\n'}
+[17.390690] (-) TimerEvent: {}
+[17.491007] (-) TimerEvent: {}
+[17.505312] (fields2cover) StdoutLine: {'line': b'[ 14%] \x1b[32m\x1b[1mLinking CXX shared library libtinyxml2.so\x1b[0m\n'}
+[17.591127] (-) TimerEvent: {}
+[17.606687] (fields2cover) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/hcpm0_reeds_shepp_state_space.cpp.o\x1b[0m\n'}
+[17.621834] (fields2cover) StdoutLine: {'line': b'[ 15%] Built target tinyxml2\n'}
+[17.634655] (fields2cover) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/hcpmpm_reeds_shepp_state_space.cpp.o\x1b[0m\n'}
+[17.659072] (fields2cover) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding CXX object _deps/tinyxml2-build/CMakeFiles/xmltest.dir/xmltest.cpp.o\x1b[0m\n'}
+[17.691243] (-) TimerEvent: {}
+[17.698740] (fields2cover) StdoutLine: {'line': b'[ 18%] \x1b[32mBuilding CXX object _deps/steering_functions-build/CMakeFiles/steering_functions.dir/src/hc_cc_state_space/paths.cpp.o\x1b[0m\n'}
+[17.759772] (fields2cover) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/build/fields2cover/_deps/tinyxml2-src/xmltest.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[01;32m\x1b[K main\x1b[m\x1b[K(int, const char**)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[17.759989] (fields2cover) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/build/fields2cover/_deps/tinyxml2-src/xmltest.cpp:711:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kignoring return value of \xe2\x80\x98\x1b[01m\x1b[Kchar*\x1b[01;32m\x1b[K fgets\x1b[m\x1b[K(char*, int, FILE*)\x1b[m\x1b[K\xe2\x80\x99 declared with attribute \xe2\x80\x98\x1b[01m\x1b[Kwarn_unused_result\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result\x07-Wunused-result\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[17.760106] (fields2cover) StderrLine: {'line': b'  711 |                                 \x1b[01;35m\x1b[Kfgets( savedBuf, 256, saved )\x1b[m\x1b[K;\n'}
+[17.760196] (fields2cover) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~^~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[17.760280] (fields2cover) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/build/fields2cover/_deps/tinyxml2-src/xmltest.cpp:1195:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kignoring return value of \xe2\x80\x98\x1b[01m\x1b[Kchar*\x1b[01;32m\x1b[K fgets\x1b[m\x1b[K(char*, int, FILE*)\x1b[m\x1b[K\xe2\x80\x99 declared with attribute \xe2\x80\x98\x1b[01m\x1b[Kwarn_unused_result\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result\x07-Wunused-result\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[17.760366] (fields2cover) StderrLine: {'line': b' 1195 |                         \x1b[01;35m\x1b[Kfgets( buf, 1024, textfile )\x1b[m\x1b[K;\n'}
+[17.760449] (fields2cover) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~~~~~^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[17.791354] (-) TimerEvent: {}
+[17.891659] (-) TimerEvent: {}
+[17.991949] (-) TimerEvent: {}
+[18.092238] (-) TimerEvent: {}
+[18.192550] (-) TimerEvent: {}
+[18.292841] (-) TimerEvent: {}
+[18.393103] (-) TimerEvent: {}
+[18.493419] (-) TimerEvent: {}
+[18.593705] (-) TimerEvent: {}
+[18.693992] (-) TimerEvent: {}
+[18.794573] (-) TimerEvent: {}
+[18.895936] (-) TimerEvent: {}
+[18.997299] (-) TimerEvent: {}
+[19.098611] (-) TimerEvent: {}
+[19.199933] (-) TimerEvent: {}
+[19.301282] (-) TimerEvent: {}
+[19.402610] (-) TimerEvent: {}
+[19.503918] (-) TimerEvent: {}
+[19.605212] (-) TimerEvent: {}
+[19.648066] (fields2cover) StdoutLine: {'line': b'[ 19%] \x1b[32m\x1b[1mLinking CXX executable xmltest\x1b[0m\n'}
+[19.705460] (-) TimerEvent: {}
+[19.806240] (-) TimerEvent: {}
+[19.833451] (fields2cover) StdoutLine: {'line': b'[ 19%] Built target xmltest\n'}
+[19.906437] (-) TimerEvent: {}
+[19.955398] (fields2cover) StdoutLine: {'line': b'[ 19%] \x1b[32m\x1b[1mLinking CXX shared library libsteering_functions.so\x1b[0m\n'}
+[20.006638] (-) TimerEvent: {}
+[20.025425] (fields2cover) StdoutLine: {'line': b'[ 19%] Built target steering_functions\n'}
+[20.044189] (fields2cover) StdoutLine: {'line': b'[ 24%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/objectives/hg_objective.cpp.o\x1b[0m\n'}
+[20.044371] (fields2cover) StdoutLine: {'line': b'[ 24%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/objectives/direct_dist_path_obj.cpp.o\x1b[0m\n'}
+[20.044428] (fields2cover) StdoutLine: {'line': b'[ 24%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/objectives/n_swath.cpp.o\x1b[0m\n'}
+[20.044477] (fields2cover) StdoutLine: {'line': b'[ 24%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/headland_generator/constant_headland.cpp.o\x1b[0m\n'}
+[20.044530] (fields2cover) StdoutLine: {'line': b'[ 24%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/objectives/field_coverage.cpp.o\x1b[0m\n'}
+[20.044579] (fields2cover) StdoutLine: {'line': b'[ 24%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/objectives/overlaps.cpp.o\x1b[0m\n'}
+[20.044632] (fields2cover) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/objectives/path_length.cpp.o\x1b[0m\n'}
+[20.044684] (fields2cover) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/objectives/pp_objective.cpp.o\x1b[0m\n'}
+[20.107690] (-) TimerEvent: {}
+[20.208021] (-) TimerEvent: {}
+[20.308373] (-) TimerEvent: {}
+[20.408715] (-) TimerEvent: {}
+[20.509701] (-) TimerEvent: {}
+[20.610061] (-) TimerEvent: {}
+[20.710696] (-) TimerEvent: {}
+[20.811689] (-) TimerEvent: {}
+[20.912034] (-) TimerEvent: {}
+[21.012369] (-) TimerEvent: {}
+[21.113826] (-) TimerEvent: {}
+[21.214175] (-) TimerEvent: {}
+[21.314518] (-) TimerEvent: {}
+[21.414855] (-) TimerEvent: {}
+[21.516837] (-) TimerEvent: {}
+[21.617190] (-) TimerEvent: {}
+[21.689863] (fields2cover) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/objectives/rem_area.cpp.o\x1b[0m\n'}
+[21.716687] (fields2cover) StdoutLine: {'line': b'[ 27%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/objectives/rp_objective.cpp.o\x1b[0m\n'}
+[21.716959] (fields2cover) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/objectives/sg_objective.cpp.o\x1b[0m\n'}
+[21.717246] (-) TimerEvent: {}
+[21.718417] (fields2cover) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/objectives/swath_length.cpp.o\x1b[0m\n'}
+[21.719564] (fields2cover) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/path_planning/dubins_curves.cpp.o\x1b[0m\n'}
+[21.727669] (fields2cover) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/path_planning/dubins_curves_cc.cpp.o\x1b[0m\n'}
+[21.762739] (fields2cover) StdoutLine: {'line': b'[ 31%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/path_planning/path_planning.cpp.o\x1b[0m\n'}
+[21.769442] (fields2cover) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/path_planning/reeds_shepp_curves.cpp.o\x1b[0m\n'}
+[21.817690] (-) TimerEvent: {}
+[21.918705] (-) TimerEvent: {}
+[22.019108] (-) TimerEvent: {}
+[22.122848] (-) TimerEvent: {}
+[22.223652] (-) TimerEvent: {}
+[22.324383] (-) TimerEvent: {}
+[22.425031] (-) TimerEvent: {}
+[22.526831] (-) TimerEvent: {}
+[22.627149] (-) TimerEvent: {}
+[22.727471] (-) TimerEvent: {}
+[22.828697] (-) TimerEvent: {}
+[22.929012] (-) TimerEvent: {}
+[23.029323] (-) TimerEvent: {}
+[23.129639] (-) TimerEvent: {}
+[23.230693] (-) TimerEvent: {}
+[23.331021] (-) TimerEvent: {}
+[23.390984] (fields2cover) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/path_planning/reeds_shepp_curves_hc.cpp.o\x1b[0m\n'}
+[23.431691] (-) TimerEvent: {}
+[23.433599] (fields2cover) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/path_planning/turning_base.cpp.o\x1b[0m\n'}
+[23.437562] (fields2cover) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/route_planning/boustrophedon_order.cpp.o\x1b[0m\n'}
+[23.488656] (fields2cover) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/route_planning/custom_order.cpp.o\x1b[0m\n'}
+[23.531803] (-) TimerEvent: {}
+[23.581282] (fields2cover) StdoutLine: {'line': b'[ 36%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/route_planning/single_cell_swaths_order_base.cpp.o\x1b[0m\n'}
+[23.623790] (fields2cover) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/route_planning/snake_order.cpp.o\x1b[0m\n'}
+[23.632694] (-) TimerEvent: {}
+[23.638295] (fields2cover) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/route_planning/spiral_order.cpp.o\x1b[0m\n'}
+[23.684607] (fields2cover) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/swath_generator/brute_force.cpp.o\x1b[0m\n'}
+[23.732828] (-) TimerEvent: {}
+[23.835866] (-) TimerEvent: {}
+[23.936229] (-) TimerEvent: {}
+[24.036602] (-) TimerEvent: {}
+[24.137090] (-) TimerEvent: {}
+[24.237458] (-) TimerEvent: {}
+[24.337764] (-) TimerEvent: {}
+[24.438075] (-) TimerEvent: {}
+[24.539691] (-) TimerEvent: {}
+[24.640010] (-) TimerEvent: {}
+[24.740318] (-) TimerEvent: {}
+[24.840651] (-) TimerEvent: {}
+[24.940979] (-) TimerEvent: {}
+[25.042694] (-) TimerEvent: {}
+[25.143014] (-) TimerEvent: {}
+[25.161376] (fields2cover) StdoutLine: {'line': b'[ 39%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/Cell.cpp.o\x1b[0m\n'}
+[25.243695] (-) TimerEvent: {}
+[25.330132] (fields2cover) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/Cells.cpp.o\x1b[0m\n'}
+[25.343804] (-) TimerEvent: {}
+[25.354674] (fields2cover) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/Field.cpp.o\x1b[0m\n'}
+[25.377667] (fields2cover) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/LineString.cpp.o\x1b[0m\n'}
+[25.417678] (fields2cover) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/LinearRing.cpp.o\x1b[0m\n'}
+[25.443918] (-) TimerEvent: {}
+[25.465956] (fields2cover) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/MultiLineString.cpp.o\x1b[0m\n'}
+[25.475101] (fields2cover) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/MultiPoint.cpp.o\x1b[0m\n'}
+[25.544682] (-) TimerEvent: {}
+[25.645011] (-) TimerEvent: {}
+[25.710475] (fields2cover) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/Path.cpp.o\x1b[0m\n'}
+[25.745706] (-) TimerEvent: {}
+[25.846087] (-) TimerEvent: {}
+[25.946714] (-) TimerEvent: {}
+[26.047690] (-) TimerEvent: {}
+[26.148002] (-) TimerEvent: {}
+[26.248315] (-) TimerEvent: {}
+[26.348697] (-) TimerEvent: {}
+[26.449698] (-) TimerEvent: {}
+[26.550016] (-) TimerEvent: {}
+[26.650346] (-) TimerEvent: {}
+[26.751824] (-) TimerEvent: {}
+[26.852231] (-) TimerEvent: {}
+[26.953007] (-) TimerEvent: {}
+[27.055879] (-) TimerEvent: {}
+[27.156214] (-) TimerEvent: {}
+[27.227651] (fields2cover) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/Point.cpp.o\x1b[0m\n'}
+[27.256693] (-) TimerEvent: {}
+[27.286272] (fields2cover) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/Route.cpp.o\x1b[0m\n'}
+[27.297293] (fields2cover) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/Strip.cpp.o\x1b[0m\n'}
+[27.357694] (-) TimerEvent: {}
+[27.390804] (fields2cover) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/Swath.cpp.o\x1b[0m\n'}
+[27.418908] (fields2cover) StdoutLine: {'line': b'[ 49%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/types/Swaths.cpp.o\x1b[0m\n'}
+[27.456050] (fields2cover) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/utils/parser.cpp.o\x1b[0m\n'}
+[27.457779] (-) TimerEvent: {}
+[27.561806] (-) TimerEvent: {}
+[27.662139] (-) TimerEvent: {}
+[27.762456] (-) TimerEvent: {}
+[27.862834] (-) TimerEvent: {}
+[27.963232] (-) TimerEvent: {}
+[28.037091] (fields2cover) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/utils/random.cpp.o\x1b[0m\n'}
+[28.063350] (-) TimerEvent: {}
+[28.163693] (-) TimerEvent: {}
+[28.264339] (-) TimerEvent: {}
+[28.364680] (-) TimerEvent: {}
+[28.464991] (-) TimerEvent: {}
+[28.565692] (-) TimerEvent: {}
+[28.665995] (-) TimerEvent: {}
+[28.766692] (-) TimerEvent: {}
+[28.836518] (fields2cover) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/utils/transformation.cpp.o\x1b[0m\n'}
+[28.867695] (-) TimerEvent: {}
+[28.934853] (fields2cover) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding CXX object CMakeFiles/Fields2Cover.dir/src/fields2cover/utils/visualizer.cpp.o\x1b[0m\n'}
+[28.967808] (-) TimerEvent: {}
+[29.068125] (-) TimerEvent: {}
+[29.168443] (-) TimerEvent: {}
+[29.268785] (-) TimerEvent: {}
+[29.369126] (-) TimerEvent: {}
+[29.469435] (-) TimerEvent: {}
+[29.569821] (-) TimerEvent: {}
+[29.670158] (-) TimerEvent: {}
+[29.770484] (-) TimerEvent: {}
+[29.870813] (-) TimerEvent: {}
+[29.971145] (-) TimerEvent: {}
+[30.071475] (-) TimerEvent: {}
+[30.171786] (-) TimerEvent: {}
+[30.272112] (-) TimerEvent: {}
+[30.341201] (fields2cover) StdoutLine: {'line': b'[ 53%] \x1b[32m\x1b[1mLinking CXX shared library lib/libFields2Cover.so\x1b[0m\n'}
+[30.372238] (-) TimerEvent: {}
+[30.472540] (-) TimerEvent: {}
+[30.572772] (-) TimerEvent: {}
+[30.672999] (-) TimerEvent: {}
+[30.773688] (-) TimerEvent: {}
+[30.874011] (-) TimerEvent: {}
+[30.974477] (-) TimerEvent: {}
+[31.075706] (-) TimerEvent: {}
+[31.176018] (-) TimerEvent: {}
+[31.276505] (-) TimerEvent: {}
+[31.377130] (-) TimerEvent: {}
+[31.477449] (-) TimerEvent: {}
+[31.578125] (-) TimerEvent: {}
+[31.678799] (-) TimerEvent: {}
+[31.779471] (-) TimerEvent: {}
+[31.879754] (-) TimerEvent: {}
+[31.980004] (-) TimerEvent: {}
+[32.080332] (-) TimerEvent: {}
+[32.180790] (-) TimerEvent: {}
+[32.281164] (-) TimerEvent: {}
+[32.291995] (fields2cover) StdoutLine: {'line': b'[ 53%] Built target Fields2Cover\n'}
+[32.312246] (fields2cover) StdoutLine: {'line': b'[ 54%] \x1b[32mBuilding CXX object tutorials/CMakeFiles/3_headland_generator_tutorial.dir/3_headland_generator.cpp.o\x1b[0m\n'}
+[32.312456] (fields2cover) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding CXX object tutorials/CMakeFiles/4_swath_generator_tutorial.dir/4_swath_generator.cpp.o\x1b[0m\n'}
+[32.312547] (fields2cover) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding CXX object tutorials/CMakeFiles/1_basic_types_tutorial.dir/1_basic_types.cpp.o\x1b[0m\n'}
+[32.312698] (fields2cover) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object tutorials/CMakeFiles/7_complete_flow.dir/7_complete_flow.cpp.o\x1b[0m\n'}
+[32.312802] (fields2cover) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object tutorials/CMakeFiles/5_route_planning_tutorial.dir/5_route_planning.cpp.o\x1b[0m\n'}
+[32.317687] (fields2cover) StdoutLine: {'line': b'[ 58%] \x1b[32mBuilding CXX object tutorials/CMakeFiles/2_objective_functions_tutorial.dir/2_objective_functions.cpp.o\x1b[0m\n'}
+[32.317913] (fields2cover) StdoutLine: {'line': b'[ 58%] \x1b[32mBuilding CXX object tutorials/CMakeFiles/6_path_planning_tutorial.dir/6_path_planning.cpp.o\x1b[0m\n'}
+[32.318009] (fields2cover) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/headland_generator/const_hl_test.cpp.o\x1b[0m\n'}
+[32.381272] (-) TimerEvent: {}
+[32.481574] (-) TimerEvent: {}
+[32.581911] (-) TimerEvent: {}
+[32.682666] (-) TimerEvent: {}
+[32.783710] (-) TimerEvent: {}
+[32.884687] (-) TimerEvent: {}
+[32.985828] (-) TimerEvent: {}
+[33.086510] (-) TimerEvent: {}
+[33.190866] (-) TimerEvent: {}
+[33.291216] (-) TimerEvent: {}
+[33.391895] (-) TimerEvent: {}
+[33.492561] (-) TimerEvent: {}
+[33.593228] (-) TimerEvent: {}
+[33.696855] (-) TimerEvent: {}
+[33.797202] (-) TimerEvent: {}
+[33.897893] (-) TimerEvent: {}
+[33.998538] (-) TimerEvent: {}
+[34.099192] (-) TimerEvent: {}
+[34.200828] (-) TimerEvent: {}
+[34.301488] (-) TimerEvent: {}
+[34.402946] (-) TimerEvent: {}
+[34.503626] (-) TimerEvent: {}
+[34.549596] (fields2cover) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX executable 2_objective_functions_tutorial\x1b[0m\n'}
+[34.565376] (fields2cover) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX executable 3_headland_generator_tutorial\x1b[0m\n'}
+[34.603711] (-) TimerEvent: {}
+[34.704019] (-) TimerEvent: {}
+[34.783877] (fields2cover) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking CXX executable 1_basic_types_tutorial\x1b[0m\n'}
+[34.804392] (-) TimerEvent: {}
+[34.905547] (-) TimerEvent: {}
+[35.008731] (fields2cover) StdoutLine: {'line': b'[ 61%] Built target 3_headland_generator_tutorial\n'}
+[35.009039] (-) TimerEvent: {}
+[35.024116] (fields2cover) StdoutLine: {'line': b'[ 62%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/objectives/complete_turn_path_obj_test.cpp.o\x1b[0m\n'}
+[35.060439] (fields2cover) StdoutLine: {'line': b'[ 62%] Built target 2_objective_functions_tutorial\n'}
+[35.075862] (fields2cover) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/objectives/direct_dist_path_obj_test.cpp.o\x1b[0m\n'}
+[35.109182] (-) TimerEvent: {}
+[35.133935] (fields2cover) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking CXX executable 7_complete_flow\x1b[0m\n'}
+[35.209314] (-) TimerEvent: {}
+[35.214013] (fields2cover) StdoutLine: {'line': b'[ 64%] Built target 1_basic_types_tutorial\n'}
+[35.222521] (fields2cover) StdoutLine: {'line': b'[ 65%] \x1b[32m\x1b[1mLinking CXX executable 4_swath_generator_tutorial\x1b[0m\n'}
+[35.228195] (fields2cover) StdoutLine: {'line': b'[ 65%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/objectives/field_coverage_test.cpp.o\x1b[0m\n'}
+[35.309448] (-) TimerEvent: {}
+[35.349952] (fields2cover) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX executable 5_route_planning_tutorial\x1b[0m\n'}
+[35.409573] (-) TimerEvent: {}
+[35.449133] (fields2cover) StdoutLine: {'line': b'[ 67%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/objectives/n_swath_test.cpp.o\x1b[0m\n'}
+[35.509718] (-) TimerEvent: {}
+[35.594001] (fields2cover) StdoutLine: {'line': b'[ 67%] Built target 7_complete_flow\n'}
+[35.609838] (-) TimerEvent: {}
+[35.610560] (fields2cover) StdoutLine: {'line': b'[ 68%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/objectives/overlaps_test.cpp.o\x1b[0m\n'}
+[35.685812] (fields2cover) StdoutLine: {'line': b'[ 68%] Built target 4_swath_generator_tutorial\n'}
+[35.704107] (fields2cover) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/objectives/path_length_test.cpp.o\x1b[0m\n'}
+[35.709953] (-) TimerEvent: {}
+[35.812936] (-) TimerEvent: {}
+[35.822753] (fields2cover) StdoutLine: {'line': b'[ 69%] Built target 5_route_planning_tutorial\n'}
+[35.823105] (fields2cover) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX executable 6_path_planning_tutorial\x1b[0m\n'}
+[35.835649] (fields2cover) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/objectives/pp_obj_test.cpp.o\x1b[0m\n'}
+[35.913060] (-) TimerEvent: {}
+[36.013453] (-) TimerEvent: {}
+[36.113823] (-) TimerEvent: {}
+[36.214181] (-) TimerEvent: {}
+[36.298133] (fields2cover) StdoutLine: {'line': b'[ 71%] Built target 6_path_planning_tutorial\n'}
+[36.314296] (-) TimerEvent: {}
+[36.314984] (fields2cover) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/objectives/rem_area_test.cpp.o\x1b[0m\n'}
+[36.415703] (-) TimerEvent: {}
+[36.516126] (-) TimerEvent: {}
+[36.616580] (-) TimerEvent: {}
+[36.717709] (-) TimerEvent: {}
+[36.820906] (-) TimerEvent: {}
+[36.921285] (-) TimerEvent: {}
+[37.021694] (-) TimerEvent: {}
+[37.122101] (-) TimerEvent: {}
+[37.222476] (-) TimerEvent: {}
+[37.323856] (-) TimerEvent: {}
+[37.424253] (-) TimerEvent: {}
+[37.524650] (-) TimerEvent: {}
+[37.625957] (-) TimerEvent: {}
+[37.728861] (-) TimerEvent: {}
+[37.829699] (-) TimerEvent: {}
+[37.930651] (-) TimerEvent: {}
+[38.031895] (-) TimerEvent: {}
+[38.132291] (-) TimerEvent: {}
+[38.236705] (-) TimerEvent: {}
+[38.337081] (-) TimerEvent: {}
+[38.437550] (-) TimerEvent: {}
+[38.542702] (-) TimerEvent: {}
+[38.643086] (-) TimerEvent: {}
+[38.743447] (-) TimerEvent: {}
+[38.844708] (-) TimerEvent: {}
+[38.945096] (-) TimerEvent: {}
+[39.045505] (-) TimerEvent: {}
+[39.146361] (-) TimerEvent: {}
+[39.200009] (fields2cover) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/objectives/rp_obj_test.cpp.o\x1b[0m\n'}
+[39.246493] (-) TimerEvent: {}
+[39.346892] (-) TimerEvent: {}
+[39.451298] (-) TimerEvent: {}
+[39.552204] (-) TimerEvent: {}
+[39.573588] (fields2cover) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/objectives/sg_obj_test.cpp.o\x1b[0m\n'}
+[39.592531] (fields2cover) StdoutLine: {'line': b'[ 74%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/objectives/swath_length_test.cpp.o\x1b[0m\n'}
+[39.652343] (-) TimerEvent: {}
+[39.753343] (-) TimerEvent: {}
+[39.853707] (-) TimerEvent: {}
+[39.954704] (-) TimerEvent: {}
+[40.024718] (fields2cover) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/path_planning/dubins_cc_test.cpp.o\x1b[0m\n'}
+[40.042539] (fields2cover) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/path_planning/dubins_test.cpp.o\x1b[0m\n'}
+[40.054823] (-) TimerEvent: {}
+[40.155212] (-) TimerEvent: {}
+[40.159042] (fields2cover) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/path_planning/path_planning_test.cpp.o\x1b[0m\n'}
+[40.255332] (-) TimerEvent: {}
+[40.356161] (-) TimerEvent: {}
+[40.456937] (-) TimerEvent: {}
+[40.478657] (fields2cover) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/path_planning/reeds_shepp_hc_test.cpp.o\x1b[0m\n'}
+[40.557055] (-) TimerEvent: {}
+[40.657419] (-) TimerEvent: {}
+[40.758696] (-) TimerEvent: {}
+[40.859058] (-) TimerEvent: {}
+[40.959820] (-) TimerEvent: {}
+[41.062859] (-) TimerEvent: {}
+[41.163708] (-) TimerEvent: {}
+[41.264520] (-) TimerEvent: {}
+[41.364906] (-) TimerEvent: {}
+[41.467879] (-) TimerEvent: {}
+[41.540713] (fields2cover) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/path_planning/reeds_shepp_test.cpp.o\x1b[0m\n'}
+[41.568008] (-) TimerEvent: {}
+[41.669827] (-) TimerEvent: {}
+[41.770211] (-) TimerEvent: {}
+[41.871878] (-) TimerEvent: {}
+[41.972967] (-) TimerEvent: {}
+[42.074875] (-) TimerEvent: {}
+[42.176790] (-) TimerEvent: {}
+[42.278825] (-) TimerEvent: {}
+[42.379673] (-) TimerEvent: {}
+[42.480492] (-) TimerEvent: {}
+[42.581341] (-) TimerEvent: {}
+[42.682173] (-) TimerEvent: {}
+[42.785987] (-) TimerEvent: {}
+[42.886790] (-) TimerEvent: {}
+[42.987639] (-) TimerEvent: {}
+[43.088445] (-) TimerEvent: {}
+[43.192703] (-) TimerEvent: {}
+[43.209202] (fields2cover) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/route_planning/boustrophedon_order_test.cpp.o\x1b[0m\n'}
+[43.292821] (-) TimerEvent: {}
+[43.393208] (-) TimerEvent: {}
+[43.493596] (-) TimerEvent: {}
+[43.594362] (-) TimerEvent: {}
+[43.697885] (-) TimerEvent: {}
+[43.732750] (fields2cover) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/route_planning/custom_order.cpp.o\x1b[0m\n'}
+[43.798007] (-) TimerEvent: {}
+[43.898825] (-) TimerEvent: {}
+[43.999213] (-) TimerEvent: {}
+[44.013102] (fields2cover) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/route_planning/snake_order_test.cpp.o\x1b[0m\n'}
+[44.099346] (-) TimerEvent: {}
+[44.200917] (-) TimerEvent: {}
+[44.234681] (fields2cover) StdoutLine: {'line': b'[ 81%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/route_planning/spiral_order_test.cpp.o\x1b[0m\n'}
+[44.301043] (-) TimerEvent: {}
+[44.404890] (-) TimerEvent: {}
+[44.505282] (-) TimerEvent: {}
+[44.606082] (-) TimerEvent: {}
+[44.703443] (fields2cover) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/swath_generator/brute_force_test.cpp.o\x1b[0m\n'}
+[44.706198] (-) TimerEvent: {}
+[44.806568] (-) TimerEvent: {}
+[44.908705] (-) TimerEvent: {}
+[45.009077] (-) TimerEvent: {}
+[45.109475] (-) TimerEvent: {}
+[45.209861] (-) TimerEvent: {}
+[45.310236] (-) TimerEvent: {}
+[45.410617] (-) TimerEvent: {}
+[45.510005] (fields2cover) StdoutLine: {'line': b'[ 83%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Cell_test.cpp.o\x1b[0m\n'}
+[45.510659] (-) TimerEvent: {}
+[45.597117] (fields2cover) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Cells_test.cpp.o\x1b[0m\n'}
+[45.611710] (-) TimerEvent: {}
+[45.712109] (-) TimerEvent: {}
+[45.812473] (-) TimerEvent: {}
+[45.913702] (-) TimerEvent: {}
+[46.014055] (-) TimerEvent: {}
+[46.114462] (-) TimerEvent: {}
+[46.216842] (-) TimerEvent: {}
+[46.221679] (fields2cover) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Field_test.cpp.o\x1b[0m\n'}
+[46.316975] (-) TimerEvent: {}
+[46.417395] (-) TimerEvent: {}
+[46.518703] (-) TimerEvent: {}
+[46.619094] (-) TimerEvent: {}
+[46.722844] (-) TimerEvent: {}
+[46.823212] (-) TimerEvent: {}
+[46.923597] (-) TimerEvent: {}
+[47.023987] (-) TimerEvent: {}
+[47.124360] (-) TimerEvent: {}
+[47.224765] (-) TimerEvent: {}
+[47.325163] (-) TimerEvent: {}
+[47.425580] (-) TimerEvent: {}
+[47.526007] (-) TimerEvent: {}
+[47.626829] (-) TimerEvent: {}
+[47.730918] (-) TimerEvent: {}
+[47.750130] (fields2cover) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Geometries_test.cpp.o\x1b[0m\n'}
+[47.831045] (-) TimerEvent: {}
+[47.832242] (fields2cover) StdoutLine: {'line': b'[ 86%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Geometry_test.cpp.o\x1b[0m\n'}
+[47.931180] (-) TimerEvent: {}
+[48.031557] (-) TimerEvent: {}
+[48.131935] (-) TimerEvent: {}
+[48.164775] (fields2cover) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/LineString_test.cpp.o\x1b[0m\n'}
+[48.232085] (-) TimerEvent: {}
+[48.332487] (-) TimerEvent: {}
+[48.432915] (-) TimerEvent: {}
+[48.533701] (-) TimerEvent: {}
+[48.634074] (-) TimerEvent: {}
+[48.734703] (-) TimerEvent: {}
+[48.835706] (-) TimerEvent: {}
+[48.936081] (-) TimerEvent: {}
+[49.037707] (-) TimerEvent: {}
+[49.138104] (-) TimerEvent: {}
+[49.238482] (-) TimerEvent: {}
+[49.339723] (-) TimerEvent: {}
+[49.445904] (-) TimerEvent: {}
+[49.480289] (fields2cover) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/LinearRing_test.cpp.o\x1b[0m\n'}
+[49.546705] (-) TimerEvent: {}
+[49.631361] (fields2cover) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/MultiLineString_test.cpp.o\x1b[0m\n'}
+[49.646832] (-) TimerEvent: {}
+[49.748854] (-) TimerEvent: {}
+[49.849610] (-) TimerEvent: {}
+[49.953893] (-) TimerEvent: {}
+[50.054285] (-) TimerEvent: {}
+[50.155064] (-) TimerEvent: {}
+[50.255857] (-) TimerEvent: {}
+[50.356687] (-) TimerEvent: {}
+[50.458872] (-) TimerEvent: {}
+[50.559287] (-) TimerEvent: {}
+[50.659696] (-) TimerEvent: {}
+[50.760819] (-) TimerEvent: {}
+[50.864884] (-) TimerEvent: {}
+[50.965302] (-) TimerEvent: {}
+[51.065709] (-) TimerEvent: {}
+[51.166568] (-) TimerEvent: {}
+[51.267500] (-) TimerEvent: {}
+[51.368981] (-) TimerEvent: {}
+[51.470714] (-) TimerEvent: {}
+[51.571595] (-) TimerEvent: {}
+[51.672481] (-) TimerEvent: {}
+[51.774329] (-) TimerEvent: {}
+[51.851901] (fields2cover) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/MultiPoint_test.cpp.o\x1b[0m\n'}
+[51.874731] (-) TimerEvent: {}
+[51.934017] (fields2cover) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Path_test.cpp.o\x1b[0m\n'}
+[51.974860] (-) TimerEvent: {}
+[52.075248] (-) TimerEvent: {}
+[52.178048] (-) TimerEvent: {}
+[52.278422] (-) TimerEvent: {}
+[52.314020] (fields2cover) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Point_test.cpp.o\x1b[0m\n'}
+[52.380738] (-) TimerEvent: {}
+[52.481120] (-) TimerEvent: {}
+[52.581520] (-) TimerEvent: {}
+[52.582823] (fields2cover) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Robot_test.cpp.o\x1b[0m\n'}
+[52.681750] (-) TimerEvent: {}
+[52.782707] (-) TimerEvent: {}
+[52.883087] (-) TimerEvent: {}
+[52.983705] (-) TimerEvent: {}
+[53.084708] (-) TimerEvent: {}
+[53.146768] (fields2cover) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Route_test.cpp.o\x1b[0m\n'}
+[53.184833] (-) TimerEvent: {}
+[53.285227] (-) TimerEvent: {}
+[53.387485] (-) TimerEvent: {}
+[53.488265] (-) TimerEvent: {}
+[53.588632] (-) TimerEvent: {}
+[53.692832] (-) TimerEvent: {}
+[53.793197] (-) TimerEvent: {}
+[53.893568] (-) TimerEvent: {}
+[53.993943] (-) TimerEvent: {}
+[54.094311] (-) TimerEvent: {}
+[54.194701] (-) TimerEvent: {}
+[54.295103] (-) TimerEvent: {}
+[54.395520] (-) TimerEvent: {}
+[54.495949] (-) TimerEvent: {}
+[54.550801] (fields2cover) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Strip_test.cpp.o\x1b[0m\n'}
+[54.596072] (-) TimerEvent: {}
+[54.701043] (-) TimerEvent: {}
+[54.801421] (-) TimerEvent: {}
+[54.901807] (-) TimerEvent: {}
+[55.004881] (-) TimerEvent: {}
+[55.076795] (fields2cover) StdoutLine: {'line': b'[ 94%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Swath_test.cpp.o\x1b[0m\n'}
+[55.105006] (-) TimerEvent: {}
+[55.205842] (-) TimerEvent: {}
+[55.306809] (-) TimerEvent: {}
+[55.409153] (-) TimerEvent: {}
+[55.509535] (-) TimerEvent: {}
+[55.612882] (-) TimerEvent: {}
+[55.713297] (-) TimerEvent: {}
+[55.813709] (-) TimerEvent: {}
+[55.917703] (-) TimerEvent: {}
+[56.018107] (-) TimerEvent: {}
+[56.118505] (-) TimerEvent: {}
+[56.219389] (-) TimerEvent: {}
+[56.319816] (-) TimerEvent: {}
+[56.420648] (-) TimerEvent: {}
+[56.524889] (-) TimerEvent: {}
+[56.625315] (-) TimerEvent: {}
+[56.726167] (-) TimerEvent: {}
+[56.826999] (-) TimerEvent: {}
+[56.927803] (-) TimerEvent: {}
+[57.028295] (fields2cover) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/types/Swaths_test.cpp.o\x1b[0m\n'}
+[57.028633] (-) TimerEvent: {}
+[57.131714] (-) TimerEvent: {}
+[57.232123] (-) TimerEvent: {}
+[57.332528] (-) TimerEvent: {}
+[57.433738] (-) TimerEvent: {}
+[57.531094] (fields2cover) StdoutLine: {'line': b'[ 96%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/utils/parser_test.cpp.o\x1b[0m\n'}
+[57.533851] (-) TimerEvent: {}
+[57.634302] (-) TimerEvent: {}
+[57.685197] (fields2cover) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/utils/random_test.cpp.o\x1b[0m\n'}
+[57.734696] (-) TimerEvent: {}
+[57.835463] (-) TimerEvent: {}
+[57.938879] (-) TimerEvent: {}
+[58.039269] (-) TimerEvent: {}
+[58.139687] (-) TimerEvent: {}
+[58.188702] (fields2cover) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/utils/transform_test.cpp.o\x1b[0m\n'}
+[58.239818] (-) TimerEvent: {}
+[58.341868] (-) TimerEvent: {}
+[58.442704] (-) TimerEvent: {}
+[58.546902] (-) TimerEvent: {}
+[58.647289] (-) TimerEvent: {}
+[58.747670] (-) TimerEvent: {}
+[58.848043] (-) TimerEvent: {}
+[58.948418] (-) TimerEvent: {}
+[59.048805] (-) TimerEvent: {}
+[59.149183] (-) TimerEvent: {}
+[59.249547] (-) TimerEvent: {}
+[59.352898] (-) TimerEvent: {}
+[59.453277] (-) TimerEvent: {}
+[59.553664] (-) TimerEvent: {}
+[59.654045] (-) TimerEvent: {}
+[59.754420] (-) TimerEvent: {}
+[59.855706] (-) TimerEvent: {}
+[59.930401] (fields2cover) StdoutLine: {'line': b'[ 98%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/cpp/utils/visualizer_test.cpp.o\x1b[0m\n'}
+[59.955833] (-) TimerEvent: {}
+[60.056693] (-) TimerEvent: {}
+[60.159358] (-) TimerEvent: {}
+[60.259769] (-) TimerEvent: {}
+[60.360179] (-) TimerEvent: {}
+[60.460596] (-) TimerEvent: {}
+[60.561490] (-) TimerEvent: {}
+[60.582435] (fields2cover) StdoutLine: {'line': b'[ 99%] \x1b[32mBuilding CXX object tests/CMakeFiles/unittests.dir/unittests.cpp.o\x1b[0m\n'}
+[60.661629] (-) TimerEvent: {}
+[60.762699] (-) TimerEvent: {}
+[60.863078] (-) TimerEvent: {}
+[60.963456] (-) TimerEvent: {}
+[61.064703] (-) TimerEvent: {}
+[61.165088] (-) TimerEvent: {}
+[61.267893] (-) TimerEvent: {}
+[61.368299] (-) TimerEvent: {}
+[61.471517] (-) TimerEvent: {}
+[61.571920] (-) TimerEvent: {}
+[61.672308] (-) TimerEvent: {}
+[61.772712] (-) TimerEvent: {}
+[61.873110] (-) TimerEvent: {}
+[61.973534] (-) TimerEvent: {}
+[62.073914] (-) TimerEvent: {}
+[62.174295] (-) TimerEvent: {}
+[62.274693] (-) TimerEvent: {}
+[62.375090] (-) TimerEvent: {}
+[62.475438] (-) TimerEvent: {}
+[62.575709] (-) TimerEvent: {}
+[62.676085] (-) TimerEvent: {}
+[62.776545] (-) TimerEvent: {}
+[62.876962] (-) TimerEvent: {}
+[62.977320] (-) TimerEvent: {}
+[63.077665] (-) TimerEvent: {}
+[63.178005] (-) TimerEvent: {}
+[63.278355] (-) TimerEvent: {}
+[63.378694] (-) TimerEvent: {}
+[63.479021] (-) TimerEvent: {}
+[63.579365] (-) TimerEvent: {}
+[63.679642] (-) TimerEvent: {}
+[63.779885] (-) TimerEvent: {}
+[63.880129] (-) TimerEvent: {}
+[63.980370] (-) TimerEvent: {}
+[64.080631] (-) TimerEvent: {}
+[64.180867] (-) TimerEvent: {}
+[64.281099] (-) TimerEvent: {}
+[64.381340] (-) TimerEvent: {}
+[64.481660] (-) TimerEvent: {}
+[64.581903] (-) TimerEvent: {}
+[64.682169] (-) TimerEvent: {}
+[64.716845] (fields2cover) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable unittests\x1b[0m\n'}
+[64.782370] (-) TimerEvent: {}
+[64.882641] (-) TimerEvent: {}
+[64.982870] (-) TimerEvent: {}
+[64.983036] (fields2cover) StdoutLine: {'line': b'[100%] Built target unittests\n'}
+[64.992277] (fields2cover) CommandEnded: {'returncode': 0}
+[64.992810] (fields2cover) JobProgress: {'identifier': 'fields2cover', 'progress': 'install'}
+[64.999346] (fields2cover) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/mvibot/floorCleaningRobot_ws/build/fields2cover'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/fields2cover', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'XDG_SESSION_TYPE': 'wayland', 'ROS_APT_SOURCE_VERSION': '1.1.0', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2939', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'mvibot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/mvibot:@/tmp/.ICE-unix/2913,unix/mvibot:/tmp/.ICE-unix/2913', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/b7a177f3_03ee_4737_8328_c3bdd1e2124b', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.IPMDD3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.117', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/fields2cover', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[65.005419] (fields2cover) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[65.005656] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libtinyxml2.so.9.0.0\n'}
+[65.005840] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libtinyxml2.so.9\n'}
+[65.005955] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libtinyxml2.so\n'}
+[65.006054] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/cmake/tinyxml2/tinyxml2-shared-targets.cmake\n'}
+[65.006153] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/cmake/tinyxml2/tinyxml2-shared-targets-release.cmake\n'}
+[65.006240] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/cmake/tinyxml2/tinyxml2-config.cmake\n'}
+[65.006294] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/cmake/tinyxml2/tinyxml2-config-version.cmake\n'}
+[65.006363] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/tinyxml2.h\n'}
+[65.006432] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/pkgconfig/tinyxml2.pc\n'}
+[65.006579] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libsteering_functions.so\n'}
+[65.007200] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/cmake/spline/splineTargets.cmake\n'}
+[65.007294] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/cmake/spline/splineConfig.cmake\n'}
+[65.007365] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/spline.h\n'}
+[65.007552] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/cmake/matplotlib_cpp/matplotlib_cppTargets.cmake\n'}
+[65.007628] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/cmake/matplotlib_cpp/matplotlib_cppConfig.cmake\n'}
+[65.007710] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/matplotlibcpp.h\n'}
+[65.007848] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libFields2Cover.so\n'}
+[65.008411] (fields2cover) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libFields2Cover.so" to ""\n'}
+[65.008482] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover.h\n'}
+[65.008597] (fields2cover) StdoutLine: {'line': b'-- Up-to-date: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libtinyxml2.so.9.0.0\n'}
+[65.008671] (fields2cover) StdoutLine: {'line': b'-- Up-to-date: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libtinyxml2.so.9\n'}
+[65.008721] (fields2cover) StdoutLine: {'line': b'-- Up-to-date: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libtinyxml2.so\n'}
+[65.008780] (fields2cover) StdoutLine: {'line': b'-- Up-to-date: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libsteering_functions.so\n'}
+[65.008843] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/cmake/fields2cover/Fields2Cover-shared-Targets.cmake\n'}
+[65.008906] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/cmake/fields2cover/Fields2Cover-shared-Targets-release.cmake\n'}
+[65.008969] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/cmake/fields2cover/Fields2CoverConfig.cmake\n'}
+[65.009027] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/cmake/fields2cover/Fields2CoverConfigVersion.cmake\n'}
+[65.009113] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/share/Fields2Cover/package.xml\n'}
+[65.009175] (fields2cover) StdoutLine: {'line': b'-- Up-to-date: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include\n'}
+[65.009244] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover\n'}
+[65.009296] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/path_planning\n'}
+[65.009370] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/path_planning/reeds_shepp_curves_hc.h\n'}
+[65.009421] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/path_planning/dubins_curves.h\n'}
+[65.009473] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/path_planning/dubins_curves_cc.h\n'}
+[65.009542] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/path_planning/steer_to_path.hpp\n'}
+[65.009611] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/path_planning/turning_base.h\n'}
+[65.009668] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/path_planning/reeds_shepp_curves.h\n'}
+[65.009719] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/path_planning/path_planning.h\n'}
+[65.009770] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/route_planning\n'}
+[65.009839] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/route_planning/single_cell_swaths_order_base.h\n'}
+[65.009891] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/route_planning/spiral_order.h\n'}
+[65.009957] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/route_planning/snake_order.h\n'}
+[65.010007] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/route_planning/boustrophedon_order.h\n'}
+[65.010058] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/route_planning/custom_order.h\n'}
+[65.010107] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types\n'}
+[65.010180] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Point.h\n'}
+[65.010233] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Strip.h\n'}
+[65.010284] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Swath.h\n'}
+[65.010334] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Robot.h\n'}
+[65.010384] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Geometries.h\n'}
+[65.010458] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Geometry_impl.hpp\n'}
+[65.010508] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Route.h\n'}
+[65.010559] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/LineString.h\n'}
+[65.010609] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/OptimizationParams.h\n'}
+[65.010666] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/MultiLineString.h\n'}
+[65.010715] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Path.h\n'}
+[65.010789] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Geometry.h\n'}
+[65.010841] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/MultiPoint.h\n'}
+[65.010891] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Swaths.h\n'}
+[65.010941] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/LinearRing.h\n'}
+[65.010992] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Geometries_impl.hpp\n'}
+[65.011071] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Field.h\n'}
+[65.011124] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Cell.h\n'}
+[65.011174] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types/Cells.h\n'}
+[65.011224] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/swath_generator\n'}
+[65.011274] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/swath_generator/brute_force.h\n'}
+[65.011345] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/swath_generator/swath_generator_base_impl.hpp\n'}
+[65.011396] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/swath_generator/swath_generator_base.h\n'}
+[65.011446] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/utils\n'}
+[65.011497] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/utils/random.h\n'}
+[65.011548] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/utils/parser.h\n'}
+[65.011632] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/utils/visualizer.h\n'}
+[65.011684] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/utils/transformation.h\n'}
+[65.011742] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/headland_generator\n'}
+[65.011796] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/headland_generator/constant_headland.h\n'}
+[65.011846] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/headland_generator/headland_generator_base.h\n'}
+[65.011897] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives\n'}
+[65.011947] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/sg_objective.h\n'}
+[65.011998] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/base_objective.h\n'}
+[65.012048] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/path_length.h\n'}
+[65.012098] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/field_coverage.h\n'}
+[65.012178] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/n_swath.h\n'}
+[65.012232] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/overlaps.h\n'}
+[65.012281] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/complete_turn_path_obj.h\n'}
+[65.012332] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/rp_objective.h\n'}
+[65.012380] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/rem_area.h\n'}
+[65.012440] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/hg_objective.h\n'}
+[65.012485] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/swath_length.h\n'}
+[65.012530] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/direct_dist_path_obj.h\n'}
+[65.012575] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/objectives/pp_objective.h\n'}
+[65.012626] (fields2cover) StdoutLine: {'line': b'-- Installing: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover/types.h\n'}
+[65.012676] (fields2cover) StdoutLine: {'line': b'-- Up-to-date: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/include/fields2cover.h\n'}
+[65.013881] (fields2cover) CommandEnded: {'returncode': 0}
+[65.024681] (fields2cover) JobEnded: {'identifier': 'fields2cover', 'rc': 0}
+[65.025235] (-) EventReactorShutdown: {}

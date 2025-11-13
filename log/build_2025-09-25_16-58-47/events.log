@@ -1,0 +1,242 @@
+[0.000000] (-) TimerEvent: {}
+[0.000492] (-) JobUnselected: {'identifier': 'fields2cover'}
+[0.000570] (-) JobUnselected: {'identifier': 'higher_layer_mvibot'}
+[0.000594] (-) JobUnselected: {'identifier': 'ira_laser_tools'}
+[0.000613] (-) JobUnselected: {'identifier': 'lower_layer_mvibot'}
+[0.000632] (-) JobUnselected: {'identifier': 'mission_layer_mvibot'}
+[0.000649] (-) JobUnselected: {'identifier': 'opennav_coverage'}
+[0.000666] (-) JobUnselected: {'identifier': 'opennav_coverage_bt'}
+[0.000683] (-) JobUnselected: {'identifier': 'opennav_coverage_demo'}
+[0.000699] (-) JobUnselected: {'identifier': 'opennav_coverage_msgs'}
+[0.000716] (-) JobUnselected: {'identifier': 'opennav_coverage_navigator'}
+[0.000732] (-) JobUnselected: {'identifier': 'pointcloud_to_laserscan'}
+[0.000749] (-) JobUnselected: {'identifier': 'realsense2_camera'}
+[0.000764] (-) JobUnselected: {'identifier': 'realsense2_camera_msgs'}
+[0.000780] (-) JobUnselected: {'identifier': 'realsense2_description'}
+[0.000795] (-) JobUnselected: {'identifier': 'sllidar_ros2'}
+[0.000811] (-) JobUnselected: {'identifier': 'tf2_web_republisher'}
+[0.000826] (-) JobUnselected: {'identifier': 'tf2_web_republisher_interfaces'}
+[0.000845] (opennav_row_coverage) JobQueued: {'identifier': 'opennav_row_coverage', 'dependencies': OrderedDict({'fields2cover': '/home/mvibot/floorCleaningRobot_ws/install/fields2cover', 'opennav_coverage_msgs': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs', 'opennav_coverage': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage'})}
+[0.000875] (opennav_row_coverage) JobStarted: {'identifier': 'opennav_row_coverage'}
+[0.010524] (opennav_row_coverage) JobProgress: {'identifier': 'opennav_row_coverage', 'progress': 'cmake'}
+[0.010914] (opennav_row_coverage) Command: {'cmd': ['/usr/bin/cmake', '/home/mvibot/floorCleaningRobot_ws/src/opennav_coverage/opennav_row_coverage', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/opennav_row_coverage', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'XDG_SESSION_TYPE': 'wayland', 'ROS_APT_SOURCE_VERSION': '1.1.0', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2939', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'PKG_CONFIG_PATH': '/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/x86_64-linux-gnu/pkgconfig:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/pkgconfig', 'USERNAME': 'mvibot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/mvibot:@/tmp/.ICE-unix/2913,unix/mvibot:/tmp/.ICE-unix/2913', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/b7a177f3_03ee_4737_8328_c3bdd1e2124b', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.IPMDD3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.117', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/opennav_row_coverage', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/fields2cover:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.050798] (opennav_row_coverage) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.093027] (opennav_row_coverage) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.099808] (-) TimerEvent: {}
+[0.103985] (opennav_row_coverage) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.176823] (opennav_row_coverage) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.187143] (opennav_row_coverage) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.187275] (opennav_row_coverage) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.187696] (opennav_row_coverage) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.194543] (opennav_row_coverage) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.199912] (-) TimerEvent: {}
+[0.271341] (opennav_row_coverage) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.278247] (opennav_row_coverage) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.278454] (opennav_row_coverage) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.278903] (opennav_row_coverage) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.281010] (opennav_row_coverage) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.300030] (-) TimerEvent: {}
+[0.387793] (opennav_row_coverage) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[0.400131] (-) TimerEvent: {}
+[0.442642] (opennav_row_coverage) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.464107] (opennav_row_coverage) StdoutLine: {'line': b'-- Found rclcpp: 28.1.12 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[0.491880] (opennav_row_coverage) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.500279] (-) TimerEvent: {}
+[0.501144] (opennav_row_coverage) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.514365] (opennav_row_coverage) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.526960] (opennav_row_coverage) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.580558] (opennav_row_coverage) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[0.582650] (opennav_row_coverage) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.600457] (-) TimerEvent: {}
+[0.636766] (opennav_row_coverage) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[0.650926] (opennav_row_coverage) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[0.667744] (opennav_row_coverage) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.700682] (-) TimerEvent: {}
+[0.720942] (opennav_row_coverage) StdoutLine: {'line': b'-- Found rclcpp_components: 28.1.12 (/opt/ros/jazzy/share/rclcpp_components/cmake)\n'}
+[0.746640] (opennav_row_coverage) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 28.1.12 (/opt/ros/jazzy/share/rclcpp_lifecycle/cmake)\n'}
+[0.769657] (opennav_row_coverage) StdoutLine: {'line': b'-- Found nav2_util: 1.3.8 (/opt/ros/jazzy/share/nav2_util/cmake)\n'}
+[0.800874] (-) TimerEvent: {}
+[0.901124] (-) TimerEvent: {}
+[0.952192] (opennav_row_coverage) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)\n'}
+[0.953179] (opennav_row_coverage) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[0.953263] (opennav_row_coverage) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[0.999235] (opennav_row_coverage) StdoutLine: {'line': b'-- Found GDAL: /usr/lib/x86_64-linux-gnu/libgdal.so (found suitable version "3.8.4", minimum required is "3.0") \n'}
+[1.000006] (opennav_row_coverage) StdoutLine: {'line': b'-- Found opennav_coverage: 0.0.1 (/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage/share/opennav_coverage/cmake)\n'}
+[1.001172] (-) TimerEvent: {}
+[1.101457] (-) TimerEvent: {}
+[1.119074] (opennav_row_coverage) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[1.120698] (opennav_row_coverage) StdoutLine: {'line': b'-- Found ament_cmake_gtest: 2.5.4 (/opt/ros/jazzy/share/ament_cmake_gtest/cmake)\n'}
+[1.199611] (opennav_row_coverage) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.200491] (opennav_row_coverage) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.200802] (opennav_row_coverage) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/mvibot/floorCleaningRobot_ws/src/opennav_coverage/opennav_row_coverage/include\n'}
+[1.200856] (opennav_row_coverage) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.201528] (-) TimerEvent: {}
+[1.201674] (opennav_row_coverage) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.201755] (opennav_row_coverage) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.202095] (opennav_row_coverage) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.202207] (opennav_row_coverage) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[1.202582] (opennav_row_coverage) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.202817] (opennav_row_coverage) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[1.203721] (opennav_row_coverage) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.203889] (opennav_row_coverage) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.204073] (opennav_row_coverage) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.206587] (opennav_row_coverage) StdoutLine: {'line': b'-- Configuring done (1.2s)\n'}
+[1.253732] (opennav_row_coverage) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[1.258856] (opennav_row_coverage) StdoutLine: {'line': b'-- Build files have been written to: /home/mvibot/floorCleaningRobot_ws/build/opennav_row_coverage\n'}
+[1.268425] (opennav_row_coverage) CommandEnded: {'returncode': 0}
+[1.268865] (opennav_row_coverage) JobProgress: {'identifier': 'opennav_row_coverage', 'progress': 'build'}
+[1.269404] (opennav_row_coverage) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/mvibot/floorCleaningRobot_ws/build/opennav_row_coverage', '--', '-j8', '-l8'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/opennav_row_coverage', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'XDG_SESSION_TYPE': 'wayland', 'ROS_APT_SOURCE_VERSION': '1.1.0', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2939', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'PKG_CONFIG_PATH': '/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/x86_64-linux-gnu/pkgconfig:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/pkgconfig', 'USERNAME': 'mvibot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/mvibot:@/tmp/.ICE-unix/2913,unix/mvibot:/tmp/.ICE-unix/2913', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/b7a177f3_03ee_4737_8328_c3bdd1e2124b', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.IPMDD3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.117', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/opennav_row_coverage', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/fields2cover:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[1.301653] (-) TimerEvent: {}
+[1.308867] (opennav_row_coverage) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/opennav_row_coverage_core.dir/src/row_coverage_server.cpp.o\x1b[0m\n'}
+[1.309079] (opennav_row_coverage) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/opennav_row_coverage_core.dir/src/row_swath_generator.cpp.o\x1b[0m\n'}
+[1.401783] (-) TimerEvent: {}
+[1.502143] (-) TimerEvent: {}
+[1.602492] (-) TimerEvent: {}
+[1.702825] (-) TimerEvent: {}
+[1.803129] (-) TimerEvent: {}
+[1.903419] (-) TimerEvent: {}
+[2.003782] (-) TimerEvent: {}
+[2.104131] (-) TimerEvent: {}
+[2.204388] (-) TimerEvent: {}
+[2.304631] (-) TimerEvent: {}
+[2.404881] (-) TimerEvent: {}
+[2.505118] (-) TimerEvent: {}
+[2.605350] (-) TimerEvent: {}
+[2.705597] (-) TimerEvent: {}
+[2.805858] (-) TimerEvent: {}
+[2.906124] (-) TimerEvent: {}
+[3.006378] (-) TimerEvent: {}
+[3.106640] (-) TimerEvent: {}
+[3.206901] (-) TimerEvent: {}
+[3.307141] (-) TimerEvent: {}
+[3.407405] (-) TimerEvent: {}
+[3.507687] (-) TimerEvent: {}
+[3.607939] (-) TimerEvent: {}
+[3.708195] (-) TimerEvent: {}
+[3.808449] (-) TimerEvent: {}
+[3.908704] (-) TimerEvent: {}
+[4.008989] (-) TimerEvent: {}
+[4.109228] (-) TimerEvent: {}
+[4.209483] (-) TimerEvent: {}
+[4.309739] (-) TimerEvent: {}
+[4.410063] (-) TimerEvent: {}
+[4.510296] (-) TimerEvent: {}
+[4.610551] (-) TimerEvent: {}
+[4.710802] (-) TimerEvent: {}
+[4.811145] (-) TimerEvent: {}
+[4.911460] (-) TimerEvent: {}
+[5.011814] (-) TimerEvent: {}
+[5.112038] (-) TimerEvent: {}
+[5.212261] (-) TimerEvent: {}
+[5.312506] (-) TimerEvent: {}
+[5.412825] (-) TimerEvent: {}
+[5.513144] (-) TimerEvent: {}
+[5.613489] (-) TimerEvent: {}
+[5.713832] (-) TimerEvent: {}
+[5.814161] (-) TimerEvent: {}
+[5.914412] (-) TimerEvent: {}
+[6.014659] (-) TimerEvent: {}
+[6.114960] (-) TimerEvent: {}
+[6.215282] (-) TimerEvent: {}
+[6.315617] (-) TimerEvent: {}
+[6.416020] (-) TimerEvent: {}
+[6.516396] (-) TimerEvent: {}
+[6.616773] (-) TimerEvent: {}
+[6.717125] (-) TimerEvent: {}
+[6.817428] (-) TimerEvent: {}
+[6.917763] (-) TimerEvent: {}
+[7.018123] (-) TimerEvent: {}
+[7.118470] (-) TimerEvent: {}
+[7.218776] (-) TimerEvent: {}
+[7.319089] (-) TimerEvent: {}
+[7.419306] (-) TimerEvent: {}
+[7.519627] (-) TimerEvent: {}
+[7.619953] (-) TimerEvent: {}
+[7.720351] (-) TimerEvent: {}
+[7.820757] (-) TimerEvent: {}
+[7.921103] (-) TimerEvent: {}
+[7.941217] (opennav_row_coverage) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX shared library libopennav_row_coverage_core.so\x1b[0m\n'}
+[8.021301] (-) TimerEvent: {}
+[8.121639] (-) TimerEvent: {}
+[8.221990] (-) TimerEvent: {}
+[8.322341] (-) TimerEvent: {}
+[8.392960] (opennav_row_coverage) StdoutLine: {'line': b'[ 60%] Built target opennav_row_coverage_core\n'}
+[8.407867] (opennav_row_coverage) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object CMakeFiles/opennav_row_coverage.dir/src/main.cpp.o\x1b[0m\n'}
+[8.422458] (-) TimerEvent: {}
+[8.522805] (-) TimerEvent: {}
+[8.623092] (-) TimerEvent: {}
+[8.723426] (-) TimerEvent: {}
+[8.823742] (-) TimerEvent: {}
+[8.924065] (-) TimerEvent: {}
+[9.024401] (-) TimerEvent: {}
+[9.124736] (-) TimerEvent: {}
+[9.224990] (-) TimerEvent: {}
+[9.325326] (-) TimerEvent: {}
+[9.425672] (-) TimerEvent: {}
+[9.526059] (-) TimerEvent: {}
+[9.626451] (-) TimerEvent: {}
+[9.726784] (-) TimerEvent: {}
+[9.827121] (-) TimerEvent: {}
+[9.927466] (-) TimerEvent: {}
+[10.027817] (-) TimerEvent: {}
+[10.128144] (-) TimerEvent: {}
+[10.228477] (-) TimerEvent: {}
+[10.328813] (-) TimerEvent: {}
+[10.429142] (-) TimerEvent: {}
+[10.529479] (-) TimerEvent: {}
+[10.629802] (-) TimerEvent: {}
+[10.730148] (-) TimerEvent: {}
+[10.830476] (-) TimerEvent: {}
+[10.930826] (-) TimerEvent: {}
+[11.031129] (-) TimerEvent: {}
+[11.131456] (-) TimerEvent: {}
+[11.231785] (-) TimerEvent: {}
+[11.332153] (-) TimerEvent: {}
+[11.432479] (-) TimerEvent: {}
+[11.532813] (-) TimerEvent: {}
+[11.633128] (-) TimerEvent: {}
+[11.733473] (-) TimerEvent: {}
+[11.823941] (opennav_row_coverage) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable opennav_row_coverage\x1b[0m\n'}
+[11.833581] (-) TimerEvent: {}
+[11.933911] (-) TimerEvent: {}
+[12.034154] (-) TimerEvent: {}
+[12.134476] (-) TimerEvent: {}
+[12.234744] (-) TimerEvent: {}
+[12.295733] (opennav_row_coverage) StdoutLine: {'line': b'[100%] Built target opennav_row_coverage\n'}
+[12.303695] (opennav_row_coverage) CommandEnded: {'returncode': 0}
+[12.304131] (opennav_row_coverage) JobProgress: {'identifier': 'opennav_row_coverage', 'progress': 'install'}
+[12.310445] (opennav_row_coverage) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/mvibot/floorCleaningRobot_ws/build/opennav_row_coverage'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/opennav_row_coverage', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'XDG_SESSION_TYPE': 'wayland', 'ROS_APT_SOURCE_VERSION': '1.1.0', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2939', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'PKG_CONFIG_PATH': '/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/x86_64-linux-gnu/pkgconfig:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/pkgconfig', 'USERNAME': 'mvibot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/mvibot:@/tmp/.ICE-unix/2913,unix/mvibot:/tmp/.ICE-unix/2913', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/b7a177f3_03ee_4737_8328_c3bdd1e2124b', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.IPMDD3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.117', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/opennav_row_coverage', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/fields2cover:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[12.315626] (opennav_row_coverage) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[12.315952] (opennav_row_coverage) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[12.316167] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/lib/libopennav_row_coverage_core.so\n'}
+[12.322696] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/lib/opennav_row_coverage/opennav_row_coverage\n'}
+[12.328826] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/include//opennav_row_coverage/row_coverage_server.hpp\n'}
+[12.334848] (-) TimerEvent: {}
+[12.334999] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/include//opennav_row_coverage/row_swath_generator.hpp\n'}
+[12.342279] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/include//opennav_row_coverage/types.hpp\n'}
+[12.348638] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/include//opennav_row_coverage/utils.hpp\n'}
+[12.354987] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/environment/library_path.sh\n'}
+[12.361221] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/environment/library_path.dsv\n'}
+[12.367562] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/ament_index/resource_index/package_run_dependencies/opennav_row_coverage\n'}
+[12.373537] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/ament_index/resource_index/parent_prefix_path/opennav_row_coverage\n'}
+[12.379723] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/environment/ament_prefix_path.sh\n'}
+[12.385672] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/environment/ament_prefix_path.dsv\n'}
+[12.391588] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/environment/path.sh\n'}
+[12.397676] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/environment/path.dsv\n'}
+[12.403596] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/local_setup.bash\n'}
+[12.409758] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/local_setup.sh\n'}
+[12.415775] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/local_setup.zsh\n'}
+[12.422001] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/local_setup.dsv\n'}
+[12.428209] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/package.dsv\n'}
+[12.434102] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/ament_index/resource_index/packages/opennav_row_coverage\n'}
+[12.434929] (-) TimerEvent: {}
+[12.441147] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/ament_index/resource_index/rclcpp_components/opennav_row_coverage\n'}
+[12.448201] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[12.454413] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[12.460405] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[12.466621] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/cmake/opennav_row_coverageConfig.cmake\n'}
+[12.472515] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/cmake/opennav_row_coverageConfig-version.cmake\n'}
+[12.478646] (opennav_row_coverage) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/share/opennav_row_coverage/package.xml\n'}
+[12.486558] (opennav_row_coverage) CommandEnded: {'returncode': 0}
+[12.498303] (opennav_row_coverage) JobEnded: {'identifier': 'opennav_row_coverage', 'rc': 0}
+[12.498768] (-) EventReactorShutdown: {}

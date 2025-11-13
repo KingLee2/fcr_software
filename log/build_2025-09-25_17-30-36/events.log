@@ -1,0 +1,305 @@
+[0.000000] (-) TimerEvent: {}
+[0.000179] (-) JobUnselected: {'identifier': 'fields2cover'}
+[0.000200] (-) JobUnselected: {'identifier': 'ira_laser_tools'}
+[0.000215] (-) JobUnselected: {'identifier': 'lower_layer_mvibot'}
+[0.000227] (-) JobUnselected: {'identifier': 'mission_layer_mvibot'}
+[0.000236] (-) JobUnselected: {'identifier': 'opennav_coverage'}
+[0.000246] (-) JobUnselected: {'identifier': 'opennav_coverage_bt'}
+[0.000254] (-) JobUnselected: {'identifier': 'opennav_coverage_demo'}
+[0.000261] (-) JobUnselected: {'identifier': 'opennav_coverage_msgs'}
+[0.000269] (-) JobUnselected: {'identifier': 'opennav_coverage_navigator'}
+[0.000277] (-) JobUnselected: {'identifier': 'opennav_row_coverage'}
+[0.000286] (-) JobUnselected: {'identifier': 'pointcloud_to_laserscan'}
+[0.000294] (-) JobUnselected: {'identifier': 'realsense2_camera'}
+[0.000302] (-) JobUnselected: {'identifier': 'realsense2_camera_msgs'}
+[0.000310] (-) JobUnselected: {'identifier': 'realsense2_description'}
+[0.000318] (-) JobUnselected: {'identifier': 'sllidar_ros2'}
+[0.000326] (-) JobUnselected: {'identifier': 'tf2_web_republisher'}
+[0.000340] (-) JobUnselected: {'identifier': 'tf2_web_republisher_interfaces'}
+[0.000366] (higher_layer_mvibot) JobQueued: {'identifier': 'higher_layer_mvibot', 'dependencies': OrderedDict()}
+[0.000656] (higher_layer_mvibot) JobStarted: {'identifier': 'higher_layer_mvibot'}
+[0.006000] (higher_layer_mvibot) JobProgress: {'identifier': 'higher_layer_mvibot', 'progress': 'cmake'}
+[0.006622] (higher_layer_mvibot) JobProgress: {'identifier': 'higher_layer_mvibot', 'progress': 'build'}
+[0.007184] (higher_layer_mvibot) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/mvibot/floorCleaningRobot_ws/build/higher_layer_mvibot', '--', '-j8', '-l8'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/higher_layer_mvibot', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'XDG_SESSION_TYPE': 'wayland', 'ROS_APT_SOURCE_VERSION': '1.1.0', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2939', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'mvibot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/mvibot:@/tmp/.ICE-unix/2913,unix/mvibot:/tmp/.ICE-unix/2913', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/b7a177f3_03ee_4737_8328_c3bdd1e2124b', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.IPMDD3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.117', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/higher_layer_mvibot', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.045511] (higher_layer_mvibot) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o\x1b[0m\n'}
+[0.099969] (-) TimerEvent: {}
+[0.200305] (-) TimerEvent: {}
+[0.300660] (-) TimerEvent: {}
+[0.400987] (-) TimerEvent: {}
+[0.501305] (-) TimerEvent: {}
+[0.601652] (-) TimerEvent: {}
+[0.701982] (-) TimerEvent: {}
+[0.802294] (-) TimerEvent: {}
+[0.902520] (-) TimerEvent: {}
+[1.002850] (-) TimerEvent: {}
+[1.103107] (-) TimerEvent: {}
+[1.203421] (-) TimerEvent: {}
+[1.303748] (-) TimerEvent: {}
+[1.404069] (-) TimerEvent: {}
+[1.504403] (-) TimerEvent: {}
+[1.604715] (-) TimerEvent: {}
+[1.705037] (-) TimerEvent: {}
+[1.805372] (-) TimerEvent: {}
+[1.905699] (-) TimerEvent: {}
+[2.005979] (-) TimerEvent: {}
+[2.106347] (-) TimerEvent: {}
+[2.206701] (-) TimerEvent: {}
+[2.307009] (-) TimerEvent: {}
+[2.407346] (-) TimerEvent: {}
+[2.507676] (-) TimerEvent: {}
+[2.608003] (-) TimerEvent: {}
+[2.708322] (-) TimerEvent: {}
+[2.808660] (-) TimerEvent: {}
+[2.908979] (-) TimerEvent: {}
+[3.004372] (higher_layer_mvibot) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/mvibot_server.cpp:5\x1b[m\x1b[K:\n'}
+[3.004599] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/robot_information.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kstd::string robot_information::\x1b[01;32m\x1b[Kget_cmd_update_database\x1b[m\x1b[K(std::string, std::string)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.004693] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/robot_information.h:49:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.004789] (higher_layer_mvibot) StderrLine: {'line': b'   49 |     for(int i=1;\x1b[01;35m\x1b[Ki<data.data1.size()-1\x1b[m\x1b[K;i++){\n'}
+[3.004892] (higher_layer_mvibot) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.007075] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/robot_information.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kstd::string robot_information::\x1b[01;32m\x1b[Kget_cmd_insert_row_table\x1b[m\x1b[K(std::string, std::string)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.007252] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/robot_information.h:94:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.007361] (higher_layer_mvibot) StderrLine: {'line': b'   94 |     for(int i=1;\x1b[01;35m\x1b[Ki<data.data1.size()-1\x1b[m\x1b[K;i++){\n'}
+[3.007447] (higher_layer_mvibot) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.009055] (-) TimerEvent: {}
+[3.064150] (higher_layer_mvibot) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/mvibot_server.cpp:6\x1b[m\x1b[K:\n'}
+[3.064351] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.064442] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:63:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.064535] (higher_layer_mvibot) StderrLine: {'line': b'   63 |                     for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.064615] (higher_layer_mvibot) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.066343] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.066510] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:90:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.066619] (higher_layer_mvibot) StderrLine: {'line': b'   90 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.066701] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.067193] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.067320] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:103:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.067434] (higher_layer_mvibot) StderrLine: {'line': b'  103 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.067513] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.067949] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.068048] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:116:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.068131] (higher_layer_mvibot) StderrLine: {'line': b'  116 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.068210] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.068643] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.068739] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:130:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.068825] (higher_layer_mvibot) StderrLine: {'line': b'  130 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.068909] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.069404] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.069501] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:143:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.069581] (higher_layer_mvibot) StderrLine: {'line': b'  143 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.069658] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.070094] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.070205] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:156:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.070304] (higher_layer_mvibot) StderrLine: {'line': b'  156 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.070400] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.070814] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.070913] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:169:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.071015] (higher_layer_mvibot) StderrLine: {'line': b'  169 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.071100] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.071507] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.071612] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:182:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.071691] (higher_layer_mvibot) StderrLine: {'line': b'  182 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.071763] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.072241] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.072365] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:195:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.072455] (higher_layer_mvibot) StderrLine: {'line': b'  195 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.072533] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.073097] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.073190] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:208:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.073275] (higher_layer_mvibot) StderrLine: {'line': b'  208 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.073361] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.074290] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.074399] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:240:31:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.074494] (higher_layer_mvibot) StderrLine: {'line': b'  240 |                 for(int i=0; \x1b[01;35m\x1b[Ki<data1.data1.size()\x1b[m\x1b[K;i++){\n'}
+[3.074570] (higher_layer_mvibot) StderrLine: {'line': b'      |                              \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.094702] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid fcr_server::\x1b[01;32m\x1b[Kpub_map\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.094901] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:382:22:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<custom_layerv2>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.095019] (higher_layer_mvibot) StderrLine: {'line': b'  382 |         for(int i=0;\x1b[01;35m\x1b[Ki<my_layers.size()\x1b[m\x1b[K;i++){\n'}
+[3.095155] (higher_layer_mvibot) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.095235] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:390:22:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<custom_layerv2>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.095312] (higher_layer_mvibot) StderrLine: {'line': b'  390 |         for(int i=0;\x1b[01;35m\x1b[Ki<my_layers.size()\x1b[m\x1b[K;i++){\n'}
+[3.095406] (higher_layer_mvibot) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.095475] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:401:26:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<signed char, std::allocator<signed char> >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.095551] (higher_layer_mvibot) StderrLine: {'line': b'  401 |             for(int i=0;\x1b[01;35m\x1b[Ki<map_var.data.size()\x1b[m\x1b[K;i++)\n'}
+[3.095625] (higher_layer_mvibot) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.095725] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:426:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<custom_layerv2>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.095818] (higher_layer_mvibot) StderrLine: {'line': b'  426 |                 for(int j=0;\x1b[01;35m\x1b[Kj<my_layers.size()\x1b[m\x1b[K;j++){\n'}
+[3.095893] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.096130] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:442:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ksuggest parentheses around comparison in operand of \xe2\x80\x98\x1b[01m\x1b[K&\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wparentheses\x07-Wparentheses\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.096237] (higher_layer_mvibot) StderrLine: {'line': b'  442 |                         if(\x1b[01;35m\x1b[Kfabs(x_layer)<=my_layers[j].width/2\x1b[m\x1b[K &  fabs(y_layer)<=my_layers[j].heigth/2) {\n'}
+[3.096322] (higher_layer_mvibot) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.102435] (higher_layer_mvibot) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/mvibot_server.cpp:7\x1b[m\x1b[K:\n'}
+[3.102609] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.102738] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:91:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.102824] (higher_layer_mvibot) StderrLine: {'line': b'   91 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.102900] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.102971] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:96:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.103059] (higher_layer_mvibot) StderrLine: {'line': b'   96 |                         for(int j=1;\x1b[01;35m\x1b[Kj<data.data1.size()\x1b[m\x1b[K;j++){\n'}
+[3.103132] (higher_layer_mvibot) StderrLine: {'line': b'      |                                     \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.105129] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:\x1b[m\x1b[K In lambda function:\n'}
+[3.105318] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:137:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.105437] (higher_layer_mvibot) StderrLine: {'line': b'  137 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.105524] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.105606] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:141:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.105699] (higher_layer_mvibot) StderrLine: {'line': b'  141 |                         for(int j=1;\x1b[01;35m\x1b[Kj<data.data1.size()\x1b[m\x1b[K;j++){\n'}
+[3.105822] (higher_layer_mvibot) StderrLine: {'line': b'      |                                     \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.108175] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid table_::\x1b[01;32m\x1b[Kinit_table_PK\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.108376] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:207:26:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<colume_>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.108487] (higher_layer_mvibot) StderrLine: {'line': b'  207 |             for(int i=1;\x1b[01;35m\x1b[Ki<table_colume.size()\x1b[m\x1b[K;i++){\n'}
+[3.108575] (higher_layer_mvibot) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.109131] (-) TimerEvent: {}
+[3.110178] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid table_::\x1b[01;32m\x1b[Kinit_table_FK\x1b[m\x1b[K(std::string, std::string)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.110361] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:240:26:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<colume_>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.110477] (higher_layer_mvibot) StderrLine: {'line': b'  240 |             for(int i=0;\x1b[01;35m\x1b[Ki<table_colume.size()\x1b[m\x1b[K;i++){\n'}
+[3.110566] (higher_layer_mvibot) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.117639] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid fcr_database::\x1b[01;32m\x1b[Kdatabase_process\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.117841] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:455:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.117958] (higher_layer_mvibot) StderrLine: {'line': b'  455 |     for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.118043] (higher_layer_mvibot) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.118189] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:461:26:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.118288] (higher_layer_mvibot) StderrLine: {'line': b'  461 |             for(int j=0;\x1b[01;35m\x1b[Kj<data.size()\x1b[m\x1b[K;j++){\n'}
+[3.118394] (higher_layer_mvibot) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.120227] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid fcr_database::\x1b[01;32m\x1b[Kget_layer\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.120380] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:495:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<custom_layerv2>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.120466] (higher_layer_mvibot) StderrLine: {'line': b'  495 |     for(int i=0;\x1b[01;35m\x1b[Ki<my_layers.size()\x1b[m\x1b[K;i++){\n'}
+[3.120546] (higher_layer_mvibot) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.120855] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:507:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<custom_layerv2>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.120974] (higher_layer_mvibot) StderrLine: {'line': b'  507 |                 for(int i=0;\x1b[01;35m\x1b[Ki<my_layers.size()\x1b[m\x1b[K;i++){\n'}
+[3.121057] (higher_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.122742] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid fcr_database::\x1b[01;32m\x1b[Kinsert_battery_charge_robot\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.122870] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:557:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.122963] (higher_layer_mvibot) StderrLine: {'line': b'  557 |     for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.123055] (higher_layer_mvibot) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.123298] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:562:26:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.123428] (higher_layer_mvibot) StderrLine: {'line': b'  562 |             for(int j=1;\x1b[01;35m\x1b[Kj<data.data1.size()\x1b[m\x1b[K;j++){\n'}
+[3.123510] (higher_layer_mvibot) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.125021] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid fcr_database::\x1b[01;32m\x1b[Kinsert_history_robot\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.125155] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:595:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<robot_information>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.125249] (higher_layer_mvibot) StderrLine: {'line': b'  595 |     for(int i=0;\x1b[01;35m\x1b[Ki<my_robots.size()\x1b[m\x1b[K;i++){\n'}
+[3.125331] (higher_layer_mvibot) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.125618] (higher_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:601:26:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[3.125726] (higher_layer_mvibot) StderrLine: {'line': b'  601 |             for(int j=1;\x1b[01;35m\x1b[Kj<data.data1.size()\x1b[m\x1b[K;j++){\n'}
+[3.125806] (higher_layer_mvibot) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.209313] (-) TimerEvent: {}
+[3.309553] (-) TimerEvent: {}
+[3.409853] (-) TimerEvent: {}
+[3.510175] (-) TimerEvent: {}
+[3.610494] (-) TimerEvent: {}
+[3.710835] (-) TimerEvent: {}
+[3.811161] (-) TimerEvent: {}
+[3.911464] (-) TimerEvent: {}
+[4.011781] (-) TimerEvent: {}
+[4.112046] (-) TimerEvent: {}
+[4.212365] (-) TimerEvent: {}
+[4.312729] (-) TimerEvent: {}
+[4.413101] (-) TimerEvent: {}
+[4.513408] (-) TimerEvent: {}
+[4.613634] (-) TimerEvent: {}
+[4.713971] (-) TimerEvent: {}
+[4.814306] (-) TimerEvent: {}
+[4.914628] (-) TimerEvent: {}
+[5.014945] (-) TimerEvent: {}
+[5.115185] (-) TimerEvent: {}
+[5.215512] (-) TimerEvent: {}
+[5.315837] (-) TimerEvent: {}
+[5.416155] (-) TimerEvent: {}
+[5.516482] (-) TimerEvent: {}
+[5.616845] (-) TimerEvent: {}
+[5.717164] (-) TimerEvent: {}
+[5.817490] (-) TimerEvent: {}
+[5.917812] (-) TimerEvent: {}
+[6.018136] (-) TimerEvent: {}
+[6.118404] (-) TimerEvent: {}
+[6.218633] (-) TimerEvent: {}
+[6.318889] (-) TimerEvent: {}
+[6.419126] (-) TimerEvent: {}
+[6.519458] (-) TimerEvent: {}
+[6.619804] (-) TimerEvent: {}
+[6.720133] (-) TimerEvent: {}
+[6.820452] (-) TimerEvent: {}
+[6.920678] (-) TimerEvent: {}
+[7.020935] (-) TimerEvent: {}
+[7.121196] (-) TimerEvent: {}
+[7.221525] (-) TimerEvent: {}
+[7.321759] (-) TimerEvent: {}
+[7.421982] (-) TimerEvent: {}
+[7.522318] (-) TimerEvent: {}
+[7.622656] (-) TimerEvent: {}
+[7.722966] (-) TimerEvent: {}
+[7.823277] (-) TimerEvent: {}
+[7.923601] (-) TimerEvent: {}
+[8.023839] (-) TimerEvent: {}
+[8.124068] (-) TimerEvent: {}
+[8.224306] (-) TimerEvent: {}
+[8.324539] (-) TimerEvent: {}
+[8.424849] (-) TimerEvent: {}
+[8.525191] (-) TimerEvent: {}
+[8.625463] (-) TimerEvent: {}
+[8.725832] (-) TimerEvent: {}
+[8.826077] (-) TimerEvent: {}
+[8.926318] (-) TimerEvent: {}
+[9.026531] (-) TimerEvent: {}
+[9.126793] (-) TimerEvent: {}
+[9.227124] (-) TimerEvent: {}
+[9.327425] (-) TimerEvent: {}
+[9.427727] (-) TimerEvent: {}
+[9.528037] (-) TimerEvent: {}
+[9.628292] (-) TimerEvent: {}
+[9.728530] (-) TimerEvent: {}
+[9.828938] (-) TimerEvent: {}
+[9.929169] (-) TimerEvent: {}
+[10.029413] (-) TimerEvent: {}
+[10.129636] (-) TimerEvent: {}
+[10.229911] (-) TimerEvent: {}
+[10.330215] (-) TimerEvent: {}
+[10.430559] (-) TimerEvent: {}
+[10.530886] (-) TimerEvent: {}
+[10.631212] (-) TimerEvent: {}
+[10.731460] (-) TimerEvent: {}
+[10.831768] (-) TimerEvent: {}
+[10.932095] (-) TimerEvent: {}
+[11.032342] (-) TimerEvent: {}
+[11.132572] (-) TimerEvent: {}
+[11.232938] (-) TimerEvent: {}
+[11.333244] (-) TimerEvent: {}
+[11.433532] (-) TimerEvent: {}
+[11.533817] (-) TimerEvent: {}
+[11.634197] (-) TimerEvent: {}
+[11.734418] (-) TimerEvent: {}
+[11.818672] (higher_layer_mvibot) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable mvibot_server\x1b[0m\n'}
+[11.834529] (-) TimerEvent: {}
+[11.934847] (-) TimerEvent: {}
+[12.035178] (-) TimerEvent: {}
+[12.135525] (-) TimerEvent: {}
+[12.235777] (-) TimerEvent: {}
+[12.336143] (-) TimerEvent: {}
+[12.433566] (higher_layer_mvibot) StdoutLine: {'line': b'[100%] Built target mvibot_server\n'}
+[12.436251] (-) TimerEvent: {}
+[12.442422] (higher_layer_mvibot) CommandEnded: {'returncode': 0}
+[12.443070] (higher_layer_mvibot) JobProgress: {'identifier': 'higher_layer_mvibot', 'progress': 'install'}
+[12.449661] (higher_layer_mvibot) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/mvibot/floorCleaningRobot_ws/build/higher_layer_mvibot'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/higher_layer_mvibot', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'XDG_SESSION_TYPE': 'wayland', 'ROS_APT_SOURCE_VERSION': '1.1.0', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2939', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'mvibot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/mvibot:@/tmp/.ICE-unix/2913,unix/mvibot:/tmp/.ICE-unix/2913', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/b7a177f3_03ee_4737_8328_c3bdd1e2124b', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.IPMDD3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.117', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/higher_layer_mvibot', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[12.455275] (higher_layer_mvibot) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[12.455609] (higher_layer_mvibot) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[12.455834] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot//launch/mvibot_manage_server_launch.py\n'}
+[12.462467] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot//launch/mvibot_map_server_launch.py\n'}
+[12.470386] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot//launch/mvibot_server_launch.py\n'}
+[12.476254] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot//launch/mvibot_slam_toolbox_launch.py\n'}
+[12.482039] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot//launch/tf2_web_republisher_launch.py\n'}
+[12.487965] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/lib/higher_layer_mvibot/mvibot_server\n'}
+[12.494444] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/ament_index/resource_index/package_run_dependencies/higher_layer_mvibot\n'}
+[12.500507] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/ament_index/resource_index/parent_prefix_path/higher_layer_mvibot\n'}
+[12.506368] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/environment/ament_prefix_path.sh\n'}
+[12.512420] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/environment/ament_prefix_path.dsv\n'}
+[12.518386] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/environment/path.sh\n'}
+[12.524052] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/environment/path.dsv\n'}
+[12.529789] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/local_setup.bash\n'}
+[12.536388] (-) TimerEvent: {}
+[12.536552] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/local_setup.sh\n'}
+[12.543638] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/local_setup.zsh\n'}
+[12.550553] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/local_setup.dsv\n'}
+[12.556793] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/package.dsv\n'}
+[12.563767] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/ament_index/resource_index/packages/higher_layer_mvibot\n'}
+[12.569968] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/cmake/higher_layer_mvibotConfig.cmake\n'}
+[12.575639] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/cmake/higher_layer_mvibotConfig-version.cmake\n'}
+[12.581570] (higher_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot/share/higher_layer_mvibot/package.xml\n'}
+[12.588495] (higher_layer_mvibot) CommandEnded: {'returncode': 0}
+[12.598746] (higher_layer_mvibot) JobEnded: {'identifier': 'higher_layer_mvibot', 'rc': 0}
+[12.599567] (-) EventReactorShutdown: {}

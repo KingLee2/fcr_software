@@ -1,0 +1,53 @@
+#!/bin/bash
+echo start
+echo run ros2 jazzy....
+echo start
+source /opt/ros/jazzy/setup.bash
+source /home/mvibot/floorCleaningRobot_ws/install/setup.bash
+export ROS_DOMAIN_ID=10
+# name and mode for robot
+name_seri="$(</home/mvibot/floorCleaningRobot_ws/config/name_seri)"
+mode="$(</home/mvibot/floorCleaningRobot_ws/config/mode)"
+robot_type_connect="$(</home/mvibot/floorCleaningRobot_ws/config/robot_type_connect)"
+# start control ros
+if [[ "$robot_type_connect" = "wifi" ]]
+then
+   echo robot_type_connect wifi
+   #
+   ip_check="$(ip -4 addr show $wifi_port | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
+   while [[ "$ip_check" = "" ]]
+   do
+	#nmcli connection up mvibot_network
+	sleep 1
+	ip_check="$(ip -4 addr show $wifi_port | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
+   done
+else
+   echo robot_type_connect lan
+   #
+   ip_check="$(ip -4 addr show $lan_port | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
+   while [[ "$ip_check" = "" ]]
+   do
+	#nmcli connection up mvibot_network
+	sleep 1
+	ip_check="$(ip -4 addr show $lan_port | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
+   done   
+fi
+
+#launch file
+ros2 launch rosbridge_server rosbridge_websocket_launch.xml &
+ros2 launch higher_layer_mvibot tf2_web_republisher_launch.py &
+ros2 launch higher_layer_mvibot mvibot_map_saver_launch.py mvibot_seri:="$name_seri" &
+if [[ "$mode" = "navigation" ]]
+then
+    ros2 launch higher_layer_mvibot mvibot_map_server_launch.py mvibot_seri:="$name_seri" &
+else
+    ros2 launch higher_layer_mvibot mvibot_slam_toolbox_launch.py mvibot_seri:="$name_seri" &
+fi
+ros2 launch higher_layer_mvibot mvibot_server_launch.py &
+while :
+do
+  echo "An Infinite loop"
+  # We can press Ctrl + C to exit the script
+  sleep 1
+done
+exit 0

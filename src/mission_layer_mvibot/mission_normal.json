@@ -1,0 +1,123 @@
+[
+    {
+        "mission_id":"1",
+        "triggers":[
+            {
+                "stop":{
+                    "type":"gpio",
+                    "parameters":{
+                        "input":{
+                            "1":"pullup"
+                        }
+                    },
+                    "time_out":"0",
+                    "contents":[]
+                }
+            },
+            {
+                "continues":{
+                    "type":"gpio",
+                    "parameters":{
+                        "input":{
+                            "2":"pullup"
+                        }
+                    },
+                    "time_out":"0",
+                    "contents":[]
+                }
+            }
+        ],
+        "contents":[
+            {
+                "id":"0",
+                "type":"start"
+            },
+            {
+                "id":"1",
+                "type":"group",
+                "parameters":{},
+                "time_out":"-1",
+                "content":{
+                    "body" : ["2","3","4","5"],
+                    "next" : "6"
+                }
+            },
+            {
+                "id":"2",
+                "type":"navigation",
+                "parameters":{
+                    "mode": "go_to_pose",
+                    "goal_position":[
+                        {
+                            "x": "2.5",
+                            "y": "0.0",
+                            "z": "0.707",
+                            "w": "0.707"
+                        }
+                    ],
+                    "area": []
+                },
+                "time_out":"30",
+                "content":{}
+            },
+	    {
+                "id":"3",
+                "type":"navigation",
+                "parameters":{
+                    "mode": "go_to_pose",
+                    "goal_position":[
+                        {
+                            "x": "2.5",
+                            "y": "1.5",
+                            "z": "-1.0",
+                            "w": "0.0"
+                        }
+                    ],
+                    "area": []
+                },
+                "time_out":"30",
+                "content":{}
+            },
+	    {
+                "id":"4",
+                "type":"navigation",
+                "parameters":{
+                    "mode": "go_to_pose",
+                    "goal_position":[
+                        {
+                            "x": "0.5",
+                            "y": "1.5",
+                            "z": "-0.707",
+                            "w": "0.707"
+                        }
+                    ],
+                    "area": []
+                },
+                "time_out":"30",
+                "content":{}
+            },
+	    {
+                "id":"5",
+                "type":"navigation",
+                "parameters":{
+                    "mode": "go_to_pose",
+                    "goal_position":[
+                        {
+                            "x": "0.0",
+                            "y": "0.0",
+                            "z": "0.0",
+                            "w": "1.0"
+                        }
+                    ],
+                    "area": []
+                },
+                "time_out":"30",
+                "content":{}
+            },
+            {
+                "id":"6",
+                "type":"end"
+            }
+        ]
+    }
+]
