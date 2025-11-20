@@ -15,13 +15,13 @@
         lower_threshold: 0.0
         upper_threshold: 4.5
         lower_replacement_value: 0.0
-        upper_replacement_value: 4.5
+        upper_replacement_value: 0.0 #4.5
     filter3:
       name: box_filter
       type: laser_filters/LaserScanBoxFilter
       params:
         box_frame: mvibot/base_link # $(arg mvibot_seri)/base_footprint
-        min_x: -0.705
+        min_x: -0.7
         max_x: 0.65
         min_y: -0.285
         max_y: 0.285

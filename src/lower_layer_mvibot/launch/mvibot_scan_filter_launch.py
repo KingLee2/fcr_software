@@ -102,7 +102,7 @@ def generate_launch_description():
 					],
 		parameters=[LaunchConfiguration("param_file_4"),
 					{
-						"filter1.params.box_frame": [LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/base_link")]
+						"filter2.params.box_frame": [LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/base_link")]
 					}],
         )
 	ld = LaunchDescription()

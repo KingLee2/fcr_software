@@ -71,7 +71,7 @@
   </link>
   
   <joint name="base_lidar_2" type="fixed">     <!--type: loai khop, fixed: co dinh-->
-     <origin rpy="0 0 ${pi/2}" xyz="-0.546 -0.24 0.222"/>
+     <origin rpy="0 0 ${pi/2}" xyz="-0.555 -0.24 0.222"/>
      <parent link="$(arg mvibot_seri)/base_link"/>
      <child link="$(arg mvibot_seri)/base_lidar_2"/>
   </joint>
@@ -83,14 +83,14 @@
   </link>
   
   <joint name="base_lidar_1" type="fixed">     <!--type: loai khop, fixed: co dinh-->
-     <origin rpy="0 0 ${-pi/2}" xyz="0.392 0.241 0.222"/>
+     <origin rpy="0 0 ${-pi/2}" xyz="0.415 0.241 0.222"/>
      <parent link="$(arg mvibot_seri)/base_link"/>
      <child link="$(arg mvibot_seri)/base_lidar_1"/>
   </joint>
 
   <!--MB22_916b/base_camera 1 update to 2-->
     <joint name="camera2" type="fixed">
-        <origin rpy="${-pi/2} 0 ${-pi/9}" xyz="0.438 0.126 0.411"/>
+        <origin rpy="${-pi/2} 0 ${pi/9}" xyz="0.46 -0.126 0.411"/>
         <parent link="$(arg mvibot_seri)/base_link"/>
         <child link="camera2_$(arg mvibot_seri)"/>
     </joint>
@@ -98,7 +98,7 @@
     </link>
     <!--MB22_916b/base_camera 2 update to 1-->
     <joint name="camera1" type="fixed">
-        <origin rpy="${-pi/2} 0 ${pi/9}" xyz="0.438 -0.126 0.411"/>
+        <origin rpy="${-pi/2} 0 ${-pi/9}" xyz="0.46 0.126 0.411"/>
         <parent link="$(arg mvibot_seri)/base_link"/>
         <child link="camera1_$(arg mvibot_seri)"/>
     </joint>

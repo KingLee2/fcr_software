@@ -1070,35 +1070,38 @@ nav2_msgs::msg::Costmap navigation_function::getLocalCostmap(){
 }
 void navigation_function::clearLocalCostmap(){
     RCLCPP_INFO(rclcpp::get_logger("Navigation"), "Clear Local costmap");
-    while(clear_costmap_local_srv_->wait_for_service(std::chrono::duration<float>(0.2))){
+    if(!clear_costmap_local_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
         RCLCPP_INFO(rclcpp::get_logger("Navigation"),"Clear Local costmap service not available, waiting ...");
+        return;
     }
     //send request
     auto req = std::make_shared<nav2_msgs::srv::ClearEntireCostmap_Request>();
-    auto future = clear_costmap_local_srv_->async_send_request(req);
-    //wait respond
-    if(rclcpp::spin_until_future_complete(this->get_node_base_interface(),future)==rclcpp::FutureReturnCode::SUCCESS){
-        RCLCPP_INFO(rclcpp::get_logger("Navigation"),"Clearing of Local Costmap successed");
-    }
-    else{
-        RCLCPP_ERROR(rclcpp::get_logger("Navigation"),"Clearing of Local Costmap failed");
-    }
+    auto clear_local_costmap_callback = [this](rclcpp::Client<nav2_msgs::srv::ClearEntireCostmap>::SharedFuture future){
+        auto result_code = future.wait_for(std::chrono::seconds(0));
+        if (result_code == std::future_status::ready) {
+            RCLCPP_INFO(this->get_logger(), "Local costmap cleared successfully!");
+        } else {
+            RCLCPP_ERROR(this->get_logger(), "Local costmap cleared fail");
+        }
+    };
+    auto future = clear_costmap_local_srv_->async_send_request(req, clear_local_costmap_callback);
 }
 void navigation_function::clearGlobalCostmap(){
     RCLCPP_INFO(rclcpp::get_logger("Navigation"), "Clear Global costmap");
-    while(clear_costmap_global_srv_->wait_for_service(std::chrono::duration<float>(0.2))){
+    if(!clear_costmap_global_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
         RCLCPP_INFO(rclcpp::get_logger("Navigation"),"Clear Global costmap service not available, waiting ...");
     }
     //send request
     auto req = std::make_shared<nav2_msgs::srv::ClearEntireCostmap_Request>();
-    auto future = clear_costmap_global_srv_->async_send_request(req);
-    //wait respond
-    if(rclcpp::spin_until_future_complete(this->get_node_base_interface(),future)==rclcpp::FutureReturnCode::SUCCESS){
-        RCLCPP_INFO(rclcpp::get_logger("Navigation"),"Clearing of Global Costmap successed");
-    }
-    else{
-        RCLCPP_ERROR(rclcpp::get_logger("Navigation"),"Clearing of Global Costmap failed");
-    }
+    auto clear_global_costmap_callback = [this](rclcpp::Client<nav2_msgs::srv::ClearEntireCostmap>::SharedFuture future){
+        auto result_code = future.wait_for(std::chrono::seconds(0));
+        if (result_code == std::future_status::ready) {
+            RCLCPP_INFO(this->get_logger(), "Global costmap cleared successfully!");
+        } else {
+            RCLCPP_ERROR(this->get_logger(), "Global costmap cleared fail");
+        }
+    };
+    auto future = clear_costmap_global_srv_->async_send_request(req, clear_global_costmap_callback);
 }
 void navigation_function::clearAllCostmap(){
     this->clearGlobalCostmap();
@@ -1214,6 +1217,7 @@ int navigation_function::action(){
             //kiem tra trang thai dang hoat dong
             if(step == 0){
                 //send goal
+		clearAllCostmap();
                 goToPose(goal_position_);
                 step = 1;
                 return Active_;
@@ -1276,6 +1280,7 @@ int navigation_function::action(){
             //kiem tra trang thai dang hoat dong
             if(step == 0){
                 //send goals
+		clearAllCostmap();
                 goThroughPoses(many_goal_position_);
                 step = 1;
                 return Active_;
@@ -1334,6 +1339,7 @@ int navigation_function::action(){
             //kiem tra trang thai dang hoat dong
             if(step == 0){
                 //send goal
+		clearAllCostmap();
                 navCompleteCoverage(polygons);
                 step = 1;
                 return Active_;

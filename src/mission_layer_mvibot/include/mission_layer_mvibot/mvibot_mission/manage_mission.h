@@ -1152,9 +1152,10 @@ void manage_mission::execute_mission(){
     static string active_content = "";
     static int res;
     if(motor_left_ready==0 || motor_right_ready==0) {
+	if(status == Active_) status = Stop_;
         RCLCPP_INFO(this->get_logger(),"motor is not ready");
         send_history("error","motor is not ready");
-        return;
+       // return;
     }
     //if(battery_soc1 <= 20 || battery_soc2 <= 20) want_to_charge = 1;
     //else want_to_charge = 0;

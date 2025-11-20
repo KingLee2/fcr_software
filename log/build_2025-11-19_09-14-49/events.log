@@ -1,0 +1,933 @@
+[0.000000] (-) TimerEvent: {}
+[0.000318] (-) JobUnselected: {'identifier': 'fields2cover'}
+[0.000361] (-) JobUnselected: {'identifier': 'higher_layer_mvibot'}
+[0.000388] (-) JobUnselected: {'identifier': 'ira_laser_tools'}
+[0.000409] (-) JobUnselected: {'identifier': 'lower_layer_mvibot'}
+[0.000424] (-) JobUnselected: {'identifier': 'opennav_coverage'}
+[0.000444] (-) JobUnselected: {'identifier': 'opennav_coverage_bt'}
+[0.000463] (-) JobUnselected: {'identifier': 'opennav_coverage_demo'}
+[0.000480] (-) JobUnselected: {'identifier': 'opennav_coverage_msgs'}
+[0.000556] (-) JobUnselected: {'identifier': 'opennav_coverage_navigator'}
+[0.000577] (-) JobUnselected: {'identifier': 'opennav_row_coverage'}
+[0.001276] (-) JobUnselected: {'identifier': 'pointcloud_to_laserscan'}
+[0.001366] (-) JobUnselected: {'identifier': 'realsense2_camera'}
+[0.001395] (-) JobUnselected: {'identifier': 'realsense2_camera_msgs'}
+[0.001433] (-) JobUnselected: {'identifier': 'realsense2_description'}
+[0.001459] (-) JobUnselected: {'identifier': 'sllidar_ros2'}
+[0.001489] (-) JobUnselected: {'identifier': 'tf2_web_republisher'}
+[0.001516] (-) JobUnselected: {'identifier': 'tf2_web_republisher_interfaces'}
+[0.001544] (mission_layer_mvibot) JobQueued: {'identifier': 'mission_layer_mvibot', 'dependencies': OrderedDict({'opennav_coverage_msgs': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs'})}
+[0.001599] (mission_layer_mvibot) JobStarted: {'identifier': 'mission_layer_mvibot'}
+[0.030198] (mission_layer_mvibot) JobProgress: {'identifier': 'mission_layer_mvibot', 'progress': 'cmake'}
+[0.031814] (mission_layer_mvibot) JobProgress: {'identifier': 'mission_layer_mvibot', 'progress': 'build'}
+[0.033549] (mission_layer_mvibot) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/mvibot/floorCleaningRobot_ws/build/mission_layer_mvibot', '--', '-j8', '-l8'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/mission_layer_mvibot', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'SSH_CLIENT': '10.0.69.20 40010 22', 'LC_TIME': 'vi_VN', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher/lib:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces/lib:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/lib:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'SSH_TTY': '/dev/pts/2', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'vi_VN', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'PKG_CONFIG_PATH': '/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/x86_64-linux-gnu/pkgconfig:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/pkgconfig', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'LC_ADDRESS': 'vi_VN', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LC_TELEPHONE': 'vi_VN', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces:/home/mvibot/floorCleaningRobot_ws/install/sllidar_ros2:/home/mvibot/floorCleaningRobot_ws/install/realsense2_description:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/lower_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools:/home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'vi_VN', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'vi_VN', 'LC_IDENTIFICATION': 'vi_VN', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/mission_layer_mvibot', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.0.69.20 40010 10.0.69.124 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_demo:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'vi_VN', 'LC_PAPER': 'vi_VN', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces:/home/mvibot/floorCleaningRobot_ws/install/sllidar_ros2:/home/mvibot/floorCleaningRobot_ws/install/realsense2_description:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/lower_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools:/home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/fields2cover:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy'}), 'shell': False}
+[0.099641] (-) TimerEvent: {}
+[0.199961] (-) TimerEvent: {}
+[0.300267] (-) TimerEvent: {}
+[0.371236] (mission_layer_mvibot) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o\x1b[0m\n'}
+[0.400399] (-) TimerEvent: {}
+[0.500738] (-) TimerEvent: {}
+[0.601332] (-) TimerEvent: {}
+[0.701558] (-) TimerEvent: {}
+[0.801797] (-) TimerEvent: {}
+[0.902042] (-) TimerEvent: {}
+[1.002291] (-) TimerEvent: {}
+[1.102531] (-) TimerEvent: {}
+[1.202807] (-) TimerEvent: {}
+[1.303092] (-) TimerEvent: {}
+[1.403413] (-) TimerEvent: {}
+[1.503713] (-) TimerEvent: {}
+[1.603973] (-) TimerEvent: {}
+[1.704271] (-) TimerEvent: {}
+[1.804551] (-) TimerEvent: {}
+[1.904824] (-) TimerEvent: {}
+[2.005282] (-) TimerEvent: {}
+[2.105536] (-) TimerEvent: {}
+[2.205766] (-) TimerEvent: {}
+[2.306046] (-) TimerEvent: {}
+[2.406354] (-) TimerEvent: {}
+[2.506579] (-) TimerEvent: {}
+[2.606932] (-) TimerEvent: {}
+[2.707250] (-) TimerEvent: {}
+[2.807515] (-) TimerEvent: {}
+[2.907780] (-) TimerEvent: {}
+[3.008041] (-) TimerEvent: {}
+[3.108331] (-) TimerEvent: {}
+[3.208604] (-) TimerEvent: {}
+[3.308894] (-) TimerEvent: {}
+[3.409193] (-) TimerEvent: {}
+[3.509599] (-) TimerEvent: {}
+[3.609931] (-) TimerEvent: {}
+[3.710304] (-) TimerEvent: {}
+[3.810783] (-) TimerEvent: {}
+[3.911135] (-) TimerEvent: {}
+[4.011904] (-) TimerEvent: {}
+[4.112332] (-) TimerEvent: {}
+[4.212639] (-) TimerEvent: {}
+[4.312926] (-) TimerEvent: {}
+[4.413272] (-) TimerEvent: {}
+[4.513586] (-) TimerEvent: {}
+[4.613836] (-) TimerEvent: {}
+[4.714143] (-) TimerEvent: {}
+[4.814404] (-) TimerEvent: {}
+[4.914801] (-) TimerEvent: {}
+[5.015084] (-) TimerEvent: {}
+[5.115529] (-) TimerEvent: {}
+[5.215797] (-) TimerEvent: {}
+[5.316027] (-) TimerEvent: {}
+[5.416270] (-) TimerEvent: {}
+[5.516582] (-) TimerEvent: {}
+[5.616908] (-) TimerEvent: {}
+[5.717222] (-) TimerEvent: {}
+[5.817901] (-) TimerEvent: {}
+[5.918228] (-) TimerEvent: {}
+[6.018539] (-) TimerEvent: {}
+[6.118816] (-) TimerEvent: {}
+[6.219115] (-) TimerEvent: {}
+[6.319458] (-) TimerEvent: {}
+[6.419877] (-) TimerEvent: {}
+[6.520389] (-) TimerEvent: {}
+[6.620690] (-) TimerEvent: {}
+[6.720949] (-) TimerEvent: {}
+[6.821250] (-) TimerEvent: {}
+[6.921502] (-) TimerEvent: {}
+[7.021904] (-) TimerEvent: {}
+[7.122222] (-) TimerEvent: {}
+[7.222560] (-) TimerEvent: {}
+[7.322864] (-) TimerEvent: {}
+[7.423318] (-) TimerEvent: {}
+[7.523598] (-) TimerEvent: {}
+[7.623896] (-) TimerEvent: {}
+[7.724369] (-) TimerEvent: {}
+[7.824706] (-) TimerEvent: {}
+[7.925150] (-) TimerEvent: {}
+[8.025444] (-) TimerEvent: {}
+[8.125743] (-) TimerEvent: {}
+[8.227035] (-) TimerEvent: {}
+[8.327335] (-) TimerEvent: {}
+[8.427659] (-) TimerEvent: {}
+[8.527996] (-) TimerEvent: {}
+[8.628442] (-) TimerEvent: {}
+[8.729080] (-) TimerEvent: {}
+[8.829474] (-) TimerEvent: {}
+[8.929825] (-) TimerEvent: {}
+[9.030251] (-) TimerEvent: {}
+[9.130601] (-) TimerEvent: {}
+[9.230945] (-) TimerEvent: {}
+[9.331313] (-) TimerEvent: {}
+[9.431659] (-) TimerEvent: {}
+[9.532012] (-) TimerEvent: {}
+[9.632357] (-) TimerEvent: {}
+[9.732704] (-) TimerEvent: {}
+[9.833269] (-) TimerEvent: {}
+[9.933647] (-) TimerEvent: {}
+[10.033952] (-) TimerEvent: {}
+[10.134260] (-) TimerEvent: {}
+[10.234560] (-) TimerEvent: {}
+[10.334864] (-) TimerEvent: {}
+[10.435179] (-) TimerEvent: {}
+[10.535517] (-) TimerEvent: {}
+[10.635889] (-) TimerEvent: {}
+[10.736244] (-) TimerEvent: {}
+[10.836585] (-) TimerEvent: {}
+[10.936923] (-) TimerEvent: {}
+[11.037228] (-) TimerEvent: {}
+[11.137504] (-) TimerEvent: {}
+[11.238646] (-) TimerEvent: {}
+[11.317837] (mission_layer_mvibot) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/mvibot_mission.cpp:3\x1b[m\x1b[K:\n'}
+[11.318127] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:\x1b[m\x1b[K In lambda function:\n'}
+[11.318242] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:370:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.318347] (mission_layer_mvibot) StderrLine: {'line': b'  370 |                 for(int i=0;\x1b[01;35m\x1b[Ki<data.data1.size()\x1b[m\x1b[K;i++){\n'}
+[11.318453] (mission_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.319284] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:367:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Klive_f\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.319706] (mission_layer_mvibot) StderrLine: {'line': b'  367 |                 static int live=-1,\x1b[01;35m\x1b[Klive_f\x1b[m\x1b[K=-1,brake=-1,brake_f=-1,enable=-1,enable_f=-1,error=-1,error_f=-1;\n'}
+[11.319845] (mission_layer_mvibot) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.319947] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:367:55:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kbrake_f\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.320367] (mission_layer_mvibot) StderrLine: {'line': b'  367 |                 static int live=-1,live_f=-1,brake=-1,\x1b[01;35m\x1b[Kbrake_f\x1b[m\x1b[K=-1,enable=-1,enable_f=-1,error=-1,error_f=-1;\n'}
+[11.320454] (mission_layer_mvibot) StderrLine: {'line': b'      |                                                       \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[11.320642] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:367:76:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kenable_f\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.320765] (mission_layer_mvibot) StderrLine: {'line': b'  367 |                 static int live=-1,live_f=-1,brake=-1,brake_f=-1,enable=-1,\x1b[01;35m\x1b[Kenable_f\x1b[m\x1b[K=-1,error=-1,error_f=-1;\n'}
+[11.320881] (mission_layer_mvibot) StderrLine: {'line': b'      |                                                                            \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[11.321077] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:367:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kvariable \xe2\x80\x98\x1b[01m\x1b[Kerror\x1b[m\x1b[K\xe2\x80\x99 set but not used [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable\x07-Wunused-but-set-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.321192] (mission_layer_mvibot) StderrLine: {'line': b'  367 |                 static int live=-1,live_f=-1,brake=-1,brake_f=-1,enable=-1,enable_f=-1,\x1b[01;35m\x1b[Kerror\x1b[m\x1b[K=-1,error_f=-1;\n'}
+[11.321280] (mission_layer_mvibot) StderrLine: {'line': b'      |                                                                                        \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[11.321366] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:367:97:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kerror_f\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.321454] (mission_layer_mvibot) StderrLine: {'line': b'  367 |                 static int live=-1,live_f=-1,brake=-1,brake_f=-1,enable=-1,enable_f=-1,error=-1,\x1b[01;35m\x1b[Kerror_f\x1b[m\x1b[K=-1;\n'}
+[11.321605] (mission_layer_mvibot) StderrLine: {'line': b'      |                                                                                                 \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[11.321729] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:\x1b[m\x1b[K In lambda function:\n'}
+[11.321854] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:399:30:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.321952] (mission_layer_mvibot) StderrLine: {'line': b'  399 |                 for(int i=0;\x1b[01;35m\x1b[Ki<data.data1.size()\x1b[m\x1b[K;i++){\n'}
+[11.322051] (mission_layer_mvibot) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.322996] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:395:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Klive_f\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.323147] (mission_layer_mvibot) StderrLine: {'line': b'  395 |                 static int live=-1,\x1b[01;35m\x1b[Klive_f\x1b[m\x1b[K=-1,brake=-1,brake_f=-1,enable=-1,enable_f=-1,error=-1,error_f=-1;\n'}
+[11.323256] (mission_layer_mvibot) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[11.323362] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:395:55:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kbrake_f\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.323470] (mission_layer_mvibot) StderrLine: {'line': b'  395 |                 static int live=-1,live_f=-1,brake=-1,\x1b[01;35m\x1b[Kbrake_f\x1b[m\x1b[K=-1,enable=-1,enable_f=-1,error=-1,error_f=-1;\n'}
+[11.323575] (mission_layer_mvibot) StderrLine: {'line': b'      |                                                       \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[11.323684] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:395:76:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kenable_f\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.323798] (mission_layer_mvibot) StderrLine: {'line': b'  395 |                 static int live=-1,live_f=-1,brake=-1,brake_f=-1,enable=-1,\x1b[01;35m\x1b[Kenable_f\x1b[m\x1b[K=-1,error=-1,error_f=-1;\n'}
+[11.323980] (mission_layer_mvibot) StderrLine: {'line': b'      |                                                                            \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[11.324097] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:395:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kvariable \xe2\x80\x98\x1b[01m\x1b[Kerror\x1b[m\x1b[K\xe2\x80\x99 set but not used [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable\x07-Wunused-but-set-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.324223] (mission_layer_mvibot) StderrLine: {'line': b'  395 |                 static int live=-1,live_f=-1,brake=-1,brake_f=-1,enable=-1,enable_f=-1,\x1b[01;35m\x1b[Kerror\x1b[m\x1b[K=-1,error_f=-1;\n'}
+[11.324329] (mission_layer_mvibot) StderrLine: {'line': b'      |                                                                                        \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[11.324434] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:395:97:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kerror_f\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.324545] (mission_layer_mvibot) StderrLine: {'line': b'  395 |                 static int live=-1,live_f=-1,brake=-1,brake_f=-1,enable=-1,enable_f=-1,error=-1,\x1b[01;35m\x1b[Kerror_f\x1b[m\x1b[K=-1;\n'}
+[11.324650] (mission_layer_mvibot) StderrLine: {'line': b'      |                                                                                                 \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[11.324758] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:\x1b[m\x1b[K In lambda function:\n'}
+[11.324864] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:429:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.325260] (mission_layer_mvibot) StderrLine: {'line': b'  429 |                     for(int i=1;\x1b[01;35m\x1b[Ki<data.data1.size()\x1b[m\x1b[K;i++){\n'}
+[11.325381] (mission_layer_mvibot) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.338732] (-) TimerEvent: {}
+[11.439452] (-) TimerEvent: {}
+[11.539742] (-) TimerEvent: {}
+[11.640095] (-) TimerEvent: {}
+[11.689859] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kint manage_mission::\x1b[01;32m\x1b[Kexecute_content\x1b[m\x1b[K(mission&, std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >&, std::string&, std::string&, int&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.690136] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:1053:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.690442] (mission_layer_mvibot) StderrLine: {'line': b' 1053 |         if(\x1b[01;35m\x1b[Ki == and_contents_list.size()\x1b[m\x1b[K){\n'}
+[11.690684] (mission_layer_mvibot) StderrLine: {'line': b'      |            \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.691637] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:1078:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.691831] (mission_layer_mvibot) StderrLine: {'line': b' 1078 |         if(\x1b[01;35m\x1b[Ki == or_contents_list.size()\x1b[m\x1b[K){\n'}
+[11.692013] (mission_layer_mvibot) StderrLine: {'line': b'      |            \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.720560] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid manage_mission::\x1b[01;32m\x1b[Kexecute_mission\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.720819] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:1148:16:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kvariable \xe2\x80\x98\x1b[01m\x1b[Kaction_mode_mission\x1b[m\x1b[K\xe2\x80\x99 set but not used [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable\x07-Wunused-but-set-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[11.720990] (mission_layer_mvibot) StderrLine: {'line': b' 1148 |     static int \x1b[01;35m\x1b[Kaction_mode_mission\x1b[m\x1b[K;\n'}
+[11.721116] (mission_layer_mvibot) StderrLine: {'line': b'      |                \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[11.740187] (-) TimerEvent: {}
+[11.840423] (-) TimerEvent: {}
+[11.940657] (-) TimerEvent: {}
+[12.040905] (-) TimerEvent: {}
+[12.141151] (-) TimerEvent: {}
+[12.241395] (-) TimerEvent: {}
+[12.341684] (-) TimerEvent: {}
+[12.441921] (-) TimerEvent: {}
+[12.542187] (-) TimerEvent: {}
+[12.642453] (-) TimerEvent: {}
+[12.742747] (-) TimerEvent: {}
+[12.842992] (-) TimerEvent: {}
+[12.943223] (-) TimerEvent: {}
+[13.043594] (-) TimerEvent: {}
+[13.143835] (-) TimerEvent: {}
+[13.244205] (-) TimerEvent: {}
+[13.344529] (-) TimerEvent: {}
+[13.444785] (-) TimerEvent: {}
+[13.545280] (-) TimerEvent: {}
+[13.645602] (-) TimerEvent: {}
+[13.746058] (-) TimerEvent: {}
+[13.846388] (-) TimerEvent: {}
+[13.946716] (-) TimerEvent: {}
+[14.047143] (-) TimerEvent: {}
+[14.147442] (-) TimerEvent: {}
+[14.247744] (-) TimerEvent: {}
+[14.348032] (-) TimerEvent: {}
+[14.448330] (-) TimerEvent: {}
+[14.548622] (-) TimerEvent: {}
+[14.648919] (-) TimerEvent: {}
+[14.749219] (-) TimerEvent: {}
+[14.849458] (-) TimerEvent: {}
+[14.949720] (-) TimerEvent: {}
+[15.050006] (-) TimerEvent: {}
+[15.097091] (mission_layer_mvibot) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/mvibot_mission.cpp:4\x1b[m\x1b[K:\n'}
+[15.097329] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/navigation_function.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kdouble* navigation_function::\x1b[01;32m\x1b[Kget_position_tf\x1b[m\x1b[K(std::string, std::string)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.097492] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/navigation_function.h:289:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kvariable \xe2\x80\x98\x1b[01m\x1b[Kz\x1b[m\x1b[K\xe2\x80\x99 set but not used [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-but-set-variable\x07-Wunused-but-set-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[15.097634] (mission_layer_mvibot) StderrLine: {'line': b'  289 |     static double x,y,\x1b[01;35m\x1b[Kz\x1b[m\x1b[K,thz,thw;\n'}
+[15.097743] (mission_layer_mvibot) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[15.150123] (-) TimerEvent: {}
+[15.152836] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/navigation_function.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid navigation_function::\x1b[01;32m\x1b[Kupdate_polygon\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.153059] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/navigation_function.h:492:19:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<geometry_msgs::msg::Point32_<std::allocator<void> >, std::allocator<geometry_msgs::msg::Point32_<std::allocator<void> > > >::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[15.153165] (mission_layer_mvibot) StderrLine: {'line': b'  492 |     for(int i=0; \x1b[01;35m\x1b[Ki<polygons[0].points.size()\x1b[m\x1b[K;i++){\n'}
+[15.153254] (mission_layer_mvibot) StderrLine: {'line': b'      |                  \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[15.250217] (-) TimerEvent: {}
+[15.350487] (-) TimerEvent: {}
+[15.367368] (mission_layer_mvibot) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/mvibot_mission.cpp:8\x1b[m\x1b[K:\n'}
+[15.367633] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid multiple_variable_local::\x1b[01;32m\x1b[Kadd_var\x1b[m\x1b[K(variable_local)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.367767] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:31:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<variable_local>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[15.367895] (mission_layer_mvibot) StderrLine: {'line': b'   31 |     for(int i=0;\x1b[01;35m\x1b[Ki<var.size()\x1b[m\x1b[K;i++){\n'}
+[15.368019] (mission_layer_mvibot) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[15.368712] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid multiple_variable_local::\x1b[01;32m\x1b[Kupdate_var\x1b[m\x1b[K(variable_local)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.368875] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:45:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<variable_local>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[15.369247] (mission_layer_mvibot) StderrLine: {'line': b'   45 |     for(int i=0;\x1b[01;35m\x1b[Ki<var.size()\x1b[m\x1b[K;i++){\n'}
+[15.369579] (mission_layer_mvibot) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[15.369985] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid multiple_variable_local::\x1b[01;32m\x1b[Kreset_all\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.370866] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:58:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<variable_local>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[15.371021] (mission_layer_mvibot) StderrLine: {'line': b'   58 |     for(int i=0;\x1b[01;35m\x1b[Ki<var.size()\x1b[m\x1b[K;i++){\n'}
+[15.371141] (mission_layer_mvibot) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[15.371254] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid multiple_variable_local::\x1b[01;32m\x1b[Kprint\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.371364] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:68:18:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<variable_local>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[15.371478] (mission_layer_mvibot) StderrLine: {'line': b'   68 |     for(int i=0;\x1b[01;35m\x1b[Ki<var.size()\x1b[m\x1b[K;i++){\n'}
+[15.371569] (mission_layer_mvibot) StderrLine: {'line': b'      |                 \x1b[01;35m\x1b[K~^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[15.388954] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid variable_function::\x1b[01;32m\x1b[Kpub_variable\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.389207] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:208:22:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<variable_local>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[15.389349] (mission_layer_mvibot) StderrLine: {'line': b'  208 |         for(int i=0;\x1b[01;35m\x1b[Ki<my_vars_local.var.size()\x1b[m\x1b[K;i++){\n'}
+[15.389464] (mission_layer_mvibot) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[15.413896] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kint variable_function::\x1b[01;32m\x1b[Kaction\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.414163] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/variable_function.h:238:22:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<variable_local>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[15.414295] (mission_layer_mvibot) StderrLine: {'line': b'  238 |         for(int i=0;\x1b[01;35m\x1b[Ki<my_vars_local.var.size()\x1b[m\x1b[K;i++){\n'}
+[15.414395] (mission_layer_mvibot) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K~^~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[15.450673] (-) TimerEvent: {}
+[15.461144] (mission_layer_mvibot) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/mvibot_mission.cpp:9\x1b[m\x1b[K:\n'}
+[15.461415] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/gpio_function.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kint gpio_function::\x1b[01;32m\x1b[Kaction\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.461559] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/gpio_function.h:164:16:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kvalue_return\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[15.461685] (mission_layer_mvibot) StderrLine: {'line': b'  164 |     static int \x1b[01;35m\x1b[Kvalue_return\x1b[m\x1b[K;\n'}
+[15.461810] (mission_layer_mvibot) StderrLine: {'line': b'      |                \x1b[01;35m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[15.550771] (-) TimerEvent: {}
+[15.651127] (-) TimerEvent: {}
+[15.751515] (-) TimerEvent: {}
+[15.851789] (-) TimerEvent: {}
+[15.952165] (-) TimerEvent: {}
+[16.052449] (-) TimerEvent: {}
+[16.152741] (-) TimerEvent: {}
+[16.253002] (-) TimerEvent: {}
+[16.353234] (-) TimerEvent: {}
+[16.453571] (-) TimerEvent: {}
+[16.554716] (-) TimerEvent: {}
+[16.655074] (-) TimerEvent: {}
+[16.755494] (-) TimerEvent: {}
+[16.855850] (-) TimerEvent: {}
+[16.956191] (-) TimerEvent: {}
+[17.056557] (-) TimerEvent: {}
+[17.156909] (-) TimerEvent: {}
+[17.257230] (-) TimerEvent: {}
+[17.358302] (-) TimerEvent: {}
+[17.458606] (-) TimerEvent: {}
+[17.558863] (-) TimerEvent: {}
+[17.659133] (-) TimerEvent: {}
+[17.759386] (-) TimerEvent: {}
+[17.859654] (-) TimerEvent: {}
+[17.959895] (-) TimerEvent: {}
+[18.060225] (-) TimerEvent: {}
+[18.160539] (-) TimerEvent: {}
+[18.260868] (-) TimerEvent: {}
+[18.361303] (-) TimerEvent: {}
+[18.461743] (-) TimerEvent: {}
+[18.562103] (-) TimerEvent: {}
+[18.662430] (-) TimerEvent: {}
+[18.762712] (-) TimerEvent: {}
+[18.863014] (-) TimerEvent: {}
+[18.963262] (-) TimerEvent: {}
+[19.063677] (-) TimerEvent: {}
+[19.164013] (-) TimerEvent: {}
+[19.264275] (-) TimerEvent: {}
+[19.364590] (-) TimerEvent: {}
+[19.464932] (-) TimerEvent: {}
+[19.565225] (-) TimerEvent: {}
+[19.665508] (-) TimerEvent: {}
+[19.766000] (-) TimerEvent: {}
+[19.866381] (-) TimerEvent: {}
+[19.966738] (-) TimerEvent: {}
+[20.067044] (-) TimerEvent: {}
+[20.167390] (-) TimerEvent: {}
+[20.267794] (-) TimerEvent: {}
+[20.368108] (-) TimerEvent: {}
+[20.468402] (-) TimerEvent: {}
+[20.568840] (-) TimerEvent: {}
+[20.669247] (-) TimerEvent: {}
+[20.769590] (-) TimerEvent: {}
+[20.870220] (-) TimerEvent: {}
+[20.970603] (-) TimerEvent: {}
+[21.070909] (-) TimerEvent: {}
+[21.171247] (-) TimerEvent: {}
+[21.271540] (-) TimerEvent: {}
+[21.371862] (-) TimerEvent: {}
+[21.472224] (-) TimerEvent: {}
+[21.572551] (-) TimerEvent: {}
+[21.672876] (-) TimerEvent: {}
+[21.773163] (-) TimerEvent: {}
+[21.873414] (-) TimerEvent: {}
+[21.973771] (-) TimerEvent: {}
+[22.074022] (-) TimerEvent: {}
+[22.174455] (-) TimerEvent: {}
+[22.275673] (-) TimerEvent: {}
+[22.375995] (-) TimerEvent: {}
+[22.476333] (-) TimerEvent: {}
+[22.577024] (-) TimerEvent: {}
+[22.677307] (-) TimerEvent: {}
+[22.777591] (-) TimerEvent: {}
+[22.878041] (-) TimerEvent: {}
+[22.978340] (-) TimerEvent: {}
+[23.078666] (-) TimerEvent: {}
+[23.178995] (-) TimerEvent: {}
+[23.279285] (-) TimerEvent: {}
+[23.379591] (-) TimerEvent: {}
+[23.479864] (-) TimerEvent: {}
+[23.580182] (-) TimerEvent: {}
+[23.680503] (-) TimerEvent: {}
+[23.780808] (-) TimerEvent: {}
+[23.881132] (-) TimerEvent: {}
+[23.981427] (-) TimerEvent: {}
+[24.081762] (-) TimerEvent: {}
+[24.182042] (-) TimerEvent: {}
+[24.282376] (-) TimerEvent: {}
+[24.382718] (-) TimerEvent: {}
+[24.483119] (-) TimerEvent: {}
+[24.583717] (-) TimerEvent: {}
+[24.684026] (-) TimerEvent: {}
+[24.784301] (-) TimerEvent: {}
+[24.884562] (-) TimerEvent: {}
+[24.984840] (-) TimerEvent: {}
+[25.085163] (-) TimerEvent: {}
+[25.185474] (-) TimerEvent: {}
+[25.285744] (-) TimerEvent: {}
+[25.386015] (-) TimerEvent: {}
+[25.486289] (-) TimerEvent: {}
+[25.586562] (-) TimerEvent: {}
+[25.687026] (-) TimerEvent: {}
+[25.787355] (-) TimerEvent: {}
+[25.888981] (-) TimerEvent: {}
+[25.989221] (-) TimerEvent: {}
+[26.089542] (-) TimerEvent: {}
+[26.189835] (-) TimerEvent: {}
+[26.290087] (-) TimerEvent: {}
+[26.390319] (-) TimerEvent: {}
+[26.490555] (-) TimerEvent: {}
+[26.590800] (-) TimerEvent: {}
+[26.691110] (-) TimerEvent: {}
+[26.791386] (-) TimerEvent: {}
+[26.891694] (-) TimerEvent: {}
+[26.991947] (-) TimerEvent: {}
+[27.092256] (-) TimerEvent: {}
+[27.192578] (-) TimerEvent: {}
+[27.292894] (-) TimerEvent: {}
+[27.393219] (-) TimerEvent: {}
+[27.493657] (-) TimerEvent: {}
+[27.595156] (-) TimerEvent: {}
+[27.695466] (-) TimerEvent: {}
+[27.796048] (-) TimerEvent: {}
+[27.896425] (-) TimerEvent: {}
+[27.996701] (-) TimerEvent: {}
+[28.097094] (-) TimerEvent: {}
+[28.197432] (-) TimerEvent: {}
+[28.297818] (-) TimerEvent: {}
+[28.398105] (-) TimerEvent: {}
+[28.498376] (-) TimerEvent: {}
+[28.598646] (-) TimerEvent: {}
+[28.698974] (-) TimerEvent: {}
+[28.799393] (-) TimerEvent: {}
+[28.899860] (-) TimerEvent: {}
+[29.000375] (-) TimerEvent: {}
+[29.100746] (-) TimerEvent: {}
+[29.201072] (-) TimerEvent: {}
+[29.301457] (-) TimerEvent: {}
+[29.401884] (-) TimerEvent: {}
+[29.502295] (-) TimerEvent: {}
+[29.602606] (-) TimerEvent: {}
+[29.702982] (-) TimerEvent: {}
+[29.803291] (-) TimerEvent: {}
+[29.903695] (-) TimerEvent: {}
+[30.004192] (-) TimerEvent: {}
+[30.104462] (-) TimerEvent: {}
+[30.204753] (-) TimerEvent: {}
+[30.305098] (-) TimerEvent: {}
+[30.405509] (-) TimerEvent: {}
+[30.505722] (-) TimerEvent: {}
+[30.606007] (-) TimerEvent: {}
+[30.706227] (-) TimerEvent: {}
+[30.806523] (-) TimerEvent: {}
+[30.906755] (-) TimerEvent: {}
+[31.007028] (-) TimerEvent: {}
+[31.107277] (-) TimerEvent: {}
+[31.207587] (-) TimerEvent: {}
+[31.307836] (-) TimerEvent: {}
+[31.408177] (-) TimerEvent: {}
+[31.508471] (-) TimerEvent: {}
+[31.608770] (-) TimerEvent: {}
+[31.709025] (-) TimerEvent: {}
+[31.809295] (-) TimerEvent: {}
+[31.909556] (-) TimerEvent: {}
+[32.009810] (-) TimerEvent: {}
+[32.110024] (-) TimerEvent: {}
+[32.210333] (-) TimerEvent: {}
+[32.310721] (-) TimerEvent: {}
+[32.411131] (-) TimerEvent: {}
+[32.511602] (-) TimerEvent: {}
+[32.611989] (-) TimerEvent: {}
+[32.712471] (-) TimerEvent: {}
+[32.743428] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kint manage_mission::\x1b[01;32m\x1b[Kcheck_object\x1b[m\x1b[K(const json&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[32.743819] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:730:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcontrol reaches end of non-void function [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type\x07-Wreturn-type\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[32.743944] (mission_layer_mvibot) StderrLine: {'line': b'  730 | \x1b[01;35m\x1b[K}\x1b[m\x1b[K\n'}
+[32.744077] (mission_layer_mvibot) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[32.754401] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kint manage_mission::\x1b[01;32m\x1b[Khandle_content\x1b[m\x1b[K(const json&, const double&, double&, int&, rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >::SharedPtr, rclcpp::Publisher<std_msgs::msg::String_<std::allocator<void> > >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[32.754853] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:874:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcontrol reaches end of non-void function [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type\x07-Wreturn-type\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[32.755066] (mission_layer_mvibot) StderrLine: {'line': b'  874 | \x1b[01;35m\x1b[K}\x1b[m\x1b[K\n'}
+[32.755197] (mission_layer_mvibot) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[32.760907] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kint manage_mission::\x1b[01;32m\x1b[Kexecute_content\x1b[m\x1b[K(mission&, std::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >&, std::string&, std::string&, int&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[32.761333] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/manage_mission.h:1141:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcontrol reaches end of non-void function [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type\x07-Wreturn-type\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[32.761590] (mission_layer_mvibot) StderrLine: {'line': b' 1141 | \x1b[01;35m\x1b[K}\x1b[m\x1b[K\n'}
+[32.761756] (mission_layer_mvibot) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[32.812418] (-) TimerEvent: {}
+[32.912720] (-) TimerEvent: {}
+[33.013117] (-) TimerEvent: {}
+[33.113588] (-) TimerEvent: {}
+[33.213871] (-) TimerEvent: {}
+[33.314139] (-) TimerEvent: {}
+[33.414446] (-) TimerEvent: {}
+[33.514759] (-) TimerEvent: {}
+[33.542049] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/navigation_function.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kint navigation_function::\x1b[01;32m\x1b[Kaction\x1b[m\x1b[K()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[33.542318] (mission_layer_mvibot) StderrLine: {'line': b'\x1b[01m\x1b[K/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/navigation_function.h:1383:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcontrol reaches end of non-void function [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type\x07-Wreturn-type\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[33.542472] (mission_layer_mvibot) StderrLine: {'line': b' 1383 | \x1b[01;35m\x1b[K}\x1b[m\x1b[K\n'}
+[33.542608] (mission_layer_mvibot) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[33.614855] (-) TimerEvent: {}
+[33.715159] (-) TimerEvent: {}
+[33.815439] (-) TimerEvent: {}
+[33.915677] (-) TimerEvent: {}
+[34.015915] (-) TimerEvent: {}
+[34.116171] (-) TimerEvent: {}
+[34.216473] (-) TimerEvent: {}
+[34.316726] (-) TimerEvent: {}
+[34.417248] (-) TimerEvent: {}
+[34.518359] (-) TimerEvent: {}
+[34.618737] (-) TimerEvent: {}
+[34.719085] (-) TimerEvent: {}
+[34.819434] (-) TimerEvent: {}
+[34.920401] (-) TimerEvent: {}
+[35.020824] (-) TimerEvent: {}
+[35.121085] (-) TimerEvent: {}
+[35.221365] (-) TimerEvent: {}
+[35.321637] (-) TimerEvent: {}
+[35.422022] (-) TimerEvent: {}
+[35.522272] (-) TimerEvent: {}
+[35.622525] (-) TimerEvent: {}
+[35.724331] (-) TimerEvent: {}
+[35.824662] (-) TimerEvent: {}
+[35.926016] (-) TimerEvent: {}
+[36.026284] (-) TimerEvent: {}
+[36.126782] (-) TimerEvent: {}
+[36.227090] (-) TimerEvent: {}
+[36.327363] (-) TimerEvent: {}
+[36.427644] (-) TimerEvent: {}
+[36.527940] (-) TimerEvent: {}
+[36.628402] (-) TimerEvent: {}
+[36.728667] (-) TimerEvent: {}
+[36.828935] (-) TimerEvent: {}
+[36.929519] (-) TimerEvent: {}
+[37.029791] (-) TimerEvent: {}
+[37.130120] (-) TimerEvent: {}
+[37.230416] (-) TimerEvent: {}
+[37.330681] (-) TimerEvent: {}
+[37.430926] (-) TimerEvent: {}
+[37.531196] (-) TimerEvent: {}
+[37.631599] (-) TimerEvent: {}
+[37.732032] (-) TimerEvent: {}
+[37.832602] (-) TimerEvent: {}
+[37.933488] (-) TimerEvent: {}
+[38.033802] (-) TimerEvent: {}
+[38.134668] (-) TimerEvent: {}
+[38.234985] (-) TimerEvent: {}
+[38.335464] (-) TimerEvent: {}
+[38.436167] (-) TimerEvent: {}
+[38.536489] (-) TimerEvent: {}
+[38.636799] (-) TimerEvent: {}
+[38.737032] (-) TimerEvent: {}
+[38.837470] (-) TimerEvent: {}
+[38.938202] (-) TimerEvent: {}
+[39.038504] (-) TimerEvent: {}
+[39.138795] (-) TimerEvent: {}
+[39.239086] (-) TimerEvent: {}
+[39.339340] (-) TimerEvent: {}
+[39.439666] (-) TimerEvent: {}
+[39.539912] (-) TimerEvent: {}
+[39.640206] (-) TimerEvent: {}
+[39.740556] (-) TimerEvent: {}
+[39.840822] (-) TimerEvent: {}
+[39.941081] (-) TimerEvent: {}
+[40.041330] (-) TimerEvent: {}
+[40.141533] (-) TimerEvent: {}
+[40.241784] (-) TimerEvent: {}
+[40.342018] (-) TimerEvent: {}
+[40.442270] (-) TimerEvent: {}
+[40.542511] (-) TimerEvent: {}
+[40.642750] (-) TimerEvent: {}
+[40.743005] (-) TimerEvent: {}
+[40.843204] (-) TimerEvent: {}
+[40.943504] (-) TimerEvent: {}
+[41.043931] (-) TimerEvent: {}
+[41.144156] (-) TimerEvent: {}
+[41.244390] (-) TimerEvent: {}
+[41.344636] (-) TimerEvent: {}
+[41.444920] (-) TimerEvent: {}
+[41.545180] (-) TimerEvent: {}
+[41.645459] (-) TimerEvent: {}
+[41.745683] (-) TimerEvent: {}
+[41.845985] (-) TimerEvent: {}
+[41.946261] (-) TimerEvent: {}
+[42.046483] (-) TimerEvent: {}
+[42.146719] (-) TimerEvent: {}
+[42.247010] (-) TimerEvent: {}
+[42.347306] (-) TimerEvent: {}
+[42.447587] (-) TimerEvent: {}
+[42.547880] (-) TimerEvent: {}
+[42.648147] (-) TimerEvent: {}
+[42.748426] (-) TimerEvent: {}
+[42.848752] (-) TimerEvent: {}
+[42.949032] (-) TimerEvent: {}
+[43.049287] (-) TimerEvent: {}
+[43.149559] (-) TimerEvent: {}
+[43.249866] (-) TimerEvent: {}
+[43.350132] (-) TimerEvent: {}
+[43.450379] (-) TimerEvent: {}
+[43.550698] (-) TimerEvent: {}
+[43.650979] (-) TimerEvent: {}
+[43.751344] (-) TimerEvent: {}
+[43.851555] (-) TimerEvent: {}
+[43.951766] (-) TimerEvent: {}
+[44.051992] (-) TimerEvent: {}
+[44.152217] (-) TimerEvent: {}
+[44.252398] (-) TimerEvent: {}
+[44.352596] (-) TimerEvent: {}
+[44.452822] (-) TimerEvent: {}
+[44.553104] (-) TimerEvent: {}
+[44.653340] (-) TimerEvent: {}
+[44.753650] (-) TimerEvent: {}
+[44.854037] (-) TimerEvent: {}
+[44.954312] (-) TimerEvent: {}
+[45.054616] (-) TimerEvent: {}
+[45.154888] (-) TimerEvent: {}
+[45.255169] (-) TimerEvent: {}
+[45.355454] (-) TimerEvent: {}
+[45.455708] (-) TimerEvent: {}
+[45.555954] (-) TimerEvent: {}
+[45.656251] (-) TimerEvent: {}
+[45.756532] (-) TimerEvent: {}
+[45.856755] (-) TimerEvent: {}
+[45.957017] (-) TimerEvent: {}
+[46.057515] (-) TimerEvent: {}
+[46.157913] (-) TimerEvent: {}
+[46.258332] (-) TimerEvent: {}
+[46.358764] (-) TimerEvent: {}
+[46.459040] (-) TimerEvent: {}
+[46.559327] (-) TimerEvent: {}
+[46.659555] (-) TimerEvent: {}
+[46.759790] (-) TimerEvent: {}
+[46.860090] (-) TimerEvent: {}
+[46.960374] (-) TimerEvent: {}
+[47.060631] (-) TimerEvent: {}
+[47.160916] (-) TimerEvent: {}
+[47.261260] (-) TimerEvent: {}
+[47.361566] (-) TimerEvent: {}
+[47.461955] (-) TimerEvent: {}
+[47.562283] (-) TimerEvent: {}
+[47.662685] (-) TimerEvent: {}
+[47.762944] (-) TimerEvent: {}
+[47.863295] (-) TimerEvent: {}
+[47.963633] (-) TimerEvent: {}
+[48.063855] (-) TimerEvent: {}
+[48.164126] (-) TimerEvent: {}
+[48.264385] (-) TimerEvent: {}
+[48.364631] (-) TimerEvent: {}
+[48.464837] (-) TimerEvent: {}
+[48.565096] (-) TimerEvent: {}
+[48.665341] (-) TimerEvent: {}
+[48.765615] (-) TimerEvent: {}
+[48.865879] (-) TimerEvent: {}
+[48.966175] (-) TimerEvent: {}
+[49.066433] (-) TimerEvent: {}
+[49.166709] (-) TimerEvent: {}
+[49.266988] (-) TimerEvent: {}
+[49.367248] (-) TimerEvent: {}
+[49.467540] (-) TimerEvent: {}
+[49.567818] (-) TimerEvent: {}
+[49.668220] (-) TimerEvent: {}
+[49.768757] (-) TimerEvent: {}
+[49.869121] (-) TimerEvent: {}
+[49.969680] (-) TimerEvent: {}
+[50.070877] (-) TimerEvent: {}
+[50.171184] (-) TimerEvent: {}
+[50.271583] (-) TimerEvent: {}
+[50.371771] (-) TimerEvent: {}
+[50.472032] (-) TimerEvent: {}
+[50.572275] (-) TimerEvent: {}
+[50.672589] (-) TimerEvent: {}
+[50.772973] (-) TimerEvent: {}
+[50.873229] (-) TimerEvent: {}
+[50.973495] (-) TimerEvent: {}
+[51.073756] (-) TimerEvent: {}
+[51.174013] (-) TimerEvent: {}
+[51.274294] (-) TimerEvent: {}
+[51.374571] (-) TimerEvent: {}
+[51.475016] (-) TimerEvent: {}
+[51.575385] (-) TimerEvent: {}
+[51.675943] (-) TimerEvent: {}
+[51.776205] (-) TimerEvent: {}
+[51.876492] (-) TimerEvent: {}
+[51.976814] (-) TimerEvent: {}
+[52.077116] (-) TimerEvent: {}
+[52.177357] (-) TimerEvent: {}
+[52.277624] (-) TimerEvent: {}
+[52.377889] (-) TimerEvent: {}
+[52.478165] (-) TimerEvent: {}
+[52.578423] (-) TimerEvent: {}
+[52.678664] (-) TimerEvent: {}
+[52.778913] (-) TimerEvent: {}
+[52.879166] (-) TimerEvent: {}
+[52.979417] (-) TimerEvent: {}
+[53.079684] (-) TimerEvent: {}
+[53.179955] (-) TimerEvent: {}
+[53.280175] (-) TimerEvent: {}
+[53.380439] (-) TimerEvent: {}
+[53.480692] (-) TimerEvent: {}
+[53.580926] (-) TimerEvent: {}
+[53.681171] (-) TimerEvent: {}
+[53.781459] (-) TimerEvent: {}
+[53.882070] (-) TimerEvent: {}
+[53.982525] (-) TimerEvent: {}
+[54.083039] (-) TimerEvent: {}
+[54.183640] (-) TimerEvent: {}
+[54.284098] (-) TimerEvent: {}
+[54.384537] (-) TimerEvent: {}
+[54.485020] (-) TimerEvent: {}
+[54.585617] (-) TimerEvent: {}
+[54.686171] (-) TimerEvent: {}
+[54.786606] (-) TimerEvent: {}
+[54.886905] (-) TimerEvent: {}
+[54.987319] (-) TimerEvent: {}
+[55.087588] (-) TimerEvent: {}
+[55.187873] (-) TimerEvent: {}
+[55.288342] (-) TimerEvent: {}
+[55.389230] (-) TimerEvent: {}
+[55.489535] (-) TimerEvent: {}
+[55.589813] (-) TimerEvent: {}
+[55.690092] (-) TimerEvent: {}
+[55.790308] (-) TimerEvent: {}
+[55.890598] (-) TimerEvent: {}
+[55.991047] (-) TimerEvent: {}
+[56.091442] (-) TimerEvent: {}
+[56.191862] (-) TimerEvent: {}
+[56.292219] (-) TimerEvent: {}
+[56.392609] (-) TimerEvent: {}
+[56.492945] (-) TimerEvent: {}
+[56.593160] (-) TimerEvent: {}
+[56.693430] (-) TimerEvent: {}
+[56.794204] (-) TimerEvent: {}
+[56.894507] (-) TimerEvent: {}
+[56.994835] (-) TimerEvent: {}
+[57.095467] (-) TimerEvent: {}
+[57.195764] (-) TimerEvent: {}
+[57.296024] (-) TimerEvent: {}
+[57.396221] (-) TimerEvent: {}
+[57.496473] (-) TimerEvent: {}
+[57.596728] (-) TimerEvent: {}
+[57.697021] (-) TimerEvent: {}
+[57.797228] (-) TimerEvent: {}
+[57.897573] (-) TimerEvent: {}
+[57.997864] (-) TimerEvent: {}
+[58.098126] (-) TimerEvent: {}
+[58.198354] (-) TimerEvent: {}
+[58.298624] (-) TimerEvent: {}
+[58.398871] (-) TimerEvent: {}
+[58.499129] (-) TimerEvent: {}
+[58.599398] (-) TimerEvent: {}
+[58.699681] (-) TimerEvent: {}
+[58.799943] (-) TimerEvent: {}
+[58.900200] (-) TimerEvent: {}
+[59.000456] (-) TimerEvent: {}
+[59.100714] (-) TimerEvent: {}
+[59.200997] (-) TimerEvent: {}
+[59.301201] (-) TimerEvent: {}
+[59.401418] (-) TimerEvent: {}
+[59.501609] (-) TimerEvent: {}
+[59.601850] (-) TimerEvent: {}
+[59.702081] (-) TimerEvent: {}
+[59.802286] (-) TimerEvent: {}
+[59.902518] (-) TimerEvent: {}
+[60.002764] (-) TimerEvent: {}
+[60.103102] (-) TimerEvent: {}
+[60.203411] (-) TimerEvent: {}
+[60.303741] (-) TimerEvent: {}
+[60.404477] (-) TimerEvent: {}
+[60.504726] (-) TimerEvent: {}
+[60.605008] (-) TimerEvent: {}
+[60.705264] (-) TimerEvent: {}
+[60.805515] (-) TimerEvent: {}
+[60.905701] (-) TimerEvent: {}
+[61.005894] (-) TimerEvent: {}
+[61.106140] (-) TimerEvent: {}
+[61.206375] (-) TimerEvent: {}
+[61.306605] (-) TimerEvent: {}
+[61.406829] (-) TimerEvent: {}
+[61.507064] (-) TimerEvent: {}
+[61.607299] (-) TimerEvent: {}
+[61.707549] (-) TimerEvent: {}
+[61.807832] (-) TimerEvent: {}
+[61.908088] (-) TimerEvent: {}
+[62.008329] (-) TimerEvent: {}
+[62.108647] (-) TimerEvent: {}
+[62.209017] (-) TimerEvent: {}
+[62.309280] (-) TimerEvent: {}
+[62.409506] (-) TimerEvent: {}
+[62.509791] (-) TimerEvent: {}
+[62.610121] (-) TimerEvent: {}
+[62.710328] (-) TimerEvent: {}
+[62.810605] (-) TimerEvent: {}
+[62.910929] (-) TimerEvent: {}
+[63.011373] (-) TimerEvent: {}
+[63.111763] (-) TimerEvent: {}
+[63.212156] (-) TimerEvent: {}
+[63.312418] (-) TimerEvent: {}
+[63.412673] (-) TimerEvent: {}
+[63.513094] (-) TimerEvent: {}
+[63.613408] (-) TimerEvent: {}
+[63.713793] (-) TimerEvent: {}
+[63.814151] (-) TimerEvent: {}
+[63.914500] (-) TimerEvent: {}
+[64.014711] (-) TimerEvent: {}
+[64.114937] (-) TimerEvent: {}
+[64.215245] (-) TimerEvent: {}
+[64.315483] (-) TimerEvent: {}
+[64.415727] (-) TimerEvent: {}
+[64.516225] (-) TimerEvent: {}
+[64.616556] (-) TimerEvent: {}
+[64.717018] (-) TimerEvent: {}
+[64.817284] (-) TimerEvent: {}
+[64.917691] (-) TimerEvent: {}
+[65.018133] (-) TimerEvent: {}
+[65.118404] (-) TimerEvent: {}
+[65.218814] (-) TimerEvent: {}
+[65.319759] (-) TimerEvent: {}
+[65.420284] (-) TimerEvent: {}
+[65.521058] (-) TimerEvent: {}
+[65.621777] (-) TimerEvent: {}
+[65.722485] (-) TimerEvent: {}
+[65.822947] (-) TimerEvent: {}
+[65.924031] (-) TimerEvent: {}
+[66.024496] (-) TimerEvent: {}
+[66.125024] (-) TimerEvent: {}
+[66.225419] (-) TimerEvent: {}
+[66.326014] (-) TimerEvent: {}
+[66.426276] (-) TimerEvent: {}
+[66.526939] (-) TimerEvent: {}
+[66.627232] (-) TimerEvent: {}
+[66.727485] (-) TimerEvent: {}
+[66.827843] (-) TimerEvent: {}
+[66.928315] (-) TimerEvent: {}
+[67.028612] (-) TimerEvent: {}
+[67.128877] (-) TimerEvent: {}
+[67.229154] (-) TimerEvent: {}
+[67.329540] (-) TimerEvent: {}
+[67.429858] (-) TimerEvent: {}
+[67.530193] (-) TimerEvent: {}
+[67.630501] (-) TimerEvent: {}
+[67.730765] (-) TimerEvent: {}
+[67.831055] (-) TimerEvent: {}
+[67.931531] (-) TimerEvent: {}
+[68.032527] (-) TimerEvent: {}
+[68.133162] (-) TimerEvent: {}
+[68.233493] (-) TimerEvent: {}
+[68.333752] (-) TimerEvent: {}
+[68.434017] (-) TimerEvent: {}
+[68.534251] (-) TimerEvent: {}
+[68.634531] (-) TimerEvent: {}
+[68.734814] (-) TimerEvent: {}
+[68.835157] (-) TimerEvent: {}
+[68.935516] (-) TimerEvent: {}
+[69.036015] (-) TimerEvent: {}
+[69.136299] (-) TimerEvent: {}
+[69.236583] (-) TimerEvent: {}
+[69.336933] (-) TimerEvent: {}
+[69.437251] (-) TimerEvent: {}
+[69.537624] (-) TimerEvent: {}
+[69.638004] (-) TimerEvent: {}
+[69.738288] (-) TimerEvent: {}
+[69.838525] (-) TimerEvent: {}
+[69.938777] (-) TimerEvent: {}
+[70.039020] (-) TimerEvent: {}
+[70.139253] (-) TimerEvent: {}
+[70.239498] (-) TimerEvent: {}
+[70.339738] (-) TimerEvent: {}
+[70.439990] (-) TimerEvent: {}
+[70.540239] (-) TimerEvent: {}
+[70.640453] (-) TimerEvent: {}
+[70.740738] (-) TimerEvent: {}
+[70.841021] (-) TimerEvent: {}
+[70.941233] (-) TimerEvent: {}
+[71.041529] (-) TimerEvent: {}
+[71.141774] (-) TimerEvent: {}
+[71.241985] (-) TimerEvent: {}
+[71.342212] (-) TimerEvent: {}
+[71.442482] (-) TimerEvent: {}
+[71.542733] (-) TimerEvent: {}
+[71.643074] (-) TimerEvent: {}
+[71.743497] (-) TimerEvent: {}
+[71.843795] (-) TimerEvent: {}
+[71.944178] (-) TimerEvent: {}
+[72.044513] (-) TimerEvent: {}
+[72.144879] (-) TimerEvent: {}
+[72.245192] (-) TimerEvent: {}
+[72.345514] (-) TimerEvent: {}
+[72.445817] (-) TimerEvent: {}
+[72.546107] (-) TimerEvent: {}
+[72.646407] (-) TimerEvent: {}
+[72.746699] (-) TimerEvent: {}
+[72.846977] (-) TimerEvent: {}
+[72.947387] (-) TimerEvent: {}
+[73.047732] (-) TimerEvent: {}
+[73.147992] (-) TimerEvent: {}
+[73.248213] (-) TimerEvent: {}
+[73.348508] (-) TimerEvent: {}
+[73.448785] (-) TimerEvent: {}
+[73.459892] (mission_layer_mvibot) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable mvibot_mission\x1b[0m\n'}
+[73.548842] (-) TimerEvent: {}
+[73.649122] (-) TimerEvent: {}
+[73.749403] (-) TimerEvent: {}
+[73.849681] (-) TimerEvent: {}
+[73.949908] (-) TimerEvent: {}
+[74.050231] (-) TimerEvent: {}
+[74.150531] (-) TimerEvent: {}
+[74.251037] (-) TimerEvent: {}
+[74.351525] (-) TimerEvent: {}
+[74.452017] (-) TimerEvent: {}
+[74.552435] (-) TimerEvent: {}
+[74.652835] (-) TimerEvent: {}
+[74.753182] (-) TimerEvent: {}
+[74.853762] (-) TimerEvent: {}
+[74.954189] (-) TimerEvent: {}
+[75.054826] (-) TimerEvent: {}
+[75.155198] (-) TimerEvent: {}
+[75.255743] (-) TimerEvent: {}
+[75.356133] (-) TimerEvent: {}
+[75.456401] (-) TimerEvent: {}
+[75.556781] (-) TimerEvent: {}
+[75.657061] (-) TimerEvent: {}
+[75.757516] (-) TimerEvent: {}
+[75.858100] (-) TimerEvent: {}
+[75.958581] (-) TimerEvent: {}
+[76.059474] (-) TimerEvent: {}
+[76.159767] (-) TimerEvent: {}
+[76.185084] (mission_layer_mvibot) StdoutLine: {'line': b'[100%] Built target mvibot_mission\n'}
+[76.202155] (mission_layer_mvibot) CommandEnded: {'returncode': 0}
+[76.204047] (mission_layer_mvibot) JobProgress: {'identifier': 'mission_layer_mvibot', 'progress': 'install'}
+[76.218304] (mission_layer_mvibot) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/mvibot/floorCleaningRobot_ws/build/mission_layer_mvibot'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/mission_layer_mvibot', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'SSH_CLIENT': '10.0.69.20 40010 22', 'LC_TIME': 'vi_VN', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher/lib:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces/lib:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/lib:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot', 'SSH_TTY': '/dev/pts/2', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'vi_VN', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'PKG_CONFIG_PATH': '/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/x86_64-linux-gnu/pkgconfig:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/pkgconfig', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'LC_ADDRESS': 'vi_VN', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LC_TELEPHONE': 'vi_VN', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces:/home/mvibot/floorCleaningRobot_ws/install/sllidar_ros2:/home/mvibot/floorCleaningRobot_ws/install/realsense2_description:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/lower_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools:/home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'vi_VN', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'vi_VN', 'LC_IDENTIFICATION': 'vi_VN', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/mission_layer_mvibot', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.0.69.20 40010 10.0.69.124 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_demo:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'vi_VN', 'LC_PAPER': 'vi_VN', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces:/home/mvibot/floorCleaningRobot_ws/install/sllidar_ros2:/home/mvibot/floorCleaningRobot_ws/install/realsense2_description:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/lower_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools:/home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/fields2cover:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy'}), 'shell': False}
+[76.237395] (mission_layer_mvibot) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[76.239085] (mission_layer_mvibot) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[76.240757] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_amcl_launch.py\n'}
+[76.241047] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_behavior_launch.py\n'}
+[76.241254] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_bt_navigator_launch.py\n'}
+[76.241430] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_collision_monitor_launch.py\n'}
+[76.241566] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_controller_launch.py\n'}
+[76.241799] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_lifecycle_manager_navigation_launch.py\n'}
+[76.242023] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_manage_mission_launch.py\n'}
+[76.242224] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_mission_launch.py\n'}
+[76.242375] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_navigation_launch.py\n'}
+[76.242488] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_opennav_coverage_launch.py\n'}
+[76.242582] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_planner_launch.py\n'}
+[76.242667] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_smoother_launch.py\n'}
+[76.242779] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_velocity_smoother_launch.py\n'}
+[76.242889] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot//launch/mvibot_waypoint_follower_launch.py\n'}
+[76.243034] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/lib/mission_layer_mvibot/mvibot_mission\n'}
+[76.243488] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/ament_index/resource_index/package_run_dependencies/mission_layer_mvibot\n'}
+[76.244126] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/ament_index/resource_index/parent_prefix_path/mission_layer_mvibot\n'}
+[76.244338] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/environment/ament_prefix_path.sh\n'}
+[76.244535] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/environment/ament_prefix_path.dsv\n'}
+[76.244737] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/environment/path.sh\n'}
+[76.244961] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/environment/path.dsv\n'}
+[76.245295] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/local_setup.bash\n'}
+[76.245499] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/local_setup.sh\n'}
+[76.245680] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/local_setup.zsh\n'}
+[76.245881] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/local_setup.dsv\n'}
+[76.246061] (mission_layer_mvibot) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/package.dsv\n'}
+[76.259819] (-) TimerEvent: {}
+[76.260157] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/ament_index/resource_index/packages/mission_layer_mvibot\n'}
+[76.260408] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/cmake/mission_layer_mvibotConfig.cmake\n'}
+[76.260520] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/cmake/mission_layer_mvibotConfig-version.cmake\n'}
+[76.260653] (mission_layer_mvibot) StdoutLine: {'line': b'-- Up-to-date symlink: /home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot/share/mission_layer_mvibot/package.xml\n'}
+[76.262705] (mission_layer_mvibot) CommandEnded: {'returncode': 0}
+[76.299523] (mission_layer_mvibot) JobEnded: {'identifier': 'mission_layer_mvibot', 'rc': 0}
+[76.301000] (-) EventReactorShutdown: {}
