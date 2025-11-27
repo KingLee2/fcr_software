@@ -42,21 +42,10 @@ class navigation_function : public rclcpp::Node{
             stop_robot_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel",1);
             // Action Clients
             nav_complete_coverage_client_ = rclcpp_action::create_client<opennav_coverage_msgs::action::NavigateCompleteCoverage>(this, "navigate_complete_coverage");
-            nav_compute_coverage_client_ = rclcpp_action::create_client<opennav_coverage_msgs::action::ComputeCoveragePath>(this, "compute_coverage_path");
             nav_through_poses_client_ = rclcpp_action::create_client<nav2_msgs::action::NavigateThroughPoses>(this, "navigate_through_poses");
             nav_to_pose_client_ = rclcpp_action::create_client<nav2_msgs::action::NavigateToPose>(this, "navigate_to_pose");
-            follow_waypoints_client_ = rclcpp_action::create_client<nav2_msgs::action::FollowWaypoints>(this, "follow_waypoints");
             follow_path_client_ = rclcpp_action::create_client<nav2_msgs::action::FollowPath>(this, "follow_path");
             compute_path_to_pose_client_ = rclcpp_action::create_client<nav2_msgs::action::ComputePathToPose>(this, "compute_path_to_pose");
-            compute_path_through_poses_client_ = rclcpp_action::create_client<nav2_msgs::action::ComputePathThroughPoses>(this, "compute_path_through_poses");
-            smoother_client_ = rclcpp_action::create_client<nav2_msgs::action::SmoothPath>(this, "smooth_path");
-            spin_client_ = rclcpp_action::create_client<nav2_msgs::action::Spin>(this, "spin");
-            backup_client_ = rclcpp_action::create_client<nav2_msgs::action::BackUp>(this, "backup");
-            drive_on_heading_client_ = rclcpp_action::create_client<nav2_msgs::action::DriveOnHeading>(this, "drive_on_heading");
-            // assisted_teleop_client_ = rclcpp_action::create_client<nav2_msgs::action::AssistedTeleop>(this, "assisted_teleop");
-            // docking_client_ = rclcpp_action::create_client<nav2_msgs::action::DockRobot>(this, "dock_robot");
-            // undocking_client_ = rclcpp_action::create_client<nav2_msgs::action::UndockRobot>(this, "undock_robot");
-            
             //create publisher
             pub_amcl_=this->create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>("initialpose",1);
             pub_user_path_ = this->create_publisher<nav_msgs::msg::Path>("user_path",1);
@@ -67,13 +56,13 @@ class navigation_function : public rclcpp::Node{
             //create subscriber
             //localization_pose_sub_=this->create_subscription<geometry_msgs::msg::PoseStamped>("/localization_robot",1,std::bind(&BasicNavigator::localization_robot_callback,this, std::placeholders::_1));
             auto robot_position_callback = [this](geometry_msgs::msg::PoseWithCovarianceStamped msg)->void{
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
+                // std::lock_guard<std::mutex> lock(mutex_common);
                 robot_position_ = msg;
             };
             robot_position_sub_ = this->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(mvibot_seri_ + "/amcl_pose",qos_profile,robot_position_callback);
             //get data of function
             auto navigation_info_callback = [this](std_msgs::msg::String msg)->void{
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
+                // std::lock_guard<std::mutex> lock(mutex_common);
                 parameters = json::parse(msg.data);
                 cout<<msg.data<<endl;
                 process_data();
@@ -82,12 +71,23 @@ class navigation_function : public rclcpp::Node{
             navigation_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/navigation_info", qos_profile, navigation_info_callback);
             //get state of function
             auto navigation_function_status_callback = [this](std_msgs::msg::String msg)->void{
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
+                // std::lock_guard<std::mutex> lock(mutex_common);
+		static int st = 0;
                 if(msg.data == "active"){
+		    st = 1;
                     request = 1;
                     status = Active_;
                 }
                 else if(msg.data == "stop") {
+		    if(st == 1){
+                        pub_stop_robot();
+                        cancel_navToPose();
+                        cancel_navThroughPoses();
+                        cancel_navCompleteCoverage();
+                        cancel_getPathToPose();
+                        cancel_followPath();
+                        st = 0;
+                    }
                     request = 1;
                     status = Stop_;
                 }
@@ -112,7 +112,7 @@ class navigation_function : public rclcpp::Node{
             //get path to goal
             auto get_path_to_goal_callback = [this](nav_msgs::msg::Path msg)->void{
                 //lock();
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
+                // std::lock_guard<std::mutex> lock(mutex_common);
                 path_ = nav_msgs::msg::Path();
                 path_ =msg;
                 // pub_user_path_->publish(msg);
@@ -122,7 +122,7 @@ class navigation_function : public rclcpp::Node{
             get_path_to_goal_sub_ = this->create_subscription<nav_msgs::msg::Path>(mvibot_seri_+"/plan", rclcpp::SystemDefaultsQoS(), get_path_to_goal_callback);
             auto get_path_coverage_callback = [this](nav_msgs::msg::Path msg)->void{
                 //lock();
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
+                // std::lock_guard<std::mutex> lock(mutex_common);
                 path_ = nav_msgs::msg::Path();
                 path_ = msg;
                 // pub_user_path_->publish(msg);
@@ -131,15 +131,13 @@ class navigation_function : public rclcpp::Node{
             };
             get_path_coverage_sub_ = this->create_subscription<nav_msgs::msg::Path>(mvibot_seri_+"/coverage_server/coverage_plan", rclcpp::SystemDefaultsQoS(), get_path_coverage_callback);
             //create service
-            get_costmap_global_srv_ = this->create_client<nav2_msgs::srv::GetCostmap>("global_costmap/get_costmap");
-            get_costmap_local_srv_ = this->create_client<nav2_msgs::srv::GetCostmap>("local_costmap/get_costmap");
             clear_costmap_global_srv_ = this->create_client<nav2_msgs::srv::ClearEntireCostmap>("global_costmap/clear_entirely_global_costmap");
             clear_costmap_local_srv_ = this->create_client<nav2_msgs::srv::ClearEntireCostmap>("local_costmap/clear_entirely_local_costmap");
             //timer
             auto send_robot_position_callback = [this]()->void{
                 double *pos_robot;
                 string data;
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
+                // std::lock_guard<std::mutex> lock(mutex_common);
                 pos_robot = get_position_tf("map",mvibot_seri_f_+"/base_footprint");
                 data = mvibot_seri_f_+"|x:"+to_string(pos_robot[0])+"|y:"+to_string(pos_robot[1])+"|thz:"+to_string(pos_robot[2])+"|thw:"+to_string(pos_robot[3]);
                 cout<<data<<endl;
@@ -147,7 +145,7 @@ class navigation_function : public rclcpp::Node{
             };
             send_robot_position_timer_ = this->create_wall_timer(1000ms, send_robot_position_callback);
             auto execute_navigation_timer_callback = [this]()->void{
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
+                // std::lock_guard<std::mutex> lock(mutex_common);
                 cout<<"navigation|request:"<<request<<"|state:"<<status<<endl;
                 if(request == 1){
                     // static int res = Finish_, res_f = Finish_;
@@ -174,31 +172,14 @@ class navigation_function : public rclcpp::Node{
         void navCompleteCoverage(const vector<geometry_msgs::msg::Polygon> &polygons, const std::string &behavior_tree="");
         void goToPose(const geometry_msgs::msg::PoseStamped &pose, const string &behavior_tree="");
         void goThroughPoses(const std::vector<geometry_msgs::msg::PoseStamped> &poses, const std::string &behavior_tree="");
-        void followWaypoints(std::vector<geometry_msgs::msg::PoseStamped> &poses);
-        void followPath(const nav_msgs::msg::Path &path, const std::string &controller_id="", const std::string &goal_checker_id="");
-        void spin(double spin_dist=1.57, int time_allowance=10);
-        void backup(double backup_dist=0.3, double backup_speed=0.1, int time_allowance=10);
-        void driveOnHeading(double dist = 0.2, double speed = 0.1, int time_allowance = 10);
         void getPathToPose(geometry_msgs::msg::PoseStamped start, geometry_msgs::msg::PoseStamped goal, std::string planner_id="", bool use_start = false);
-        int getPathThroughPoses(geometry_msgs::msg::PoseStamped start, std::vector<geometry_msgs::msg::PoseStamped> goals, std::string planner_id="", bool use_start = false);
-        int smoothPath(nav_msgs::msg::Path path, std::string smoother_id="", double max_duration=2.0, bool check_for_collision = false);
+        void followPath(const nav_msgs::msg::Path &path, const std::string &controller_id="", const std::string &goal_checker_id="");
         void update_polygon();
-        void reset_node();
-        nav_msgs::msg::Path getPath();
         void cancel_navCompleteCoverage();
-        void cancel_navComputeCoverage();
         void cancel_navToPose();
         void cancel_navThroughPoses();
-        void cancel_followWaypoints();
         void cancel_followPath();
-        void cancel_spin();
-        void cancel_backup();
-        void cancel_driveOnHeading();
         void cancel_getPathToPose();
-        void cancel_getPathThroughPoses();
-        void cancel_smoothPath();
-        nav2_msgs::msg::Costmap getGlobalCostmap();
-        nav2_msgs::msg::Costmap getLocalCostmap();
         void clearLocalCostmap();
         void clearGlobalCostmap();
         void clearAllCostmap();
@@ -220,27 +201,17 @@ class navigation_function : public rclcpp::Node{
     private:
         ////mutex////
         // std::recursive_mutex mutex_status;
-        std::recursive_mutex mutex_common;
+        // std::mutex mutex_common;
         //declare tranform var
         std::unique_ptr<tf2_ros::Buffer> tf_Buffer_;
         std::shared_ptr<tf2_ros::TransformListener> tf_Listener_{nullptr};
         std::unique_ptr<tf2_ros::TransformBroadcaster> tf_Broadcaster_;
         ////action////
         rclcpp_action::Client<opennav_coverage_msgs::action::NavigateCompleteCoverage>::SharedPtr nav_complete_coverage_client_;
-        rclcpp_action::Client<opennav_coverage_msgs::action::ComputeCoveragePath>::SharedPtr nav_compute_coverage_client_;
         rclcpp_action::Client<nav2_msgs::action::NavigateThroughPoses>::SharedPtr nav_through_poses_client_;
         rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SharedPtr nav_to_pose_client_;
-        rclcpp_action::Client<nav2_msgs::action::FollowWaypoints>::SharedPtr follow_waypoints_client_;
         rclcpp_action::Client<nav2_msgs::action::FollowPath>::SharedPtr follow_path_client_;
         rclcpp_action::Client<nav2_msgs::action::ComputePathToPose>::SharedPtr compute_path_to_pose_client_;
-        rclcpp_action::Client<nav2_msgs::action::ComputePathThroughPoses>::SharedPtr compute_path_through_poses_client_;
-        rclcpp_action::Client<nav2_msgs::action::SmoothPath>::SharedPtr smoother_client_;
-        rclcpp_action::Client<nav2_msgs::action::Spin>::SharedPtr spin_client_;
-        rclcpp_action::Client<nav2_msgs::action::BackUp>::SharedPtr backup_client_;
-        rclcpp_action::Client<nav2_msgs::action::DriveOnHeading>::SharedPtr drive_on_heading_client_;
-        // assisted_teleop_client_ = rclcpp_action::create_client<nav2_msgs::action::AssistedTeleop>(this, "assisted_teleop");
-        // rclcpp_action::Client<nav2_msgs::action::DockRobot>::SharedPtr docking_client_;
-        // rclcpp_action::Client<nav2_msgs::action::UndockRobot>::SharedPtr undocking_client_;
         
         //// Subscriptions////
         rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr localization_pose_sub_;
@@ -262,8 +233,6 @@ class navigation_function : public rclcpp::Node{
         // rclcpp::Client<nav2_msgs::srv::LoadMap>::SharedPtr change_maps_srv_;
         rclcpp::Client<nav2_msgs::srv::ClearEntireCostmap>::SharedPtr clear_costmap_global_srv_;
         rclcpp::Client<nav2_msgs::srv::ClearEntireCostmap>::SharedPtr clear_costmap_local_srv_;
-        rclcpp::Client<nav2_msgs::srv::GetCostmap>::SharedPtr get_costmap_global_srv_;
-        rclcpp::Client<nav2_msgs::srv::GetCostmap>::SharedPtr get_costmap_local_srv_;
         //timer
         rclcpp::TimerBase::SharedPtr execute_navigation_timer_;
         rclcpp::TimerBase::SharedPtr send_robot_position_timer_;
@@ -281,7 +250,7 @@ class navigation_function : public rclcpp::Node{
         string mode;
         int number_of_poses_remaining;
         int request = 0; //request = 1: yeu cau thuc thi, request = 0: khong co yeu cau thuc thi
-        result states;
+        result states, state_planner, state_controller ;
 };
 double *navigation_function::get_position_tf(string source_frame, string target_frame){
     static double data[4];
@@ -367,7 +336,7 @@ void navigation_function::navCompleteCoverage(const vector<geometry_msgs::msg::P
     //send goal and receive result//
     rclcpp_action::Client<opennav_coverage_msgs::action::NavigateCompleteCoverage>::SendGoalOptions options;
     options.goal_response_callback=[this](std::shared_ptr<rclcpp_action::ClientGoalHandle<opennav_coverage_msgs::action::NavigateCompleteCoverage>> goal_handle){
-        std::lock_guard<std::recursive_mutex> lock(mutex_common);
+        // std::lock_guard<std::mutex> lock(mutex_common);
         if(!goal_handle){
             RCLCPP_ERROR(rclcpp::get_logger("NavigateCompleteCorverage"),"Goal was rejected by server!");
             send_history("error","NavigateCompleteCorverage was rejected by server!");
@@ -381,7 +350,7 @@ void navigation_function::navCompleteCoverage(const vector<geometry_msgs::msg::P
     };
     options.feedback_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<opennav_coverage_msgs::action::NavigateCompleteCoverage>>,
                         const std::shared_ptr<const opennav_coverage_msgs::action::NavigateCompleteCoverage::Feedback> feedback) {
-        std::lock_guard<std::recursive_mutex> lock(mutex_common);
+        // std::lock_guard<std::mutex> lock(mutex_common);
         RCLCPP_INFO(rclcpp::get_logger("NavigateCompleteCorverage"), "Received feedback: Current Position (x = %.2f, y = %.2f, z = %.2f, w = %.2f)",
                     feedback->current_pose.pose.position.x,
                     feedback->current_pose.pose.position.y,
@@ -390,7 +359,7 @@ void navigation_function::navCompleteCoverage(const vector<geometry_msgs::msg::P
         states = ACTIVE;
     };
     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<opennav_coverage_msgs::action::NavigateCompleteCoverage>::WrappedResult & result) {
-        std::lock_guard<std::recursive_mutex> lock(mutex_common);
+        // std::lock_guard<std::mutex> lock(mutex_common);
         if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
             RCLCPP_INFO(rclcpp::get_logger("NavigateCompleteCorverage"), "NavigateCompleteCorverage succeeded!");
             send_history("normal","NavigateCompleteCorverage succeeded!");
@@ -509,7 +478,7 @@ void navigation_function::goToPose(const geometry_msgs::msg::PoseStamped &pose, 
     //send goal and receive result//
     rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SendGoalOptions options;
     options.goal_response_callback=[this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>> goal_handle){
-        std::lock_guard<std::recursive_mutex> lock(mutex_common);
+        // std::lock_guard<std::mutex> lock(mutex_common);
         if(!goal_handle){
             RCLCPP_ERROR(rclcpp::get_logger("NavigateToPose"),"Goal was rejected by server!");
             send_history("error","Goal was rejected by server!");
@@ -524,7 +493,7 @@ void navigation_function::goToPose(const geometry_msgs::msg::PoseStamped &pose, 
     };
     options.feedback_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>>,
                         const std::shared_ptr<const nav2_msgs::action::NavigateToPose::Feedback> feedback) {
-        std::lock_guard<std::recursive_mutex> lock(mutex_common);
+        // std::lock_guard<std::mutex> lock(mutex_common);
         RCLCPP_INFO(rclcpp::get_logger("NavigateToPose"), "Received feedback: Current Position (x = %.2f, y = %.2f, z = %.2f, w = %.2f)",
                     feedback->current_pose.pose.position.x,
                     feedback->current_pose.pose.position.y,
@@ -533,7 +502,7 @@ void navigation_function::goToPose(const geometry_msgs::msg::PoseStamped &pose, 
         states = ACTIVE;
     };
     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>::WrappedResult & result) {
-        std::lock_guard<std::recursive_mutex> lock(mutex_common);
+        // std::lock_guard<std::mutex> lock(mutex_common);
         if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
             RCLCPP_INFO(rclcpp::get_logger("NavigateToPose"), "NavigateToPose succeeded!");
             send_history("normal","NavigateToPose succeeded!");
@@ -579,7 +548,7 @@ void navigation_function::goThroughPoses(const std::vector<geometry_msgs::msg::P
     //send goal and receive result//
     rclcpp_action::Client<nav2_msgs::action::NavigateThroughPoses>::SendGoalOptions options;
     options.goal_response_callback=[this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateThroughPoses>> goal_handle){
-        std::lock_guard<std::recursive_mutex> lock(mutex_common);
+        // std::lock_guard<std::mutex> lock(mutex_common);
         if(!goal_handle){
             RCLCPP_ERROR(rclcpp::get_logger("NavigateThroughPoses"),"Goals was rejected by server!");
             send_history("error","Goals was rejected by server!");
@@ -594,7 +563,7 @@ void navigation_function::goThroughPoses(const std::vector<geometry_msgs::msg::P
     };
     options.feedback_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateThroughPoses>>,
                         const std::shared_ptr<const nav2_msgs::action::NavigateThroughPoses::Feedback> feedback) {
-        std::lock_guard<std::recursive_mutex> lock(mutex_common);
+        // std::lock_guard<std::mutex> lock(mutex_common);
         RCLCPP_INFO(rclcpp::get_logger("NavigateThroughPoses"), "Received feedback: Current Position (x = %.2f, y = %.2f, z = %.2f, w = %.2f)",
                     feedback->current_pose.pose.position.x,
                     feedback->current_pose.pose.position.y,
@@ -604,7 +573,7 @@ void navigation_function::goThroughPoses(const std::vector<geometry_msgs::msg::P
         states = ACTIVE;
     };
     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateThroughPoses>::WrappedResult & result) {
-        std::lock_guard<std::recursive_mutex> lock(mutex_common);
+        // std::lock_guard<std::mutex> lock(mutex_common);
         if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
             RCLCPP_INFO(rclcpp::get_logger("NavigateThroughPoses"), "NavigateThroughPoses succeeded!");
             send_history("normal","NavigateThroughPoses succeeded!");
@@ -635,43 +604,72 @@ void navigation_function::goThroughPoses(const std::vector<geometry_msgs::msg::P
     //wait result
     // rclcpp::spin_until_future_complete(this->get_node_base_interface(), send_goal_future);
 }
-void navigation_function::followWaypoints(std::vector<geometry_msgs::msg::PoseStamped> &poses){
-    RCLCPP_INFO(rclcpp::get_logger("FollowWaypoints"),"wait for 'FollowWaypoints' action server");
-    //wait action server
-    while (!follow_waypoints_client_->wait_for_action_server(std::chrono::duration<float>(0.2)))
-    {
-        RCLCPP_INFO(rclcpp::get_logger("FollowWaypoints"),"'FollowWaypoints' action server not available, waiting ...");
+
+void navigation_function::getPathToPose(geometry_msgs::msg::PoseStamped start, geometry_msgs::msg::PoseStamped goal, std::string planner_id, bool use_start){
+    state_planner = UNKNOW;
+    RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"),"send a 'computePathToPose' action request");
+    if(!compute_path_to_pose_client_->wait_for_action_server(std::chrono::duration<float>(0.2))){
+        RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"), "'computePathToPose' action server is not available, waiting ...");
+        return;
     }
-    //goal message
-    auto goal_msg=nav2_msgs::action::FollowWaypoints::Goal();
-    goal_msg.poses=poses;
-    RCLCPP_INFO(rclcpp::get_logger("FollowWaypoints"), "Following %ld goals ...", goal_msg.poses.size());
-    //send goal and receive result
-    rclcpp_action::Client<nav2_msgs::action::FollowWaypoints>::SendGoalOptions options;
-    options.goal_response_callback=[this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::FollowWaypoints>> goal_handle){
+    auto goal_msg = nav2_msgs::action::ComputePathToPose::Goal();
+    goal_msg.start = start;
+    goal_msg.goal = goal;
+    goal_msg.planner_id = planner_id;
+    goal_msg.use_start = use_start;
+    path_ = nav_msgs::msg::Path();
+
+    //send goal and receive respond result
+    RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"),"Sending request");
+    RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"),"Compute Path to goal: x = %.2f, y = %.2f", goal_msg.goal.pose.position.x, goal_msg.goal.pose.position.y);
+    rclcpp_action::Client<nav2_msgs::action::ComputePathToPose>::SendGoalOptions options;
+    options.goal_response_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::ComputePathToPose>> goal_handle){
         if(!goal_handle){
-            RCLCPP_ERROR(rclcpp::get_logger("FollowWaypoints"),"'Follow Waypoints' was rejected by server!");
+            RCLCPP_ERROR(rclcpp::get_logger("ComputePathToPose"),"ComputePathToPose request was rejected by server");
+            state_planner = REJECT;
         }
         else{
-            RCLCPP_INFO(rclcpp::get_logger("FollowWaypoints"),"'Follow Waypoints' was accepted by server, waiting for result");
+            RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"), "ComputePathToPose request was accepted by server");
+            state_planner = ACCEPT;
         }
     };
-    options.feedback_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::FollowWaypoints>>,
-                        const std::shared_ptr<const nav2_msgs::action::FollowWaypoints::Feedback> feedback) {
-        RCLCPP_INFO(rclcpp::get_logger("FollowWaypoints"), "'Follow Waypoints' received feedback with current waypoint: %d", feedback->current_waypoint);
-    };
-    options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::FollowWaypoints>::WrappedResult & result) {
-        if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
-            RCLCPP_INFO(rclcpp::get_logger("FollowWaypoints"), "'Follow Waypoints' succeeded!");
-        } else {
-            RCLCPP_ERROR(rclcpp::get_logger("FollowWaypoints"), "'Follow Waypoints' failed with status: %d", static_cast<int>(result.code));
+    options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::ComputePathToPose>::WrappedResult &result){
+        if(result.code == rclcpp_action::ResultCode::SUCCEEDED){
+            RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"),"ComputePathToPose succeeded");
+            send_history("normal","ComputePathToPose succeeded");
+            path_ = result.result->path;
+            // pub_use_path();
+            state_planner = SUCCESS;
         }
+        else{
+            string info;
+            info = "";
+            info += "ComputePathToPose failed with status: ";
+            if(result.code == rclcpp_action::ResultCode::ABORTED){
+                RCLCPP_ERROR(rclcpp::get_logger("ComputePathToPose"), "ComputePathToPose failed with status: ABORTED");
+                info+= "ABORTED";
+                state_planner = ERROR;
+            }
+            else if(result.code == rclcpp_action::ResultCode::CANCELED){
+                RCLCPP_ERROR(rclcpp::get_logger("ComputePathToPose"), "ComputePathToPose failed with status: CANCELED");
+                info+= "CANCELED";
+                state_planner = CANCEL; 
+            }
+            else if(result.code == rclcpp_action::ResultCode::UNKNOWN){
+                RCLCPP_ERROR(rclcpp::get_logger("ComputePathToPose"), "ComputePathToPose failed with status: UNKNOWN");
+                info+= "UNKNOWN";
+                state_planner = ERROR;
+            }
+            send_history("error",info);
+        }     
     };
-    auto send_goal_future = follow_waypoints_client_->async_send_goal(goal_msg,options);
-    //wait result
-    // rclcpp::spin_until_future_complete(this->get_node_base_interface(),send_goal_future);
+    auto send_goal_future = compute_path_to_pose_client_->async_send_goal(goal_msg, options);
+    // //wait finish
+    // rclcpp::spin_until_future_complete(this->get_node_base_interface(), send_goal_future);
+    // // cancel_getPathToPose();
 }
 void navigation_function::followPath(const nav_msgs::msg::Path &path, const std::string &controller_id, const std::string &goal_checker_id){
+    state_controller = UNKNOW;
     RCLCPP_INFO(rclcpp::get_logger("FollowPath"), "Waiting for 'FollowPath' action server");
     // wait action server
     if (!follow_path_client_->wait_for_action_server(std::chrono::duration<float>(5))) {
@@ -689,9 +687,11 @@ void navigation_function::followPath(const nav_msgs::msg::Path &path, const std:
     options.goal_response_callback=[this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::FollowPath>> goal_handle){
         if(!goal_handle){
             RCLCPP_ERROR(rclcpp::get_logger("FollowPath"),"'Follow Path' was rejected by server!");
+            state_controller = REJECT;
         }
         else{
             RCLCPP_INFO(rclcpp::get_logger("FollowPath"),"'Follow Path' was accepted by server, waiting for result");
+            state_controller = ACCEPT;
         }
     };
     options.feedback_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::FollowPath>>,
@@ -701,281 +701,15 @@ void navigation_function::followPath(const nav_msgs::msg::Path &path, const std:
     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::FollowPath>::WrappedResult & result) {
         if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
             RCLCPP_INFO(rclcpp::get_logger("FollowPath"), "'Follow Path' succeeded!");
+            state_controller = SUCCESS;
         } else {
             RCLCPP_ERROR(rclcpp::get_logger("FollowPath"), "'Follow Path' failed with status: %d", static_cast<int>(result.code));
+            state_controller = ERROR;
         }
     };
     auto send_goal_future = follow_path_client_->async_send_goal(goal_msg,options);
     // waiting for sending goal completely
     // rclcpp::spin_until_future_complete(this->get_node_base_interface(), send_goal_future);
-}
-void navigation_function::spin(double spin_dist, int time_allowance){
-    RCLCPP_INFO(rclcpp::get_logger("Spin"),"waiting for 'spin' action server");
-    //wait actin server
-    while(!spin_client_->wait_for_action_server(std::chrono::duration<float>(0.2))){
-        RCLCPP_INFO(rclcpp::get_logger("Spin"),"'spin' action server not available, waiting ...");
-    }
-    auto goal_msg=nav2_msgs::action::Spin::Goal();
-    goal_msg.target_yaw=spin_dist;
-    goal_msg.time_allowance=rclcpp::Duration(std::chrono::seconds(time_allowance));
-    RCLCPP_INFO(rclcpp::get_logger("Spin"), "Spinning to angle %f....", goal_msg.target_yaw);
-    //send goal and receive result
-    rclcpp_action::Client<nav2_msgs::action::Spin>::SendGoalOptions options;
-    options.goal_response_callback=[this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::Spin>> goal_handle){
-        if(!goal_handle){
-            RCLCPP_ERROR(rclcpp::get_logger("Spin"),"Spin request was rejected by server!");
-        }
-        else{
-            RCLCPP_INFO(rclcpp::get_logger("Spin"),"Spin request was accepted by server, waiting for result");
-        }
-    };
-    options.feedback_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::Spin>>,
-                        const std::shared_ptr<const nav2_msgs::action::Spin::Feedback> feedback) {
-        RCLCPP_INFO(rclcpp::get_logger("Spin"), "'Follow Path' received feedback with angular distance traveled: %.2f", feedback->angular_distance_traveled);
-    };
-    options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::Spin>::WrappedResult & result) {
-        if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
-            RCLCPP_INFO(rclcpp::get_logger("Spin"), "'Spin' succeeded!");
-        } else {
-            RCLCPP_ERROR(rclcpp::get_logger("Spin"), "'Spin' failed with status: %d", static_cast<int>(result.code));
-        }
-    };
-    auto send_goal_future = spin_client_->async_send_goal(goal_msg,options);
-    // wait for sending goal completely
-    // rclcpp::spin_until_future_complete(this->get_node_base_interface(), send_goal_future);
-}
-void navigation_function::backup(double backup_dist, double backup_speed, int time_allowance){
-    RCLCPP_INFO(rclcpp::get_logger("Backup"),"waiting for 'backup' action server");
-    //wait action server
-    while(!backup_client_->wait_for_action_server(std::chrono::duration<float>(0.2))){
-        RCLCPP_INFO(rclcpp::get_logger("Backup"),"'backup' action server is not available, waiting ...");
-    }
-    auto goal_msg = nav2_msgs::action::BackUp::Goal();
-    goal_msg.target.x = static_cast<float>(backup_dist);
-    goal_msg.speed = static_cast<float>(backup_speed);
-    goal_msg.time_allowance = rclcpp::Duration::from_seconds(time_allowance);
-    //send goal and receive result
-    rclcpp_action::Client<nav2_msgs::action::BackUp>::SendGoalOptions options;
-    options.goal_response_callback =[this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::BackUp>> goal_handle){
-        if(!goal_handle){
-            RCLCPP_ERROR(rclcpp::get_logger("Backup"),"Backup request was rejected by server");
-        }
-        else{
-            RCLCPP_INFO(rclcpp::get_logger("Backup"),"Backup request was accepted by server, waiting for result");
-        }
-    };
-    options.feedback_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::BackUp>>,
-                        const std::shared_ptr<const nav2_msgs::action::BackUp::Feedback> feedback) {
-        RCLCPP_INFO(rclcpp::get_logger("Backup"), "Backup received feedback with distance traveled: %.2f", feedback->distance_traveled);
-    };
-    options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::BackUp>::WrappedResult & result) {
-        if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
-            RCLCPP_INFO(rclcpp::get_logger("Backup"), "'Backup' succeeded!");
-        } else {
-            RCLCPP_ERROR(rclcpp::get_logger("Backup"), "'Backup' failed with status: %d", static_cast<int>(result.code));
-        }
-    };
-    auto send_goal_future = backup_client_->async_send_goal(goal_msg, options);
-    //wait finish
-    // rclcpp::spin_until_future_complete(this->get_node_base_interface(),send_goal_future);
-}
-void navigation_function::driveOnHeading(double dist, double speed, int time_allowance){
-    RCLCPP_INFO(rclcpp::get_logger("DriveOnHeading"), "waiting for Drive On Heading action server");
-    //wait action server
-    while(!drive_on_heading_client_->wait_for_action_server(std::chrono::duration<float>(0.2))){
-        RCLCPP_INFO(rclcpp::get_logger("DriveOnHeading"), "Drive On Heading action server is not available, waiting ...");
-    }
-    auto goal_msg = nav2_msgs::action::DriveOnHeading::Goal();
-    goal_msg.target.x = static_cast<float>(dist);
-    goal_msg.speed = static_cast<float>(speed);
-    goal_msg.time_allowance = rclcpp::Duration::from_seconds(time_allowance);
-    //send goal and receive rsult
-    rclcpp_action::Client<nav2_msgs::action::DriveOnHeading>::SendGoalOptions options;
-    options.goal_response_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::DriveOnHeading>> goal_handle){
-        if(!goal_handle){
-            RCLCPP_ERROR(rclcpp::get_logger("DriveOnHeading"),"Drive On Heading request was rejected by server");
-        }
-        else{
-            RCLCPP_INFO(rclcpp::get_logger("DriveOnHeading"), "Drive On Heading request was accepted by server");
-        }
-    };
-    options.feedback_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::DriveOnHeading>>, 
-                        const std::shared_ptr<const nav2_msgs::action::DriveOnHeading::Feedback> feedback){
-        RCLCPP_INFO(rclcpp::get_logger("DriveOnHeading"), "Drive On Heading client received feedback with distance traveled: %.2f", feedback.get()->distance_traveled);
-    };
-    options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::DriveOnHeading>::WrappedResult &result){
-        if(result.code == rclcpp_action::ResultCode::SUCCEEDED){
-            RCLCPP_INFO(rclcpp::get_logger("DriveOnHeading"),"Drive On Heading succeeded");
-        }
-        else{
-            RCLCPP_ERROR(rclcpp::get_logger("DriveOnHeading"), "Drive On Heading failed with status: %d", static_cast<int>(result.code));
-        }
-    };
-    auto send_goal_future = drive_on_heading_client_->async_send_goal(goal_msg, options);
-    //wait finish
-    // rclcpp::spin_until_future_complete(this->get_node_base_interface(),send_goal_future);
-}
-// void navigation::getPathToPose(geometry_msgs::msg::PoseStamped start, geometry_msgs::msg::PoseStamped goal, std::string planner_id, bool use_start){
-//     states = UNKNOW;
-//     RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"),"send a 'computePathToPose' action request");
-//     while(!compute_path_to_pose_client_->wait_for_action_server(std::chrono::duration<float>(0.2))){
-//         RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"), "'computePathToPose' action server is not available, waiting ...");
-//     }
-//     auto goal_msg = nav2_msgs::action::ComputePathToPose::Goal();
-//     goal_msg.start = start;
-//     goal_msg.goal = goal;
-//     goal_msg.planner_id = planner_id;
-//     goal_msg.use_start = use_start;
-//     path_ = nav_msgs::msg::Path();
-
-//     //send goal and receive respond result
-//     RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"),"Sending request");
-//     RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"),"Compute Path to goal: x = %.2f, y = %.2f", goal_msg.goal.pose.position.x, goal_msg.goal.pose.position.y);
-//     rclcpp_action::Client<nav2_msgs::action::ComputePathToPose>::SendGoalOptions options;
-//     options.goal_response_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::ComputePathToPose>> goal_handle){
-//         if(!goal_handle){
-//             RCLCPP_ERROR(rclcpp::get_logger("ComputePathToPose"),"ComputePathToPose request was rejected by server");
-//             states = REJECT;
-//         }
-//         else{
-//             RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"), "ComputePathToPose request was accepted by server");
-//             states = ACCEPT;
-//         }
-//     };
-//     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::ComputePathToPose>::WrappedResult &result){
-//         if(result.code == rclcpp_action::ResultCode::SUCCEEDED){
-//             RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"),"ComputePathToPose succeeded");
-//             send_history("normal","ComputePathToPose succeeded");
-//             path_ = result.result->path;
-//             pub_use_path();
-//             states = SUCCESS;
-//         }
-//         else{
-//             string info;
-//             info = "";
-//             info += "ComputePathToPose failed with status: ";
-//             if(result.code == rclcpp_action::ResultCode::ABORTED){
-//                 RCLCPP_ERROR(rclcpp::get_logger("ComputePathToPose"), "ComputePathToPose failed with status: ABORTED");
-//                 info+= "ABORTED";
-//                 states = ERROR;
-//             }
-//             else if(result.code == rclcpp_action::ResultCode::CANCELED){
-//                 RCLCPP_ERROR(rclcpp::get_logger("ComputePathToPose"), "ComputePathToPose failed with status: CANCELED");
-//                 info+= "CANCELED";
-//                 states = CANCEL; 
-//             }
-//             else if(result.code == rclcpp_action::ResultCode::UNKNOWN){
-//                 RCLCPP_ERROR(rclcpp::get_logger("ComputePathToPose"), "ComputePathToPose failed with status: UNKNOWN");
-//                 info+= "UNKNOWN";
-//                 states = ERROR;
-//             }
-//             send_history("error",info);
-//         }     
-//     };
-//     auto send_goal_future = compute_path_to_pose_client_->async_send_goal(goal_msg, options);
-//     //wait finish
-//     rclcpp::spin_until_future_complete(this->get_node_base_interface(), send_goal_future);
-//     // cancel_getPathToPose();
-// }
-// int navigation::getPathThroughPoses(geometry_msgs::msg::PoseStamped start, std::vector<geometry_msgs::msg::PoseStamped> goals, std::string planner_id, bool use_start){
-    
-//     static int value_return = 0;
-//     RCLCPP_INFO(rclcpp::get_logger("ComputePathThroughPoses"), "send a computePathThroughPoses action request");
-//     //wait action server
-//     while(!compute_path_through_poses_client_->wait_for_action_server(std::chrono::duration<float>(0.2))){
-//         RCLCPP_INFO(rclcpp::get_logger("ComputePathThroughPoses"), "'computePathThroughPoses' action server is not available, waiting ...");
-//     }
-//     auto goal_msg = nav2_msgs::action::ComputePathThroughPoses::Goal();
-//     goal_msg.start = start;
-//     goal_msg.goals = goals;
-//     goal_msg.planner_id = planner_id;
-//     goal_msg.use_start = use_start;
-//     path_ = nav_msgs::msg::Path();
-//     //send goal and receive respond result
-//     rclcpp_action::Client<nav2_msgs::action::ComputePathThroughPoses>::SendGoalOptions options;
-//     options.goal_response_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::ComputePathThroughPoses>> goal_handle){
-//         if(!goal_handle){
-//             RCLCPP_ERROR(rclcpp::get_logger("ComputePathThroughPoses"),"ComputePathThroughPoses request was rejected by server");
-//             value_return = 0;
-//         }
-//         else{
-//             RCLCPP_INFO(rclcpp::get_logger("ComputePathThroughPoses"), "ComputePathThroughPoses request was accepted by server");
-//         }
-//     };
-//     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::ComputePathThroughPoses>::WrappedResult &result){
-//         if(result.code == rclcpp_action::ResultCode::SUCCEEDED){
-//             RCLCPP_INFO(rclcpp::get_logger("ComputePathThroughPoses"),"ComputePathThroughPoses succeeded");
-//             pathThroughPoses = result.result->path;
-//             value_return = 1;
-//         }
-//         else{
-//             RCLCPP_ERROR(rclcpp::get_logger("ComputePathThroughPoses"), "ComputePathThroughPoses failed with status: %d", static_cast<int>(result.code));
-//             value_return = 0;
-//         }
-//     };
-//     auto send_goal_future = compute_path_through_poses_client_->async_send_goal(goal_msg, options);
-//     //wait finish
-//     rclcpp::spin_until_future_complete(this->get_node_base_interface(), send_goal_future);
-//     return value_return;
-// }
-// int navigation::smoothPath(nav_msgs::msg::Path path, std::string smoother_id, double max_duration, bool check_for_collision){
-//     static int value_return = 0;
-//     RCLCPP_INFO(rclcpp::get_logger("SmoothPath"), "send a smoothPath action request");
-//     while(!smoother_client_->wait_for_action_server(std::chrono::duration<float>(0.2))){
-//         RCLCPP_INFO(rclcpp::get_logger("SmoothPath"), "smoothPath action server is not available, waiting ...");
-//     }
-//     auto goal_msg = nav2_msgs::action::SmoothPath::Goal();
-//     goal_msg.path = path;
-//     goal_msg.smoother_id = smoother_id;
-//     goal_msg.max_smoothing_duration = rclcpp::Duration::from_seconds(max_duration);
-//     goal_msg.check_for_collisions = check_for_collision;
-//     pathsmooth = path;
-//     //send goal
-//     rclcpp_action::Client<nav2_msgs::action::SmoothPath>::SendGoalOptions options;
-//     options.goal_response_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::SmoothPath>> goal_handle){
-//         if(!goal_handle){
-//             RCLCPP_ERROR(rclcpp::get_logger("SmoothPath"),"smoothPath request was rejected by server");
-//             value_return = 0;
-//         }
-//         else{
-//             RCLCPP_INFO(rclcpp::get_logger("SmoothPath"), "smoothPath request was accepted by server");
-//         }
-//     };
-//     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::SmoothPath>::WrappedResult &result){
-//         if(result.code == rclcpp_action::ResultCode::SUCCEEDED){
-//             RCLCPP_INFO(rclcpp::get_logger("SmoothPath"),"smoothPath succeeded");
-//             pathsmooth = result.result->path;
-//             value_return = 1;
-//         }
-//         else{
-//             RCLCPP_ERROR(rclcpp::get_logger("SmoothPath"), "smoothPath failed with status: %d", static_cast<int>(result.code));
-//             value_return = 0;
-//         }
-//     };
-//     auto send_goal_future = smoother_client_->async_send_goal(goal_msg, options);
-//     //wait finish
-//     rclcpp::spin_until_future_complete(this->get_node_base_interface(),send_goal_future);
-//     return value_return;
-// }
-nav_msgs::msg::Path navigation_function::getPath(){
-    return path_;
-}
-void navigation_function::reset_node(){
-    // Hủy các action client
-    nav_through_poses_client_.reset();
-    nav_to_pose_client_.reset();
-    follow_waypoints_client_.reset();
-    follow_path_client_.reset();
-    compute_path_to_pose_client_.reset();
-    compute_path_through_poses_client_.reset();
-    smoother_client_.reset();
-    spin_client_.reset();
-    backup_client_.reset();
-    drive_on_heading_client_.reset();
-    nav_complete_coverage_client_.reset();
-    // assisted_teleop_client_.reset();
-    // docking_client_.reset();
-    // undocking_client_.reset();
 }
 void navigation_function::cancel_navCompleteCoverage(){
     RCLCPP_INFO(rclcpp::get_logger("NavigateCompleteCorverage"), "Canceling naviagte complete coverage");
@@ -992,81 +726,15 @@ void navigation_function::cancel_navThroughPoses(){
     auto cancel_goal = nav_through_poses_client_->async_cancel_all_goals();
     // rclcpp::spin_until_future_complete(this->get_node_base_interface(), cancel_goal);
 }
-void navigation_function::cancel_followWaypoints(){
-    RCLCPP_INFO(rclcpp::get_logger("FollowWaypoints"), "Canceling follow waypoints");
-    auto cancel_goal = follow_waypoints_client_->async_cancel_all_goals();
+void navigation_function::cancel_getPathToPose(){
+    RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"), "Canceling get path to pose");
+    auto cancel_goal = compute_path_to_pose_client_->async_cancel_all_goals();
     // rclcpp::spin_until_future_complete(this->get_node_base_interface(), cancel_goal);
 }
 void navigation_function::cancel_followPath(){
     RCLCPP_INFO(rclcpp::get_logger("FollowPath"), "Canceling follow path");
     auto cancel_goal = follow_path_client_->async_cancel_all_goals();
     // rclcpp::spin_until_future_complete(this->get_node_base_interface(), cancel_goal);
-}
-void navigation_function::cancel_spin(){
-    RCLCPP_INFO(rclcpp::get_logger("Spin"), "Canceling spin");
-    auto cancel_goal = spin_client_->async_cancel_all_goals();
-    rclcpp::spin_until_future_complete(this->get_node_base_interface(), cancel_goal);
-}
-void navigation_function::cancel_backup(){
-    RCLCPP_INFO(rclcpp::get_logger("Backup"), "Canceling backup");
-    auto cancel_goal = backup_client_->async_cancel_all_goals();
-    // rclcpp::spin_until_future_complete(this->get_node_base_interface(), cancel_goal);
-}
-void navigation_function::cancel_driveOnHeading(){
-    RCLCPP_INFO(rclcpp::get_logger("DriveOnHeading"), "Canceling drive on heading");
-    auto cancel_goal = follow_waypoints_client_->async_cancel_all_goals();
-    // rclcpp::spin_until_future_complete(this->get_node_base_interface(), cancel_goal);
-}
-void navigation_function::cancel_getPathToPose(){
-    RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"), "Canceling get path to pose");
-    auto cancel_goal = compute_path_to_pose_client_->async_cancel_all_goals();
-    // rclcpp::spin_until_future_complete(this->get_node_base_interface(), cancel_goal);
-}
-void navigation_function::cancel_getPathThroughPoses(){
-    RCLCPP_INFO(rclcpp::get_logger("ComputePathThroughPose"), "Canceling get path through poses");
-    auto cancel_goal = compute_path_through_poses_client_->async_cancel_all_goals();
-    // rclcpp::spin_until_future_complete(this->get_node_base_interface(), cancel_goal);
-}
-void navigation_function::cancel_smoothPath(){
-    RCLCPP_INFO(rclcpp::get_logger("SmoothPath"), "Canceling smooth path");
-    auto cancel_goal = smoother_client_->async_cancel_all_goals();
-    // rclcpp::spin_until_future_complete(this->get_node_base_interface(), cancel_goal);
-}
-nav2_msgs::msg::Costmap navigation_function::getGlobalCostmap(){
-    RCLCPP_INFO(rclcpp::get_logger("Navigation"), "Get global costmap");
-    while(get_costmap_global_srv_->wait_for_service(std::chrono::duration<float>(0.2))){
-        RCLCPP_INFO(rclcpp::get_logger("Navigation"),"Global costmap service not available, waiting ...");
-    }
-    //send request
-    auto req = std::make_shared<nav2_msgs::srv::GetCostmap_Request>();
-    auto future = get_costmap_local_srv_->async_send_request(req);
-    //wait respond
-    if(rclcpp::spin_until_future_complete(this->get_node_base_interface(),future)==rclcpp::FutureReturnCode::SUCCESS){
-        RCLCPP_INFO(rclcpp::get_logger("Navigation"),"Getting of Global Costmap successed");
-        return future.get()->map;
-    }
-    else{
-        RCLCPP_ERROR(rclcpp::get_logger("Navigation"),"Getting of Global Costmap failed");
-        return nav2_msgs::msg::Costmap();
-    }
-}
-nav2_msgs::msg::Costmap navigation_function::getLocalCostmap(){
-    RCLCPP_INFO(rclcpp::get_logger("Navigation"), "Get Local costmap");
-    while(get_costmap_local_srv_->wait_for_service(std::chrono::duration<float>(0.2))){
-        RCLCPP_INFO(rclcpp::get_logger("Navigation"),"Local costmap service not available, waiting ...");
-    }
-    //send request
-    auto req = std::make_shared<nav2_msgs::srv::GetCostmap_Request>();
-    auto future = get_costmap_local_srv_->async_send_request(req);
-    //wait respond
-    if(rclcpp::spin_until_future_complete(this->get_node_base_interface(),future)==rclcpp::FutureReturnCode::SUCCESS){
-        RCLCPP_INFO(rclcpp::get_logger("Navigation"),"Getting of Local Costmap successed");
-        return future.get()->map;
-    }
-    else{
-        RCLCPP_ERROR(rclcpp::get_logger("Navigation"),"Getting of Local Costmap failed");
-        return nav2_msgs::msg::Costmap();
-    }
 }
 void navigation_function::clearLocalCostmap(){
     RCLCPP_INFO(rclcpp::get_logger("Navigation"), "Clear Local costmap");
@@ -1112,7 +780,6 @@ void navigation_function::pub_user_path(const nav_msgs::msg::Path &path){
     RCLCPP_INFO(this->get_logger(),"publish path to goal");
 }
 void navigation_function::process_data(){
-    std::lock_guard<std::recursive_mutex> lock(mutex_common);
     //////////
     mode = parameters["mode"].get<string>();
     //test
@@ -1138,6 +805,17 @@ void navigation_function::process_data(){
         // goal_position_.pose.orientation.y = 0.0;
         // goal_position_.pose.orientation.z = 0.0;
         // goal_position_.pose.orientation.w = 1.0;
+    }
+    else if(mode == "line_follow"){
+        goal_position_.header.frame_id = "map";
+        goal_position_.header.stamp = this->get_clock()->now();
+        goal_position_.pose.position.x = std::stod(parameters["goal_position"][0].value("x","0.0"));
+        goal_position_.pose.position.y = std::stod(parameters["goal_position"][0].value("y","0.0"));
+        goal_position_.pose.position.z = 0.0;
+        goal_position_.pose.orientation.x = 0.0;
+        goal_position_.pose.orientation.y = 0.0;
+        goal_position_.pose.orientation.z = std::stod(parameters["goal_position"][0].value("z","0.0"));
+        goal_position_.pose.orientation.w = std::stod(parameters["goal_position"][0].value("w","1.0"));
     }
     else if(mode == "go_through_poses"){
         many_goal_position_.resize(0);
@@ -1182,7 +860,6 @@ void navigation_function::process_data(){
     }
 }
 int navigation_function::action(){
-    std::lock_guard<std::recursive_mutex> lock(mutex_common);
     //declare var
     static int complete_position = 0;
     static float x=0, y=0, z=0, w=0;
@@ -1217,7 +894,7 @@ int navigation_function::action(){
             //kiem tra trang thai dang hoat dong
             if(step == 0){
                 //send goal
-		clearAllCostmap();
+                clearAllCostmap();
                 goToPose(goal_position_);
                 step = 1;
                 return Active_;
@@ -1262,6 +939,87 @@ int navigation_function::action(){
                 else return Active_;
             }
         }
+        else if(mode == "line_follow"){
+            //Kiem tra vi tri robot voi muc tieu
+            x = goal_position_.pose.position.x;
+            y = goal_position_.pose.position.y;
+            z = goal_position_.pose.orientation.z;
+            w = goal_position_.pose.orientation.w;
+            dis = sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y));
+            angle1 = getyaw(z,w);
+            angle2 = getyaw(z1,w1);
+            if(dis<=0.15){
+                complete_position=1;
+                if(fabs(sin(angle2)-sin(angle1))<=0.02 && fabs(cos(angle2)-cos(angle1))<=0.02) { //0.1 //0.08 only sin //0.05
+                    complete_position=2;
+                }
+            }else complete_position=0;
+            //kiem tra trang thai dang hoat dong
+            if(step == 0){
+                //send goal
+                clearAllCostmap();
+                step = 1;
+                return Active_;
+            }
+            else if(step == 1){
+                getPathToPose(robot_current_position,goal_position_);
+                step = 2;
+                return Active_;
+            }
+            else if(step == 2){
+                if(state_planner == SUCCESS){
+                    followPath(path_);
+                    step = 3;
+                    return Active_;
+                }
+                else {
+                    step == 0;
+                    return Active_;
+                }
+            }
+            else if(step == 3){
+                if(state_controller == SUCCESS){
+                    cancel_getPathToPose();
+                    cancel_followPath();
+                    goal_position_ = geometry_msgs::msg::PoseStamped();
+                    path_ = nav_msgs::msg::Path();
+                    step = 0;
+                    request = 0;
+                    status = Finish_;
+                    return Finish_;
+                }
+                else if(state_controller == REJECT){
+                    cancel_getPathToPose();
+                    cancel_followPath();
+                    step = 0;
+                    return Active_;
+                }
+                else if(state_controller == ERROR || states == CANCEL){
+                    if(complete_position == 1){
+                        goal_position_ = get_robot_position();
+                        step = 0;
+                        return Active_;
+                    }
+                    else if(complete_position == 2){
+                        cancel_getPathToPose();
+                        cancel_followPath();
+                        goal_position_ = geometry_msgs::msg::PoseStamped();
+                        path_ = nav_msgs::msg::Path();
+                        step = 0;
+                        request = 0;
+                        status = Finish_;
+                        return Finish_;
+                    }
+                    else{
+                        cancel_getPathToPose();
+                        cancel_followPath();
+                        step = 0;
+                        return Active_;
+                    }
+                }
+                else return Active_;
+            }
+        }
         else if(mode == "go_through_poses"){
             //Kiem tra vi tri robot voi muc tieu
             x = many_goal_position_[many_goal_position_.size()-1].pose.position.x;
@@ -1280,7 +1038,7 @@ int navigation_function::action(){
             //kiem tra trang thai dang hoat dong
             if(step == 0){
                 //send goals
-		clearAllCostmap();
+                clearAllCostmap();
                 goThroughPoses(many_goal_position_);
                 step = 1;
                 return Active_;
@@ -1320,7 +1078,7 @@ int navigation_function::action(){
                     else{
                         //update many_goal_position
                         many_goal_position_.erase(many_goal_position_.begin(), many_goal_position_.end() - number_of_poses_remaining);
-                        clearAllCostmap();
+                        // clearAllCostmap();
                         step = 0;
                         return Active_;
                     }
@@ -1339,7 +1097,7 @@ int navigation_function::action(){
             //kiem tra trang thai dang hoat dong
             if(step == 0){
                 //send goal
-		clearAllCostmap();
+                clearAllCostmap();
                 navCompleteCoverage(polygons);
                 step = 1;
                 return Active_;
@@ -1354,7 +1112,7 @@ int navigation_function::action(){
                 else if(states == ERROR || states == CANCEL){
                     //update polygon
                     cancel_navCompleteCoverage();
-                    update_polygon();
+                    //update_polygon();
                     step = 0;
                     return Active_;
                 }
@@ -1374,9 +1132,6 @@ int navigation_function::action(){
         else return status;
     }
     else{
-        cancel_navToPose();
-        cancel_navThroughPoses();
-        cancel_navCompleteCoverage();
         step = 0;
         return status;
     }
