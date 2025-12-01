@@ -381,7 +381,8 @@ void navigation_function::navCompleteCoverage(const vector<geometry_msgs::msg::P
             else if(result.code == rclcpp_action::ResultCode::UNKNOWN){
                 RCLCPP_ERROR(rclcpp::get_logger("NavigateCompleteCorverage"), "NavigateCompleteCorverage failed with status: UNKNOWN");
                 info+= "UNKNOWN";
-                states = ERROR;
+                // states = ERROR;
+		states = CANCEL;
             }
             send_history("error",info);
         }
@@ -908,6 +909,7 @@ int navigation_function::action(){
                     step = 0;
                     request = 0;
                     status = Finish_;
+		    pub_user_path(path_);
                     return Finish_;
                 }
                 else if(states == REJECT){
@@ -928,6 +930,7 @@ int navigation_function::action(){
                         step = 0;
                         request = 0;
                         status = Finish_;
+			pub_user_path(path_);
                         return Finish_;
                     }
                     else{
@@ -986,6 +989,7 @@ int navigation_function::action(){
                     step = 0;
                     request = 0;
                     status = Finish_;
+		    pub_user_path(path_);
                     return Finish_;
                 }
                 else if(state_controller == REJECT){
@@ -1008,6 +1012,7 @@ int navigation_function::action(){
                         step = 0;
                         request = 0;
                         status = Finish_;
+			pub_user_path(path_);
                         return Finish_;
                     }
                     else{
@@ -1104,17 +1109,20 @@ int navigation_function::action(){
             }
             else if(step == 1){
                 //check state of active
-                if(states == REJECT){
+                if(states == REJECT || states == CANCEL){
                     cancel_navCompleteCoverage();
                     step = 0;
                     return Active_;
                 }
-                else if(states == ERROR || states == CANCEL){
+                else if(states == ERROR){
                     //update polygon
                     cancel_navCompleteCoverage();
                     //update_polygon();
                     step = 0;
-                    return Active_;
+		    //request = 0;
+		    //status = Error_;
+                    //return Error_;
+		    return Active_;
                 }
                 else if(states == SUCCESS){
                     cancel_navCompleteCoverage();
@@ -1124,6 +1132,7 @@ int navigation_function::action(){
                     step = 0;
                     request = 0;
                     status = Finish_;
+		    pub_user_path(path_);
                     return Finish_;
                 }
                 else return Active_;
