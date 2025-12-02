@@ -447,10 +447,10 @@ class control_node : public rclcpp::Node{
             green=cgreen;
         }
         void led_control(){
-            set_color_led(100,100,0); //add
-            led_r=1; //add
-            led_l=1; //add
-            led_b=1; //add
+            //set_color_led(100,100,0); //add
+            //led_r=1; //add
+            //led_l=1; //add
+            //led_b=1; //add
             if(local_mode=="slam"){
                 set_color_led(100,0,25); //100 0 25
                 led_r=3;
