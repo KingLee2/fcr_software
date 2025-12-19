@@ -90,7 +90,7 @@
 
   <!--MB22_916b/base_camera 1 update to 2-->
     <joint name="camera2" type="fixed">
-        <origin rpy="${-pi/2} 0 ${pi/9}" xyz="0.46 -0.126 0.411"/>
+        <origin rpy="${-pi/2} 0 ${pi/9}" xyz="0.46 -0.126 0.38"/>
         <parent link="$(arg mvibot_seri)/base_link"/>
         <child link="camera2_$(arg mvibot_seri)"/>
     </joint>
@@ -98,7 +98,7 @@
     </link>
     <!--MB22_916b/base_camera 2 update to 1-->
     <joint name="camera1" type="fixed">
-        <origin rpy="${-pi/2} 0 ${-pi/9}" xyz="0.46 0.126 0.411"/>
+        <origin rpy="${-pi/2} 0 ${-pi/9}" xyz="0.46 0.126 0.38"/>
         <parent link="$(arg mvibot_seri)/base_link"/>
         <child link="camera1_$(arg mvibot_seri)"/>
     </joint>

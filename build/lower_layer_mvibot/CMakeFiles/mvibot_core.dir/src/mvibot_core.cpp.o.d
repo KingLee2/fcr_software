@@ -1,8 +1,8 @@
 CMakeFiles/mvibot_core.dir/src/mvibot_core.cpp.o: \
  /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/mvibot_core.cpp \
  /usr/include/stdc-predef.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/socket_client.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/data_uart.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/tool_node.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/mvibot_core_init.h \
  /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/library_basic.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -267,9 +267,7 @@ CMakeFiles/mvibot_core.dir/src/mvibot_core.cpp.o: \
  /usr/include/c++/13/cstdint /usr/include/c++/13/bits/parse_numbers.h \
  /usr/include/c++/13/bits/std_mutex.h \
  /usr/include/c++/13/bits/unique_lock.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../mvibot_core/mvibot_core_init.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../mvibot_core/../common/library_basic.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../mvibot_core/../common/library_ros.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/library_ros.h \
  /opt/ros/jazzy/include/rclcpp/rclcpp/clock.hpp \
  /usr/include/c++/13/functional /usr/include/c++/13/bits/std_function.h \
  /usr/include/c++/13/unordered_map \
@@ -917,23 +915,14 @@ CMakeFiles/mvibot_core.dir/src/mvibot_core.cpp.o: \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__traits.hpp \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/map_meta_data__traits.hpp \
  /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__type_support.hpp \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/config.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/mvibot_core_init.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/library_basic.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/library_ros.h \
  /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/stof.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/library_basic.h \
  /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/exec.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/odom.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/imu.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/sensor.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/music.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/led.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/motor.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/battery.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/gpio.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/string_Iv2.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/tool_function.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/tool_node.h \
  /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/socket_client_node.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/data_uart.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../mvibot_core/mvibot_core_init.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../mvibot_core/../common/library_basic.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../mvibot_core/../common/library_ros.h \
  /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/odometry_node.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/control_node.h
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/control_node.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/string_Iv2.h

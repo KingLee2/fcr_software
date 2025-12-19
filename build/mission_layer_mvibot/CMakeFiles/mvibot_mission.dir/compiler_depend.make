@@ -35,13 +35,16 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/common/library_ros.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/common/library_basic.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/common/library_ros.h \
+  /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/common/set_get_param.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/common/stof.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/common/stoi.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/common/string_Iv2.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/mvibot_mission/brush_function.h \
+  /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/mvibot_mission/config_function.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/mvibot_mission/gpio_function.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/mvibot_mission/lift_function.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/mvibot_mission/manage_mission.h \
+  /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/mvibot_mission/marker_function.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/mvibot_mission/mission_define.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/mvibot_mission/navigation_function.h \
   /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/mvibot_mission/sleep_function.h \
@@ -4177,6 +4180,8 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /usr/include/boost/preprocessor/repetition/detail/limits/for_256.hpp:
 
+/usr/include/boost/preprocessor/repeat.hpp:
+
 /usr/include/boost/multiprecision/detail/precision.hpp:
 
 /usr/include/boost/geometry/algorithms/detail/is_simple/linear.hpp:
@@ -4317,10 +4322,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /usr/include/boost/mpl/clear.hpp:
 
-/usr/include/boost/geometry/algorithms/detail/is_valid/multipolygon.hpp:
-
-/usr/include/boost/geometry/strategy/geographic/area.hpp:
-
 /usr/include/boost/geometry/algorithms/assign.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/publisher_options.hpp:
@@ -4344,8 +4345,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /usr/include/boost/geometry/algorithms/detail/closest_points/range_to_geometry_rtree.hpp:
 
 /usr/include/boost/function_types/detail/pp_tags/cc_tag.hpp:
-
-/usr/include/boost/geometry/algorithms/detail/is_valid/pointlike.hpp:
 
 /usr/include/boost/function_types/detail/pp_cc_loop/preprocessed.hpp:
 
@@ -4495,11 +4494,9 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_type__builder.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/environments.h:
+/usr/include/boost/preprocessor/punctuation/paren.hpp:
 
-/usr/include/c++/13/pstl/glue_memory_defs.h:
-
-/opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/duration__traits.hpp:
+/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/get_node_timers_interface.hpp:
 
 /usr/include/boost/container/detail/advanced_insert_int.hpp:
 
@@ -4772,8 +4769,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h:
 
 /opt/ros/jazzy/include/std_msgs/std_msgs/msg/string.hpp:
-
-/usr/include/boost/preprocessor/repeat.hpp:
 
 /opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/u_int8_multi_array__traits.hpp:
 
@@ -5233,7 +5228,9 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /opt/ros/jazzy/include/rclcpp_action/rclcpp_action/client_goal_handle_impl.hpp:
 
-/usr/include/boost/geometry/strategies/cartesian/point_in_poly_crossings_multiply.hpp:
+/opt/ros/jazzy/include/rclcpp/rclcpp/wait_set_template.hpp:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/wait_set_policies/thread_safe_synchronization.hpp:
 
 /opt/ros/jazzy/include/rmw/rmw/network_flow_endpoint.h:
 
@@ -5290,10 +5287,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /opt/ros/jazzy/include/tf2/tf2/LinearMath/QuadWord.hpp:
 
 /opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/collector/collector.hpp:
-
-/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/clear_entire_costmap__struct.hpp:
-
-/opt/ros/jazzy/include/action_msgs/action_msgs/msg/detail/goal_status__traits.hpp:
 
 /home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/rosidl_generator_cpp/opennav_coverage_msgs/action/detail/compute_coverage_path__builder.hpp:
 
@@ -5354,6 +5347,14 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /usr/include/boost/geometry/algorithms/azimuth.hpp:
 
 /opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/topic_statistics_collector/received_message_age.hpp:
+
+/opt/ros/jazzy/include/std_msgs/std_msgs/msg/float32_multi_array.hpp:
+
+/usr/include/boost/numeric/conversion/detail/converter.hpp:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/waitable.hpp:
+
+/opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/moving_average_statistics/types.hpp:
 
 /opt/ros/jazzy/include/rclcpp_action/rclcpp_action/client.hpp:
 
@@ -5420,10 +5421,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/rosidl_generator_cpp/opennav_coverage_msgs/action/detail/compute_coverage_path__traits.hpp:
 
 /usr/include/boost/mpl/aux_/msvc_type.hpp:
-
-/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/msg/detail/imu__builder.hpp:
-
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/transform.hpp:
 
 /usr/include/boost/container_hash/hash_fwd.hpp:
 
@@ -5599,35 +5596,13 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /usr/include/boost/geometry/strategy/cartesian/envelope.hpp:
 
-/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/compute_path_to_pose__struct.hpp:
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance_stamped__traits.hpp:
 
-/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_type__traits.hpp:
+/usr/include/boost/math/tools/detail/rational_horner3_20.hpp:
 
-/usr/include/boost/geometry/formulas/differential_quantities.hpp:
+/usr/include/boost/config/detail/select_stdlib_config.hpp:
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h:
-
-/usr/include/c++/13/bits/stl_queue.h:
-
-/usr/include/boost/math/tools/precision.hpp:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/duration.hpp:
-
-/usr/include/boost/geometry/algorithms/detail/relate/implementation.hpp:
-
-/usr/include/boost/mpl/aux_/preprocessed/gcc/template_arity.hpp:
-
-/opt/ros/jazzy/include/tf2_msgs/tf2_msgs/msg/tf_message.hpp:
-
-/opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/collector/generate_statistics_message.hpp:
-
-/usr/include/boost/algorithm/string/detail/find_iterator.hpp:
-
-/usr/include/boost/function_types/config/cc_names.hpp:
-
-/usr/include/boost/geometry/index/detail/rtree/quadratic/quadratic.hpp:
-
-/usr/include/boost/geometry/algorithms/detail/relate/topology_check.hpp:
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance_stamped__builder.hpp:
 
 /usr/include/boost/geometry/strategies/closest_points/spherical.hpp:
 
@@ -5636,10 +5611,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /opt/ros/jazzy/include/action_msgs/action_msgs/msg/detail/goal_status__struct.h:
 
 /usr/include/boost/geometry/strategies/default_distance_result.hpp:
-
-/usr/include/boost/predef/library/c/_prefix.h:
-
-/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/navigate_to_pose.hpp:
 
 /usr/include/boost/geometry/algorithms/detail/is_simple/debug_print_boundary_points.hpp:
 
@@ -5708,10 +5679,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /usr/include/boost/mpl/prior.hpp:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/clear_entire_costmap.hpp:
-
-/usr/include/boost/type_traits/conversion_traits.hpp:
-
-/opt/ros/jazzy/include/action_msgs/action_msgs/msg/detail/goal_info__struct.h:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/follow_waypoints__traits.hpp:
 
@@ -5791,6 +5758,8 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /opt/ros/jazzy/include/action_msgs/action_msgs/msg/goal_info.h:
 
+/usr/include/boost/geometry/algorithms/detail/relate/topology_check.hpp:
+
 /usr/include/c++/13/ext/atomicity.h:
 
 /opt/ros/jazzy/include/tf2_msgs/tf2_msgs/msg/rosidl_generator_cpp__visibility_control.hpp:
@@ -5805,8 +5774,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/executors/executor_notify_waitable.hpp:
 
-/opt/ros/jazzy/include/rclcpp/rclcpp/wait_set_template.hpp:
-
 /opt/ros/jazzy/include/action_msgs/action_msgs/msg/detail/goal_status__struct.hpp:
 
 /usr/include/boost/preprocessor/control/limits/while_256.hpp:
@@ -5816,6 +5783,76 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /opt/ros/jazzy/include/action_msgs/action_msgs/msg/detail/goal_status_array__functions.h:
 
 /opt/ros/jazzy/include/rcl/rcl/node.h:
+
+/usr/include/boost/function_types/result_type.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:
+
+/opt/ros/jazzy/include/type_description_interfaces/type_description_interfaces/msg/detail/type_source__struct.h:
+
+/opt/ros/jazzy/include/tf2/tf2/LinearMath/Scalar.hpp:
+
+/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/common/stof.h:
+
+/usr/include/boost/geometry/algorithms/detail/equals/interface.hpp:
+
+/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/get_costmap__struct.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h:
+
+/usr/include/boost/geometry/geometries/point_xyz.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/c++/13/pstl/glue_memory_defs.h:
+
+/opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/duration__traits.hpp:
+
+/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/mvibot_mission/config_function.h:
+
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+
+/usr/include/boost/mpl/aux_/config/preprocessor.hpp:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/polygon_stamped__traits.hpp:
+
+/usr/include/boost/geometry/arithmetic/determinant.hpp:
+
+/usr/include/boost/mpl/aux_/config/msvc.hpp:
+
+/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/compute_path_to_pose__struct.hpp:
+
+/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_type__traits.hpp:
+
+/usr/include/boost/geometry/formulas/differential_quantities.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h:
+
+/usr/include/c++/13/bits/stl_queue.h:
+
+/usr/include/boost/math/tools/precision.hpp:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/duration.hpp:
+
+/usr/include/boost/geometry/algorithms/detail/relate/implementation.hpp:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/template_arity.hpp:
+
+/opt/ros/jazzy/include/tf2_msgs/tf2_msgs/msg/tf_message.hpp:
+
+/opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/collector/generate_statistics_message.hpp:
+
+/usr/include/boost/blank_fwd.hpp:
+
+/usr/include/boost/mpl/aux_/advance_backward.hpp:
+
+/usr/include/boost/container/new_allocator.hpp:
+
+/usr/include/boost/algorithm/string/detail/find_iterator.hpp:
+
+/usr/include/boost/function_types/config/cc_names.hpp:
+
+/usr/include/boost/geometry/index/detail/rtree/quadratic/quadratic.hpp:
 
 /home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/rosidl_generator_cpp/opennav_coverage_msgs/action/detail/navigate_complete_coverage__traits.hpp:
 
@@ -5827,37 +5864,11 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /usr/include/boost/geometry/algorithms/detail/signed_size_type.hpp:
 
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance_stamped__traits.hpp:
-
-/usr/include/boost/math/tools/detail/rational_horner3_20.hpp:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512bitalgintrin.h:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/drive_on_heading__type_support.hpp:
 
 /opt/ros/jazzy/include/action_msgs/action_msgs/srv/detail/cancel_goal__type_support.h:
-
-/usr/include/boost/geometry/algorithms/detail/closest_points/point_to_geometry.hpp:
-
-/usr/include/boost/core/addressof.hpp:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/experimental/timers_manager.hpp:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/get_node_parameters_interface.hpp:
-
-/usr/include/boost/geometry/algorithms/detail/envelope/transform_units.hpp:
-
-/usr/include/boost/mpl/deref.hpp:
-
-/usr/include/boost/qvm/math.hpp:
-
-/usr/include/boost/function_types/detail/components_impl/arity10_0.hpp:
-
-/usr/include/boost/mpl/aux_/has_tag.hpp:
-
-/usr/include/boost/type_traits/add_reference.hpp:
-
-/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/get_parameters__struct.hpp:
 
 /opt/ros/jazzy/include/rclcpp_action/rclcpp_action/visibility_control.hpp:
 
@@ -5923,6 +5934,22 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/duration__struct.hpp:
 
+/opt/ros/jazzy/include/rcutils/rcutils/sha256.h:
+
+/opt/ros/jazzy/include/tf2/tf2/buffer_core.hpp:
+
+/usr/include/boost/math/tools/complex.hpp:
+
+/usr/include/boost/mpl/aux_/preprocessed/gcc/minus.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxvnniintrin.h:
+
+/usr/include/boost/throw_exception.hpp:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point32__builder.hpp:
+
+/opt/ros/jazzy/include/rclcpp_action/rclcpp_action/client_goal_handle.hpp:
+
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/describe_parameters__type_support.hpp:
 
 /opt/ros/jazzy/include/sensor_msgs/sensor_msgs/msg/detail/compressed_image__struct.hpp:
@@ -5961,11 +5988,17 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/equal_to.hpp:
 
+/opt/ros/jazzy/include/action_msgs/action_msgs/msg/detail/goal_status__traits.hpp:
+
+/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/clear_entire_costmap__struct.hpp:
+
 /home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/rosidl_generator_cpp/opennav_coverage_msgs/msg/detail/path_mode__traits.hpp:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance__struct.hpp:
 
 /usr/include/boost/geometry/strategies/centroid/services.hpp:
+
+/usr/include/boost/geometry/algorithms/detail/is_valid/pointlike.hpp:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/pose.hpp:
 
@@ -6000,6 +6033,14 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /usr/include/boost/geometry/algorithms/detail/equals/collect_vectors.hpp:
 
 /home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/rosidl_generator_cpp/opennav_coverage_msgs/msg/detail/row_swath_mode__struct.hpp:
+
+/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/msg/detail/imu__builder.hpp:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/transform.hpp:
+
+/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/mvibot_mission/marker_function.h:
+
+/usr/include/boost/math/special_functions/detail/polygamma.hpp:
 
 /usr/include/boost/geometry/algorithms/detail/disjoint/linear_segment_or_box.hpp:
 
@@ -6067,40 +6108,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/set_parameters_result__type_support.hpp:
 
-/usr/include/boost/function_types/result_type.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:
-
-/opt/ros/jazzy/include/type_description_interfaces/type_description_interfaces/msg/detail/type_source__struct.h:
-
-/opt/ros/jazzy/include/tf2/tf2/LinearMath/Scalar.hpp:
-
-/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/common/stof.h:
-
-/opt/ros/jazzy/include/rcutils/rcutils/sha256.h:
-
-/opt/ros/jazzy/include/tf2/tf2/buffer_core.hpp:
-
-/usr/include/boost/math/tools/complex.hpp:
-
-/usr/include/boost/mpl/aux_/preprocessed/gcc/minus.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avxvnniintrin.h:
-
-/usr/include/boost/throw_exception.hpp:
-
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point32__builder.hpp:
-
-/opt/ros/jazzy/include/rclcpp_action/rclcpp_action/client_goal_handle.hpp:
-
-/usr/include/boost/geometry/algorithms/detail/equals/interface.hpp:
-
-/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/get_costmap__struct.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h:
-
-/usr/include/boost/geometry/geometries/point_xyz.hpp:
-
 /opt/ros/jazzy/include/rmw/rmw/dynamic_message_type_support.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512ifmaintrin.h:
@@ -6149,16 +6156,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /usr/include/boost/mpl/aux_/msvc_eti_base.hpp:
 
-/usr/include/boost/config/detail/select_stdlib_config.hpp:
-
-/usr/include/boost/blank_fwd.hpp:
-
-/usr/include/boost/container/new_allocator.hpp:
-
-/usr/include/boost/mpl/aux_/advance_backward.hpp:
-
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance_stamped__builder.hpp:
-
 /usr/include/boost/geometry/algorithms/detail/buffer/turn_in_piece_visitor.hpp:
 
 /usr/include/boost/move/algo/predicate.hpp:
@@ -6170,6 +6167,10 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /usr/include/boost/geometry/geometries/concepts/multi_polygon_concept.hpp:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__struct.hpp:
+
+/usr/include/boost/type_traits/conversion_traits.hpp:
+
+/opt/ros/jazzy/include/action_msgs/action_msgs/msg/detail/goal_info__struct.h:
 
 /usr/include/boost/utility/declval.hpp:
 
@@ -6321,6 +6322,12 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/duration__type_support.hpp:
 
+/usr/include/boost/geometry/strategies/cartesian/point_in_poly_crossings_multiply.hpp:
+
+/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/navigate_to_pose.hpp:
+
+/usr/include/boost/predef/library/c/_prefix.h:
+
 /usr/include/boost/geometry/algorithms/convex_hull.hpp:
 
 /usr/include/boost/geometry/algorithms/detail/disjoint/areal_areal.hpp:
@@ -6391,12 +6398,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/describe_parameters__builder.hpp:
 
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/polygon_stamped__traits.hpp:
-
-/usr/include/boost/geometry/arithmetic/determinant.hpp:
-
-/usr/include/boost/mpl/aux_/config/msvc.hpp:
-
 /usr/include/boost/container/detail/workaround.hpp:
 
 /opt/ros/jazzy/include/sensor_msgs/sensor_msgs/msg/detail/point_cloud__type_support.hpp:
@@ -6438,6 +6439,28 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/type_adapter.hpp:
+
+/usr/include/boost/geometry/algorithms/detail/closest_points/point_to_geometry.hpp:
+
+/usr/include/boost/core/addressof.hpp:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/experimental/timers_manager.hpp:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/get_node_parameters_interface.hpp:
+
+/usr/include/boost/geometry/algorithms/detail/envelope/transform_units.hpp:
+
+/usr/include/boost/mpl/deref.hpp:
+
+/usr/include/boost/qvm/math.hpp:
+
+/usr/include/boost/function_types/detail/components_impl/arity10_0.hpp:
+
+/usr/include/boost/mpl/aux_/has_tag.hpp:
+
+/usr/include/boost/type_traits/add_reference.hpp:
+
+/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/get_parameters__struct.hpp:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/clear_entire_costmap__type_support.hpp:
 
@@ -6574,12 +6597,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /opt/ros/jazzy/include/rcl_action/rcl_action/goal_handle.h:
 
 /usr/include/boost/multiprecision/detail/float128_functions.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
-
-/usr/include/boost/range/reference.hpp:
-
-/usr/include/boost/geometry/algorithms/detail/is_valid/linear.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/experimental/executors/events_executor/events_queue.hpp:
 
@@ -7269,15 +7286,15 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/wait_set_policies/dynamic_storage.hpp:
 
-/opt/ros/jazzy/include/rclcpp/rclcpp/wait_set_policies/thread_safe_synchronization.hpp:
+/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
-/opt/ros/jazzy/include/std_msgs/std_msgs/msg/float32_multi_array.hpp:
+/usr/include/boost/range/reference.hpp:
 
-/usr/include/boost/numeric/conversion/detail/converter.hpp:
+/usr/include/boost/geometry/algorithms/detail/is_valid/linear.hpp:
 
-/opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/moving_average_statistics/types.hpp:
+/usr/include/boost/geometry/algorithms/detail/is_valid/multipolygon.hpp:
 
-/opt/ros/jazzy/include/rclcpp/rclcpp/waitable.hpp:
+/usr/include/boost/geometry/strategy/geographic/area.hpp:
 
 /usr/include/boost/geometry/algorithms/detail/is_valid/polygon.hpp:
 
@@ -8759,8 +8776,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /usr/include/boost/mpl/aux_/nttp_decl.hpp:
 
-/usr/include/boost/math/special_functions/detail/polygamma.hpp:
-
 /opt/ros/jazzy/include/rclcpp/rclcpp/allocator/allocator_common.hpp:
 
 /usr/include/boost/config/no_tr1/functional.hpp:
@@ -8861,9 +8876,9 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /usr/include/boost/move/detail/meta_utils.hpp:
 
-/usr/include/boost/container/detail/allocation_type.hpp:
-
 /opt/ros/jazzy/include/tf2_ros/tf2_ros/transform_listener.hpp:
+
+/usr/include/boost/container/detail/allocation_type.hpp:
 
 /usr/include/boost/multiprecision/detail/fpclassify.hpp:
 
@@ -8961,10 +8976,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 
 /usr/include/boost/numeric/conversion/conversion_traits.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
-/usr/include/boost/mpl/aux_/config/preprocessor.hpp:
-
 /usr/include/boost/mpl/aux_/config/static_constant.hpp:
 
 /usr/include/boost/mpl/aux_/config/typeof.hpp:
@@ -9036,6 +9047,8 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /usr/include/boost/multiprecision/detail/endian.hpp:
 
 /usr/include/boost/mpl/and.hpp:
+
+/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/include/mission_layer_mvibot/common/set_get_param.h:
 
 /usr/include/boost/mpl/vector/aux_/pop_back.hpp:
 
@@ -9486,7 +9499,3 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: /home/mvibot/floorCleani
 /usr/include/boost/geometry/strategies/spherical/closest_points_pt_seg.hpp:
 
 /usr/include/boost/preprocessor/logical/bool.hpp:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/get_node_timers_interface.hpp:
-
-/usr/include/boost/preprocessor/punctuation/paren.hpp:
