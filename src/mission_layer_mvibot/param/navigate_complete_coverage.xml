@@ -1,8 +1,8 @@
 <root BTCPP_format="4" main_tree_to_execute="MainTree">
   <BehaviorTree ID="MainTree">
 
-    <Sequence name="NavigateWithoutReplanning">
-
+    <!--Sequence name="NavigateWithoutReplanning"-->
+    <PipelineSequence name="CoveragePipeline">
       <!-- Compute coverage path -->
       <ComputeCoveragePath 
           nav_path="{path}" 
@@ -11,25 +11,28 @@
           error_code_id="{compute_coverage_error_code}"/>
 
       <!-- Retry FollowPath 6 times -->
-      <RecoveryNode number_of_retries="10" name="RetryFollowPath">
+      <RecoveryNode number_of_retries="6" name="RetryFollowPath">
 
         <!-- Main -->
-        <Sequence name="FollowPathSequence">
+        <!-- <Sequence name="FollowPathSequence"> -->
           <FollowPath 
               path="{path}" 
               controller_id="FollowPath" 
               error_code_id="{follow_path_error_code}"/>
-        </Sequence>
+        <!-- </Sequence> -->
 
         <!-- Recovery -->
         <Sequence name="WaitBeforeRetry">
-	  <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
-          <Wait wait_duration="1.0"/>
+	        <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+          <Wait wait_duration="5.0"/>
+          <!-- <BackUp backup_dist="0.20" backup_speed="0.1" error_code_id="{backup_code_id}"/> -->
+          <!-- <Spin spin_dist="-0.26" error_code_id="{spin_error_code}"/> -->
         </Sequence>
 
       </RecoveryNode>
 
-    </Sequence>
+    <!-- </Sequence> -->
+    </PipelineSequence>
 
   </BehaviorTree>
 </root>
