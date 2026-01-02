@@ -805,7 +805,7 @@ void navigation_function::process_data(){
         }
     }
     else if(mode == "navigate_coverage"){
-        //only polygon
+        /*//only polygon
         polygons.resize(0);
         polygons.resize(1);
         for(const auto& area_json : parameters["area"]){
@@ -816,8 +816,8 @@ void navigation_function::process_data(){
             polygons[0].points.push_back(pt);
         }
         polygons[0].points.push_back(polygons[0].points[0]);
-        //only polygon
-        /*//many polygons
+        //only polygon */
+        //many polygons
         polygons.clear();
         // area: array of polygons
         if (parameters.contains("area") && parameters["area"].is_array()) {
@@ -845,7 +845,7 @@ void navigation_function::process_data(){
                 poly_idx++;
             }
         }
-        //many polygons */
+        //many polygons
     }
 }
 int navigation_function::action(){

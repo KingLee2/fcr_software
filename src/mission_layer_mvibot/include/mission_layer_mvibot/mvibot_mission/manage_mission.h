@@ -1273,7 +1273,7 @@ void manage_mission::execute_mission(){
                 }
                 else if(status_mission_error == Active_){
                     RCLCPP_INFO(this->get_logger(),"active mission error");
-                    action_mode_mission = "mission_error";
+                    //action_mode_mission = "mission_error";
                     active_content_sum_error = mission_error.contents_map.size();
                     res = execute_content(mission_error, queue_content_error, active_content_error, next_to_error, status_mission_error);
                     if(res == Active_){
@@ -1301,7 +1301,7 @@ void manage_mission::execute_mission(){
                         }
                         else status_mission_error = Active_;
                     }
-                    pub_active_mission_info(action_mode_mission, mission_error.mission_id, active_content_error, to_string(active_content_sum_error));
+                    pub_active_mission_info("mission_error", mission_error.mission_id, active_content_error, to_string(active_content_sum_error));
                 }
             }
 
