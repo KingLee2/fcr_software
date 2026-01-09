@@ -82,14 +82,14 @@ class control_node : public rclcpp::Node{
                 // lock();
                 // std::lock_guard<std::recursive_mutex> lock(mutex_common);
                 std::lock_guard<std::mutex> lock(mutex_control);
-                red=msg->data[0]/255*100;
-                green=msg->data[1]/255*100;
-                blue=msg->data[2]/255*100;
+                red_=msg->data[0]/255*100;
+                green_=msg->data[1]/255*100;
+                blue_=msg->data[2]/255*100;
                 //
-                led_l=msg->data[3];
-                led_r=msg->data[4];
-                led_b=msg->data[5];
-                led_f=msg->data[6];
+                led_l_=msg->data[3];
+                led_r_=msg->data[4];
+                led_b_=msg->data[5];
+                led_f_=msg->data[6];
                 // unlock();
             };
             set_led_sub_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(mvibot_seri_ + "/set_led", qos_profile, set_led_callback);
@@ -452,6 +452,12 @@ class control_node : public rclcpp::Node{
             //led_r=1; //add
             //led_l=1; //add
             //led_b=1; //add
+	    red = red_;
+            green = green_;
+            blue = blue_;
+            led_r = led_r_;
+            led_l = led_l_;
+            led_b = led_b_;
             if(local_mode=="slam"){
                 set_color_led(100,0,25); //100 0 25
                 led_r=3;
@@ -555,6 +561,7 @@ class control_node : public rclcpp::Node{
         int motor_stop=0;
         int robot_emg;
         float v_set1,v_set2,v_set3,w_set1,w_set2,w_set3;
+	float red_, green_, blue_, led_l_, led_r_, led_b_, led_f_;
         //
         int local_mvibot_sensor_ready;
         int local_data_socket_ready;

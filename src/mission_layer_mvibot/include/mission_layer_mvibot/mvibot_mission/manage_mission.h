@@ -1016,6 +1016,7 @@ int manage_mission::execute_content(mission& mission, vector<string>& queue_cont
             // Tao hang doi thuc thi try-catch
             try_catch_queue.resize(0);
             try_catch_content = content["content"]["try"].get<std::vector<string>>();
+	    if(try_catch_content.empty()) return Finish_;
             // try_catch_queue.insert(try_catch_queue.begin(),try_catch_content.begin(),try_catch_content.end());
             try_catch_queue.resize(try_catch_content.size());
             try_catch_queue = try_catch_content;

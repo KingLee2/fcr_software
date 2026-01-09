@@ -531,12 +531,13 @@ int marker_function::action(){
                 status_transfrom_pose=tranfrom_pose_marker(1,"base_marker", "base_footprint");
                 cout<<"marker|get tranform base_footprint to base_marker|res: "<<status_transfrom_pose<<endl;
                 if(step==2){
-                    std::cout<<"marker|Check first pose is match with position robot!"<<endl;
+                    //std::cout<<"marker|Check first pose is match with position robot!"<<endl;
                     if(status_transfrom_pose==1){
-                        if(check_first_tranfrom_pose_marker()){
-                            std::cout<<"marker|Fisrt pose is match with postion robot"<<endl;
-                            step=3;
-                        }
+                        //if(check_first_tranfrom_pose_marker()){
+                        //    std::cout<<"marker|Fisrt pose is match with postion robot"<<endl;
+                        //    step=3;
+                        //}
+			step=3;
                     }
                     return Active_;
                 }

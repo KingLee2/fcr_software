@@ -1,42 +1,35 @@
 <root BTCPP_format="4" main_tree_to_execute="MainTree">
-
   <BehaviorTree ID="MainTree">
 
-    <PipelineSequence name="CoveragePipeline">
-        <RateController hz="1.0">
-            <RecoveryNode number_of_retries="1" name="ComputeCoverage">
+    <Sequence name="NavigateWithoutReplanning">
 
-                <ComputeCoveragePath
-                    nav_path="{path}"
-                    polygons="{field_polygon}"
-                    polygons_frame_id="{polygon_frame_id}"
-                    error_code_id="{compute_coverage_error_code}"/>
+      <!-- Compute coverage path -->
+      <ComputeCoveragePath 
+          nav_path="{path}" 
+          polygons="{field_polygon}" 
+          polygons_frame_id="{polygon_frame_id}" 
+          error_code_id="{compute_coverage_error_code}"/>
 
-                <Sequence>
-                    <Wait wait_duration="2.0"/>
-                </Sequence>
+      <!-- Retry FollowPath 6 times -->
+      <RecoveryNode number_of_retries="10" name="RetryFollowPath">
 
-            </RecoveryNode>
-        </RateController>
+        <!-- Main -->
+        <Sequence name="FollowPathSequence">
+          <FollowPath 
+              path="{path}" 
+              controller_id="FollowPath" 
+              error_code_id="{follow_path_error_code}"/>
+        </Sequence>
 
-        <RecoveryNode number_of_retries="10" name="FollowCoveragePath">
+        <!-- Recovery -->
+        <Sequence name="WaitBeforeRetry">
+	  <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+          <Wait wait_duration="1.0"/>
+        </Sequence>
 
-            <FollowPath
-                path="{path}"
-                controller_id="FollowPath"
-                error_code_id="{follow_path_error_code}"/>
+      </RecoveryNode>
 
-            <Sequence>
-                <ClearEntireCostmap
-                    name="ClearLocalCostmap-FollowPath"
-                    service_name="local_costmap/clear_entirely_local_costmap"/>
-                <Wait wait_duration="5.0"/>
-            </Sequence>
-
-        </RecoveryNode>
-
-    </PipelineSequence>
+    </Sequence>
 
   </BehaviorTree>
-
 </root>
