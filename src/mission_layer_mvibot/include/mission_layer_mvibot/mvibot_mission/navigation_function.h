@@ -1107,10 +1107,11 @@ int navigation_function::action(){
                     cancel_navCompleteCoverage();
                     //update_polygon();
                     step = 0;
-		            //request = 0;
-		            //status = Error_;
-                    //return Error_;
-		            return Active_;
+		    //
+		    request = 0;
+		    status = Error_;
+                    return Error_;
+		    //return Active_;
                 }
                 else if(states == SUCCESS){
                     cancel_navCompleteCoverage();

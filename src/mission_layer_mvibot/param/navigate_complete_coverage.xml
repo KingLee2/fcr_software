@@ -11,7 +11,7 @@
           error_code_id="{compute_coverage_error_code}"/>
 
       <!-- Retry FollowPath 6 times -->
-      <RecoveryNode number_of_retries="10" name="RetryFollowPath">
+      <RecoveryNode number_of_retries="30" name="RetryFollowPath">
 
         <!-- Main -->
         <Sequence name="FollowPathSequence">
@@ -24,7 +24,7 @@
         <!-- Recovery -->
         <Sequence name="WaitBeforeRetry">
 	  <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
-          <Wait wait_duration="1.0"/>
+          <Wait wait_duration="2.0"/>
         </Sequence>
 
       </RecoveryNode>
