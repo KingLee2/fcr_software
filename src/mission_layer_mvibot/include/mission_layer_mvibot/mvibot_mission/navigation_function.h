@@ -352,12 +352,12 @@ void navigation_function::navCompleteCoverage(const vector<geometry_msgs::msg::P
     options.goal_response_callback=[this](std::shared_ptr<rclcpp_action::ClientGoalHandle<opennav_coverage_msgs::action::NavigateCompleteCoverage>> goal_handle){
         if(!goal_handle){
             RCLCPP_ERROR(rclcpp::get_logger("NavigateCompleteCorverage"),"Goal was rejected by server!");
-            send_history("error","NavigateCompleteCorverage was rejected by server!");
+            // send_history("error","NavigateCompleteCorverage was rejected by server!");
             states = REJECT;
         }
         else{
             RCLCPP_INFO(rclcpp::get_logger("NavigateCompleteCorverage"),"Goal was accepted by server, waiting for result");
-            send_history("normal","NavigateCompleteCorverage was accepted by server, waiting for result");
+            // send_history("normal","NavigateCompleteCorverage was accepted by server, waiting for result");
             states = ACCEPT;
         }
     };
@@ -373,7 +373,7 @@ void navigation_function::navCompleteCoverage(const vector<geometry_msgs::msg::P
     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<opennav_coverage_msgs::action::NavigateCompleteCoverage>::WrappedResult & result) {
         if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
             RCLCPP_INFO(rclcpp::get_logger("NavigateCompleteCorverage"), "NavigateCompleteCorverage succeeded!");
-            send_history("normal","NavigateCompleteCorverage succeeded!");
+            // send_history("normal","NavigateCompleteCorverage succeeded!");
             states = SUCCESS;
         } else {
             string info;
@@ -395,7 +395,7 @@ void navigation_function::navCompleteCoverage(const vector<geometry_msgs::msg::P
                 // states = ERROR;
 		states = CANCEL;
             }
-            send_history("error",info);
+            //send_history("error",info);
         }
     };
     auto send_goal_future = nav_complete_coverage_client_->async_send_goal(goal_msg,options);
@@ -489,12 +489,12 @@ void navigation_function::goToPose(const geometry_msgs::msg::PoseStamped &pose, 
     options.goal_response_callback=[this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>> goal_handle){
         if(!goal_handle){
             RCLCPP_ERROR(rclcpp::get_logger("NavigateToPose"),"Goal was rejected by server!");
-            send_history("error","Goal was rejected by server!");
+            //send_history("error","Goal was rejected by server!");
             states = REJECT;
         }
         else{
             RCLCPP_INFO(rclcpp::get_logger("NavigateToPose"),"Goal was accepted by server, waiting for result");
-            send_history("normal","Goal was accepted by server, waiting for result");
+            //send_history("normal","Goal was accepted by server, waiting for result");
             states = ACCEPT;
         }
     };
@@ -510,7 +510,7 @@ void navigation_function::goToPose(const geometry_msgs::msg::PoseStamped &pose, 
     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>::WrappedResult & result) {
         if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
             RCLCPP_INFO(rclcpp::get_logger("NavigateToPose"), "NavigateToPose succeeded!");
-            send_history("normal","NavigateToPose succeeded!");
+            //send_history("normal","NavigateToPose succeeded!");
             states = SUCCESS;
         } else {
             string info;
@@ -531,7 +531,7 @@ void navigation_function::goToPose(const geometry_msgs::msg::PoseStamped &pose, 
                 info+= "UNKNOWN";
                 states = ERROR;
             }
-            send_history("error",info);
+            //send_history("error",info);
         }
     };
     auto send_goal_future = nav_to_pose_client_->async_send_goal(goal_msg,options);
@@ -553,12 +553,12 @@ void navigation_function::goThroughPoses(const std::vector<geometry_msgs::msg::P
     options.goal_response_callback=[this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateThroughPoses>> goal_handle){
         if(!goal_handle){
             RCLCPP_ERROR(rclcpp::get_logger("NavigateThroughPoses"),"Goals was rejected by server!");
-            send_history("error","Goals was rejected by server!");
+            //send_history("error","Goals was rejected by server!");
             states = REJECT;
         }
         else{
             RCLCPP_INFO(rclcpp::get_logger("NavigateThroughPoses"),"Goals was accepted by server, waiting for result");
-            send_history("normal","Goals was accepted by server, waiting for result");
+            //send_history("normal","Goals was accepted by server, waiting for result");
             states = ACCEPT;
         }
     };
@@ -575,7 +575,7 @@ void navigation_function::goThroughPoses(const std::vector<geometry_msgs::msg::P
     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateThroughPoses>::WrappedResult & result) {
         if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
             RCLCPP_INFO(rclcpp::get_logger("NavigateThroughPoses"), "NavigateThroughPoses succeeded!");
-            send_history("normal","NavigateThroughPoses succeeded!");
+            //send_history("normal","NavigateThroughPoses succeeded!");
             states = SUCCESS;
         } else {
             string info;
@@ -596,7 +596,7 @@ void navigation_function::goThroughPoses(const std::vector<geometry_msgs::msg::P
                 info+= "UNKNOWN";
                 states = ERROR;
             }
-            send_history("error",info);
+            //send_history("error",info);
         }
     };
     auto send_goal_future=nav_through_poses_client_->async_send_goal(goal_msg, options);
@@ -655,7 +655,7 @@ void navigation_function::getPathToPose(geometry_msgs::msg::PoseStamped start, g
                 info+= "UNKNOWN";
                 state_planner = ERROR;
             }
-            send_history("error",info);
+            //send_history("error",info);
         }     
     };
     auto send_goal_future = compute_path_to_pose_client_->async_send_goal(goal_msg, options);
