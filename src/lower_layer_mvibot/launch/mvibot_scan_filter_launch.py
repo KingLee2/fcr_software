@@ -50,7 +50,7 @@ def generate_launch_description():
 		name="laser_filter1",
 		package="laser_filters",
 		executable="scan_to_scan_filter_chain",
-		respawn=True,
+		# respawn=True,
 		remappings=[
                 	("scan", [TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/laser/scanf")]),
                 	("scan_filtered", [TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/laser/scan")])
@@ -65,7 +65,7 @@ def generate_launch_description():
 		name ="laser_filter2",
 		package ="laser_filters",
 		executable ="scan_to_scan_filter_chain",
-		respawn = True,
+		# respawn = True,
 		remappings=[
 					("scan", [TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/camera/scanf")]),
 					("scan_filtered", [TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/camera/scan")])
@@ -80,7 +80,7 @@ def generate_launch_description():
 		name="laser_filter3",
 		package="laser_filters",
 		executable="scan_to_scan_filter_chain",
-		respawn=True,
+		# respawn=True,
 		remappings=[
 					("scan", [TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/camera/scan")]),
 					("scan_filtered", [TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/camera/scan_m5")])
@@ -95,7 +95,7 @@ def generate_launch_description():
 		name="laser_filter4",
 		package="laser_filters",
 		executable="scan_to_scan_filter_chain",
-		respawn=True,
+		# respawn=True,
 		remappings=[
 					("scan", [TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/laser/scan")]),
 					("scan_filtered", [TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/laser/scan_m5")])

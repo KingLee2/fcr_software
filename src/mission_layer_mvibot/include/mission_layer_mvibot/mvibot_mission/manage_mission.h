@@ -205,18 +205,18 @@ class manage_mission : public rclcpp::Node{
                     try{
                         std::ofstream file(file_name);
                         if (!file.is_open()){
-                            send_history("error", "Failed to open mission file: " + file_name);
+                            send_history("error", "Failed to open mission file " + file_name);
                             return;
                         }
                         file <<msg.data;
                         file.close();
                         if (!load_mission_normal(file_name)) {
-                            send_history("error", "Failed to load mission from: " + file_name);
+                            send_history("error", "Failed to load mission from " + file_name);
                         }
                         
                     }
                     catch (const std::exception& e){
-                        send_history("error", "Error processing mission: " + std::string(e.what()));
+                        send_history("error", "Error processing mission " + std::string(e.what()));
                     }
                     reset_function();
                     step_handle_content = 0;
@@ -232,18 +232,18 @@ class manage_mission : public rclcpp::Node{
                     try{
                         std::ofstream file(file_name);
                         if (!file.is_open()){
-                            send_history("error", "Failed to open mission file: " + file_name);
+                            send_history("error", "Failed to open mission file " + file_name);
                             return;
                         }
                         file <<msg.data;
                         file.close();
                         if (!load_mission_charge(file_name)) {
-                            send_history("error", "Failed to load mission from: " + file_name);
+                            send_history("error", "Failed to load mission from " + file_name);
                         }
                         
                     }
                     catch (const std::exception& e){
-                        send_history("error", "Error processing mission: " + std::string(e.what()));
+                        send_history("error", "Error processing mission " + std::string(e.what()));
                     }
                     reset_function();
                     step_handle_content = 0;
@@ -259,18 +259,18 @@ class manage_mission : public rclcpp::Node{
                     try{
                         std::ofstream file(file_name);
                         if (!file.is_open()){
-                            send_history("error", "Failed to open mission file: " + file_name);
+                            send_history("error", "Failed to open mission file " + file_name);
                             return;
                         }
                         file <<msg.data;
                         file.close();
                         if (!load_mission_error(file_name)) {
-                            send_history("error", "Failed to load mission from: " + file_name);
+                            send_history("error", "Failed to load mission from " + file_name);
                         }
                         
                     }
                     catch (const std::exception& e){
-                        send_history("error", "Error processing mission: " + std::string(e.what()));
+                        send_history("error", "Error processing mission " + std::string(e.what()));
                     }
                     reset_function();
                     step_handle_content = 0;
@@ -283,14 +283,17 @@ class manage_mission : public rclcpp::Node{
                     if(msg.data == "mission_normal") {
                         mission_normal.resize(0);
                         mission_normal_receive.data = "";
+			send_history("normal", "Reset normal mission");
                     }
                     else if(msg.data == "mission_charge_battery") { 
                         mission_charge_battery.resize(0);
                         mission_charge_receive.data = "";
+			send_history("normal", "Reset charge battery mission");
                     }
                     else if(msg.data == "mission_error") {
                         mission_error.reset();
                         mission_error_receive.data = "";
+			send_history("normal", "Reset error mission");
                     }
                     reset_function();
                     step_handle_content = 0;
@@ -649,6 +652,7 @@ int manage_mission::load_mission_normal(const string &file_name){
     mission_normal_receive_json["time"] = oss.str();
     mission_normal_receive.data = mission_normal_receive_json.dump();
     mission_normal_received_pub_->publish(mission_normal_receive);
+    send_history("normal", "Receive normal mission "+mission_normal_receive.data);
     return 1;
 }
 int manage_mission::load_mission_charge(const string &file_name){
@@ -701,6 +705,7 @@ int manage_mission::load_mission_charge(const string &file_name){
     mission_charge_receive_json["time"] = oss.str();
     mission_charge_receive.data = mission_charge_receive_json.dump();
     mission_charge_battery_received_pub_->publish(mission_charge_receive);
+    send_history("normal", "Receive charge battery mission "+mission_charge_receive.data);
     return 1;
 }
 int manage_mission::load_mission_error(const string &file_name){
@@ -744,6 +749,7 @@ int manage_mission::load_mission_error(const string &file_name){
     mission_error_receive_json["time"] = oss.str();
     mission_error_receive.data = mission_error_receive_json.dump();
     mission_error_received_pub_->publish(mission_error_receive);
+    send_history("normal", "Receive error mission "+mission_error_receive.data);
     return 1;
 }
 void manage_mission::check_WakeUp_condition(json wakeUp_object){
@@ -859,7 +865,7 @@ int manage_mission::handle_content(const json& content, const double& time_out, 
             timer = 0.0;
             step_handle_content = 0;
             his = "";
-            his = "Type: " + content["type"].get<string>() + " ,Name: " + content["name"].get<string>();
+            his = "Type  " + content["type"].get<string>() + " ,Name " + content["name"].get<string>();
             send_history("error",his);
             return Error_;
         }
@@ -913,7 +919,7 @@ int manage_mission::handle_content(const json& content, const double& time_out, 
                 step_handle_content = 0;
                 state = N_A_;
                 his = "";
-                his = "Type: " + content["type"].get<string>() + " ,Name: " + content["name"].get<string>();
+                his = "Type " + content["type"].get<string>() + " ,Name " + content["name"].get<string>();
                 send_history("error",his);
                 return Error_;
             }
