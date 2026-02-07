@@ -297,8 +297,9 @@ void navigation_function::pub_amcl(float x, float y, float z, float w){
 void navigation_function::set_initial_robot(const string& file_path){
     while(pub_amcl_->get_subscription_count()==0){
         RCLCPP_INFO(this->get_logger(),"AMCL is not ready");
-        sleep(0.5);
+        sleep(1);
     }
+    sleep(5);
     RCLCPP_INFO(this->get_logger(),"AMCL is ready");
     std::ifstream file(file_path);
     if (!file.is_open()) {
