@@ -2,6 +2,7 @@
 // #include "map_io.hpp"
 using namespace std;
 using namespace sql;
+using json = nlohmann::json;
 class fcr_database : public rclcpp::Node{
     private:
         //mutex var
@@ -13,9 +14,9 @@ class fcr_database : public rclcpp::Node{
         //init sub//
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr history_robot_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr battery_status_chart_sub_;
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr covered_pose_sub_;
         // //init timer//
         rclcpp::TimerBase::SharedPtr database_process_timer_;
-        // rclcpp::TimerBase::SharedPtr insert_data_timer_;
         // creat table
         //robot
         table_ my_robot;
@@ -29,12 +30,13 @@ class fcr_database : public rclcpp::Node{
         table_ output_user_status;
         table_ robot_config_status;
         table_ history_robot;
-        table_ pose_robot;
-        table_ mission_robot;
         table_ battery_status_chart;
         //map
         table_ layer_emulator;
         table_ map;
+        //
+        table_ mission_trip;
+        table_ covered_pose;
     public:
         fcr_database(const string& node_name, const string& sub_namespace) : Node(node_name, sub_namespace){
             mvibot_seri_ = this->get_namespace();
@@ -63,15 +65,56 @@ class fcr_database : public rclcpp::Node{
                 //update data robot from database
                 database_process();
                 cout<<"process data robot update to database"<<endl;
-                // //insert history robot to database
-                // insert_history_robot();
-                // cout<<"insert robot history to database"<<endl;
-                // //insert battery robot to database
-                // insert_battery_charge_robot();
-                // cout<<"insert battery charge robot to database"<<endl;
-
             };
             database_process_timer_ = this->create_wall_timer(100ms, database_process_callback);
+            //
+            auto pose_robot_callback = [this](std_msgs::msg::String msg)->void{
+                json data;
+                static string trip_time ="";
+                string string_cmd_mysql;
+                vector<string> string_ ;
+                int trip_id = -1;
+                static time_t now_time;
+                static tm* now_tm;
+                static std::ostringstream oss;
+                auto now = chrono::system_clock::now();
+                // Chuyển đổi thành std::time_t
+                now_time = chrono::system_clock::to_time_t(now);
+                // Chuyển std::time_t thành std::tm
+                now_tm = localtime(&now_time);
+                oss << put_time(now_tm, "%Y-%m-%d %H:%M:%S");
+                string_.resize(5);
+                data = json::parse(msg.data);
+                string_[0] = data["mission_id"].get<string>();
+                string_[1] = data["mission_name"].get<string>();
+                string_[2] = data["x"].get<string>();
+                string_[3] = data["y"].get<string>();
+                string_[4] = data["created_at"].get<string>();
+                if(string_[4] != trip_time){
+                    trip_time = string_[4];
+                    string_cmd_mysql="INSERT INTO mission_trip (mission_id,mission_name,created_at) VALUES ('" + string_[0]+"','"+string_[1]+"',TIMESTAMP('"+string_[4]+"'))";
+                }
+                else{
+                    try{
+                        free_res();
+                        res=stmt->executeQuery("SELECT trip_id FROM mission_trip WHERE created_at='"+string_[4]+"'");
+                        if (res->next()) {
+                            trip_id = res->getInt("trip_id");
+                        } else {
+                            cout << "not mission trip" << endl;
+                        }
+                    }catch(sql::SQLException &e){
+                        cout << "# ERR: " << e.what();
+                        cout << " (MySQL error code: " << e.getErrorCode();
+                        cout << ", SQLState: " << e.getSQLState() << " )" << endl;
+                    }
+                    string_cmd_mysql="INSERT INTO covered_pose (trip_id,mission_id,x,y,created_at) VALUES (" + to_string(trip_id)+",'"+string_[0]+"','"+string_[2]+"','"+string_[3]+"',TIMESTAMP('"+oss.str()+"'))";
+                }
+                database_execmd(string_cmd_mysql);
+                oss.str("");
+                oss.clear();
+            };
+            covered_pose_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/covered_pose",qos_profile, pose_robot_callback);
             auto history_robot_callback = [this](std_msgs::msg::String msg)->void{
                 static string_Iv2 data;
                 static vector<string> string_ ;
@@ -157,26 +200,12 @@ class fcr_database : public rclcpp::Node{
                 oss.str("");
             };
             battery_status_chart_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/battery_status", qos_profile, battery_status_chart_callback);
-            // auto insert_data_callback = [this]()->void{
-            //     std::lock_guard<std::recursive_mutex> lock(mutex_common);
-            //     //insert history robot to database
-            //     insert_history_robot();
-            //     cout<<"insert robot history to database"<<endl;
-            //     //insert battery robot to database
-            //     insert_battery_charge_robot();
-            //     cout<<"insert battery charge robot to database"<<endl;
-            // };
-            // insert_data_timer_ = this->create_wall_timer(500ms, insert_data_callback);
         }
-        
-
-        // void free_res();
         void data_base_init();
         void table_init();
         void database_process();
         void get_layer();
         void database_execmd(string cmd);
-        void insert_data_robot();
         void insert_battery_charge_robot();
         void insert_history_robot();
         void get_map_first();
@@ -258,12 +287,6 @@ void table_::init_table_FK(string table_FK, string colume_FK){
     }
 }
 
-// void fcr_database::free_res(){
-//     if(res!=nullptr){
-//         delete res;
-//         res=nullptr;
-//     }
-// }
 void fcr_database::data_base_init(){
     // creat connect to data base
     static int init_finish;
@@ -310,7 +333,6 @@ void fcr_database::table_init(){
     robot_status.add_colume("ip_robot","VARCHAR(255)");
     robot_status.add_colume("robot_type_connect","VARCHAR(255)");
     robot_status.init_table_FK("my_robot","robot_id");
-    // robot_status.init_table_FK(my_robot.table_colume[0].colume_name,my_robot.table_name);
     //
     sensor_status.table_name="sensor_status";
     sensor_status.add_colume("name_seri","VARCHAR(255)");
@@ -321,7 +343,6 @@ void fcr_database::table_init(){
     sensor_status.add_colume("camera2","INT");
     sensor_status.add_colume("battery","INT");
     sensor_status.init_table_FK("my_robot","robot_id");
-    // sensor_status.init_table_FK(my_robot.table_colume[0].colume_name,my_robot.table_name);
     //
     battery_status.table_name="battery_status";
     battery_status.add_colume("name_seri","VARCHAR(255)");
@@ -335,7 +356,6 @@ void fcr_database::table_init(){
     battery_status.add_colume("num_cell","INT");    
     battery_status.add_colume("temperature","FLOAT(3,1)");
     battery_status.init_table_FK("my_robot","robot_id");   
-    // battery_status.init_table_FK(my_robot.table_colume[0].colume_name,my_robot.table_name);
     //
     battery_cell_status.table_name="battery_cell_status";
     battery_cell_status.add_colume("name_seri","VARCHAR(255)");
@@ -343,7 +363,6 @@ void fcr_database::table_init(){
     	battery_cell_status.add_colume("cell"+to_string(i+1),"FLOAT(2,1)");
     }
     battery_cell_status.init_table_FK("my_robot","robot_id");
-    // battery_cell_status.init_table_FK(my_robot.table_colume[0].colume_name,my_robot.table_name);
     //
     motor_right_status.table_name="motor_right_status";
     motor_right_status.add_colume("name_seri","VARCHAR(255)");
@@ -352,7 +371,6 @@ void fcr_database::table_init(){
     motor_right_status.add_colume("enable","INT");
     motor_right_status.add_colume("brake","INT");
     motor_right_status.init_table_FK("my_robot","robot_id");
-    // motor_right_status.init_table_FK(my_robot.table_colume[0].colume_name,my_robot.table_name);
     //
     motor_left_status.table_name="motor_left_status";
     motor_left_status.add_colume("name_seri","VARCHAR(255)");
@@ -361,7 +379,6 @@ void fcr_database::table_init(){
     motor_left_status.add_colume("enable","INT");
     motor_left_status.add_colume("brake","INT");
     motor_left_status.init_table_FK("my_robot","robot_id");
-    // motor_left_status.init_table_FK(my_robot.table_colume[0].colume_name,my_robot.table_name);
     //
     input_user_status.table_name="input_user_status";
     input_user_status.add_colume("name_seri","VARCHAR(255)");
@@ -369,7 +386,6 @@ void fcr_database::table_init(){
     	input_user_status.add_colume("in"+to_string(i),"INT");
     }
     input_user_status.init_table_FK("my_robot","robot_id");
-    // motor_right_status.init_table_FK(my_robot.table_colume[0].colume_name,my_robot.table_name);
     //
     output_user_status.table_name="output_user_status";
     output_user_status.add_colume("name_seri","VARCHAR(255)");
@@ -377,7 +393,6 @@ void fcr_database::table_init(){
     	output_user_status.add_colume("out"+to_string(i),"INT");
     }
     output_user_status.init_table_FK("my_robot","robot_id");
-    // motor_right_status.init_table_FK(my_robot.table_colume[0].colume_name,my_robot.table_name);
     //
     robot_config_status.table_name="robot_config_status";
     robot_config_status.add_colume("name_seri","VARCHAR(255)");   
@@ -407,7 +422,6 @@ void fcr_database::table_init(){
     robot_config_status.add_colume("is_master","VARCHAR(255)");     
     robot_config_status.add_colume("ip_robot","VARCHAR(255)");
     robot_config_status.init_table_FK("my_robot","robot_id");
-    // robot_config_status.init_table_FK(my_robot.table_colume[0].colume_name,my_robot.table_name);
     //
     history_robot.table_name="history_robot";
     history_robot.add_colume("name_seri","VARCHAR(255)");
@@ -415,22 +429,12 @@ void fcr_database::table_init(){
     history_robot.add_colume("content","LONGTEXT");
     history_robot.add_colume("created_at","TIMESTAMP");
     history_robot.init_table_FK("my_robot","robot_id");
-    // history_robot.init_table_FK(my_robot.table_colume[0].colume_name,my_robot.table_name);
-    //
-    pose_robot.table_name="pose_robot";
-    pose_robot.add_colume("name_seri","VARCHAR(255)");
-    pose_robot.add_colume("x","FLOAT(7,4)");
-    pose_robot.add_colume("y","FLOAT(7,4)");
-    pose_robot.add_colume("thz","FLOAT(7,4)");
-    pose_robot.add_colume("thw","FLOAT(7,4)");
-    pose_robot.init_table_FK("my_robot","robot_id");
     //
     battery_status_chart.table_name="battery_status_chart";
     battery_status_chart.add_colume("name_seri","VARCHAR(255)");
     battery_status_chart.add_colume("created_at","TIMESTAMP");
     battery_status_chart.add_colume("soc","INT");
     battery_status_chart.init_table_FK("my_robot","robot_id");
-    // battery_status_chart.init_table_FK(my_robot.table_colume[0].colume_name,my_robot.table_name);
     //
     map.table_name="map";
     map.add_colume("map_id","INT");
@@ -448,7 +452,20 @@ void fcr_database::table_init(){
     layer_emulator.add_colume("yo","float(15,3)");   
     layer_emulator.add_colume("yawo","float(15,3)");   
     layer_emulator.init_table_FK("map","map_id");
-    
+    //mission trip
+    mission_trip.table_name="mission_trip";
+    mission_trip.add_colume("trip_id","INT");
+    mission_trip.add_colume("mission_id","VARCHAR(255)");
+    mission_trip.add_colume("mission_name","VARCHAR(255)");
+    mission_trip.add_colume("created_at","TIMESTAMP");
+    mission_trip.init_table_PK();
+    //
+    covered_pose.table_name="covered_pose";
+    covered_pose.add_colume("mission_id","VARCHAR(255)");
+    covered_pose.add_colume("x","FLOAT(7,4)");
+    covered_pose.add_colume("y","FLOAT(7,4)");
+    covered_pose.add_colume("created_at","TIMESTAMP");
+    covered_pose.init_table_FK("mission_trip","trip_id");
 }
 void fcr_database::database_process(){
     std::lock_guard<std::recursive_mutex> lock(mutex_robot);
@@ -537,7 +554,6 @@ void fcr_database::database_update(){
 void fcr_database::database_combined(){
 
 }
-
 void fcr_database::insert_battery_charge_robot(){
     static vector<string> string_ ;
     static string_Iv2 data;
@@ -678,7 +694,7 @@ void fcr_database::get_map_first(){
         cout << ", SQLState: " << e.getSQLState() << " )" << endl;
     }
     if(name_map_active==""){
-        name_map_active=load_file(package_path+"config/map");
+        name_map_active=load_file("/home/mvibot/floorCleaningRobot_ws/config/map");
     }
 }
 void fcr_database::update_map_active(){

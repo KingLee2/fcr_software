@@ -32,10 +32,6 @@ class navigation_function : public rclcpp::Node{
             mvibot_seri_ = this->get_namespace();
             mvibot_seri_f_ = mvibot_seri_;
             mvibot_seri_f_.erase(0,1);
-            //transform
-            tf_Buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
-            tf_Listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_Buffer_);
-            tf_Broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
             //robot stop
             stop_robot_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel",1);
             // Action Clients
@@ -49,11 +45,16 @@ class navigation_function : public rclcpp::Node{
             pub_user_path_ = this->create_publisher<nav_msgs::msg::Path>("user_path",1);
             history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
             navigation_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("navigation_function_state",1);
-            covered_pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("covered_poses",1);
-            robot_position_pub_ = this->create_publisher<std_msgs::msg::String>("robot_position",1);
             //create subscriber
             auto robot_position_callback = [this](geometry_msgs::msg::PoseWithCovarianceStamped msg)->void{
                 robot_position_ = msg;
+                vector<double> pos_robot;
+                pos_robot.resize(4);
+                pos_robot[0] = robot_position_.pose.pose.position.x;
+                pos_robot[1] = robot_position_.pose.pose.position.y;
+                pos_robot[2] = robot_position_.pose.pose.orientation.z;
+                pos_robot[3] = robot_position_.pose.pose.orientation.w;
+                save_robot_position("/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/robot_position.txt", pos_robot[0], pos_robot[1], pos_robot[2], pos_robot[3]);
             };
             robot_position_sub_ = this->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(mvibot_seri_ + "/amcl_pose",qos_profile,robot_position_callback);
             //get data of function
@@ -123,16 +124,6 @@ class navigation_function : public rclcpp::Node{
             //
             set_initial_robot("/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/robot_position.txt");
             //timer
-            auto send_robot_position_callback = [this]()->void{
-                double *pos_robot;
-                string data;
-                pos_robot = get_position_tf("map",mvibot_seri_f_+"/base_footprint");
-                save_robot_position("/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/robot_position.txt", pos_robot[0], pos_robot[1], pos_robot[2], pos_robot[3]);
-                data = mvibot_seri_f_+"|x:"+to_string(pos_robot[0])+"|y:"+to_string(pos_robot[1])+"|thz:"+to_string(pos_robot[2])+"|thw:"+to_string(pos_robot[3]);
-                cout<<data<<endl;
-                pub_robot_position(data);
-            };
-            send_robot_position_timer_ = this->create_wall_timer(1000ms, send_robot_position_callback);
             auto execute_navigation_timer_callback = [this]()->void{
                 cout<<"navigation|request:"<<request<<"|state:"<<status<<endl;
                 if(request == 1){
@@ -148,8 +139,6 @@ class navigation_function : public rclcpp::Node{
         void pub_amcl(float x, float y, float z, float w);
         void set_initial_robot(const string& file_path);
         geometry_msgs::msg::PoseStamped get_robot_position();
-        double *get_position_tf(string name1, string name2);
-        void pub_robot_position(string data);
         void save_robot_position(const std::string& file_path, double x, double y, double thz, double thw);
         void pub_user_path(const nav_msgs::msg::Path &path);
         void pub_function_state_navigation(int st);
@@ -171,17 +160,12 @@ class navigation_function : public rclcpp::Node{
         int action ();
         float getyaw(double data1, double data2); 
     private:
-        //declare tranform var
-        std::unique_ptr<tf2_ros::Buffer> tf_Buffer_;
-        std::shared_ptr<tf2_ros::TransformListener> tf_Listener_{nullptr};
-        std::unique_ptr<tf2_ros::TransformBroadcaster> tf_Broadcaster_;
         ////action////
         rclcpp_action::Client<opennav_coverage_msgs::action::NavigateCompleteCoverage>::SharedPtr nav_complete_coverage_client_;
         rclcpp_action::Client<nav2_msgs::action::NavigateThroughPoses>::SharedPtr nav_through_poses_client_;
         rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SharedPtr nav_to_pose_client_;
         rclcpp_action::Client<nav2_msgs::action::FollowPath>::SharedPtr follow_path_client_;
         rclcpp_action::Client<nav2_msgs::action::ComputePathToPose>::SharedPtr compute_path_to_pose_client_;
-        
         //// Subscriptions////
         rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr localization_pose_sub_;
         rclcpp::Subscription<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr robot_position_sub_;
@@ -195,16 +179,12 @@ class navigation_function : public rclcpp::Node{
         rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr pub_user_path_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr navigation_function_state_pub_;
-        rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr covered_pose_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr robot_position_pub_;
-
         //// Services ////
         // rclcpp::Client<nav2_msgs::srv::LoadMap>::SharedPtr change_maps_srv_;
         rclcpp::Client<nav2_msgs::srv::ClearEntireCostmap>::SharedPtr clear_costmap_global_srv_;
         rclcpp::Client<nav2_msgs::srv::ClearEntireCostmap>::SharedPtr clear_costmap_local_srv_;
         //timer
         rclcpp::TimerBase::SharedPtr execute_navigation_timer_;
-        rclcpp::TimerBase::SharedPtr send_robot_position_timer_;
         //define var
         geometry_msgs::msg::PoseStamped initial_pose_;
         geometry_msgs::msg::PoseWithCovarianceStamped robot_position_;
@@ -233,32 +213,6 @@ float navigation_function::getyaw(double data1, double data2){
     tf2::Matrix3x3(quat_tf).getRPY(roll, pitch, yaw);
     return yaw;
 } 
-double *navigation_function::get_position_tf(string source_frame, string target_frame){
-    static double data[4];
-    //get position
-    static double x,y,z,thz,thw;
-    static geometry_msgs::msg::TransformStamped transformStamped;
-    try{
-        transformStamped = tf_Buffer_->lookupTransform(source_frame,target_frame,tf2::TimePointZero);
-        x=transformStamped.transform.translation.x;
-        y=transformStamped.transform.translation.y;
-        z=transformStamped.transform.translation.z;
-        thz=transformStamped.transform.rotation.z;
-        thw=transformStamped.transform.rotation.w;
-        
-    }
-    catch (tf2::TransformException &e) {
-        x=-1; y=-1; thz=-1; thw=-1;
-        RCLCPP_ERROR(this->get_logger(),"Error occured: %s", e.what());
-    }
-    data[0]=x; data[1]=y; data[2]=thz; data[3]=thw;
-    return data;
-}
-void navigation_function::pub_robot_position(string data){
-    std_msgs::msg::String msg;
-    msg.data = data;
-    robot_position_pub_->publish(msg);
-}
 void navigation_function::save_robot_position(const std::string& file_path, double x, double y, double thz, double thw){
     std::ofstream file(file_path);
     if (!file.is_open()) {
@@ -1081,13 +1035,6 @@ int navigation_function::action(){
             }
         }
         else if(mode == "navigate_coverage"){
-            //send covered pose
-            t++;
-            if(t>=20){
-                covered_pose_pub_->publish(robot_current_position);
-                robot_position_covered_.push_back(robot_current_position);
-                t = 0;
-            }
             //kiem tra trang thai dang hoat dong
             if(step == 0){
                 //send goal
@@ -1108,16 +1055,15 @@ int navigation_function::action(){
                     cancel_navCompleteCoverage();
                     //update_polygon();
                     step = 0;
-		    //
-		    request = 0;
-		    status = Error_;
+		            //
+		            request = 0;
+		            status = Error_;
                     return Error_;
-		    //return Active_;
+		            //return Active_;
                 }
                 else if(states == SUCCESS){
                     cancel_navCompleteCoverage();
                     polygons.resize(0);
-                    robot_position_covered_.resize(0);
                     path_ = nav_msgs::msg::Path();
                     step = 0;
                     request = 0;

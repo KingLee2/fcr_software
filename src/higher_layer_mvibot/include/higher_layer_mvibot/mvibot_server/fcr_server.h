@@ -30,7 +30,7 @@ using namespace std;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr input_status_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr output_status_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr robot_config_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr pos_robot_sub_;
+        // rclcpp::Subscription<std_msgs::msg::String>::SharedPtr pos_robot_sub_;
         //sub request reset slam_toolbox
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr reset_slam_toolbox_sub_;
         //declare service //
@@ -200,31 +200,6 @@ using namespace std;
                 }
             };
             robot_config_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/config_robot", qos_profile, robot_config_callback);
-            //get pose robot
-            auto pose_robot_callback = [this](std_msgs::msg::String msg)->void{
-                static string_Iv2 data;
-                std::lock_guard<std::recursive_mutex> lock(mutex_robot);
-                data.detect(msg.data,"","|","");
-                for(int i=0;i<my_robots.size();i++){
-                    if(my_robots[i].name_seri==data.data1[0]){
-                        my_robots[i].pose_robot=msg.data;
-                        break;
-                    }
-                }
-            };
-            pos_robot_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/robot_position",qos_profile, pose_robot_callback);
-            // auto history_robot_callback = [this](std_msgs::msg::String msg)->void{
-            //     static string_Iv2 data;
-            //     std::lock_guard<std::recursive_mutex> lock(mutex_robot);
-            //     data.detect(msg.data,"","|","");
-            //     for(int i=0;i<my_robots.size();i++){
-            //         if(my_robots[i].name_seri==data.data1[0]){
-            //             my_robots[i].history_robot=msg.data;
-            //             break;
-            //         }
-            //     }
-            // };
-            // history_robot_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/history", qos_profile, history_robot_callback);
             //get map
             auto map_callback = [this](nav_msgs::msg::OccupancyGrid msg)->void{
                 my_map = msg;
@@ -268,10 +243,10 @@ using namespace std;
             //
             // name_map_active = "28_11ok";
             // run map server
-	    while(!load_map_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
-        	RCLCPP_INFO(rclcpp::get_logger("Map"),"Load Map service not available");
-        	sleep(1);
-    	    }
+            while(!load_map_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
+                RCLCPP_INFO(rclcpp::get_logger("Map"),"Load Map service not available");
+                sleep(1);
+            }
             if(name_map_active!=""){
                 string map_url;
                 map_url = package_path + "maps/" + name_map_active + ".yaml";

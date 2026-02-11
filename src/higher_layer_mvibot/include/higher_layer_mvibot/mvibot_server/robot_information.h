@@ -61,61 +61,7 @@ string robot_information::get_cmd_update_database(string data1_,string data2_){
     cout<<"update_robot: "<<string_return<<endl;
     return string_return;
 }
-///get_cmd_insert_row_table
-string robot_information::get_cmd_insert_row_table(string data1_,string data2_){
-    static string string_return;
-    static vector<string> string_ ;
-    //
-    static string_Iv2 data;
-    static string string_cmd_mysql;
-   //
-    static string msg;
-    static time_t now_time;
-    static tm* now_tm;
-    static std::ostringstream oss;
-    auto now = chrono::system_clock::now();
-    // Chuyển đổi thành std::time_t
-    now_time = chrono::system_clock::to_time_t(now);
-    // Chuyển std::time_t thành std::tm
-    now_tm = localtime(&now_time);
-    oss << put_time(now_tm, "%Y-%m-%d %H:%M:%S");
-    // msg = "INSERT INTO battery_status_chart (name_seri, soc, created_at) VALUES('MB24_916b','23','"+oss.str()+"')";
-    // oss.str("");
 
-   //
-    string_.resize(2);
-    data.detect(data2_,"","|","");
-/// "INSERT INTO my_robot (name_seri,type,history,id)  VALUES('"+name_seri+"','"+type+"',"+"'',"+"'"+to_string(id)+"'"+")";
-
-    string_cmd_mysql="";
-    string_[0]="";
-    string_[1]="";
-    string_cmd_mysql=string_cmd_mysql+"INSERT INTO "+data1_+" (";
-    for(int i=1;i<data.data1.size()-1;i++){
-            static string_Iv2 data2;
-            data2.detect(data.data1[i],"",":","");
-            ///
-            // if(data2.data1[0]!=""){
-            //     string_[0]=string_[0]+", "+data2.data1[0];
-            //     string_[1]=string_[1]+", "+data2.data1[1];
-            // }
-            if(data2.data1[0]=="soc"){
-                string_[0]=string_[0]+", "+data2.data1[0];
-                string_[1]=string_[1]+", "+data2.data1[1];
-            }
-    }
-    static string_Iv2 data2;
-    data2.detect(data.data1[data.data1.size()-1],"",":","");
-    if(data2.data1[0]!=""){
-        // string_[0]=string_[0]+", "+data2.data1[0]+", "+"created_at";
-        // string_[1]=string_[1]+", "+data2.data1[1]+", "+ oss.str();
-    }
-    string_cmd_mysql=string_cmd_mysql+string_[0]+") VALUES ("+string_[1]+")";
-    //string_return=string_cmd_mysql;
-    //string_return = "INSERT INTO battery_status_chart (name_seri,soc)  VALUES('"+name_seri+"','"+type+"',"+"'',"+"'"+to_string(id)+"'"+")";
-    string_return = "INSERT INTO battery_status_chart (name_seri,soc)  VALUES('MB24_916b','48')";
-    return string_return;
-}
 std::vector<string>  robot_information::cmd_update_database(){
     static vector<string> string_return;
     //
@@ -183,33 +129,6 @@ std::vector<string>  robot_information::cmd_update_database(){
         send_cmd_to_msyql(string_return[string_return.size()-1]);
         robot_config_status="";
     }
-    if(pose_robot!=""){
-        string_return.resize(string_return.size()+1);
-        string_return[string_return.size()-1]=get_cmd_update_database("pose_robot",pose_robot);
-        send_cmd_to_msyql(string_return[string_return.size()-1]);
-        pose_robot="";
-    }
-    ///
-    // if(update_battery_chart==1){// & battery_status_chart!=""
-    //     string_return.resize(string_return.size()+1);
-    //     //string_return[string_return.size()-1]=get_cmd_insert_row_table("battery_status_chart",battery_status_chart);
-    //     string_return[string_return.size()-1]="INSERT INTO battery_status_chart (name_seri,soc)  VALUES('MB24_916b','26')";
-    //     send_cmd_to_msyql(string_return[string_return.size()-1]);
-    //     update_battery_chart==0;
-    // }
-    /////update sau/////
-    // if(node->update_mision==1){
-    //     string_return.resize(string_return.size()+1);
-    //     string_return[string_return.size()-1]="update `my_robot_backup_mission` set mission_normal_backup='"+node->mission_normal+"' where name_seri='"+name_seri+"'";
-    //     send_cmd_to_msyql(string_return[string_return.size()-1]);
-    //     node->update_mision=0;
-    // }
-    // if(node->history.size()!=0){
-    //     for(int i=0;i<node->history.size();i++){
-    //       database_combined("my_robot","history",node->history[i],node->name_seri);
-    //     }
-    //     node->history.resize(0);
-    // }
     return string_return;
 }
 std::vector<string>  robot_information::cmd_insert_database(){
@@ -235,8 +154,7 @@ std::vector<string>  robot_information::cmd_insert_database(){
         string_return[7]="INSERT INTO output_user_status (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
         string_return[8]="INSERT INTO robot_config_status (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
         string_return[9]="INSERT INTO history_robot (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[10]="INSERT INTO pose_robot (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[11]="INSERT INTO battery_status_chart (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
+        string_return[10]="INSERT INTO battery_status_chart (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
     } else {
         cout << "not robot" << endl;
         string_return.resize(0);
