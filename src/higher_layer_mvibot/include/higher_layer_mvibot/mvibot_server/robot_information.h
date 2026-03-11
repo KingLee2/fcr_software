@@ -35,7 +35,7 @@ string robot_information::get_cmd_update_database(string data1_,string data2_){
             std::cout << data1_<<" is not" << std::endl;
             string cmd;
             cmd ="";
-            cmd = cmd+"INSERT INTO `"+data1_+"` (name_seri,robot_id) VALUES('"+data.data1[0]+"',"+to_string(robot_id)+")";
+            cmd = cmd+"INSERT INTO `"+data1_+"` (robot_id) VALUES("+to_string(robot_id)+")";
             send_cmd_to_msyql(cmd);
         }
     }catch(sql::SQLException &e){
@@ -56,7 +56,7 @@ string robot_information::get_cmd_update_database(string data1_,string data2_){
     data2.detect(data.data1[data.data1.size()-1],"",":","");
     if(data2.data1[0]!="")
     string_cmd_mysql=string_cmd_mysql+data2.data1[0]+"="+"'"+data2.data1[1]+"' ";
-    string_cmd_mysql=string_cmd_mysql+"WHERE name_seri = '"+data.data1[0]+"' ";
+    string_cmd_mysql=string_cmd_mysql+"WHERE robot_id = "+to_string(robot_id)+" ";
     string_return=string_cmd_mysql;
     cout<<"update_robot: "<<string_return<<endl;
     return string_return;
@@ -144,17 +144,17 @@ std::vector<string>  robot_information::cmd_insert_database(){
     if (res->next()) {
         int robot_id = res->getInt("robot_id");
         cout << "Robot ID: " << robot_id << endl;
-        string_return[0]="INSERT INTO robot_status (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[1]="INSERT INTO sensor_status (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[2]="INSERT INTO battery_status (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[3]="INSERT INTO battery_cell_status (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[4]="INSERT INTO motor_left_status (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[5]="INSERT INTO motor_right_status (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[6]="INSERT INTO input_user_status (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[7]="INSERT INTO output_user_status (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[8]="INSERT INTO robot_config_status (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[9]="INSERT INTO history_robot (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
-        string_return[10]="INSERT INTO battery_status_chart (name_seri,robot_id)  VALUES('"+name_seri+"',"+to_string(robot_id)+")";
+        string_return[0]="INSERT INTO robot_status (robot_id)  VALUES("+to_string(robot_id)+")";
+        string_return[1]="INSERT INTO sensor_status (robot_id)  VALUES("+to_string(robot_id)+")";
+        string_return[2]="INSERT INTO battery_status (robot_id)  VALUES("+to_string(robot_id)+")";
+        string_return[3]="INSERT INTO battery_cell_status (robot_id)  VALUES("+to_string(robot_id)+")";
+        string_return[4]="INSERT INTO motor_left_status (robot_id)  VALUES("+to_string(robot_id)+")";
+        string_return[5]="INSERT INTO motor_right_status (robot_id)  VALUES("+to_string(robot_id)+")";
+        string_return[6]="INSERT INTO input_user_status (robot_id)  VALUES("+to_string(robot_id)+")";
+        string_return[7]="INSERT INTO output_user_status (robot_id)  VALUES("+to_string(robot_id)+")";
+        string_return[8]="INSERT INTO robot_config_status (robot_id)  VALUES("+to_string(robot_id)+")";
+        string_return[9]="INSERT INTO history_robot (robot_id)  VALUES("+to_string(robot_id)+")";
+        string_return[10]="INSERT INTO battery_status_chart (robot_id)  VALUES("+to_string(robot_id)+")";
     } else {
         cout << "not robot" << endl;
         string_return.resize(0);
@@ -163,8 +163,22 @@ std::vector<string>  robot_information::cmd_insert_database(){
 }
 void robot_information::update_status_robot(int n){
     static string cmd;
-    if(n==1) cmd="update `robot_status` set status='1' where name_seri='"+name_seri+"'";
-    else cmd="update `robot_status` set status='0' where name_seri='"+name_seri+"'";
+    int robot_id;
+    try{
+        free_res();
+        res=stmt->executeQuery("SELECT robot_id FROM my_robot WHERE name_seri='"+name_seri+"'");
+        if (res->next()) {
+            robot_id = res->getInt("robot_id");
+        } else {
+            cout << "not robot" << endl;
+        }
+    }catch(sql::SQLException &e){
+        cout << "# ERR: " << e.what();
+        cout << " (MySQL error code: " << e.getErrorCode();
+        cout << ", SQLState: " << e.getSQLState() << " )" << endl;
+    }
+    if(n==1) cmd="update `robot_status` set status='1' where robot_id="+robot_id;
+    else cmd="update `robot_status` set status='0' where robot_id="+robot_id;
     try{
         stmt->execute(cmd);
     }catch (sql::SQLException &e) {

@@ -587,7 +587,7 @@ void navigation_function::getPathToPose(geometry_msgs::msg::PoseStamped start, g
     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::ComputePathToPose>::WrappedResult &result){
         if(result.code == rclcpp_action::ResultCode::SUCCEEDED){
             RCLCPP_INFO(rclcpp::get_logger("ComputePathToPose"),"ComputePathToPose succeeded");
-            send_history("normal","ComputePathToPose succeeded");
+            //send_history("normal","ComputePathToPose succeeded");
             path_ = result.result->path;
             state_planner = SUCCESS;
         }

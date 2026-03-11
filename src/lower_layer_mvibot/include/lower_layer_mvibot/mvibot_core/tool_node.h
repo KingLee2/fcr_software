@@ -1,10 +1,25 @@
 #include "mvibot_core_init.h"
 #include"../common/stof.h"
 #include"../common/exec.h"
+#include"../common/string_Iv2.h"
 
 using namespace std;
 using json = nlohmann::json;
 //class lift, brush, suction, temperature, sensor, battery, config
+class wifi{
+	public:
+		string ssid;
+		string signal;
+		string active;
+		string security;
+};
+class n_wifi{
+	public:
+		vector<wifi> n_wifi_;
+		void add_wifi(string ssid, string signal, string active, string security);
+		void print();
+		string string_msg();
+};
 class tool_node : public rclcpp::Node{
     private:
         //declare var 
@@ -33,6 +48,10 @@ class tool_node : public rclcpp::Node{
         // ready sensor when radar 1 2 camera 1 2 is ready
         int dym_set_camera1=0,dym_set_camera2=0;
         int reset_radar1,reset_radar2,reset_camera1,reset_camera2;
+        //config and connect wifi
+        n_wifi my_wifi;
+        //history
+        json his_content;
         //
         string robot_config_string;
         //declare pub//
@@ -42,6 +61,7 @@ class tool_node : public rclcpp::Node{
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr robot_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr robot_status_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr robot_config_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr list_wifi_pub_;
         //pub sensor status
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr  sensor_status_pub_;
         //temperature
@@ -101,10 +121,6 @@ class tool_node : public rclcpp::Node{
         rclcpp::Time check_time_pub;
     public:
         tool_node(const string &node_name, const string &sub_namespace) : Node(node_name, sub_namespace){
-            // auto reentrant_cbg = this->create_callback_group(rclcpp::CallbackGroupType::Reentrant);
-            // auto mutuallyExclusive_cbg = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-            // rclcpp::SubscriptionOptions sub_options;
-            // sub_options.callback_group = mutuallyExclusive_cbg;
             rclcpp::QoS qos_profile(rclcpp::KeepLast(10));
             qos_profile.best_effort();
             mvibot_seri_ = this->get_namespace();
@@ -118,6 +134,7 @@ class tool_node : public rclcpp::Node{
             robot_pub_ = this->create_publisher<std_msgs::msg::String>("robot",1);
             robot_status_pub_ = this->create_publisher<std_msgs::msg::String>("robot_status",1);
             robot_config_pub_ = this->create_publisher<std_msgs::msg::String>("config_robot",1);
+            list_wifi_pub_ = this->create_publisher<std_msgs::msg::String>("robot_list_wifi",1);
             //pub sensor status
             sensor_status_pub_ = this->create_publisher<std_msgs::msg::String>("sensor_status",1);
             //temperature
@@ -159,7 +176,7 @@ class tool_node : public rclcpp::Node{
                     file.close();    
                 }
                 catch (const std::exception& e){
-                    send_history("error", "Error config operation: " + std::string(e.what()));
+                    // send_history("error", "Error config operation: " + std::string(e.what()));
                 }
             };
             operation_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri + "/operation",qos_profile, operation_callback);
@@ -192,7 +209,7 @@ class tool_node : public rclcpp::Node{
                     file2.close();
                 }
                 catch (const std::exception& e){
-                    send_history("error", "Error config camera: " + std::string(e.what()));
+                    // send_history("error", "Error config camera: " + std::string(e.what()));
                 }
             };
             serial_camera_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri+"/camera_config",qos_profile,camera_config_callback);
@@ -218,23 +235,49 @@ class tool_node : public rclcpp::Node{
                     file1 <<wifi_mode_config;
                     file1.close();
                     //
-                    std::ofstream file2(file_wifi_ssid);
-                    if (!file2.is_open()){
-                        return;
+                    if(wifi_mode_config == "auto"){
+                        std::ofstream file2(file_wifi_ssid);
+                        if (!file2.is_open()){
+                            return;
+                        }
+                        file2 <<ssid_config;
+                        file2.close();
+                        //
+                        std::ofstream file3(file_wifi_password);
+                        if (!file3.is_open()){
+                            return;
+                        }
+                        file3 <<pw_config;
+                        file3.close();
                     }
-                    file2 <<ssid_config;
-                    file2.close();
-                    //
-                    std::ofstream file3(file_wifi_password);
-                    if (!file3.is_open()){
-                        return;
-                    }
-                    file3 <<pw_config;
-                    file3.close();
                 }
                 catch (const std::exception& e){
-                    send_history("error", "Error config wifi: " + std::string(e.what()));
+                    // send_history("error", "Error config wifi: " + std::string(e.what()));
                 }
+                if(ssid_config!=""){
+                    string wifi_port;
+                    wifi_port=load_file("wifi_port");
+                    //
+                    string cmd;
+                    cmd="";
+                    cmd=cmd+"sudo nmcli connection delete mvibot_cardwifi";
+                    system(cmd.c_str());
+                    //
+                    cmd="";
+                    cmd=cmd+"sudo nmcli connection add ifname "+wifi_port+" con-name mvibot_cardwifi type wifi ssid "+ssid_config;
+                    system(cmd.c_str());
+                    //
+                    if(pw_config!=""){
+                        cmd="";
+                        cmd=cmd+"sudo nmcli connection modify mvibot_cardwifi 802-11-wireless-security.key-mgmt WPA-PSK 802-11-wireless-security.psk "+pw_config;
+                        system(cmd.c_str());
+                    }
+                    //
+                    cmd="sudo nmcli connection up mvibot_cardwifi";
+                    system(cmd.c_str());
+                    //
+                }
+                // sleep(1);
             };
             wifi_connect_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri+"/wifi_config", qos_profile, wifi_config_callback);
             //ethernet
@@ -251,7 +294,7 @@ class tool_node : public rclcpp::Node{
                     file.close();
                 }
                 catch (const std::exception& e){
-                    send_history("error", "Error config ethernet: " + std::string(e.what()));
+                    // send_history("error", "Error config ethernet: " + std::string(e.what()));
                 }
             };
             ethernet_connect_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri+"/ethernet_config",qos_profile,ethernet_config_callback);
@@ -376,6 +419,7 @@ class tool_node : public rclcpp::Node{
                 pub_battery_status();
                 pub_battery_cell_status();
                 //
+                // scan_wifi();
             };
             timer_ = this->create_wall_timer(1000ms, timer_callback);
         }
@@ -386,6 +430,8 @@ class tool_node : public rclcpp::Node{
         void pub_robot_config();
         void pub_robot();
         void pub_information_robot();
+        void scan_wifi();
+        void pub_robot_list_wifi(string data);
         //
         void pub_sensor_status();
         void check_sensor();
@@ -406,9 +452,62 @@ class tool_node : public rclcpp::Node{
         void pub_battery_status();
         void pub_battery_cell_status();
 };
+void n_wifi::add_wifi(string ssid, string signal, string active, string security){
+	static int is_have;
+	is_have=0;
+	for(int i=0;i<n_wifi_.size();i++){
+		if(n_wifi_[i].ssid==ssid){
+			is_have=1;
+			if(stof_f(signal)>stof_f(n_wifi_[i].signal)){
+				n_wifi_[i].signal=signal;
+			}
+			if(active=="yes"){
+				n_wifi_[i].active=active;
+			}
+			break;
+		}
+	}
+	//
+	if(is_have==0){
+		n_wifi_.resize(n_wifi_.size()+1);
+		n_wifi_[n_wifi_.size()-1].ssid=ssid;
+		n_wifi_[n_wifi_.size()-1].signal=signal;
+		n_wifi_[n_wifi_.size()-1].active=active;
+		n_wifi_[n_wifi_.size()-1].security=security;
+	}
+}
+void n_wifi::print(){
+	for(int i=0;i<n_wifi_.size();i++){
+		cout<<"SSID:";
+		cout<<n_wifi_[i].ssid;
+		cout<<"\tsignal:"<<n_wifi_[i].signal;
+		cout<<"\tactive:"<<n_wifi_[i].active;
+		cout<<"\tsecurity:"<<n_wifi_[i].security<<endl;
+	}
+}
+string n_wifi::string_msg(){
+    json data_json;
+	string data_str;
+    data_json["wifi_list"] = json::array();
+	for(int i=0;i<n_wifi_.size();i++){
+        json wifi_json;
+        wifi_json["ssid"] = n_wifi_[i].ssid;
+        wifi_json["signal"] = n_wifi_[i].signal;
+        wifi_json["active"] = n_wifi_[i].active;
+        wifi_json["security"] = n_wifi_[i].security;
+        data_json["wifi_list"].push_back(wifi_json);
+	}
+    data_str = data_json.dump();
+    return data_str;
+}
 void tool_node::send_history(string status, string info){
-    static std_msgs::msg::String history_msg;
-    history_msg.data = mvibot_seri+"|" + "status:"+status + "|" + "content:" + info;
+    std_msgs::msg::String history_msg;
+    json history_json;
+    history_json["name_seri"] = mvibot_seri;
+    history_json["status"] = status;
+    history_json["content"] = info;
+    history_msg.data = history_json.dump();
+    // history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
     history_pub_->publish(history_msg);
 }
 //
@@ -594,6 +693,35 @@ void tool_node::pub_robot_config(){
         robot_config_pub_->publish(msg);
     }else creat_fun=1;
 }
+void tool_node::pub_robot_list_wifi(string data){
+    std_msgs::msg::String msg;
+    msg.data = data;
+    list_wifi_pub_->publish(msg);
+}
+void tool_node::scan_wifi(){
+    string out_put="";
+	string_Iv2 data;
+    out_put=exec("nmcli -t -f SSID,signal,active,security device wifi list --rescan yes");
+    // process data
+    data.detect(out_put,"","\n","");
+    my_wifi.n_wifi_.resize(0);
+    for(int i=0;i<data.data1.size();i++){
+        if(data.data1[i]!=""){
+            static string_Iv2 data2;
+            data2.detect(data.data1[i],"",":","");
+            if(data2.data1.size()==4){
+                if(data2.data1[0]!=""){
+                    my_wifi.add_wifi(data2.data1[0],data2.data1[1],data2.data1[2],data2.data1[3]);
+                }
+            }
+        }
+    }
+    // 
+    cout<<"my list wifi"<<endl;
+    my_wifi.print();
+    //
+    pub_robot_list_wifi(my_wifi.string_msg());
+}
 //
 void tool_node::pub_sensor_status(){
     static std_msgs::msg::String sensor_status_msg;
@@ -623,7 +751,11 @@ void tool_node::check_sensor(){
     radar1_live_status=0;
     if(time_live_radar1>=2.0){
         if(radar1_live==0){
-            send_history("normal","Radar1 is available");
+            his_content["type"] = "device";
+            his_content["state"] = "run";
+            his_content["description"] = "lidar 1";
+            send_history("normal", his_content.dump());
+            // send_history("normal","Radar1 is available");
             radar1_live=1;
             RCLCPP_INFO(this->get_logger(),"Radar1 is available");
         }
@@ -636,7 +768,11 @@ void tool_node::check_sensor(){
                 radar1_live=0;
                 time_live_radar1=0;
                 reset_radar1=1;
-                send_history("error","Restart radar1 because no signal");
+                his_content["type"] = "device";
+                his_content["state"] = "restart";
+                his_content["description"] = "lidar 1";
+                send_history("normal", his_content.dump());
+                // send_history("error","Restart radar1 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart radar1 because no signal");
             }
         }else{
@@ -645,7 +781,11 @@ void tool_node::check_sensor(){
                 radar1_live=0;
                 time_live_radar1=0;
                 reset_radar1=1;
-                send_history("error","Restart radar1 because no signal");
+                his_content["type"] = "device";
+                his_content["state"] = "restart";
+                his_content["description"] = "lidar 1";
+                send_history("normal", his_content.dump());
+                // send_history("error","Restart radar1 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart radar1 because no signal");
             }
         }
@@ -663,7 +803,11 @@ void tool_node::check_sensor(){
     radar2_live_status=0;
     if(time_live_radar2>=2.0){
         if(radar2_live==0){ 
-            send_history("normal","Radar2 is available");
+            his_content["type"] = "device";
+            his_content["state"] = "run";
+            his_content["description"] = "lidar 2";
+            send_history("normal", his_content.dump());
+            // send_history("normal","Radar2 is available");
             radar2_live=1;
             RCLCPP_INFO(this->get_logger(),"Radar2 is available");
         }
@@ -676,7 +820,11 @@ void tool_node::check_sensor(){
                 radar2_live=0;
                 time_live_radar2=0;
                 reset_radar2=1;
-                send_history("error","Restart radar2 because no signal");
+                his_content["type"] = "device";
+                his_content["state"] = "restart";
+                his_content["description"] = "lidar 2";
+                send_history("normal", his_content.dump());
+                // send_history("error","Restart radar2 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart radar2 because no signal");
             }
         }else{
@@ -685,7 +833,11 @@ void tool_node::check_sensor(){
                 radar2_live=0;
                 time_live_radar2=0;
                 reset_radar2=1;
-                send_history("error","Restart radar2 because no signal");
+                his_content["type"] = "device";
+                his_content["state"] = "restart";
+                his_content["description"] = "lidar 2";
+                send_history("normal", his_content.dump());
+                // send_history("error","Restart radar2 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart radar2 because no signal");
             }
         }
@@ -703,7 +855,11 @@ void tool_node::check_sensor(){
     camera1_live_status=0;
     if(time_live_camera1>=5.0){
         if(camera1_live==0){
-            send_history("normal","Camera1 is available");
+            his_content["type"] = "device";
+            his_content["state"] = "run";
+            his_content["description"] = "camera 1";
+            send_history("normal", his_content.dump());
+            // send_history("normal","Camera1 is available");
             camera1_live=1;
             dym_set_camera1=1;
             RCLCPP_INFO(this->get_logger(),"Camera1 is available");
@@ -717,7 +873,11 @@ void tool_node::check_sensor(){
                 camera1_live=0;
                 time_live_camera1=0;
                 reset_camera1=1;
-                send_history("error","Restart camera1 because no signal");
+                his_content["type"] = "device";
+                his_content["state"] = "restart";
+                his_content["description"] = "camera 1";
+                send_history("normal", his_content.dump());
+                // send_history("error","Restart camera1 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart camera1 because no signal");
             }
         }else{
@@ -726,7 +886,11 @@ void tool_node::check_sensor(){
                 camera1_live=0;
                 time_live_camera1=0;
                 reset_camera1=1;
-                send_history("error","Restart camera1 because no signal");
+                his_content["type"] = "device";
+                his_content["state"] = "restart";
+                his_content["description"] = "camera 1";
+                send_history("normal", his_content.dump());
+                // send_history("error","Restart camera1 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart camera1 because no signal");
             }
         }
@@ -744,7 +908,11 @@ void tool_node::check_sensor(){
     camera2_live_status=0;
     if(time_live_camera2>=5.0) {
         if(camera2_live==0){
-            send_history("normal","Camera2 is available");
+            his_content["type"] = "device";
+            his_content["state"] = "run";
+            his_content["description"] = "camera 2";
+            send_history("normal", his_content.dump());
+            // send_history("normal","Camera2 is available");
             camera2_live=1;
             dym_set_camera2=1;
             RCLCPP_INFO(this->get_logger(),"Camera2 is available");
@@ -758,7 +926,11 @@ void tool_node::check_sensor(){
                 camera2_live=0;
                 time_live_camera2=0;
                 reset_camera2=1;
-                send_history("error","Restart camera2 because no signal");
+                his_content["type"] = "device";
+                his_content["state"] = "restart";
+                his_content["description"] = "camera 2";
+                send_history("normal", his_content.dump());
+                // send_history("error","Restart camera2 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart camera2 because no signal");
             }
         }else{
@@ -767,7 +939,11 @@ void tool_node::check_sensor(){
                 camera2_live=0;
                 time_live_camera2=0;
                 reset_camera2=1;
-                send_history("error","Restart camera2 because no signal");
+                his_content["type"] = "device";
+                his_content["state"] = "restart";
+                his_content["description"] = "camera 2";
+                send_history("normal", his_content.dump());
+                // send_history("error","Restart camera2 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart camera2 because no signal");
             }
         }
@@ -778,7 +954,11 @@ void tool_node::check_sensor(){
     // first time ready -> start launch mvibot software
     if(start_software_launch==0 && mvibot_sensor_ready==1){
         //
-        send_history("normal","Sensor startup success. Start up mode "+mode);
+        his_content["type"] = "robot";
+        his_content["state"] = "run";
+        his_content["description"] = mode;
+        send_history("normal", his_content.dump());
+        // send_history("normal","Sensor startup success. Start up mode "+mode);
         RCLCPP_INFO(rclcpp::get_logger("sensor"),"Sensor startup success. Start up mode: %s",mode);
         //// TAM THOI CHUA KICH HOAT
         // static string command;
@@ -803,11 +983,23 @@ void tool_node::check_sensor(){
     }
     //battery_live_status=0;
     if(time_live_batterry>=3.0){
-        if(battery_status!=1) send_history("normal","Battery is available");
+        if(battery_status!=1) {
+            his_content["type"] = "device";
+            his_content["state"] = "on";
+            his_content["description"] = "battery";
+            send_history("normal", his_content.dump());
+            // send_history("normal","Battery is available");
+        }
         battery_status=1;
     }
     if(time_live_batterry<=-2.0){
-        if(battery_status!=0) send_history("error","Battery no signal");
+        if(battery_status!=0) {
+            his_content["type"] = "device";
+            his_content["state"] = "off";
+            his_content["description"] = "battery";
+            send_history("error", his_content.dump());
+            // send_history("error","Battery no signal");
+        }
         battery_status=0;
     }
     //pub sensor status
