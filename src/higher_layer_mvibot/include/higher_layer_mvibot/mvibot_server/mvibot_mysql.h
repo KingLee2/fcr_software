@@ -79,15 +79,6 @@ class fcr_database : public rclcpp::Node{
                 vector<string> string_ ;
                 int trip_id = -1;
                 string name_map = "";
-                // static time_t now_time;
-                // static tm* now_tm;
-                // static std::ostringstream oss;
-                // auto now = chrono::system_clock::now();
-                // // Chuyển đổi thành std::time_t
-                // now_time = chrono::system_clock::to_time_t(now);
-                // // Chuyển std::time_t thành std::tm
-                // now_tm = localtime(&now_time);
-                // oss << put_time(now_tm, "%Y-%m-%d %H:%M:%S");
                 string_.resize(5);
                 data = json::parse(msg.data);
                 string_[0] = data["mission_id"].get<string>();
@@ -110,12 +101,12 @@ class fcr_database : public rclcpp::Node{
                         cout << " (MySQL error code: " << e.getErrorCode();
                         cout << ", SQLState: " << e.getSQLState() << " )" << endl;
                     }
-                    string_cmd_mysql="INSERT INTO mission_trip (mission_id,mission_name,name_map,created_at) VALUES ('" + string_[0]+"','"+string_[1]+"','"+name_map+"',TIMESTAMP('"+string_[4]+"'))";
+                    string_cmd_mysql="INSERT INTO mission_trip (mission_id,mission_name,name_map,created_at) VALUES ('" + string_[0]+"','"+string_[1]+"','"+name_map+"','"+string_[4]+"')";
                 }
                 else{
                     try{
                         free_res();
-                        res=stmt->executeQuery("SELECT trip_id FROM mission_trip WHERE created_at=TIMESTAMP('"+string_[4]+"')");
+                        res=stmt->executeQuery("SELECT trip_id FROM mission_trip WHERE created_at='"+string_[4]+"'");
                         if (res->next()) {
                             trip_id = res->getInt("trip_id");
                         } else {
@@ -126,7 +117,7 @@ class fcr_database : public rclcpp::Node{
                         cout << " (MySQL error code: " << e.getErrorCode();
                         cout << ", SQLState: " << e.getSQLState() << " )" << endl;
                     }
-                    string_cmd_mysql="INSERT INTO covered_pose (trip_id,x,y,created_at) VALUES (" + to_string(trip_id)+",'"+string_[2]+"','"+string_[3]+"',TIMESTAMP('"+get_time_string()+"'))";
+                    string_cmd_mysql="INSERT INTO covered_pose (trip_id,x,y,created_at) VALUES (" + to_string(trip_id)+",'"+string_[2]+"','"+string_[3]+"','"+get_time_string()+"')";
                 }
                 database_execmd(string_cmd_mysql);
                 // oss.str("");
@@ -164,12 +155,12 @@ class fcr_database : public rclcpp::Node{
                         cout << " (MySQL error code: " << e.getErrorCode();
                         cout << ", SQLState: " << e.getSQLState() << " )" << endl;
                     }
-                    string_cmd_mysql="INSERT INTO learning_path (path_name,name_map,created_at) VALUES ('" + string_[0]+"','"+name_map+"',TIMESTAMP('"+string_[5]+"'))";
+                    string_cmd_mysql="INSERT INTO learning_path (path_name,name_map,created_at) VALUES ('" + string_[0]+"','"+name_map+"','"+string_[5]+"')";
                 }
                 else{
                     try{
                         free_res();
-                        res=stmt->executeQuery("SELECT path_id FROM learning_path WHERE created_at=TIMESTAMP('"+string_[5]+"')");
+                        res=stmt->executeQuery("SELECT path_id FROM learning_path WHERE created_at='"+string_[5]+"'");
                         if (res->next()) {
                             path_id = res->getInt("path_id");
                         } else {
@@ -180,28 +171,16 @@ class fcr_database : public rclcpp::Node{
                         cout << " (MySQL error code: " << e.getErrorCode();
                         cout << ", SQLState: " << e.getSQLState() << " )" << endl;
                     }
-                    string_cmd_mysql="INSERT INTO pose_of_path (path_id,x,y,z,w,created_at) VALUES (" + to_string(path_id)+",'"+string_[1]+"','"+string_[2]+"','"+string_[3]+"','"+string_[4]+"',TIMESTAMP('"+get_time_string()+"'))";
+                    string_cmd_mysql="INSERT INTO pose_of_path (path_id,x,y,z,w,created_at) VALUES (" + to_string(path_id)+",'"+string_[1]+"','"+string_[2]+"','"+string_[3]+"','"+string_[4]+"','"+get_time_string()+"')";
                 }
                 database_execmd(string_cmd_mysql);
             };
             learning_path_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/learning_path_pose",qos_profile, learning_path_callback);
             //
             auto history_robot_callback = [this](std_msgs::msg::String msg)->void{
-                // static string_Iv2 data;
-                static vector<string> string_ ;
                 static string string_cmd_mysql;
                 string name_seri,status;
                 json data_json,content;
-                // static time_t now_time;
-                // static tm* now_tm;
-                // static std::ostringstream oss;
-                // auto now = chrono::system_clock::now();
-                // // Chuyển đổi thành std::time_t
-                // now_time = chrono::system_clock::to_time_t(now);
-                // // Chuyển std::time_t thành std::tm
-                // now_tm = localtime(&now_time);
-                // oss << put_time(now_tm, "%Y-%m-%d %H:%M:%S");
-                // string_.resize(4,"");
                 std::lock_guard<std::recursive_mutex> lock(mutex_robot);
                 // data.detect(msg.data,"","|","");
                 data_json = json::parse(msg.data);
@@ -213,19 +192,7 @@ class fcr_database : public rclcpp::Node{
                         my_robots[i].history_robot=msg.data;
                         string_cmd_mysql="";
                         string_cmd_mysql=string_cmd_mysql+"INSERT INTO history_robot (robot_id,";
-                        // for(int j=1;j<data.data1.size();j++){
-                        //     static string_Iv2 data2;
-                        //     data2.detect(data.data1[j],"",":","");
-                        //     if(data2.data1[0]=="status"){
-                        //         string_[0]=data2.data1[0];
-                        //         string_[1]=data2.data1[1];
-                        //     }
-                        //     else if(data2.data1[0]=="content"){
-                        //         string_[2]=data2.data1[0];
-                        //         string_[3]=data2.data1[1];
-                        //     }
-                        // }
-                        string_cmd_mysql=string_cmd_mysql+"status,content,created_at) VALUES ("+to_string(my_robots[i].id)+",'"+status+"','"+content.dump()+"',TIMESTAMP('"+get_time_string()+"'))";
+                        string_cmd_mysql=string_cmd_mysql+"status,content,created_at) VALUES ("+to_string(my_robots[i].id)+",'"+status+"','"+content.dump()+"','"+get_time_string()+"')";
                         std::cout << string_cmd_mysql << std::endl;
                         database_execmd(string_cmd_mysql);
                         my_robots[i].history_robot ="";
@@ -261,7 +228,7 @@ class fcr_database : public rclcpp::Node{
                                 break;
                             }
                         }
-                        string_cmd_mysql=string_cmd_mysql+"VALUES ("+to_string(my_robots[i].id)+",TIMESTAMP('"+get_time_string()+"'),"+string_[2]+")";
+                        string_cmd_mysql=string_cmd_mysql+"VALUES ("+to_string(my_robots[i].id)+",'"+get_time_string()+"',"+string_[2]+")";
                         std::cout << string_cmd_mysql << std::endl;
                         database_execmd(string_cmd_mysql);
                         // my_robots[i].battery_status_chart ="";
@@ -285,7 +252,6 @@ class fcr_database : public rclcpp::Node{
         string load_file(string name_file);
 };
 string fcr_database::get_time_string(){
-    //get time normal mission execute
     time_t now_time;
     tm* now_tm;
     std::ostringstream oss;
@@ -293,7 +259,8 @@ string fcr_database::get_time_string(){
     // Chuyển đổi thành std::time_t
     now_time = chrono::system_clock::to_time_t(now);
     // Chuyển std::time_t thành std::tm
-    now_tm = localtime(&now_time);
+    // now_tm = localtime(&now_time);
+    now_tm = gmtime(&now_time);
     oss << put_time(now_tm, "%Y-%m-%d %H:%M:%S");
     return oss.str();
 }
@@ -508,12 +475,12 @@ void fcr_database::table_init(){
     // history_robot.add_colume("name_seri","VARCHAR(255)");
     history_robot.add_colume("status","VARCHAR(255)");
     history_robot.add_colume("content","JSON"); //LONGTEXT
-    history_robot.add_colume("created_at","TIMESTAMP");
+    history_robot.add_colume("created_at","DATETIME");
     history_robot.init_table_FK("my_robot","robot_id");
     //
     battery_status_chart.table_name="battery_status_chart";
     // battery_status_chart.add_colume("name_seri","VARCHAR(255)");
-    battery_status_chart.add_colume("created_at","TIMESTAMP");
+    battery_status_chart.add_colume("created_at","DATETIME");
     battery_status_chart.add_colume("soc","INT");
     battery_status_chart.init_table_FK("my_robot","robot_id");
     //
@@ -539,21 +506,21 @@ void fcr_database::table_init(){
     mission_trip.add_colume("mission_id","VARCHAR(255)");
     mission_trip.add_colume("mission_name","VARCHAR(255)");
     mission_trip.add_colume("name_map","VARCHAR(255)");
-    mission_trip.add_colume("created_at","TIMESTAMP");
+    mission_trip.add_colume("created_at","DATETIME");
     mission_trip.init_table_PK();
     //
     covered_pose.table_name="covered_pose";
     // covered_pose.add_colume("mission_id","VARCHAR(255)");
     covered_pose.add_colume("x","FLOAT(7,4)");
     covered_pose.add_colume("y","FLOAT(7,4)");
-    covered_pose.add_colume("created_at","TIMESTAMP");
+    covered_pose.add_colume("created_at","DATETIME");
     covered_pose.init_table_FK("mission_trip","trip_id");
     //learning path
     learning_path.table_name="learning_path";
     learning_path.add_colume("path_id","INT");
     learning_path.add_colume("path_name","VARCHAR(255)");
     learning_path.add_colume("name_map","VARCHAR(255)");
-    learning_path.add_colume("created_at","TIMESTAMP");
+    learning_path.add_colume("created_at","DATETIME");
     learning_path.init_table_PK();
     //
     pose_of_path.table_name="pose_of_path";
@@ -561,7 +528,7 @@ void fcr_database::table_init(){
     pose_of_path.add_colume("y","FLOAT(7,4)");
     pose_of_path.add_colume("z","FLOAT(7,4)");
     pose_of_path.add_colume("w","FLOAT(7,4)");
-    pose_of_path.add_colume("created_at","TIMESTAMP");
+    pose_of_path.add_colume("created_at","DATETIME");
     pose_of_path.init_table_FK("learning_path","path_id");
 }
 void fcr_database::database_process(){
