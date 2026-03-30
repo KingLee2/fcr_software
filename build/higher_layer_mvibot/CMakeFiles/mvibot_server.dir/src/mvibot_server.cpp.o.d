@@ -1116,6 +1116,14 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/load_map__builder.hpp \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/load_map__traits.hpp \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/load_map__type_support.hpp \
+ /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/get_state.hpp \
+ /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__struct.hpp \
+ /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/msg/detail/state__struct.hpp \
+ /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__builder.hpp \
+ /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__traits.hpp \
+ /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/msg/detail/state__traits.hpp \
+ /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__type_support.hpp \
+ /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/msg/rosidl_generator_cpp__visibility_control.hpp \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/clear_entire_costmap.hpp \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/clear_entire_costmap__struct.hpp \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/clear_entire_costmap__builder.hpp \

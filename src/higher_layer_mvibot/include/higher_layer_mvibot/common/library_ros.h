@@ -35,6 +35,7 @@
 #include <nav2_msgs/srv/get_costmap.hpp>
 #include <nav2_msgs/srv/save_map.hpp>
 #include <nav2_msgs/srv/load_map.hpp>
+#include <lifecycle_msgs/srv/get_state.hpp>
 #include <nav2_msgs/srv/clear_entire_costmap.hpp>
 #include <rcl_interfaces/srv/set_parameters.hpp>
 #include <rcl_interfaces/srv/get_parameters.hpp>

@@ -1,0 +1,154 @@
+[0.027s] Invoking command in '/home/mvibot/floorCleaningRobot_ws/build/higher_layer_mvibot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/mvibot/floorCleaningRobot_ws/build/higher_layer_mvibot -- -j8 -l8
+[0.160s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.514s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.551s] -- Found rclcpp: 28.1.12 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.620s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.640s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.675s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.707s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.850s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.856s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.987s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.140s] -- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+[1.172s] -- Found std_srvs: 5.3.6 (/opt/ros/jazzy/share/std_srvs/cmake)
+[1.212s] -- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[1.243s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[1.297s] -- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[1.356s] -- Found tf2: 0.36.14 (/opt/ros/jazzy/share/tf2/cmake)
+[1.365s] -- Found tf2_ros: 0.36.14 (/opt/ros/jazzy/share/tf2_ros/cmake)
+[1.580s] -- Found tf2_geometry_msgs: 0.36.14 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[1.589s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[1.593s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.597s] -- Found nav2_msgs: 1.3.8 (/opt/ros/jazzy/share/nav2_msgs/cmake)
+[1.779s] -- Found visualization_msgs: 5.3.6 (/opt/ros/jazzy/share/visualization_msgs/cmake)
+[1.834s] -- Found nav2_map_server: 1.3.8 (/opt/ros/jazzy/share/nav2_map_server/cmake)
+[1.839s] -- Setting yaml-cpp_DIR to: '/opt/ros/jazzy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/share/cmake/yaml-cpp'
+[2.038s] -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[2.285s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.286s] -- Configured cppcheck include dirs: 
+[2.286s] -- Configured cppcheck exclude dirs and/or files: 
+[2.287s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.287s] -- Configured 'flake8' exclude dirs and/or files: 
+[2.289s] -- Added test 'lint_cmake' to check CMake code style
+[2.291s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.296s] -- Added test 'uncrustify' to check C / C++ code style
+[2.296s] -- Configured uncrustify additional arguments: 
+[2.297s] -- Added test 'xmllint' to check XML markup files
+[2.301s] -- Configuring done (2.2s)
+[2.387s] -- Generating done (0.1s)
+[2.398s] -- Build files have been written to: /home/mvibot/floorCleaningRobot_ws/build/higher_layer_mvibot
+[2.552s] [ 50%] [32mBuilding CXX object CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o[0m
+[10.662s] In file included from [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/mvibot_server.cpp:5[m[K:
+[10.662s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/robot_information.h:[m[K In member function ‘[01m[Kstd::string robot_information::[01;32m[Kget_cmd_update_database[m[K(std::string, std::string)[m[K’:
+[10.663s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/robot_information.h:49:18:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.663s]    49 |     for(int i=1;[01;35m[Ki<data.data1.size()-1[m[K;i++){
+[10.663s]       |                 [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[10.827s] In file included from [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/mvibot_server.cpp:6[m[K:
+[10.827s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In lambda function:
+[10.829s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:71:34:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.829s]    71 |                     for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[10.829s]       |                                 [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.832s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In lambda function:
+[10.832s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:98:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.832s]    98 |                 for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[10.832s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.834s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In lambda function:
+[10.834s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:111:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.834s]   111 |                 for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[10.834s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.836s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In lambda function:
+[10.836s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:124:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.836s]   124 |                 for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[10.836s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.837s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In lambda function:
+[10.837s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:138:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.838s]   138 |                 for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[10.838s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.839s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In lambda function:
+[10.839s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:151:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.839s]   151 |                 for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[10.839s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.841s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In lambda function:
+[10.842s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:164:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.843s]   164 |                 for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[10.843s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.844s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In lambda function:
+[10.845s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:177:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.845s]   177 |                 for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[10.845s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.845s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In lambda function:
+[10.845s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:190:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.845s]   190 |                 for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[10.845s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.846s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In lambda function:
+[10.847s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:203:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.847s]   203 |                 for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[10.847s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.851s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In lambda function:
+[10.851s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:223:31:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.851s]   223 |                 for(int i=0; [01;35m[Ki<data1.data1.size()[m[K;i++){
+[10.851s]       |                              [01;35m[K~^~~~~~~~~~~~~~~~~~~[m[K
+[10.895s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In member function ‘[01m[Kstd::string fcr_server::[01;32m[Kload_file[m[K(std::string)[m[K’:
+[10.895s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:319:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kdefine_path[m[K’ was not declared in this scope
+[10.895s]   319 |             std::ifstream file([01;31m[Kdefine_path[m[K+"config/"+name_file);
+[10.895s]       |                                [01;31m[K^~~~~~~~~~~[m[K
+[10.948s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:[m[K In member function ‘[01m[Kvoid fcr_server::[01;32m[Kpub_map[m[K()[m[K’:
+[10.949s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:449:22:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<custom_layerv2>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.949s]   449 |         for(int i=0;[01;35m[Ki<my_layers.size()[m[K;i++){
+[10.949s]       |                     [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.949s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:457:22:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<custom_layerv2>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.949s]   457 |         for(int i=0;[01;35m[Ki<my_layers.size()[m[K;i++){
+[10.950s]       |                     [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.950s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:468:26:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<signed char, std::allocator<signed char> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.950s]   468 |             for(int i=0;[01;35m[Ki<map_var.data.size()[m[K;i++)
+[10.950s]       |                         [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[10.950s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:493:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<custom_layerv2>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[10.950s]   493 |                 for(int j=0;[01;35m[Kj<my_layers.size()[m[K;j++){
+[10.950s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[10.951s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/fcr_server.h:509:41:[m[K [01;35m[Kwarning: [m[Ksuggest parentheses around comparison in operand of ‘[01m[K&[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wparentheses-Wparentheses]8;;[m[K]
+[10.951s]   509 |                         if([01;35m[Kfabs(x_layer)<=my_layers[j].width/2[m[K &  fabs(y_layer)<=my_layers[j].heigth/2) {
+[10.951s]       |                            [01;35m[K~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[11.004s] In file included from [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/mvibot_server.cpp:7[m[K:
+[11.005s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:[m[K In lambda function:
+[11.005s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:190:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.005s]   190 |                 for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[11.005s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[11.009s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:[m[K In lambda function:
+[11.009s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:217:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.009s]   217 |                 for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[11.009s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[11.009s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:221:38:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.009s]   221 |                         for(int j=1;[01;35m[Kj<data.data1.size()[m[K;j++){
+[11.009s]       |                                     [01;35m[K~^~~~~~~~~~~~~~~~~~[m[K
+[11.011s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:212:31:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Know_time[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[11.011s]   212 |                 static time_t [01;35m[Know_time[m[K;
+[11.011s]       |                               [01;35m[K^~~~~~~~[m[K
+[11.011s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:213:28:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Know_tm[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[11.012s]   213 |                 static tm* [01;35m[Know_tm[m[K;
+[11.012s]       |                            [01;35m[K^~~~~~[m[K
+[11.016s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:[m[K In member function ‘[01m[Kvoid table_::[01;32m[Kinit_table_PK[m[K()[m[K’:
+[11.016s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:284:26:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<colume_>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.016s]   284 |             for(int i=1;[01;35m[Ki<table_colume.size()[m[K;i++){
+[11.016s]       |                         [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[11.020s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:[m[K In member function ‘[01m[Kvoid table_::[01;32m[Kinit_table_FK[m[K(std::string, std::string)[m[K’:
+[11.020s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:317:26:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<colume_>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.021s]   317 |             for(int i=0;[01;35m[Ki<table_colume.size()[m[K;i++){
+[11.021s]       |                         [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[11.038s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:[m[K In member function ‘[01m[Kvoid fcr_database::[01;32m[Kdatabase_process[m[K()[m[K’:
+[11.038s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:536:18:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<robot_information>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.038s]   536 |     for(int i=0;[01;35m[Ki<my_robots.size()[m[K;i++){
+[11.038s]       |                 [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[11.039s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:542:26:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::__cxx11::basic_string<char>, std::allocator<std::__cxx11::basic_string<char> > >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.039s]   542 |             for(int j=0;[01;35m[Kj<data.size()[m[K;j++){
+[11.039s]       |                         [01;35m[K~^~~~~~~~~~~~[m[K
+[11.043s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:[m[K In member function ‘[01m[Kvoid fcr_database::[01;32m[Kget_layer[m[K()[m[K’:
+[11.043s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:576:18:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<custom_layerv2>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.043s]   576 |     for(int i=0;[01;35m[Ki<my_layers.size()[m[K;i++){
+[11.043s]       |                 [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[11.044s] [01m[K/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/src/../include/higher_layer_mvibot/mvibot_server/mvibot_mysql.h:588:30:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<custom_layerv2>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[11.044s]   588 |                 for(int i=0;[01;35m[Ki<my_layers.size()[m[K;i++){
+[11.044s]       |                             [01;35m[K~^~~~~~~~~~~~~~~~~[m[K
+[19.430s] gmake[2]: *** [CMakeFiles/mvibot_server.dir/build.make:76: CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o] Error 1
+[19.430s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/mvibot_server.dir/all] Error 2
+[19.431s] gmake: *** [Makefile:146: all] Error 2
+[19.434s] Invoked command in '/home/mvibot/floorCleaningRobot_ws/build/higher_layer_mvibot' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/mvibot/floorCleaningRobot_ws/build/higher_layer_mvibot -- -j8 -l8

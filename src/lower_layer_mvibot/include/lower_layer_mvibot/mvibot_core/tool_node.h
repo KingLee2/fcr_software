@@ -179,7 +179,7 @@ class tool_node : public rclcpp::Node{
                     // send_history("error", "Error config operation: " + std::string(e.what()));
                 }
             };
-            operation_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri + "/operation",qos_profile, operation_callback);
+            operation_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_ + "/operation",qos_profile, operation_callback);
             //camera
             auto camera_config_callback = [this](std_msgs::msg::String msg)->void{
                 std::lock_guard<std::mutex> lock(mutex_tool);
@@ -212,7 +212,7 @@ class tool_node : public rclcpp::Node{
                     // send_history("error", "Error config camera: " + std::string(e.what()));
                 }
             };
-            serial_camera_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri+"/camera_config",qos_profile,camera_config_callback);
+            serial_camera_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/camera_config",qos_profile,camera_config_callback);
             //wifi config
             auto wifi_config_callback = [this](std_msgs::msg::String msg)->void{
                 std::lock_guard<std::mutex> lock(mutex_tool);
@@ -279,7 +279,7 @@ class tool_node : public rclcpp::Node{
                 }
                 // sleep(1);
             };
-            wifi_connect_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri+"/wifi_config", qos_profile, wifi_config_callback);
+            wifi_connect_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/wifi_config", qos_profile, wifi_config_callback);
             //ethernet
             auto ethernet_config_callback= [this](std_msgs::msg::String msg)->void{
                 std::lock_guard<std::mutex> lock(mutex_tool);
@@ -297,7 +297,7 @@ class tool_node : public rclcpp::Node{
                     // send_history("error", "Error config ethernet: " + std::string(e.what()));
                 }
             };
-            ethernet_connect_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri+"/ethernet_config",qos_profile,ethernet_config_callback);
+            ethernet_connect_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/ethernet_config",qos_profile,ethernet_config_callback);
             //sensor
             auto laser_scan1_callback = [this](sensor_msgs::msg::LaserScan::SharedPtr msg)->void{
 

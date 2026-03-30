@@ -95,6 +95,7 @@ using namespace sql;
     int process_map_active = 0;
     int update_map_database= 0;
     string package_path = "/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/";
+    string define_path = "/home/mvibot/floorCleaningRobot_ws/";
     std::recursive_mutex mutex_common;
     std::recursive_mutex mutex_robot;
     std::recursive_mutex mutext_layer_map;

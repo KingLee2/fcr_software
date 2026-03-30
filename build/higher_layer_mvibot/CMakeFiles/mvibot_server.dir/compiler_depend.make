@@ -165,6 +165,14 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
   /opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/topic_statistics_collector/received_message_period.hpp \
   /opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/topic_statistics_collector/topic_statistics_collector.hpp \
   /opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/visibility_control.hpp \
+  /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/msg/detail/state__struct.hpp \
+  /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/msg/detail/state__traits.hpp \
+  /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/msg/rosidl_generator_cpp__visibility_control.hpp \
+  /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__builder.hpp \
+  /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__struct.hpp \
+  /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__traits.hpp \
+  /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__type_support.hpp \
+  /opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/get_state.hpp \
   /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/back_up.hpp \
   /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/compute_path_through_poses.hpp \
   /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/compute_path_to_pose.hpp \
@@ -1537,23 +1545,15 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /usr/include/nlohmann/detail/iterators/iterator_traits.hpp:
 
-/opt/ros/jazzy/include/rcutils/rcutils/qsort.h:
+/usr/include/nlohmann/detail/iterators/iteration_proxy.hpp:
 
-/opt/ros/jazzy/include/rcutils/rcutils/logging.h:
+/usr/include/nlohmann/detail/iterators/internal_iterator.hpp:
 
-/opt/ros/jazzy/include/rcutils/rcutils/error_handling.h:
+/usr/include/nlohmann/detail/input/position_t.hpp:
 
-/opt/ros/jazzy/include/rclcpp/rclcpp/publisher_factory.hpp:
+/usr/include/nlohmann/detail/input/parser.hpp:
 
-/opt/ros/jazzy/include/type_description_interfaces/type_description_interfaces/msg/detail/type_source__struct.h:
-
-/opt/ros/jazzy/include/rcpputils/rcpputils/time.hpp:
-
-/usr/include/nlohmann/detail/output/output_adapters.hpp:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/event_handler.hpp:
-
-/opt/ros/jazzy/include/visualization_msgs/visualization_msgs/msg/rosidl_generator_cpp__visibility_control.hpp:
+/usr/include/nlohmann/detail/input/input_adapters.hpp:
 
 /opt/ros/jazzy/include/rcpputils/rcpputils/join.hpp:
 
@@ -1613,10 +1613,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/experimental/create_intra_process_buffer.hpp:
 
-/opt/ros/jazzy/include/rclcpp/rclcpp/subscription_wait_set_mask.hpp:
-
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/pose_with_covariance_stamped.hpp:
-
 /usr/include/endian.h:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/serialized_message.hpp:
@@ -1640,8 +1636,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /usr/include/c++/13/bits/shared_ptr.h:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/parameter_event_handler.hpp:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_topics_interface.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_logging_interface_traits.hpp:
 
@@ -1678,8 +1672,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /opt/ros/jazzy/include/rclcpp/rclcpp/message_info.hpp:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/velocity_stamped__traits.hpp:
-
-/usr/include/nlohmann/detail/input/input_adapters.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/macros.hpp:
 
@@ -1726,6 +1718,14 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /opt/ros/jazzy/include/rclcpp/rclcpp/function_traits.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/executors/executor_entities_collection.hpp:
+
+/usr/include/nlohmann/detail/output/output_adapters.hpp:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/event_handler.hpp:
+
+/opt/ros/jazzy/include/rcpputils/rcpputils/time.hpp:
+
+/opt/ros/jazzy/include/visualization_msgs/visualization_msgs/msg/rosidl_generator_cpp__visibility_control.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/event.hpp:
 
@@ -1821,8 +1821,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /usr/include/c++/13/list:
 
-/usr/include/nlohmann/detail/input/position_t.hpp:
-
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/get_parameter_types__traits.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/parameter_client.hpp:
@@ -1880,6 +1878,10 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/load_map.hpp:
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_type__type_support.hpp:
+
+/usr/include/nlohmann/detail/input/json_sax.hpp:
+
+/opt/ros/jazzy/include/rcl_action/rcl_action/types.h:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/wait_result.hpp:
 
@@ -1981,6 +1983,26 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /usr/include/c++/13/fstream:
 
+/opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/rosidl_generator_cpp__visibility_control.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_type_descriptions_interface.hpp:
+
+/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter__traits.hpp:
+
+/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/msg/detail/image__traits.hpp:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/velocity_stamped__builder.hpp:
+
+/opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/odometry.hpp:
+
+/usr/include/c++/13/bits/align.h:
+
+/opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/occupancy_grid.hpp:
+
+/opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/path__traits.hpp:
+
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/velocity_stamped__type_support.hpp:
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/set_parameters_result__builder.hpp:
@@ -2022,12 +2044,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter__type_support.hpp:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/cxxabi_tweaks.h:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/intra_process_setting.hpp:
-
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose__builder.hpp:
 
 /usr/include/c++/13/bits/hashtable_policy.h:
 
@@ -2201,8 +2217,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /opt/ros/jazzy/include/action_msgs/action_msgs/msg/detail/goal_info__struct.h:
 
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point__type_support.hpp:
-
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point__traits.hpp:
 
 /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h:
@@ -2247,13 +2261,17 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/follow_path.hpp:
 
-/opt/ros/jazzy/include/sensor_msgs/sensor_msgs/msg/detail/image__traits.hpp:
-
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_event__builder.hpp:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/follow_waypoints__struct.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/subscription.hpp:
+
+/usr/include/nlohmann/detail/input/lexer.hpp:
+
+/usr/include/c++/13/ext/aligned_buffer.h:
+
+/opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/duration__struct.hpp:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/wrench__type_support.hpp:
 
@@ -2270,8 +2288,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /opt/ros/jazzy/include/rcl/rcl/subscription.h:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/smooth_path__traits.hpp:
-
-/usr/include/nlohmann/detail/iterators/iteration_proxy.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/executor.hpp:
 
@@ -2303,6 +2319,8 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/include/higher_layer_mvibot/common/string_Iv2.h:
 
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/wrench_stamped.hpp:
+
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_descriptor__struct.hpp:
 
 /opt/ros/jazzy/include/sensor_msgs/sensor_msgs/msg/image.hpp:
@@ -2328,6 +2346,12 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/pose.hpp:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/point__type_support.hpp:
+
+/opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__traits.hpp:
+
+/opt/ros/jazzy/include/tracetools/tracetools/tracetools.h:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/timer.hpp:
 
@@ -2361,6 +2385,12 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__builder.hpp:
 
+/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_topics_interface.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h:
+
+/opt/ros/jazzy/include/tf2_ros/tf2_ros/visibility_control.hpp:
+
 /usr/include/nlohmann/byte_container_with_subtype.hpp:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/msg/detail/costmap_meta_data__traits.hpp:
@@ -2374,8 +2404,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/set_parameters__traits.hpp:
 
 /usr/include/nlohmann/detail/conversions/from_json.hpp:
-
-/opt/ros/jazzy/include/rcutils/rcutils/allocator.h:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/get_node_parameters_interface.hpp:
 
@@ -2399,8 +2427,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /opt/ros/jazzy/include/action_msgs/action_msgs/srv/detail/cancel_goal__struct.h:
 
-/opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/path__traits.hpp:
-
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance_stamped__builder.hpp:
 
 /usr/include/boost/config/detail/select_stdlib_config.hpp:
@@ -2411,17 +2437,15 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /opt/ros/jazzy/include/action_msgs/action_msgs/msg/goal_info.hpp:
 
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/velocity_stamped__builder.hpp:
-
-/opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/odometry.hpp:
-
-/usr/include/c++/13/bits/align.h:
-
 /opt/ros/jazzy/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:
 
 /usr/include/c++/13/ostream:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform__type_support.hpp:
+
+/usr/include/nlohmann/detail/iterators/iter_impl.hpp:
+
+/usr/include/c++/13/any:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/follow_waypoints__traits.hpp:
 
@@ -2491,10 +2515,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/integer_range__traits.hpp:
 
-/opt/ros/jazzy/include/rcl/rcl/node_options.h:
-
-/opt/ros/jazzy/include/rcutils/rcutils/logging_macros.h:
-
 /opt/ros/jazzy/include/action_msgs/action_msgs/srv/detail/cancel_goal__functions.h:
 
 /opt/ros/jazzy/include/rosidl_dynamic_typesupport/rosidl_dynamic_typesupport/dynamic_message_type_support_struct.h:
@@ -2514,6 +2534,8 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /opt/ros/jazzy/include/rclcpp/rclcpp/get_message_type_support_handle.hpp:
 
 /usr/include/netinet/in.h:
+
+/opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__struct.hpp:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/compute_path_to_pose.hpp:
 
@@ -2623,6 +2645,10 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /usr/include/boost/smart_ptr/detail/local_sp_deleter.hpp:
 
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/pose_with_covariance_stamped.hpp:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/subscription_wait_set_mask.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/transform.hpp:
@@ -2659,8 +2685,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /usr/include/c++/13/ext/string_conversions.h:
 
-/opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/occupancy_grid.hpp:
-
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/spin__traits.hpp:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/compute_path_through_poses__traits.hpp:
@@ -2685,8 +2709,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /opt/ros/jazzy/include/tracetools/tracetools/utils.hpp:
 
-/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter__traits.hpp:
-
 /opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/topic_statistics_collector/received_message_age.hpp:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/load_map__builder.hpp:
@@ -2705,11 +2727,43 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/visibility_control.hpp:
 
+/opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/msg/detail/state__struct.hpp:
+
 /usr/include/c++/13/bits/stl_iterator_base_funcs.h:
 
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/wrench_stamped.hpp:
+/opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/msg/rosidl_generator_cpp__visibility_control.hpp:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/polygon__traits.hpp:
+
+/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/clear_entire_costmap__type_support.hpp:
+
+/usr/include/c++/13/pstl/execution_defs.h:
+
+/usr/include/c++/13/bits/stl_algobase.h:
+
+/opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/odometry__traits.hpp:
+
+/opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__type_support.hpp:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/cxxabi_tweaks.h:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/intra_process_setting.hpp:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/pose__builder.hpp:
+
+/opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/get_state.hpp:
+
+/opt/ros/jazzy/include/tf2_ros/tf2_ros/async_buffer_interface.hpp:
+
+/usr/include/c++/13/backward/auto_ptr.h:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/compute_path_through_poses.hpp:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/memory_strategies.hpp:
+
+/opt/ros/jazzy/include/statistics_msgs/statistics_msgs/msg/metrics_message.hpp:
+
+/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/compute_path_through_poses__builder.hpp:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/back_up__traits.hpp:
 
@@ -2724,10 +2778,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /opt/ros/jazzy/include/rcl/rcl/publisher.h:
 
 /usr/include/c++/13/bits/stl_tree.h:
-
-/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/parameter_type.hpp:
-
-/opt/ros/jazzy/include/rcutils/rcutils/macros.h:
 
 /opt/ros/jazzy/include/rcpputils/rcpputils/shared_library.hpp:
 
@@ -2843,29 +2893,21 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/clear_entire_costmap__struct.hpp:
 
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/polygon__traits.hpp:
-
-/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/clear_entire_costmap__type_support.hpp:
-
-/usr/include/c++/13/pstl/execution_defs.h:
-
-/usr/include/c++/13/bits/stl_algobase.h:
-
 /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/path__struct.hpp:
 
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/load_map__traits.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/create_service.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_type_descriptions_interface.hpp:
-
-/opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/rosidl_generator_cpp__visibility_control.hpp:
-
 /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/save_map.hpp:
 
 /usr/include/cppconn/sqlstring.h:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/publisher_factory.hpp:
+
+/opt/ros/jazzy/include/rcutils/rcutils/error_handling.h:
+
+/opt/ros/jazzy/include/type_description_interfaces/type_description_interfaces/msg/detail/type_source__struct.h:
 
 /opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__type_support.hpp:
 
@@ -2875,7 +2917,19 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /usr/include/c++/13/cerrno:
 
-/opt/ros/jazzy/include/nav_msgs/nav_msgs/msg/detail/odometry__traits.hpp:
+/opt/ros/jazzy/include/rcutils/rcutils/allocator.h:
+
+/opt/ros/jazzy/include/rcutils/rcutils/logging.h:
+
+/opt/ros/jazzy/include/rcl/rcl/node_options.h:
+
+/opt/ros/jazzy/include/rcutils/rcutils/logging_macros.h:
+
+/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/parameter_type.hpp:
+
+/opt/ros/jazzy/include/rcutils/rcutils/macros.h:
+
+/opt/ros/jazzy/include/rcutils/rcutils/qsort.h:
 
 /opt/ros/jazzy/include/rcutils/rcutils/testing/fault_injection.h:
 
@@ -2914,6 +2968,8 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /usr/include/c++/13/ext/numeric_traits.h:
 
 /opt/ros/jazzy/include/rmw/rmw/events_statuses/events_statuses.h:
+
+/opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/srv/detail/get_state__builder.hpp:
 
 /opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/string__traits.hpp:
 
@@ -3179,16 +3235,6 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /usr/include/boost/smart_ptr/detail/sp_has_gcc_intrinsics.hpp:
 
-/opt/ros/jazzy/include/rclcpp/rclcpp/memory_strategies.hpp:
-
-/opt/ros/jazzy/include/nav2_msgs/nav2_msgs/action/detail/compute_path_through_poses__builder.hpp:
-
-/opt/ros/jazzy/include/statistics_msgs/statistics_msgs/msg/metrics_message.hpp:
-
-/opt/ros/jazzy/include/tf2_ros/tf2_ros/async_buffer_interface.hpp:
-
-/usr/include/c++/13/backward/auto_ptr.h:
-
 /opt/ros/jazzy/include/rclcpp/rclcpp/experimental/subscription_intra_process_buffer.hpp:
 
 /opt/ros/jazzy/include/statistics_msgs/statistics_msgs/msg/rosidl_generator_cpp__visibility_control.hpp:
@@ -3323,13 +3369,7 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /opt/ros/jazzy/include/tf2_ros/tf2_ros/transform_listener.hpp:
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h:
-
-/opt/ros/jazzy/include/tf2_ros/tf2_ros/visibility_control.hpp:
-
 /opt/ros/jazzy/include/tracetools/tracetools/config.h:
-
-/opt/ros/jazzy/include/tracetools/tracetools/tracetools.h:
 
 /opt/ros/jazzy/include/type_description_interfaces/type_description_interfaces/msg/rosidl_generator_c__visibility_control.h:
 
@@ -3637,6 +3677,8 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 
 /usr/include/c++/13/bits/std_function.h:
 
+/opt/ros/jazzy/include/lifecycle_msgs/lifecycle_msgs/msg/detail/state__traits.hpp:
+
 /usr/include/c++/13/bits/std_mutex.h:
 
 /usr/include/c++/13/bits/std_thread.h:
@@ -3872,21 +3914,3 @@ CMakeFiles/mvibot_server.dir/src/mvibot_server.cpp.o: /home/mvibot/floorCleaning
 /usr/include/nlohmann/detail/exceptions.hpp:
 
 /usr/include/nlohmann/detail/input/binary_reader.hpp:
-
-/opt/ros/jazzy/include/rcl_action/rcl_action/types.h:
-
-/usr/include/nlohmann/detail/input/json_sax.hpp:
-
-/usr/include/c++/13/ext/aligned_buffer.h:
-
-/opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/duration__struct.hpp:
-
-/usr/include/nlohmann/detail/input/lexer.hpp:
-
-/usr/include/nlohmann/detail/input/parser.hpp:
-
-/usr/include/nlohmann/detail/iterators/internal_iterator.hpp:
-
-/usr/include/c++/13/any:
-
-/usr/include/nlohmann/detail/iterators/iter_impl.hpp:

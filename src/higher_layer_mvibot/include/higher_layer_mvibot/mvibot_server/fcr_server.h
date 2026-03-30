@@ -7,10 +7,13 @@ using namespace std;
         // std::recursive_mutex mutex_common;
         //robot var
         string mvibot_seri_, mvibot_seri_f_;
+        string mode="";
         //map var
         nav_msgs::msg::OccupancyGrid my_map;
         int save_map_ = -1;
         int load_map_ = -1;
+        int map_server_state = -1, slam_toolbox_state = -1;
+        int load_map_first = 0;
         // nav_msgs::msg::OccupancyGrid map_selector;
         //declare pub//
         rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr map_pub_;
@@ -36,15 +39,20 @@ using namespace std;
         //declare service //
         rclcpp::Client<nav2_msgs::srv::SaveMap>::SharedPtr save_map_srv_;
         rclcpp::Client<nav2_msgs::srv::LoadMap>::SharedPtr load_map_srv_;
+        rclcpp::Client<lifecycle_msgs::srv::GetState>::SharedPtr get_state_map_server_srv_;
+        rclcpp::Client<lifecycle_msgs::srv::GetState>::SharedPtr get_state_slam_srv_;
         //declare timer
         rclcpp::TimerBase::SharedPtr map_timer_;
-        rclcpp::TimerBase::SharedPtr reset_server_timer_;
+        rclcpp::TimerBase::SharedPtr check_map_server_timer_;
 
     public:
         fcr_server(const string& node_name, const string& sub_namespace) : Node(node_name, sub_namespace){
             mvibot_seri_ = this->get_namespace();
             mvibot_seri_f_ = mvibot_seri_;
             mvibot_seri_f_.erase(0,1);
+            mode = load_file("mode");
+            load_map_first = 1;
+            RCLCPP_INFO(rclcpp::get_logger("robot"),"mode: %s",mode.c_str());
             rclcpp::QoS qos_profile(rclcpp::KeepLast(5));
             qos_profile.best_effort();
             rclcpp::QoS qos_profile_map(rclcpp::KeepLast(1));
@@ -240,43 +248,87 @@ using namespace std;
             //init service
             load_map_srv_=this->create_client<nav2_msgs::srv::LoadMap>("map_server/load_map");
             save_map_srv_=this->create_client<nav2_msgs::srv::SaveMap>("map_saver/save_map");
+            get_state_map_server_srv_ = this->create_client<lifecycle_msgs::srv::GetState>("map_server/get_state");
+            get_state_slam_srv_ = this->create_client<lifecycle_msgs::srv::GetState>("/slam_toolbox/get_state");
             //
             // name_map_active = "28_11ok";
-            // run map server
-            while(!load_map_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
-                RCLCPP_INFO(rclcpp::get_logger("Map"),"Load Map service not available");
-                sleep(1);
-            }
-            if(name_map_active!=""){
-                string map_url;
-                map_url = package_path + "maps/" + name_map_active + ".yaml";
-                load_map(map_url);
-                process_map_active = 1;
-                update_map_database = 1;
-                action_map = "active_map";
-            }
+            // // run map server
+            // while(!load_map_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
+            //     RCLCPP_INFO(rclcpp::get_logger("Map"),"Load Map service not available");
+            //     sleep(1);
+            // }
+            // if(name_map_active!=""){
+            //     string map_url;
+            //     map_url = package_path + "maps/" + name_map_active + ".yaml";
+            //     load_map(map_url);
+            //     process_map_active = 1;
+            //     update_map_database = 1;
+            //     action_map = "active_map";
+            // }
+            ///////////////
             //init timer//
             auto map_timer_callback = [this]()->void{
                 std::lock_guard<std::recursive_mutex> lock(mutex_common);
-                //execute request(save_map, delete_map, active_map)
-                process_request_map();
-                //pub map with layer map
-                cout<<"start pub map"<<endl;
-                pub_map();
+                // //execute request(save_map, delete_map, active_map)
+                // process_request_map();
+                // //pub map with layer map
+                // cout<<"start pub map"<<endl;
+                // pub_map();
+                //////
+                if(map_server_state == 3 || slam_toolbox_state == 3){
+                    if(load_map_first == 1 && map_server_state == 3){
+                        if(name_map_active!=""){
+                            string map_url;
+                            map_url = package_path + "maps/" + name_map_active + ".yaml";
+                            load_map(map_url);
+                            process_map_active = 1;
+                            update_map_database = 1;
+                            action_map = "active_map";
+                        }
+                        load_map_first = 0;
+                    }
+                    //execute request(save_map, delete_map, active_map)
+                    process_request_map();
+                    //pub map with layer map
+                    cout<<"start pub map"<<endl;
+                    pub_map();
+                }
             };
             map_timer_ = this->create_wall_timer(100ms, map_timer_callback);
-            auto reset_server_timer_callback = [this]()->void{
-                
+            auto check_map_server_timer_callback = [this]()->void{
+                if(mode == "navigation") get_state_map_server();  
+                else get_state_slam_toolbox();
             };
-            reset_server_timer_ = this->create_wall_timer(1000ms, reset_server_timer_callback);
+            check_map_server_timer_ = this->create_wall_timer(5000ms, check_map_server_timer_callback);
         }
         double getyaw(geometry_msgs::msg::Quaternion quat_msg);
+        string load_file(string name_file);
         nav_msgs::msg::OccupancyGrid get_map_select(string path);
         void pub_map();
         int load_map(string map_url);
         int save_map(string map_topic, string map_url);
+        void get_state_map_server();
+        void get_state_slam_toolbox();
         void process_request_map(); 
 };
+string fcr_server::load_file(string name_file){
+    //
+    static string value_return;
+    try
+    {
+	    std::ifstream file(define_path+"config/"+name_file);
+	    std::string str; 
+	    std::string data;
+        std::getline(file, str);
+        value_return=str;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        value_return="-1";
+    }
+    return value_return;
+}
 int fcr_server::load_map(string map_url){
     RCLCPP_INFO(rclcpp::get_logger("Map"), "Load Map");
     if(!load_map_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
@@ -325,6 +377,42 @@ int fcr_server::save_map(string map_topic, string map_url){
     };
     auto future = save_map_srv_->async_send_request(req,save_map_service_callback);
     return 1;
+}
+void fcr_server::get_state_map_server(){
+    RCLCPP_INFO(rclcpp::get_logger("Map"), "Get state map server");
+    if(!get_state_map_server_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
+        RCLCPP_INFO(rclcpp::get_logger("Map"),"Get state map server service not available");
+        return ;
+    }
+    //send request
+    auto req = std::make_shared<lifecycle_msgs::srv::GetState::Request>();
+    auto get_state_map_server_service_callback = [this](rclcpp::Client<lifecycle_msgs::srv::GetState>::SharedFuture result){
+        auto res = result.get();
+        RCLCPP_INFO(rclcpp::get_logger("Map"),"%s",res->current_state.label.c_str());
+        if(res->current_state.label == "active"){
+            RCLCPP_INFO(rclcpp::get_logger("Map"),"Map server is ACTIVE");
+            map_server_state = res->current_state.id;
+        }
+    };
+    auto future = get_state_map_server_srv_->async_send_request(req,get_state_map_server_service_callback);
+}
+void fcr_server::get_state_slam_toolbox(){
+    RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"), "Get state slam toolbox");
+    if(!get_state_slam_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
+        RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"),"Get state slam toolbox service not available");
+        return ;
+    }
+    //send request
+    auto req = std::make_shared<lifecycle_msgs::srv::GetState::Request>();
+    auto get_state_slam_toolbox_service_callback = [this](rclcpp::Client<lifecycle_msgs::srv::GetState>::SharedFuture result){
+        auto res = result.get();
+        RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"),"%s",res->current_state.label.c_str());
+        if(res->current_state.label == "active"){
+            RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"),"Slam Toolbox is ACTIVE");
+            slam_toolbox_state = res->current_state.id;
+        }
+    };
+    auto future = get_state_slam_srv_->async_send_request(req,get_state_slam_toolbox_service_callback);
 }
 double fcr_server::getyaw(geometry_msgs::msg::Quaternion quat_msg){
     //get angle around Z
@@ -434,6 +522,7 @@ void fcr_server::pub_map(){
 	} else creat_fun=1;
 }
 void fcr_server::process_request_map(){
+    // RCLCPP_INFO(rclcpp::get_logger("Map"),"check process request map");
     if(request_map == 1){
         if(action_map == "save_map"){
             string map_topic, map_url;
