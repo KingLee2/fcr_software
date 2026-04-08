@@ -106,6 +106,8 @@ class manage_mission : public rclcpp::Node{
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
         //led
         rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr led_pub_;
+        //sound
+        rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr sound_pub_;
         //covered pose
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr covered_pose_pub_;
         //learning path
@@ -189,6 +191,8 @@ class manage_mission : public rclcpp::Node{
             history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
             //set led
             led_pub_ = this->create_publisher<std_msgs::msg::Float32MultiArray>("set_led",1);
+            //set sound
+            sound_pub_ = this->create_publisher<std_msgs::msg::Float32>("music_start",1);
             //gpio
             gpio_info_pub_ = this->create_publisher<std_msgs::msg::String>("gpio_info",1);
             gpio_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("gpio_function_status",1);
@@ -581,6 +585,7 @@ class manage_mission : public rclcpp::Node{
                 //set led
                 set_led(action_mode_mission);
                 //set sound
+                set_sound(action_mode_mission);
                 //pub covered pose and learning path
                 std_msgs::msg::String msg;
                 double * covered_pose;
@@ -609,7 +614,7 @@ class manage_mission : public rclcpp::Node{
                     angle2 = getyaw(covered_pose[2],covered_pose[3]);
                     denta_angle = fabs(angle2-angle1);
                     if(dis >= 1.0 || denta_angle >= 0.35){ //1.0m and 0.35rad
-                        x_f = covered_pose[0];
+                        x_f = covered_pose[00];
                         y_f = covered_pose[1];
                         z_f = covered_pose[2];
                         w_f = covered_pose[3];
@@ -634,6 +639,7 @@ class manage_mission : public rclcpp::Node{
         void send_history(string status, string info);
         void pub_led(float red, float green, float blue, float ll, float lr, float lb, float lf);
         void set_led(string mode_action);
+        void set_sound(string mode_action);
         void pub_stop_robot();
         void pub_active_mission_info(string type, string mission_id, string content_id, string content_sum);
         void pub_learning_path_status(string path_name, string status);
@@ -726,6 +732,27 @@ void manage_mission::set_led(string mode_action){
         else if(status == Stop_) pub_led(100,100,0,2,2,2,2);
         else if(status == Finish_) pub_led(100,100,0,1,1,1,1);
         else pub_led(100,100,0,1,1,1,1);
+    }
+}
+void manage_mission::set_sound(string mode_action){
+    std_msgs::msg::Float32 msg;
+    if(mode_action == "learning_path") {
+        msg.data = 4;
+        sound_pub_->publish(msg);
+    }
+    else{
+        if(status == Active_){
+            msg.data = 3;
+            sound_pub_->publish(msg);
+        }
+        else if(status == Error_) {
+            msg.data = 2;
+            sound_pub_->publish(msg);
+        }
+        else {
+            msg.data = 0;
+            sound_pub_->publish(msg);
+        }
     }
 }
 void manage_mission::pub_stop_robot(){

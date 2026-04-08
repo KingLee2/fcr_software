@@ -84,6 +84,24 @@ class control_node : public rclcpp::Node{
                 }
             };
             output_user_set_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/output_user_set",qos_profile, output_user_set_callback);
+            auto music_name_callback = [this](std_msgs::msg::String::SharedPtr msg)->void{
+                const string message = msg->data;
+                string cmd;
+                cmd="";
+                cmd="wget -O "+define_path+"src/lower_layer_mvibot/mp3/custom.mp3 "+message+" &"; //download file tu duong dan file ve thu muc mp3
+                system(cmd.c_str());
+            };
+            music_name_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_ + "/music_name",qos_profile, music_name_callback);
+            auto music_start_callback = [this](std_msgs::msg::Float32::SharedPtr msg)->void{
+                float value = msg->data;
+                // std::lock_guard<std::mutex> lock(mutex_control);
+                if(value==0) start_music_n=0;
+                if(value==1) start_music_n=1;
+                if(value==2) start_music_n=2;
+                if(value==3) start_music_n=3;
+                if(value==4) start_music_n=4;
+            };
+            music_start_sub_ = this->create_subscription<std_msgs::msg::Float32>(mvibot_seri_ + "/music_start", qos_profile, music_start_callback);
             //create pub
             //pub history
             history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
@@ -146,7 +164,7 @@ class control_node : public rclcpp::Node{
                     pub_output_user_status();
                     pub_input_user_status();
                     //music
-
+                    music_control();
                 }
             };
             control_timer_= this->create_wall_timer(50ms,control_timer_callback);
@@ -544,17 +562,53 @@ class control_node : public rclcpp::Node{
                 input_user_status_string_pub_->publish(input_msg);
             }else creat_fun=1;
         }
+        void on_music(int mode){
+            if(mode==0) system("killall mplayer");
+            else{
+                if(status_music_n!=0) system("killall mplayer");
+                string cmd;
+                string file;
+                //cmd="mplayer -af channels=2:2:0:0:1:0 -ao alsa:device=hw=1.0 "+define_path+"mp3/";
+                // cmd="pulseaudio --start && mplayer "+define_path+"src/lower_layer_mvibot/mp3/";
+                cmd="pulseaudio --start && mplayer -ao pulse -loop 0 -volume "+to_string(volume)+" -nolirc "+define_path+"src/lower_layer_mvibot/mp3/";
+             //
+                if(mode==2) file="buzze2.mp3";
+                if(mode==1) file="buzze.mp3";
+                if(mode==3) file="basic.mp3";
+                if(mode==4) file="custom.mp3";
+                //
+                //basic.mp3 -loop 0 -volume 50 -lirc no &";
+                //cmd=cmd+file+" -loop 0 -volume "+to_string(volume)+" -lirc no &";
+                cmd=cmd+file+" < /dev/null &";
+                system(cmd.c_str());
+            }
+            status_music_n=mode;
+        }
+        void off_music(){
+            system("killall mplayer");
+            status_music_n=0;
+        }
+        void music_control(){
+            if((motor_right_state_error !=0 && motor_right_state_live ==1) || (motor_left_state_error !=0  && motor_left_state_live ==1)){
+                if(status_music_n!=1) on_music(1);
+            }else{
+                if(status_music_n!=start_music_n) on_music(start_music_n);
+            }
+        }
     private:
         //declare sub
-        //
+        //motor
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr motor_enable_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr motor_break_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr motor_reset_sub_;
         rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr robot_vel_sub_;
-        //
+        //led
         rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr set_led_sub_;
-        //
+        //output
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr output_user_set_sub_;
+        //music
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr music_name_sub_;
+        rclcpp::Subscription<std_msgs::msg::Float32>::SharedPtr music_start_sub_;
         //declare pub
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr motor_right_status_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr motor_left_status_pub_;
@@ -579,6 +633,9 @@ class control_node : public rclcpp::Node{
         int robot_emg;
         float v_set1,v_set2,v_set3,w_set1,w_set2,w_set3;
         float red_, green_, blue_, led_l_, led_r_, led_b_, led_f_;
+        // music
+        int status_music_n=0;
+        int start_music_n=0;
         //
         int local_mvibot_sensor_ready;
         int local_data_socket_ready;

@@ -11,7 +11,7 @@ def generate_launch_description():
     )
     map_yaml_file_arg=DeclareLaunchArgument(
         'map_yaml_file',
-        default_value=os.path.join('/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/maps','map_131025.yaml')
+        default_value=os.path.join('/assets/maps','20260325_map_mvp_nm2.yaml')
         # default_value=os.path.join('/home/mvibot/floorCleaningRobot_ws/src/higher_layer_mvibot/param','mvibot_map_server.yaml')
     )
     declare_autostart_arg = DeclareLaunchArgument(

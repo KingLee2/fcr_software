@@ -279,7 +279,8 @@ using namespace std;
                     if(load_map_first == 1 && map_server_state == 3){
                         if(name_map_active!=""){
                             string map_url;
-                            map_url = package_path + "maps/" + name_map_active + ".yaml";
+                            //map_url = package_path + "maps/" + name_map_active + ".yaml";
+			    map_url = "/assets/maps/" + name_map_active + ".yaml";
                             load_map(map_url);
                             process_map_active = 1;
                             update_map_database = 1;
@@ -527,19 +528,22 @@ void fcr_server::process_request_map(){
         if(action_map == "save_map"){
             string map_topic, map_url;
             map_topic = "/map";
-            map_url = package_path + "maps/" + name_map;
+            //map_url = package_path + "maps/" + name_map;
+	    map_url = "/assets/maps/" + name_map;
             save_map(map_topic, map_url);
             
         }
         else if(action_map == "delete_map"){
             static string cmd;
             cmd="";
-            cmd=cmd+"rm "+package_path+"maps/"+name_map+".*";
+            //cmd=cmd+"rm "+package_path+"maps/"+name_map+".*";
+	    cmd=cmd+"sudo rm "+"/assets/maps/"+name_map+".*";
             system(cmd.c_str());
         }
         else if(action_map == "active_map"){
             string map_url;
-            map_url = package_path + "maps/" + name_map_active + ".yaml";
+            //map_url = package_path + "maps/" + name_map_active + ".yaml";
+	    map_url = "/assets/maps/" + name_map_active + ".yaml";
             load_map(map_url);
             process_map_active = 1;
         }
