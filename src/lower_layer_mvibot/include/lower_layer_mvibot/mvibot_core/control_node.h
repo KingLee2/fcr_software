@@ -492,7 +492,7 @@ class control_node : public rclcpp::Node{
             led_r = led_r_;
             led_l = led_l_;
             led_b = led_b_;
-            if(local_mode=="slam"){
+            if(local_mode=="mapping" || local_mode=="remapping"){
                 set_color_led(100,0,25); //100 0 25
                 led_r=3;
                 led_l=3;

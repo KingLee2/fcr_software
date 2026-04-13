@@ -165,15 +165,33 @@ class tool_node : public rclcpp::Node{
             //operation
             auto operation_callback = [this](std_msgs::msg::String msg)->void{
                 std::lock_guard<std::mutex> lock(mutex_tool);
-                static string file_name;
-                file_name = "/home/mvibot/floorCleaningRobot_ws/config/mode";
+		//
+                string file_mode, file_map;
+                json operation_config;
+                string mode_config;
+                string map_config;
+                file_mode = "/home/mvibot/floorCleaningRobot_ws/config/mode";
+                file_map = "/home/mvibot/floorCleaningRobot_ws/config/map";
+                operation_config = json::parse(msg.data);
+                mode_config = operation_config["mode"].get<string>();
+                map_config = operation_config["map"].get<string>();
                 try{
-                    std::ofstream file(file_name);
-                    if (!file.is_open()){
+                    //
+                    std::ofstream file1(file_mode);
+                    if (!file1.is_open()){
                         return;
                     }
-                    file <<msg.data;
-                    file.close();    
+                    file1 <<mode_config;
+                    file1.close();
+                    //
+                    if(mode_config == "remapping"){
+                        std::ofstream file2(file_map);
+                        if (!file2.is_open()){
+                            return;
+                        }
+                        file2 <<map_config;
+                        file2.close();
+                    }
                 }
                 catch (const std::exception& e){
                     // send_history("error", "Error config operation: " + std::string(e.what()));
@@ -189,7 +207,7 @@ class tool_node : public rclcpp::Node{
                 string camera2_config;
                 file_camera1 = "/home/mvibot/floorCleaningRobot_ws/config/serial_camera1";
                 file_camera2 = "/home/mvibot/floorCleaningRobot_ws/config/serial_camera2";
-                camera_config = msg.data;
+                camera_config = json::parse(msg.data);
                 camera1_config = camera_config["serial_camera1"].get<string>();
                 camera2_config = camera_config["serial_camera2"].get<string>();
                 try{
@@ -222,7 +240,7 @@ class tool_node : public rclcpp::Node{
                 file_wifi_type = "/home/mvibot/floorCleaningRobot_ws/config/wifi_type";
                 file_wifi_ssid = "/home/mvibot/floorCleaningRobot_ws/config/wifi_ssid";
                 file_wifi_password = "/home/mvibot/floorCleaningRobot_ws/config/wifi_password";
-                wifi_config = msg.data;
+                wifi_config = json::parse(msg.data);
                 wifi_mode_config = wifi_config["mode"].get<string>();
                 ssid_config = wifi_config["ssid"].get<string>();
                 pw_config = wifi_config["password"].get<string>();

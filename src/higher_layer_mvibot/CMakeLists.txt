@@ -20,6 +20,7 @@ find_package(nav2_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(nav2_map_server REQUIRED)
 find_package(lifecycle_msgs REQUIRED)
+find_package(slam_toolbox REQUIRED)
 
 # uncomment the following section in order to fill in
 # further dependencies manually.
@@ -44,7 +45,7 @@ install(DIRECTORY
 )
 
 add_executable(mvibot_server src/mvibot_server.cpp)
-ament_target_dependencies(mvibot_server rclcpp std_msgs geometry_msgs nav_msgs nav2_msgs tf2_ros tf2_geometry_msgs tf2 sensor_msgs visualization_msgs nav2_map_server lifecycle_msgs)
+ament_target_dependencies(mvibot_server rclcpp std_msgs geometry_msgs nav_msgs nav2_msgs tf2_ros tf2_geometry_msgs tf2 sensor_msgs visualization_msgs nav2_map_server lifecycle_msgs slam_toolbox)
 target_link_libraries(mvibot_server
   mysqlcppconn
 )

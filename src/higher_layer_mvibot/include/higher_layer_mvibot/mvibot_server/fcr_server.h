@@ -39,6 +39,7 @@ using namespace std;
         //declare service //
         rclcpp::Client<nav2_msgs::srv::SaveMap>::SharedPtr save_map_srv_;
         rclcpp::Client<nav2_msgs::srv::LoadMap>::SharedPtr load_map_srv_;
+	rclcpp::Client<slam_toolbox::srv::SerializePoseGraph>::SharedPtr save_serialize_map_srv_;
         rclcpp::Client<lifecycle_msgs::srv::GetState>::SharedPtr get_state_map_server_srv_;
         rclcpp::Client<lifecycle_msgs::srv::GetState>::SharedPtr get_state_slam_srv_;
         //declare timer
@@ -248,6 +249,7 @@ using namespace std;
             //init service
             load_map_srv_=this->create_client<nav2_msgs::srv::LoadMap>("map_server/load_map");
             save_map_srv_=this->create_client<nav2_msgs::srv::SaveMap>("map_saver/save_map");
+	    save_serialize_map_srv_ = this->create_client<slam_toolbox::srv::SerializePoseGraph>("/slam_toolbox/serialize_map");
             get_state_map_server_srv_ = this->create_client<lifecycle_msgs::srv::GetState>("map_server/get_state");
             get_state_slam_srv_ = this->create_client<lifecycle_msgs::srv::GetState>("/slam_toolbox/get_state");
             //
@@ -308,6 +310,7 @@ using namespace std;
         void pub_map();
         int load_map(string map_url);
         int save_map(string map_topic, string map_url);
+	int save_serialize_map(string map_url);
         void get_state_map_server();
         void get_state_slam_toolbox();
         void process_request_map(); 
@@ -377,6 +380,26 @@ int fcr_server::save_map(string map_topic, string map_url){
         }
     };
     auto future = save_map_srv_->async_send_request(req,save_map_service_callback);
+    return 1;
+}
+int fcr_server::save_serialize_map(string map_url){
+    RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"), "Save Serialize Map");
+    while(!save_serialize_map_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
+        RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"),"Save Serialize Map service not available");
+        return 0;
+    }
+    //send request
+    auto req = std::make_shared<slam_toolbox::srv::SerializePoseGraph::Request>();
+    req->filename = map_url;
+    auto save_serialize_map_service_callback = [this](rclcpp::Client<slam_toolbox::srv::SerializePoseGraph>::SharedFuture result){
+        if(result.get()->result == 0){
+            RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"),"Save Serialize Map successed");
+        }
+        else {
+            RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"),"Save Serialize Map not successed");
+        }
+    };
+    auto future = save_serialize_map_srv_->async_send_request(req,save_serialize_map_service_callback);
     return 1;
 }
 void fcr_server::get_state_map_server(){
@@ -531,7 +554,7 @@ void fcr_server::process_request_map(){
             //map_url = package_path + "maps/" + name_map;
 	    map_url = "/assets/maps/" + name_map;
             save_map(map_topic, map_url);
-            
+	    save_serialize_map(map_url);
         }
         else if(action_map == "delete_map"){
             static string cmd;
