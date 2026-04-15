@@ -10,6 +10,8 @@
 #include "../include/mission_layer_mvibot/mvibot_mission/brush_function.h"
 #include "../include/mission_layer_mvibot/mvibot_mission/suction_function.h"
 #include "../include/mission_layer_mvibot/mvibot_mission/lift_function.h"
+#include "../include/mission_layer_mvibot/mvibot_mission/map_function.h"
+#include "../include/mission_layer_mvibot/mvibot_mission/initialpose_function.h"
 #include "../include/mission_layer_mvibot/mvibot_mission/mission_define.h"
 
 using namespace std;
@@ -43,6 +45,8 @@ int main(int argc, char **argv){
     auto lift_ = std::make_shared<lift_function>("lift_function",mvibot_seri_);
     auto config_ = std::make_shared<config_function>("config_function",mvibot_seri_);
     auto marker_ = std::make_shared<marker_function>("marker_function",mvibot_seri_);
+    auto loadmap_ = std::make_shared<loadmap_function>("loadmap_function",mvibot_seri_);
+    auto initialpose_ = std::make_shared<initialpose_function>("initialpose_function",mvibot_seri_);
     //run the executors
     executor.add_node(manage_mission_);
     executor.add_node(navigation_);
@@ -54,6 +58,8 @@ int main(int argc, char **argv){
     executor.add_node(lift_);
     executor.add_node(config_);
     executor.add_node(marker_);
+    executor.add_node(loadmap_);
+    executor.add_node(initialpose_);
     executor.spin();
     //shutdown and exit
     rclcpp::shutdown();

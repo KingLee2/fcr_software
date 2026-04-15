@@ -102,6 +102,12 @@ class manage_mission : public rclcpp::Node{
         //suction
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr suction_info_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr suction_function_state_pub_;
+        //loadmap
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr loadmap_info_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr loadmap_function_state_pub_;
+        //initialpose
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr initialpose_info_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr initialpose_function_state_pub_;
         //history
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
         //led
@@ -148,6 +154,8 @@ class manage_mission : public rclcpp::Node{
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr lift_function_state_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr brush_function_state_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr suction_function_state_sub_;
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr loadmap_function_state_sub_;
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr initialpose_function_state_sub_;
         //timer
         rclcpp::TimerBase::SharedPtr execute_mission_timer_;
         rclcpp::TimerBase::SharedPtr controll_timer_;
@@ -223,6 +231,12 @@ class manage_mission : public rclcpp::Node{
             //suction
             suction_info_pub_ = this->create_publisher<std_msgs::msg::String>("suction_info",1);
             suction_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("suction_function_status",1);
+            //loadmap
+            loadmap_info_pub_ = this->create_publisher<std_msgs::msg::String>("loadmap_info",1);
+            loadmap_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("loadmap_function_status",1);
+            //initialpose
+            initialpose_info_pub_ = this->create_publisher<std_msgs::msg::String>("initialpose_info",1);
+            initialpose_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("initialpose_function_status",1);
             //covered pose
             covered_pose_pub_ = this->create_publisher<std_msgs::msg::String>("covered_pose",1);
             //covered pose
@@ -568,6 +582,24 @@ class manage_mission : public rclcpp::Node{
                 else if(msg.data == "error") state = Error_;
             };
             suction_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/suction_function_state", qos_profile, suction_function_state_callback);
+            //loadmap
+            auto loadmap_function_state_callback = [this](std_msgs::msg::String msg)->void{
+                if(msg.data == "stop") state = Stop_;
+                else if(msg.data == "active") state = Active_;
+                else if(msg.data == "finish") state = Finish_;
+                else if(msg.data == "cancel") state = Cancel_;
+                else if(msg.data == "error") state = Error_;
+            };
+            loadmap_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/loadmap_function_state", qos_profile, loadmap_function_state_callback);
+            //initialpose
+            auto initialpose_function_state_callback = [this](std_msgs::msg::String msg)->void{
+                if(msg.data == "stop") state = Stop_;
+                else if(msg.data == "active") state = Active_;
+                else if(msg.data == "finish") state = Finish_;
+                else if(msg.data == "cancel") state = Cancel_;
+                else if(msg.data == "error") state = Error_;
+            };
+            initialpose_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/initialpose_function_state", qos_profile, initialpose_function_state_callback);
             //load file
             load_mission_normal("/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/mission_normal.json");
             load_mission_charge("/home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/mission_charge_battery.json");
@@ -1247,6 +1279,16 @@ int manage_mission::execute_content(mission& mission, vector<string>& queue_cont
         static double time_out;
         time_out = stof(content["time_out"].get<string>());
         return handle_content(content, time_out, timer, status, suction_info_pub_, suction_function_state_pub_);
+    }
+    else if(type == "loadmap"){
+        static double time_out;
+        time_out = stof(content["time_out"].get<string>());
+        return handle_content(content, time_out, timer, status, loadmap_info_pub_, loadmap_function_state_pub_);
+    }
+    else if(type == "initialpose"){
+        static double time_out;
+        time_out = stof(content["time_out"].get<string>());
+        return handle_content(content, time_out, timer, status, initialpose_info_pub_, initialpose_function_state_pub_);
     }
 }
 void manage_mission::execute_mission(){

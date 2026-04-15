@@ -34,6 +34,7 @@
 #include <nav2_msgs/action/drive_on_heading.hpp>
 #include <nav2_msgs/srv/get_costmap.hpp>
 #include <nav2_msgs/srv/clear_entire_costmap.hpp>
+#include <nav2_msgs/srv/load_map.hpp>
 #include <rcl_interfaces/srv/set_parameters.hpp>
 #include <rcl_interfaces/srv/get_parameters.hpp>
 #include "std_msgs/msg/u_int8_multi_array.hpp"

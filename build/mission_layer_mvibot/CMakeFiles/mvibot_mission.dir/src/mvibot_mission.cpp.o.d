@@ -1111,6 +1111,11 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/clear_entire_costmap__builder.hpp \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/clear_entire_costmap__traits.hpp \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/clear_entire_costmap__type_support.hpp \
+ /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/load_map.hpp \
+ /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/load_map__struct.hpp \
+ /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/load_map__builder.hpp \
+ /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/load_map__traits.hpp \
+ /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/srv/detail/load_map__type_support.hpp \
  /opt/ros/jazzy/include/std_msgs/std_msgs/msg/u_int8_multi_array.hpp \
  /opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/u_int8_multi_array__struct.hpp \
  /opt/ros/jazzy/include/std_msgs/std_msgs/msg/detail/u_int8_multi_array__builder.hpp \
@@ -1183,4 +1188,6 @@ CMakeFiles/mvibot_mission.dir/src/mvibot_mission.cpp.o: \
  /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/brush_function.h \
  /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/suction_function.h \
  /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/lift_function.h \
+ /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/map_function.h \
+ /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/initialpose_function.h \
  /home/mvibot/floorCleaningRobot_ws/src/mission_layer_mvibot/src/../include/mission_layer_mvibot/mvibot_mission/mission_define.h
