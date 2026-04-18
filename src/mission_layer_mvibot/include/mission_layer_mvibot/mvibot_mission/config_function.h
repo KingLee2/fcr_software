@@ -25,6 +25,9 @@ class config_function : public rclcpp::Node{
             //velocity
             set_desired_linear_vel_client_ = this->create_client<rcl_interfaces::srv::SetParameters>("controller_server/set_parameters");
             get_desired_linear_vel_client_ = this->create_client<rcl_interfaces::srv::GetParameters>("controller_server/get_parameters");
+            //avoid_obstacle
+            set_avoid_obstacle_client_ = this->create_client<rcl_interfaces::srv::SetParameters>("global_costmap/global_costmap/set_parameters");
+            get_avoid_obstacle_client_ = this->create_client<rcl_interfaces::srv::GetParameters>("global_costmap/global_costmap/get_parameters");
             //init publisher
             history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
             config_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("config_function_state",1);
@@ -91,6 +94,8 @@ class config_function : public rclcpp::Node{
         string inflation_radius = "";
         //velocity
         string desired_linear_vel = "";
+        //avoid obstacle
+        string avoid_obstacle = "";
         //declare service
         //footprint padding
         rclcpp::Client<rcl_interfaces::srv::SetParameters>::SharedPtr set_footprint_padding_local_client_;
@@ -100,6 +105,9 @@ class config_function : public rclcpp::Node{
         //desired_linear_vel
         rclcpp::Client<rcl_interfaces::srv::SetParameters>::SharedPtr set_desired_linear_vel_client_;
         rclcpp::Client<rcl_interfaces::srv::GetParameters>::SharedPtr get_desired_linear_vel_client_;
+        //avoid_obstacle
+        rclcpp::Client<rcl_interfaces::srv::SetParameters>::SharedPtr set_avoid_obstacle_client_;
+        rclcpp::Client<rcl_interfaces::srv::GetParameters>::SharedPtr get_avoid_obstacle_client_;
         //declare pub
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr config_function_state_pub_;
@@ -129,12 +137,15 @@ void config_function::process_data(){
     cout<<parameters<<endl;
     desired_linear_vel = parameters["desired_linear_vel"].get<string>();
     footprint_padding = parameters["footprint_padding"].get<string>();
+    avoid_obstacle = parameters["avoid_obstacle"].get<string>();
 }
 
 int config_function::action(){
     static int value_return;
     static bool set_result_vel = false;
     static bool set_done_vel = false;
+    static bool set_result_avoid_ob = false;
+    static bool set_done_avoid_ob = false;
     static bool set_result_local = false;
     static bool set_done_local = false;
     static bool set_result_global = false;
@@ -196,6 +207,25 @@ int config_function::action(){
                 //value_return = Finish_;
             }
         }
+        if(avoid_obstacle != ""){
+            bool avoid_obstacle_set = false;
+            if(avoid_obstacle == "true") avoid_obstacle_set = true;
+            else avoid_obstacle_set = false;
+            if(!set_done_avoid_ob){
+                check_param(set_avoid_obstacle_client_,get_avoid_obstacle_client_,"obstacle_layer.enabled",avoid_obstacle_set,
+                    [&](bool res){
+                        set_result_avoid_ob = res;
+                    }
+                );
+                set_done_avoid_ob = true;
+            }
+            if(!set_result_avoid_ob) value_return = Active_;
+            else {
+                set_result_avoid_ob = false;
+                set_done_avoid_ob = false;
+                //value_return = Finish_;
+            }
+        }
         if(value_return == Finish_){
             status = Finish_;
             request = 0;
@@ -204,6 +234,8 @@ int config_function::action(){
     }else{
         set_result_vel = false;
         set_done_vel = false;
+        set_result_avoid_ob = false;
+        set_done_avoid_ob = false;
         set_result_local = false;
         set_done_local = false;
         set_result_global = false;
