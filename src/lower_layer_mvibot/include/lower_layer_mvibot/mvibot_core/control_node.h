@@ -446,7 +446,7 @@ class control_node : public rclcpp::Node{
                 }
                 // acceleration for robot
                 if(v_set1>v_set2) {
-                    v_set2+=ax*(float)ts_speed_control;
+                    v_set2+=(ax/4)*(float)ts_speed_control;
                     if(v_set2>v_set1) v_set2=v_set1;
                 }
                 if(v_set1<v_set2){

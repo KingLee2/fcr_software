@@ -50,10 +50,7 @@ class manage_mission : public rclcpp::Node{
         std_msgs::msg::Float32MultiArray output_status;
         int motor_left_ready = 0;
         int motor_right_ready = 0;
-        float battery_soc=-1;
-        float battery_soc1=-1;
-        float battery_soc2=-1;
-        float want_to_charge=0;
+        int brush_status = 0, brush_status_f = 0;
         int status = Finish_;
         int status_mission_error = Cancel_;
         string active_mission_id = "";
@@ -65,6 +62,8 @@ class manage_mission : public rclcpp::Node{
         json his_content;
         string learning_path_name = "";
         //pub
+        //brush state
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr brush_state_pub_;
         //information mission active
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr active_mission_info_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr mission_normal_received_pub_;
@@ -72,6 +71,7 @@ class manage_mission : public rclcpp::Node{
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr mission_error_received_pub_;
         //robot
         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr stop_robot_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr robot_position_pub_;
         //gpio
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr gpio_info_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr gpio_function_state_pub_;
@@ -125,8 +125,8 @@ class manage_mission : public rclcpp::Node{
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr get_mission_charge_battery_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr get_mission_error_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr reset_mission_sub_;
-        //get request "want to charge"
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr get_request_charge_battery_sub_;
+        //get brush status
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr brush_status_sub_;
         //get request robot (stop,continues)
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr get_request_robot_sub_;
         //get request learning path
@@ -139,8 +139,6 @@ class manage_mission : public rclcpp::Node{
         //get status battery
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr battery_status_sub_;
         // get input, output
-        // rclcpp::Subscription<std_msgs::msg::String>::SharedPtr output_status_string_sub_;
-        // rclcpp::Subscription<std_msgs::msg::String>::SharedPtr input_status_string_sub_;
         rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr input_status_sub_;
         rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr output_status_sub_;
         //get status function
@@ -181,13 +179,14 @@ class manage_mission : public rclcpp::Node{
             status = Finish_;
             status_mission_error = Cancel_;
             state = N_A_;
-            want_to_charge = 0;
             motor_left_ready = 0;
             motor_right_ready = 0;
             mission_charge_battery.resize(0);
             mission_normal.resize(0);
             
             // init pub//
+            //brush state
+            brush_state_pub_ = this->create_publisher<std_msgs::msg::String>("brush_state",1);
             // active mission pub
             active_mission_info_pub_ = this->create_publisher<std_msgs::msg::String>("active_mission_info",1);
             mission_normal_received_pub_ = this->create_publisher<std_msgs::msg::String>("mission_normal_receive",1);
@@ -195,6 +194,8 @@ class manage_mission : public rclcpp::Node{
             mission_error_received_pub_ = this->create_publisher<std_msgs::msg::String>("mission_error_receive",1);
             //stop robot
             stop_robot_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel",1);
+            //robot position
+            robot_position_pub_ = this->create_publisher<std_msgs::msg::String>("robot_position",1);
             //send history
             history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
             //set led
@@ -243,6 +244,12 @@ class manage_mission : public rclcpp::Node{
             learning_path_pub_ = this->create_publisher<std_msgs::msg::String>("learning_path_pose",1);
             status_learning_path_pub_ = this->create_publisher<std_msgs::msg::String>("learning_path_status",1);
             ///init subscriber///
+            auto brush_callback = [this](std_msgs::msg::String msg)->void{
+                char ch_last = msg.data.back();
+                if( ch_last=='0') brush_status = 0;
+                else if(ch_last == '1') brush_status = 1;
+            };
+            brush_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/brush_status", qos_profile, brush_callback);
             // sub mission normal
             auto mission_normal_callback = [this](std_msgs::msg::String msg)->void{
                 if(status != Active_){
@@ -430,21 +437,6 @@ class manage_mission : public rclcpp::Node{
                     // unlock();
             };
             motor_right_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/motor_right_status", qos_profile, motor_right_status_callback);
-            //status battery
-            auto battery_status_callback = [this](std_msgs::msg::String msg)->void{
-                static string_Iv2 data;
-                data.detect(msg.data,"","|","");
-                for(int i=1;i<data.data1.size();i++){
-                    static string_Iv2 data2;
-                    data2.detect(data.data1[i],"",":","");
-                    if(data2.data1[0]=="soc"){
-                        battery_soc2 = battery_soc1;
-                        battery_soc1 = battery_soc;
-                        battery_soc=stof_f(data2.data1[1]);
-                    }
-                }
-            };
-            battery_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/battery_status", qos_profile, battery_status_callback);
             //get request robot (stop,continues)
             auto request_robot_callback = [this](std_msgs::msg::String msg)->void{
                 if(status != Finish_){
@@ -455,12 +447,6 @@ class manage_mission : public rclcpp::Node{
                 }
             };
             get_request_robot_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/robot_state", qos_profile,request_robot_callback);
-            // get request "want to charge"
-            auto want_to_charge_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "1") want_to_charge = 1;
-                else want_to_charge = 0;
-            };
-            get_request_charge_battery_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/want_to_charge", qos_profile, want_to_charge_callback);
             //get request execute mission
             auto mission_executed_callback = [this](std_msgs::msg::String msg)->void{
                 if(status == Finish_) active_mission_id = msg.data;
@@ -618,7 +604,8 @@ class manage_mission : public rclcpp::Node{
                 set_led(action_mode_mission);
                 //set sound
                 set_sound(action_mode_mission);
-                //pub covered pose and learning path
+                ////////////////////////
+                /*//pub covered pose and learning path
                 std_msgs::msg::String msg;
                 double * covered_pose;
                 json covered_pose_json, learning_pose_json;
@@ -661,6 +648,88 @@ class manage_mission : public rclcpp::Node{
                         learning_path_pub_->publish(msg);
                     }
                     pub_learning_path_status(learning_path_name,"active");
+                }*/
+               //////////////////
+               //pub covered pose and learning path
+                std_msgs::msg::String msg;
+                double * robot_pose;
+                string data;
+                json covered_pose_json, learning_pose_json;
+                static rclcpp::Time last_movement_time = this->now();
+                static double x_f = 0, y_f = 0, z_f, w_f, x_l, y_l;
+                static double dis = 0, angle1 = 0, angle2 = 0, denta_angle = 0, no_move_duration;
+                static bool is_stuck = false, brush_pause_stuck = false;
+                robot_pose = get_position_tf("map",mvibot_seri_f_+"/base_footprint");
+                //pub robot position
+                data = mvibot_seri_f_+"|x:"+to_string(robot_pose[0])+"|y:"+to_string(robot_pose[1])+"|thz:"+to_string(robot_pose[2])+"|thw:"+to_string(robot_pose[3]);
+                pub_robot_position(data);
+                //check and handle error//
+                //check stuck
+                auto now_time = this->now();
+                dis = std::hypot(robot_pose[0]-x_l, robot_pose[1]-y_l);
+		RCLCPP_INFO(this->get_logger(),"dis: %f", dis);
+                if(dis > 1.0){
+                    x_l = robot_pose[0];
+                    y_l = robot_pose[1];
+                    last_movement_time = now_time;
+		    is_stuck = false;
+                }
+                if(status != Finish_) no_move_duration = (now_time - last_movement_time).seconds();
+		else {
+                    no_move_duration = 0.0;
+                    is_stuck = false;
+                }
+		RCLCPP_INFO(this->get_logger(),"duration: %f", no_move_duration);
+                if(no_move_duration > 30.0) is_stuck = true;
+                if(status != Finish_ && brush_status == 1 && is_stuck){
+                    //pub brush off
+                    pub_state_brush(0);
+                    brush_pause_stuck = true;
+		    RCLCPP_INFO(this->get_logger(),"turn off brush");
+                }
+                if(status != Finish_ && brush_pause_stuck && !is_stuck){
+                    //pub brush on
+                    pub_state_brush(1);
+                    brush_pause_stuck = false;
+		    RCLCPP_INFO(this->get_logger(),"return on brush");
+                }
+                //
+                //save coverage pose and learning path
+                if(action_mode_mission == "mission_normal"){
+                    dis = std::hypot(robot_pose[0]-x_f, robot_pose[1]-y_f);
+                    if(dis >= 0.05){
+                        x_f = robot_pose[0];
+                        y_f = robot_pose[1];
+                        covered_pose_json["mission_id"] = mission_.mission_id;
+                        covered_pose_json["mission_name"] = mission_.mission_name;
+                        covered_pose_json["x"] = to_string(robot_pose[0]);
+                        covered_pose_json["y"] = to_string(robot_pose[1]);
+                        covered_pose_json["created_at"] = mission_execution_time;
+                        msg.data = covered_pose_json.dump();
+                        covered_pose_pub_->publish(msg);
+                    }
+                }
+                else if(action_mode_mission == "learning_path"){
+                    dis = std::hypot(robot_pose[0]-x_f, robot_pose[1]-y_f);
+                    angle1 = getyaw(z_f,w_f);
+                    angle2 = getyaw(robot_pose[2],robot_pose[3]);
+                    denta_angle = fabs(angle2-angle1);
+                    if(dis >= 1.0 || denta_angle >= 0.35){ //1.0m and 0.35rad
+                        x_f = robot_pose[00];
+                        y_f = robot_pose[1];
+                        z_f = robot_pose[2];
+                        w_f = robot_pose[3];
+                        //
+                        learning_pose_json["path_name"] = learning_path_name;
+                        learning_pose_json["x"] = to_string(robot_pose[0]);
+                        learning_pose_json["y"] = to_string(robot_pose[1]);
+                        learning_pose_json["z"] = to_string(robot_pose[2]);
+                        learning_pose_json["w"] = to_string(robot_pose[3]);
+                        learning_pose_json["created_at"] = learning_path_time;
+                        msg.data = learning_pose_json.dump();
+                        learning_path_pub_->publish(msg);
+                    }
+                    pub_learning_path_status(learning_path_name,"active");
                 }
             };
             controll_timer_ = this->create_wall_timer(1000ms, controll_timer_callback);
@@ -669,6 +738,8 @@ class manage_mission : public rclcpp::Node{
         float getyaw(double data1, double data2);
         double *get_position_tf(string name1, string name2);
         void send_history(string status, string info);
+        void pub_robot_position(string data);
+        void pub_state_brush(int st);
         void pub_led(float red, float green, float blue, float ll, float lr, float lb, float lf);
         void set_led(string mode_action);
         void set_sound(string mode_action);
@@ -736,6 +807,17 @@ void manage_mission::send_history(string status, string info){
     history_json["content"] = info;
     history_msg.data = history_json.dump();
     history_pub_->publish(history_msg);
+}
+void manage_mission::pub_robot_position(string data){
+    std_msgs::msg::String msg;
+    msg.data = data;
+    robot_position_pub_->publish(msg);
+}
+void manage_mission::pub_state_brush(int st){
+    std_msgs::msg::String msg;
+    if(st == 1) msg.data = "1";
+    else if (st == 0) msg.data = "0";
+    brush_state_pub_->publish(msg);
 }
 void manage_mission::pub_led(float red, float green, float blue, float ll, float lr, float lb, float lf){
     static float creat_fun=0;
@@ -1304,8 +1386,6 @@ void manage_mission::execute_mission(){
         if(status == Active_) status = Stop_;
         RCLCPP_INFO(this->get_logger(),"motor is not ready");
     }
-    // if(battery_soc1 <= 20 || battery_soc2 <= 20) want_to_charge = 1;
-    // else want_to_charge = 0;
     if(status==Finish_){
         RCLCPP_INFO(this->get_logger(),"continue execute mission, status finish");
         active_content = "";
