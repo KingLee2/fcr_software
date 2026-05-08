@@ -24,4 +24,4 @@
 #include <nlohmann/json.hpp>
 #include <map>
 #include <mutex>
-
+#include <curl/curl.h>

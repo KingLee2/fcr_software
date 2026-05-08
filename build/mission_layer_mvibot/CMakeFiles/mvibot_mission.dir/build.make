@@ -111,6 +111,7 @@ mvibot_mission: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs
 mvibot_mission: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_introspection_cpp.so
 mvibot_mission: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_typesupport_cpp.so
 mvibot_mission: /home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/libopennav_coverage_msgs__rosidl_generator_py.so
+mvibot_mission: /usr/lib/x86_64-linux-gnu/libcurl.so
 mvibot_mission: /opt/ros/jazzy/lib/libnav2_msgs__rosidl_typesupport_c.so
 mvibot_mission: /opt/ros/jazzy/lib/libnav2_msgs__rosidl_generator_c.so
 mvibot_mission: /opt/ros/jazzy/lib/libgeographic_msgs__rosidl_typesupport_fastrtps_c.so
