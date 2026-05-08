@@ -72,15 +72,11 @@ class tool_node : public rclcpp::Node{
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr brush_status_pub_;
         //suction
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr suction_status_pub_;
-        //valve
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr valve_status_pub_;
         //lift
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_brush_status_pub_;
         rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr lift_brush_data_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_brush_mode_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_suction_status_pub_;
         rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr lift_suction_data_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_suction_mode_pub_;
         //charge
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr charge_status_pub_;
         // battery
@@ -91,8 +87,6 @@ class tool_node : public rclcpp::Node{
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr brush_status_sub_;
         //suction
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr suction_status_sub_;
-        //valve
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr valve_status_sub_;
         //lift brush
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr lift_brush_power_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr lift_brush_control_sub_;
@@ -145,16 +139,12 @@ class tool_node : public rclcpp::Node{
             brush_status_pub_ = this->create_publisher<std_msgs::msg::String>("brush_status",1);
             //suction
             suction_status_pub_ = this->create_publisher<std_msgs::msg::String>("suction_status",1);
-            //valve
-            valve_status_pub_ = this->create_publisher<std_msgs::msg::String>("valve_status",1);
             //lift brush
             lift_brush_status_pub_ = this->create_publisher<std_msgs::msg::String>("lift_brush_status",1);
             lift_brush_data_pub_ = this->create_publisher<std_msgs::msg::Float32>("lift_brush_data",1);
-            lift_brush_mode_pub_ = this->create_publisher<std_msgs::msg::String>("lift_brush_mode",1);
             //lift suction
             lift_suction_status_pub_ = this->create_publisher<std_msgs::msg::String>("lift_suction_status",1);
             lift_suction_data_pub_ = this->create_publisher<std_msgs::msg::Float32>("lift_suction_data",1);
-            lift_suction_mode_pub_ = this->create_publisher<std_msgs::msg::String>("lift_suction_mode",1);
             ///
 	        //charge
             charge_status_pub_ = this->create_publisher<std_msgs::msg::String>("charge_status",1);
@@ -165,7 +155,7 @@ class tool_node : public rclcpp::Node{
             //operation
             auto operation_callback = [this](std_msgs::msg::String msg)->void{
                 std::lock_guard<std::mutex> lock(mutex_tool);
-		//
+                //
                 string file_mode, file_map;
                 json operation_config;
                 string mode_config;
@@ -194,7 +184,7 @@ class tool_node : public rclcpp::Node{
                     }
                 }
                 catch (const std::exception& e){
-                    // send_history("error", "Error config operation: " + std::string(e.what()));
+                    // send_history("error", "Error config camera: " + std::string(e.what()));
                 }
             };
             operation_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_ + "/operation",qos_profile, operation_callback);
@@ -354,14 +344,6 @@ class tool_node : public rclcpp::Node{
                 else if(msg.data == "0") suction_send_uart_status = 0;
             };
             suction_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/suction_state", qos_profile, suction_status_callback);
-            //valve
-            auto valve_status_callback = [this](std_msgs::msg::String msg)->void{
-                std::lock_guard<std::mutex> lock(mutex_tool);
-                //nhan du lieu gan vao bien gui uart
-                if(msg.data == "1") valve_send_uart_status = 1;
-                else if(msg.data == "0") valve_send_uart_status = 0;
-            };
-            valve_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/valve_state", qos_profile, valve_status_callback);
             //lift brush
             auto lift_brush_power_callback = [this](std_msgs::msg::String msg)->void{
                 std::lock_guard<std::mutex> lock(mutex_tool);
@@ -424,13 +406,10 @@ class tool_node : public rclcpp::Node{
                 pub_water_level();
                 pub_status_brush();
                 pub_status_suction();
-                pub_status_valve();
                 pub_status_lift_brush();
                 pub_data_lift_brush();
-                pub_mode_lift_brush();
                 pub_status_lift_suction();
                 pub_data_lift_suction();
-                pub_mode_lift_suction();
                 // 
                 pub_status_charge();
                 //
@@ -458,13 +437,10 @@ class tool_node : public rclcpp::Node{
         void pub_water_level();
         void pub_status_brush();
         void pub_status_suction();
-        void pub_status_valve();
         void pub_status_lift_brush();
         void pub_status_lift_suction();
         void pub_data_lift_brush();
         void pub_data_lift_suction();
-        void pub_mode_lift_brush();
-        void pub_mode_lift_suction();
         //
 	    void pub_status_charge();
         void pub_battery_status();
@@ -525,7 +501,6 @@ void tool_node::send_history(string status, string info){
     history_json["status"] = status;
     history_json["content"] = info;
     history_msg.data = history_json.dump();
-    // history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
     history_pub_->publish(history_msg);
 }
 //
@@ -719,7 +694,7 @@ void tool_node::pub_robot_list_wifi(string data){
 void tool_node::scan_wifi(){
     string out_put="";
 	string_Iv2 data;
-    out_put=exec("nmcli -t -f SSID,signal,active,security device wifi list --rescan yes");
+    out_put=exec("sudo nmcli -t -f SSID,signal,active,security device wifi list --rescan yes");
     // process data
     data.detect(out_put,"","\n","");
     my_wifi.n_wifi_.resize(0);
@@ -773,7 +748,6 @@ void tool_node::check_sensor(){
             his_content["state"] = "run";
             his_content["description"] = "lidar 1";
             send_history("normal", his_content.dump());
-            // send_history("normal","Radar1 is available");
             radar1_live=1;
             RCLCPP_INFO(this->get_logger(),"Radar1 is available");
         }
@@ -790,7 +764,6 @@ void tool_node::check_sensor(){
                 his_content["state"] = "restart";
                 his_content["description"] = "lidar 1";
                 send_history("normal", his_content.dump());
-                // send_history("error","Restart radar1 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart radar1 because no signal");
             }
         }else{
@@ -803,7 +776,6 @@ void tool_node::check_sensor(){
                 his_content["state"] = "restart";
                 his_content["description"] = "lidar 1";
                 send_history("normal", his_content.dump());
-                // send_history("error","Restart radar1 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart radar1 because no signal");
             }
         }
@@ -825,7 +797,6 @@ void tool_node::check_sensor(){
             his_content["state"] = "run";
             his_content["description"] = "lidar 2";
             send_history("normal", his_content.dump());
-            // send_history("normal","Radar2 is available");
             radar2_live=1;
             RCLCPP_INFO(this->get_logger(),"Radar2 is available");
         }
@@ -842,7 +813,6 @@ void tool_node::check_sensor(){
                 his_content["state"] = "restart";
                 his_content["description"] = "lidar 2";
                 send_history("normal", his_content.dump());
-                // send_history("error","Restart radar2 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart radar2 because no signal");
             }
         }else{
@@ -855,7 +825,6 @@ void tool_node::check_sensor(){
                 his_content["state"] = "restart";
                 his_content["description"] = "lidar 2";
                 send_history("normal", his_content.dump());
-                // send_history("error","Restart radar2 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart radar2 because no signal");
             }
         }
@@ -877,7 +846,6 @@ void tool_node::check_sensor(){
             his_content["state"] = "run";
             his_content["description"] = "camera 1";
             send_history("normal", his_content.dump());
-            // send_history("normal","Camera1 is available");
             camera1_live=1;
             dym_set_camera1=1;
             RCLCPP_INFO(this->get_logger(),"Camera1 is available");
@@ -895,7 +863,6 @@ void tool_node::check_sensor(){
                 his_content["state"] = "restart";
                 his_content["description"] = "camera 1";
                 send_history("normal", his_content.dump());
-                // send_history("error","Restart camera1 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart camera1 because no signal");
             }
         }else{
@@ -908,7 +875,6 @@ void tool_node::check_sensor(){
                 his_content["state"] = "restart";
                 his_content["description"] = "camera 1";
                 send_history("normal", his_content.dump());
-                // send_history("error","Restart camera1 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart camera1 because no signal");
             }
         }
@@ -930,7 +896,6 @@ void tool_node::check_sensor(){
             his_content["state"] = "run";
             his_content["description"] = "camera 2";
             send_history("normal", his_content.dump());
-            // send_history("normal","Camera2 is available");
             camera2_live=1;
             dym_set_camera2=1;
             RCLCPP_INFO(this->get_logger(),"Camera2 is available");
@@ -948,7 +913,6 @@ void tool_node::check_sensor(){
                 his_content["state"] = "restart";
                 his_content["description"] = "camera 2";
                 send_history("normal", his_content.dump());
-                // send_history("error","Restart camera2 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart camera2 because no signal");
             }
         }else{
@@ -961,7 +925,6 @@ void tool_node::check_sensor(){
                 his_content["state"] = "restart";
                 his_content["description"] = "camera 2";
                 send_history("normal", his_content.dump());
-                // send_history("error","Restart camera2 because no signal");
                 RCLCPP_INFO(this->get_logger(),"Restart camera2 because no signal");
             }
         }
@@ -976,7 +939,6 @@ void tool_node::check_sensor(){
         his_content["state"] = "run";
         his_content["description"] = mode;
         send_history("normal", his_content.dump());
-        // send_history("normal","Sensor startup success. Start up mode "+mode);
         RCLCPP_INFO(rclcpp::get_logger("sensor"),"Sensor startup success. Start up mode: %s",mode);
         //// TAM THOI CHUA KICH HOAT
         // static string command;
@@ -1006,7 +968,6 @@ void tool_node::check_sensor(){
             his_content["state"] = "on";
             his_content["description"] = "battery";
             send_history("normal", his_content.dump());
-            // send_history("normal","Battery is available");
         }
         battery_status=1;
     }
@@ -1016,7 +977,6 @@ void tool_node::check_sensor(){
             his_content["state"] = "off";
             his_content["description"] = "battery";
             send_history("error", his_content.dump());
-            // send_history("error","Battery no signal");
         }
         battery_status=0;
     }
@@ -1064,16 +1024,6 @@ void tool_node::pub_status_suction(){
             suction_status_pub_->publish(msg);
     }else creat_fun=1;
 }
-void tool_node::pub_status_valve(){
-    static float creat_fun=0;
-    if(creat_fun==1){
-            static std_msgs::msg::String msg;
-            msg.data=mvibot_seri+"|";
-            msg.data=msg.data+"valve"+":"+to_string(valve_receive_uart_status);
-            
-            valve_status_pub_->publish(msg);
-    }else creat_fun=1;
-}
 void tool_node::pub_status_lift_brush(){
     static float creat_fun=0;
     if(creat_fun==1){
@@ -1098,7 +1048,6 @@ void tool_node::pub_data_lift_brush(){
     static float creat_fun=0;
     if(creat_fun==1){
             static std_msgs::msg::Float32 msg;
-            // gan du lieu nhan tu uart
             msg = lift_brush_data;
             lift_brush_data_pub_->publish(msg);
     }else creat_fun=1;
@@ -1107,29 +1056,8 @@ void tool_node::pub_data_lift_suction(){
     static float creat_fun=0;
     if(creat_fun==1){
             static std_msgs::msg::Float32 msg;
-            // gan du lieu nhan tu uart
             msg = lift_suction_data;
             lift_suction_data_pub_->publish(msg);
-    }else creat_fun=1;
-}
-void tool_node::pub_mode_lift_brush(){
-    static float creat_fun=0;
-    if(creat_fun==1){
-            static std_msgs::msg::String msg;
-            msg.data=mvibot_seri+"|";
-            msg.data=msg.data+"lift_brush_mode"+":"+to_string(lift_brush_mode);
-            
-            lift_brush_mode_pub_->publish(msg);
-    }else creat_fun=1;
-}
-void tool_node::pub_mode_lift_suction(){
-    static float creat_fun=0;
-    if(creat_fun==1){
-            static std_msgs::msg::String msg;
-            msg.data=mvibot_seri+"|";
-            msg.data=msg.data+"lift_suction_mode"+":"+to_string(lift_suction_mode);
-            
-            lift_suction_mode_pub_->publish(msg);
     }else creat_fun=1;
 }
 //

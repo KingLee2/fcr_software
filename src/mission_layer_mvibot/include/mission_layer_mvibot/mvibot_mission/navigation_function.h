@@ -34,8 +34,7 @@ class navigation_function : public rclcpp::Node{
             //create publisher
             pub_amcl_=this->create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>("initialpose",1);
             pub_user_path_ = this->create_publisher<nav_msgs::msg::Path>("user_path",1);
-            navigation_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("navigation_function_state",1);
-            check_info_pub_ = this->create_publisher<std_msgs::msg::String>("check_info",1);
+            function_state_pub_ = this->create_publisher<std_msgs::msg::String>("function_state",1);
             //create subscriber
             auto robot_position_callback = [this](geometry_msgs::msg::PoseWithCovarianceStamped msg)->void{
                 robot_position_ = msg;
@@ -128,7 +127,7 @@ class navigation_function : public rclcpp::Node{
                 if(request == 1){
                     int res;
                     res = action();
-                    pub_function_state_navigation(res);
+                    pub_function_state(res);
                 }
             };
             execute_navigation_timer_ = this ->create_wall_timer(50ms, execute_navigation_timer_callback);
@@ -139,7 +138,7 @@ class navigation_function : public rclcpp::Node{
         geometry_msgs::msg::PoseStamped get_robot_position();
         void save_robot_position(const std::string& file_path, double x, double y, double thz, double thw);
         void pub_user_path(const nav_msgs::msg::Path &path);
-        void pub_function_state_navigation(int st);
+        void pub_function_state(int st);
         void navCompleteCoverage(const vector<geometry_msgs::msg::Polygon> &polygons, const std::string &behavior_tree="");
         void goToPose(const geometry_msgs::msg::PoseStamped &pose, const string &behavior_tree="");
         void goThroughPoses(const std::vector<geometry_msgs::msg::PoseStamped> &poses, const std::string &behavior_tree="");
@@ -174,10 +173,8 @@ class navigation_function : public rclcpp::Node{
         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr stop_robot_pub_;
         rclcpp::Publisher<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr pub_amcl_;
         rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr pub_user_path_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr navigation_function_state_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr check_info_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
         //// Services ////
-        // rclcpp::Client<nav2_msgs::srv::LoadMap>::SharedPtr change_maps_srv_;
         rclcpp::Client<nav2_msgs::srv::ClearEntireCostmap>::SharedPtr clear_costmap_global_srv_;
         rclcpp::Client<nav2_msgs::srv::ClearEntireCostmap>::SharedPtr clear_costmap_local_srv_;
         //timer
@@ -262,14 +259,14 @@ void navigation_function::set_initial_robot(const string& file_path){
     file.close();
     pub_amcl(x,y,thz,thw);
 }
-void navigation_function::pub_function_state_navigation(int st){
+void navigation_function::pub_function_state(int st){
     std_msgs::msg::String msg;
     if(st == Active_) msg.data = "active";
     else if(st == Finish_) msg.data = "finish";
     else if(st == Error_) msg.data = "error";
     else if(st == Cancel_) msg.data = "cancel";
     else if(st == Stop_) msg.data = "stop";
-    navigation_function_state_pub_->publish(msg);
+    function_state_pub_->publish(msg);
 }
 geometry_msgs::msg::PoseStamped navigation_function::get_robot_position(){
     static geometry_msgs::msg::PoseStamped robot_current_pos_;
@@ -308,11 +305,6 @@ void navigation_function::navCompleteCoverage(const vector<geometry_msgs::msg::P
     };
     options.feedback_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<opennav_coverage_msgs::action::NavigateCompleteCoverage>>,
                         const std::shared_ptr<const opennav_coverage_msgs::action::NavigateCompleteCoverage::Feedback> feedback) {
-        RCLCPP_INFO(rclcpp::get_logger("NavigateCompleteCorverage"), "Received feedback: Current Position (x = %.2f, y = %.2f, z = %.2f, w = %.2f)",
-                    feedback->current_pose.pose.position.x,
-                    feedback->current_pose.pose.position.y,
-                    feedback->current_pose.pose.position.z,
-                    feedback->current_pose.pose.orientation.w);
         states = ACTIVE;
     };
     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<opennav_coverage_msgs::action::NavigateCompleteCoverage>::WrappedResult & result) {
@@ -337,7 +329,7 @@ void navigation_function::navCompleteCoverage(const vector<geometry_msgs::msg::P
                 RCLCPP_ERROR(rclcpp::get_logger("NavigateCompleteCorverage"), "NavigateCompleteCorverage failed with status: UNKNOWN");
                 info+= "UNKNOWN";
                 // states = ERROR;
-		states = CANCEL;
+		        states = CANCEL;
             }
         }
     };
@@ -369,11 +361,6 @@ void navigation_function::goToPose(const geometry_msgs::msg::PoseStamped &pose, 
     };
     options.feedback_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>>,
                         const std::shared_ptr<const nav2_msgs::action::NavigateToPose::Feedback> feedback) {
-        RCLCPP_INFO(rclcpp::get_logger("NavigateToPose"), "Received feedback: Current Position (x = %.2f, y = %.2f, z = %.2f, w = %.2f)",
-                    feedback->current_pose.pose.position.x,
-                    feedback->current_pose.pose.position.y,
-                    feedback->current_pose.pose.position.z,
-                    feedback->current_pose.pose.orientation.w);
         states = ACTIVE;
     };
     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>::WrappedResult & result) {
@@ -429,15 +416,7 @@ void navigation_function::goThroughPoses(const std::vector<geometry_msgs::msg::P
     };
     options.feedback_callback = [this](std::shared_ptr<rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateThroughPoses>>,
                         const std::shared_ptr<const nav2_msgs::action::NavigateThroughPoses::Feedback> feedback) {
-        RCLCPP_INFO(rclcpp::get_logger("NavigateThroughPoses"), "Received feedback: Current Position (x = %.2f, y = %.2f, z = %.2f, w = %.2f)",
-                    feedback->current_pose.pose.position.x,
-                    feedback->current_pose.pose.position.y,
-                    feedback->current_pose.pose.position.z,
-                    feedback->current_pose.pose.orientation.w);
         number_of_poses_remaining = feedback->number_of_poses_remaining;
-        std_msgs::msg::String check_info_msg;
-        check_info_msg.data = to_string(number_of_poses_remaining);
-        check_info_pub_->publish(check_info_msg);
         states = ACTIVE;
     };
     options.result_callback = [this](const rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateThroughPoses>::WrappedResult & result) {
@@ -957,13 +936,12 @@ int navigation_function::action(){
                 else if(states == ERROR){
                     //update polygon
                     cancel_navCompleteCoverage();
-                    //update_polygon();
                     step = 0;
 		            //
-		            request = 0;
-		            status = Error_;
-                    return Error_;
-		            //return Active_;
+		            // request = 0;
+		            // status = Error_;
+                    // return Error_;
+		            return Active_;
                 }
                 else if(states == SUCCESS){
                     cancel_navCompleteCoverage();

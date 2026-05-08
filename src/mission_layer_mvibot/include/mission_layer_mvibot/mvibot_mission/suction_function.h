@@ -20,8 +20,7 @@ class suction_function : public rclcpp::Node{
         int suction  = 0;
         int suction_state = 0;
         //declare pub
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr suction_function_state_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr suction_state_pub_;
         //declare sub
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr suction_info_sub_;
@@ -38,8 +37,7 @@ class suction_function : public rclcpp::Node{
             mvibot_seri_f_ = mvibot_seri_;
             mvibot_seri_f_.erase(0,1);
             //init publisher
-            history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
-            suction_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("suction_function_state",1);
+            function_state_pub_ = this->create_publisher<std_msgs::msg::String>("function_state",1);
             suction_state_pub_ = this->create_publisher<std_msgs::msg::String>("suction_state",1);
             //init subscriber
             //
@@ -90,23 +88,17 @@ class suction_function : public rclcpp::Node{
                 if(request == 1){
                     int res;
                     res = action();
-                    pub_function_state_suction(res);
+                    pub_function_state(res);
                 }
             };
-            action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
+            action_timer_ = this->create_wall_timer(500ms, action_timer_callback);
         }
-        void pub_function_state_suction(int st);
+        void pub_function_state(int st);
         void pub_state_suction(int st);
-        void send_history(string status, string info);
         void process_data();
         int action();
 };
-void suction_function::send_history(string status, string info){
-    static std_msgs::msg::String history_msg;
-    history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
-    history_pub_->publish(history_msg);
-}
-void suction_function::pub_function_state_suction(int st){
+void suction_function::pub_function_state(int st){
     std_msgs::msg::String msg;
     if(st == Active_) msg.data = "active";
     else if(st == Finish_) msg.data = "finish";
@@ -115,7 +107,7 @@ void suction_function::pub_function_state_suction(int st){
     else if(st == Stop_) msg.data = "stop";
     else if(st == True_) msg.data = "true";
     else if(st == False_) msg.data = "false";
-    suction_function_state_pub_->publish(msg);
+    function_state_pub_->publish(msg);
 }
 void suction_function::pub_state_suction(int st){
     std_msgs::msg::String msg;

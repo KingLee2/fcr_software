@@ -24,15 +24,13 @@ class socket_client_node : public rclcpp::Node{
             //init sub//
             //shutdown robot
             auto robot_shutdown_callback = [this](std_msgs::msg::String msg)->void{
-
-                std::lock_guard<std::mutex> lock(mutex_tool);
+                // std::lock_guard<std::mutex> lock(mutex_tool);
                 if(msg.data =="1"){
                     robot_shutdown = 1;
                     his_content["type"] = "robot";
                     his_content["state"] = "shutdown";
                     his_content["description"] = "";
                     send_history("normal", his_content.dump());
-                    // send_history("normal","Robot shutdown");
                 }
                 else if(msg.data == "2"){
                     robot_shutdown = 2;
@@ -40,7 +38,6 @@ class socket_client_node : public rclcpp::Node{
                     his_content["state"] = "restart";
                     his_content["description"] = "";
                     send_history("normal", his_content.dump());
-                    // send_history("normal","Robot restart");
                 }
             };
             robot_shutdown_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/robot_shutdown",qos_profile,robot_shutdown_callback);
@@ -66,7 +63,6 @@ class socket_client_node : public rclcpp::Node{
             history_json["status"] = status;
             history_json["content"] = info;
             history_msg.data = history_json.dump();
-            // history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
             history_pub_->publish(history_msg);
         }
         void process_data_uart_read();
@@ -241,7 +237,6 @@ void socket_client_node::process_data_uart_read(){
                     his_content["state"] = "shutdown";
                     his_content["description"] = "";
                     send_history("normal", his_content.dump());
-                    // send_history("normal","Robot shutdown");
                 }
                 robot_shutdown=1;
             }

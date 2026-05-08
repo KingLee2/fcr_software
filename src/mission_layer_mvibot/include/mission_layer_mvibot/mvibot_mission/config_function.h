@@ -29,8 +29,7 @@ class config_function : public rclcpp::Node{
             set_avoid_obstacle_client_ = this->create_client<rcl_interfaces::srv::SetParameters>("global_costmap/global_costmap/set_parameters");
             get_avoid_obstacle_client_ = this->create_client<rcl_interfaces::srv::GetParameters>("global_costmap/global_costmap/get_parameters");
             //init publisher
-            history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
-            config_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("config_function_state",1);
+            function_state_pub_ = this->create_publisher<std_msgs::msg::String>("function_state",1);
             //init subscriber
             //
             auto config_info_callback = [this](std_msgs::msg::String msg)->void{
@@ -72,13 +71,12 @@ class config_function : public rclcpp::Node{
                 if(request == 1){
                     int res;
                     res = action();
-                    pub_function_state_config(res);
+                    pub_function_state(res);
                 }
             };
-            action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
+            action_timer_ = this->create_wall_timer(500ms, action_timer_callback);
         }
-        void send_history(string status, string info);
-        void pub_function_state_config(int st);
+        void pub_function_state(int st);
         void process_data();
         int action();
     private:
@@ -109,20 +107,14 @@ class config_function : public rclcpp::Node{
         rclcpp::Client<rcl_interfaces::srv::SetParameters>::SharedPtr set_avoid_obstacle_client_;
         rclcpp::Client<rcl_interfaces::srv::GetParameters>::SharedPtr get_avoid_obstacle_client_;
         //declare pub
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr config_function_state_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
         //declare sub
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr config_info_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr config_function_status_sub_;
         //declare timer
         rclcpp::TimerBase::SharedPtr action_timer_;
 };
-void config_function::send_history(string status, string info){
-    static std_msgs::msg::String history_msg;
-    history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
-    history_pub_->publish(history_msg);
-}
-void config_function::pub_function_state_config(int st){
+void config_function::pub_function_state(int st){
     std_msgs::msg::String msg;
     if(st == Active_) msg.data = "active";
     else if(st == Finish_) msg.data = "finish";
@@ -131,7 +123,7 @@ void config_function::pub_function_state_config(int st){
     else if(st == Stop_) msg.data = "stop";
     else if(st == True_) msg.data = "true";
     else if(st == False_) msg.data = "false";
-    config_function_state_pub_->publish(msg);
+    function_state_pub_->publish(msg);
 }
 void config_function::process_data(){
     cout<<parameters<<endl;
@@ -152,7 +144,6 @@ int config_function::action(){
     static bool set_done_global = false;
     cout<<"config|status: "<<status<<endl;
     if(status==Active_){
-        // static string config_set,config_return;
         value_return=Finish_;
         //desired_linear_vel
         if(desired_linear_vel != ""){
@@ -170,7 +161,6 @@ int config_function::action(){
             else {
                 set_result_vel = false;
                 set_done_vel = false;
-                //value_return = Finish_;
             }
         }
         if(footprint_padding != ""){
@@ -189,7 +179,6 @@ int config_function::action(){
             else {
                 set_result_local = false;
                 set_done_local = false;
-                //value_return = Finish_;
             }
             //global costmap
             if(!set_done_global){
@@ -204,7 +193,6 @@ int config_function::action(){
             else {
                 set_result_global = false;
                 set_done_global = false;
-                //value_return = Finish_;
             }
         }
         if(avoid_obstacle != ""){
@@ -223,7 +211,6 @@ int config_function::action(){
             else {
                 set_result_avoid_ob = false;
                 set_done_avoid_ob = false;
-                //value_return = Finish_;
             }
         }
         if(value_return == Finish_){

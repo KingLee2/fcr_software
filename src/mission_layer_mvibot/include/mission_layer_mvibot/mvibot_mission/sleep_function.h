@@ -20,8 +20,7 @@ class sleep_function : public rclcpp::Node{
         long double time;
         long double time_sleep;
         //declare pub
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr sleep_function_state_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
         //declare sub
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr sleep_info_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr sleep_function_status_sub_;
@@ -38,8 +37,7 @@ class sleep_function : public rclcpp::Node{
             time = 0.0;
             time_sleep = 0.0;
             //init publisher
-            history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
-            sleep_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("sleep_function_state",1);
+            function_state_pub_ = this->create_publisher<std_msgs::msg::String>("function_state",1);
             //init subscriber
             //
             auto sleep_info_callback = [this](std_msgs::msg::String msg)->void{
@@ -81,22 +79,16 @@ class sleep_function : public rclcpp::Node{
                 if(request == 1){
                     int res;
                     res = action();
-                    pub_function_state_sleep(res);
+                    pub_function_state(res);
                 }
             };
-            action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
+            action_timer_ = this->create_wall_timer(1000ms, action_timer_callback);
         }
-        void pub_function_state_sleep(int st);
-        void send_history(string status, string info);
+        void pub_function_state(int st);
         void process_data();
         int action();
 };
-void sleep_function::send_history(string status, string info){
-    static std_msgs::msg::String history_msg;
-    history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
-    history_pub_->publish(history_msg);
-}
-void sleep_function::pub_function_state_sleep(int st){
+void sleep_function::pub_function_state(int st){
     std_msgs::msg::String msg;
     if(st == Active_) msg.data = "active";
     else if(st == Finish_) msg.data = "finish";
@@ -105,7 +97,7 @@ void sleep_function::pub_function_state_sleep(int st){
     else if(st == Stop_) msg.data = "stop";
     else if(st == True_) msg.data = "true";
     else if(st == False_) msg.data = "false";
-    sleep_function_state_pub_->publish(msg);
+    function_state_pub_->publish(msg);
 }
 void sleep_function::process_data(){
     cout<<parameters<<endl;
@@ -113,7 +105,7 @@ void sleep_function::process_data(){
 }
 int sleep_function::action(){
     if(status == Active_){
-        time += 0.05;
+        time += 1.0;
         if(time>=time_sleep){
             status = Finish_;
             request = 0;

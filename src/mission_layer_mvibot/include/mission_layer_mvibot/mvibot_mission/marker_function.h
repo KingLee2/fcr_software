@@ -21,8 +21,7 @@ class marker_function : public rclcpp::Node{
             tf_Listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_Buffer_);
             tf_Broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
             //init publisher
-            history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
-            marker_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("marker_function_state",1);
+            function_state_pub_ = this->create_publisher<std_msgs::msg::String>("function_state",1);
             cmd_vel_pub_= this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel",1);
             //init service client
             get_footprint_local_client_ = this->create_client<rcl_interfaces::srv::GetParameters>("local_costmap/local_costmap/get_parameters");
@@ -38,7 +37,7 @@ class marker_function : public rclcpp::Node{
                 // cout<<parameters<<endl;
                 process_data();
                 request = 1;
-		step = 0;
+		        step = 0;
             };
             marker_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/marker_info", qos_profile, marker_info_callback);
             //
@@ -75,13 +74,12 @@ class marker_function : public rclcpp::Node{
                 if(request == 1){
                     int res;
                     res = action();
-                    pub_function_state_marker(res);
+                    pub_function_state(res);
                 }
             };
             action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
         }
-        void send_history(string status, string info);
-        void pub_function_state_marker(int st);
+        void pub_function_state(int st);
         void process_data();
         int action();
         void pub_cmd_vel(float v, float w);
@@ -128,8 +126,7 @@ class marker_function : public rclcpp::Node{
         std::shared_ptr<tf2_ros::TransformListener> tf_Listener_{nullptr};
         std::unique_ptr<tf2_ros::TransformBroadcaster> tf_Broadcaster_;
         //declare pub
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr marker_function_state_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
         rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_pub_;
         //declare sub
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr marker_info_sub_;
@@ -140,11 +137,6 @@ class marker_function : public rclcpp::Node{
         //declare timer
         rclcpp::TimerBase::SharedPtr action_timer_;
 };
-void marker_function::send_history(string status, string info){
-    static std_msgs::msg::String history_msg;
-    history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
-    history_pub_->publish(history_msg);
-}
 void marker_function::pub_cmd_vel(float v, float w){
     static geometry_msgs::msg::Twist cmd_msg;
     static float creat_fun = 0;
@@ -159,7 +151,7 @@ void marker_function::pub_cmd_vel(float v, float w){
     }
     else creat_fun = 1;
 }
-void marker_function::pub_function_state_marker(int st){
+void marker_function::pub_function_state(int st){
     std_msgs::msg::String msg;
     if(st == Active_) msg.data = "active";
     else if(st == Finish_) msg.data = "finish";
@@ -168,7 +160,7 @@ void marker_function::pub_function_state_marker(int st){
     else if(st == Stop_) msg.data = "stop";
     else if(st == True_) msg.data = "true";
     else if(st == False_) msg.data = "false";
-    marker_function_state_pub_->publish(msg);
+    function_state_pub_->publish(msg);
 }
 void marker_function::process_data(){
     cout<<parameters<<endl;
@@ -418,13 +410,7 @@ int marker_function::check_safe(){
                 }
             }
         }
-	else free_space = 0;
-        //them
-        //else{
-        //    if(x>x1_footprint-1 && x<=x1_footprint-0.5 && x<x2_footprint+1 && x>=x2_footprint+0.5) free_space = 3;
-        //    else if (x>x1_footprint-0.5 && x<x2_footprint+0.5) free_space = 2;
-        //}
-        //them
+	    else free_space = 0;
     }
     return free_space;
 }
@@ -505,7 +491,6 @@ int marker_function::move_to_goal(){
     }else pub_cmd_vel(v,w);
     return value_return;
 }
-
 int marker_function::action(){
     static int res;
     if(status==Active_){

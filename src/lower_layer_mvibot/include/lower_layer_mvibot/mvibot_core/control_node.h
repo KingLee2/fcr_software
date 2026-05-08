@@ -157,7 +157,6 @@ class control_node : public rclcpp::Node{
                     //motor
                     speed_robot_control();
                     pid_motor();
-                    torque_control();
                     //led
                     led_control();
                     //gpio
@@ -176,7 +175,6 @@ class control_node : public rclcpp::Node{
             history_json["status"] = status;
             history_json["content"] = info;
             history_msg.data = history_json.dump();
-            // history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
             history_pub_->publish(history_msg);
         }
         void motor_right_status(){
@@ -203,14 +201,12 @@ class control_node : public rclcpp::Node{
                         his_content["state"] = "off";
                         his_content["description"] = "motor right";
                         send_history("warning", his_content.dump());
-                        // send_history("warning","Motor right turn off");
                     }
                     else {
                         his_content["type"] = "device";
                         his_content["state"] = "on";
                         his_content["description"] = "motor right";
                         send_history("warning", his_content.dump());
-                        // send_history("warning","Motor right turn on");
                     }
                     live_f=live;
                 }else{
@@ -222,14 +218,12 @@ class control_node : public rclcpp::Node{
                                 his_content["state"] = "error";
                                 his_content["description"] = "motor right";
                                 send_history("error", his_content.dump());
-                                // send_history("error","Motor right error id:"+to_string(error));
                             }
                             else {
                                 his_content["type"] = "device";
                                 his_content["state"] = "run";
                                 his_content["description"] = "motor right";
                                 send_history("normal", his_content.dump());
-                                // send_history("normal","Motor right no error");
                             }
                         }
                         if(enable_f!=enable){
@@ -239,14 +233,12 @@ class control_node : public rclcpp::Node{
                                 his_content["state"] = "run";
                                 his_content["description"] = "motor right change to mode automation";
                                 send_history("normal", his_content.dump());
-                                // send_history("normal","Motor right change to mode automation control");
                             }
                             else {
                                 his_content["type"] = "device";
                                 his_content["state"] = "run";
                                 his_content["description"] = "motor right change to mode manual handle";
                                 send_history("normal", his_content.dump());
-                                // send_history("normal","Motor right change to mode manual handle");
                             }
                         }
                         if(brake_f!=brake){
@@ -256,14 +248,12 @@ class control_node : public rclcpp::Node{
                                 his_content["state"] = "run";
                                 his_content["description"] = "motor right disable brake";
                                 send_history("normal", his_content.dump());
-                                // send_history("normal","Motor right disable brake");
                             }
                             else {
                                 his_content["type"] = "device";
                                 his_content["state"] = "run";
                                 his_content["description"] = "motor right enable brake";
                                 send_history("normal", his_content.dump());
-                                // send_history("normal","Motor right enable brake");
                             }
                         }
                     }
@@ -293,14 +283,12 @@ class control_node : public rclcpp::Node{
                         his_content["state"] = "off";
                         his_content["description"] = "motor left";
                         send_history("warning", his_content.dump());
-                        // send_history("warning","Motor left turn off");
                     }
                     else {
                         his_content["type"] = "device";
                         his_content["state"] = "on";
                         his_content["description"] = "motor left";
                         send_history("warning", his_content.dump());
-                        // send_history("warning","Motor left turn on");
                     }
                     live_f=live;
                 }else{
@@ -312,14 +300,12 @@ class control_node : public rclcpp::Node{
                                 his_content["state"] = "error";
                                 his_content["description"] = "motor left";
                                 send_history("error", his_content.dump());
-                                // send_history("error","Motor left error id:"+to_string(error));
                             }
                             else {
                                 his_content["type"] = "device";
                                 his_content["state"] = "run";
                                 his_content["description"] = "motor left";
                                 send_history("normal", his_content.dump());
-                                // send_history("normal","Motor left no error");
                             }
                         }
                         if(enable_f!=enable){
@@ -329,14 +315,12 @@ class control_node : public rclcpp::Node{
                                 his_content["state"] = "run";
                                 his_content["description"] = "motor left change to mode automation";
                                 send_history("normal", his_content.dump());
-                                // send_history("normal","Motor left change to mode automation control");
                             }
                             else {
                                 his_content["type"] = "device";
                                 his_content["state"] = "run";
                                 his_content["description"] = "motor left change to mode manual handle";
                                 send_history("normal", his_content.dump());
-                                // send_history("normal","Motor left change to mode manual handle");
                             }
                         }
                         if(brake_f!=brake){
@@ -346,14 +330,12 @@ class control_node : public rclcpp::Node{
                                 his_content["state"] = "run";
                                 his_content["description"] = "motor left disable brake";
                                 send_history("normal", his_content.dump());
-                                // send_history("normal","Motor left disable brake");
                             }
                             else {
                                 his_content["type"] = "device";
                                 his_content["state"] = "run";
                                 his_content["description"] = "motor left enable brake";
                                 send_history("normal", his_content.dump());
-                                // send_history("normal","Motor left enable brake");
                             }
                         }
                     }
@@ -419,8 +401,6 @@ class control_node : public rclcpp::Node{
             if(motor_left_state_live==0 || motor_right_state_live==0) stop=1;
             if(motor_right_disable==0 || motor_left_disable==0) stop=1;
             if(motor_left_state_error!=0 || motor_right_state_error!=0) stop=1;
-        
-        
             //
             if(stop==1){
                 // reset linear 
@@ -466,8 +446,6 @@ class control_node : public rclcpp::Node{
                 w_set3=w_set2;
             }
         }
-        void torque_control(){
-        }
         void reset_pid_motor(){
             vr_set=0;
             vl_set=0;
@@ -482,10 +460,6 @@ class control_node : public rclcpp::Node{
             green=cgreen;
         }
         void led_control(){
-            // set_color_led(100,100,0); //add
-            // led_r=1; //add
-            // led_l=1; //add
-            // led_b=1; //add
             red = red_;
             green = green_;
             blue = blue_;
@@ -569,7 +543,7 @@ class control_node : public rclcpp::Node{
                 string cmd;
                 string file;
                 //cmd="mplayer -af channels=2:2:0:0:1:0 -ao alsa:device=hw=1.0 "+define_path+"mp3/";
-                // cmd="pulseaudio --start && mplayer "+define_path+"src/lower_layer_mvibot/mp3/";
+                //cmd="pulseaudio --start && mplayer "+define_path+"src/lower_layer_mvibot/mp3/";
                 cmd="pulseaudio --start && mplayer -ao pulse -loop 0 -volume "+to_string(volume)+" -nolirc "+define_path+"src/lower_layer_mvibot/mp3/";
              //
                 if(mode==2) file="buzze2.mp3";

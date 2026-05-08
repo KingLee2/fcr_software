@@ -22,11 +22,8 @@ class lift_function : public rclcpp::Node{
         json parameters;
         int status = Finish_;
         int request = 0; //request = 1: yeu cau thuc thi, request = 0: khong co yeu cau thuc thi
-        //
-
         //declare pub
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_function_state_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_brush_power_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_brush_control_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_suction_power_pub_;
@@ -47,8 +44,7 @@ class lift_function : public rclcpp::Node{
             mvibot_seri_f_ = mvibot_seri_;
             mvibot_seri_f_.erase(0,1);
             //init publisher
-            history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
-            lift_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("lift_function_state",1);
+            function_state_pub_ = this->create_publisher<std_msgs::msg::String>("function_state",1);
             lift_brush_power_pub_ = this->create_publisher<std_msgs::msg::String>("lift_brush_power",1);
             lift_brush_control_pub_ = this->create_publisher<std_msgs::msg::String>("lift_brush_control",1);
             lift_suction_power_pub_ = this->create_publisher<std_msgs::msg::String>("lift_suction_power",1);
@@ -103,24 +99,18 @@ class lift_function : public rclcpp::Node{
                 if(request == 1){
                     int res;
                     res = action();
-                    pub_function_state_lift(res);
+                    pub_function_state(res);
                 }
             };
-            action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
+            action_timer_ = this->create_wall_timer(500ms, action_timer_callback);
         }
-        void pub_function_state_lift(int st);
+        void pub_function_state(int st);
         void pub_lift_brush(int st);
         void pub_lift_suction(int st);
-        void send_history(string status, string info);
         void process_data();
         int action();
 };
-void lift_function::send_history(string status, string info){
-    static std_msgs::msg::String history_msg;
-    history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
-    history_pub_->publish(history_msg);
-}
-void lift_function::pub_function_state_lift(int st){
+void lift_function::pub_function_state(int st){
     std_msgs::msg::String msg;
     if(st == Active_) msg.data = "active";
     else if(st == Finish_) msg.data = "finish";
@@ -129,7 +119,7 @@ void lift_function::pub_function_state_lift(int st){
     else if(st == Stop_) msg.data = "stop";
     else if(st == True_) msg.data = "true";
     else if(st == False_) msg.data = "false";
-    lift_function_state_pub_->publish(msg);
+    function_state_pub_->publish(msg);
 }
 void lift_function::pub_lift_brush(int st){
     std_msgs::msg::String msg, msg_power;

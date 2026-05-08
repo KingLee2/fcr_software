@@ -89,9 +89,7 @@ class variable_function : public rclcpp::Node{
         string  name_variable = "";
         string  focus_value = "";
         //declare pub
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr variable_function_state_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr variable_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
         //declare sub
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr variable_info_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr variable_function_status_sub_;
@@ -107,9 +105,7 @@ class variable_function : public rclcpp::Node{
             mvibot_seri_f_ = mvibot_seri_;
             mvibot_seri_f_.erase(0,1);
             //init publisher
-            history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
-            variable_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("variable_function_state",1);
-            variable_pub_ = this->create_publisher<std_msgs::msg::String>("local_variable",1);
+            function_state_pub_ = this->create_publisher<std_msgs::msg::String>("function_state",1);
             //init subscriber
             //
             auto variable_info_callback = [this](std_msgs::msg::String msg)->void{
@@ -152,26 +148,17 @@ class variable_function : public rclcpp::Node{
                 if(request == 1){
                     int res;
                     res = action();
-                    pub_function_state_variable(res);
+                    pub_function_state(res);
                 }
-                pub_variable();
             };
-            action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
+            action_timer_ = this->create_wall_timer(500ms, action_timer_callback);
         }
-        void pub_function_state_variable(int st);
-        void pub_variable();
-        void send_history(string status, string info);
+        void pub_function_state(int st);
         void print(int n);
         void process_data();
         int action();
-
 };
-void variable_function::send_history(string status, string info){
-    static std_msgs::msg::String history_msg;
-    history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
-    history_pub_->publish(history_msg);
-}
-void variable_function::pub_function_state_variable(int st){
+void variable_function::pub_function_state(int st){
     std_msgs::msg::String msg;
     if(st == Active_) msg.data = "active";
     else if(st == Finish_) msg.data = "finish";
@@ -180,20 +167,7 @@ void variable_function::pub_function_state_variable(int st){
     else if(st == Stop_) msg.data = "stop";
     else if(st == True_) msg.data = "true";
     else if(st == False_) msg.data = "false";
-    variable_function_state_pub_->publish(msg);
-}
-void variable_function::pub_variable(){
-    static float creat_fun=0;
-    static std_msgs::msg::String msg;
-    if(creat_fun==1)
-    {
-        msg.data="";
-        msg.data=mvibot_seri_f_;
-        for(int i=0;i<my_vars_local.var.size();i++){
-            msg.data=msg.data+"|"+my_vars_local.var[i].name+":"+to_string(my_vars_local.var[i].data);
-        }
-        variable_pub_->publish(msg);
-    } else creat_fun=1;
+    function_state_pub_->publish(msg);
 }
 void variable_function::process_data(){
     cout<<parameters<<endl;

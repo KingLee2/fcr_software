@@ -28,8 +28,7 @@ class gpio_function : public rclcpp::Node{
         int request = 0; //request = 1: yeu cau thuc thi, request = 0: khong co yeu cau thuc thi
         
         //declare pub
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr gpio_function_state_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr set_output_pub_;
         //declare sub
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr gpio_info_sub_;
@@ -47,31 +46,21 @@ class gpio_function : public rclcpp::Node{
             mvibot_seri_f_ = mvibot_seri_;
             mvibot_seri_f_.erase(0,1);
             //init publisher
-            history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
-            gpio_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("gpio_function_state",1);
+            function_state_pub_ = this->create_publisher<std_msgs::msg::String>("function_state",1);
             set_output_pub_ = this->create_publisher<std_msgs::msg::String>("output_user_set",1);
             //init subscriber
             auto output_status_callback = [this](std_msgs::msg::Float32MultiArray msg)->void{
-                // lock();
-                // std::lock_guard<std::recursive_mutex> lock(mutex_output);
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
                 output_status = msg;
-                // unlock();
             };
             output_status_sub_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(mvibot_seri_+"/output_user_status",qos_profile, output_status_callback);
             auto input_status_callback = [this](std_msgs::msg::Float32MultiArray msg)->void{
-                // lock();
-                // std::lock_guard<std::recursive_mutex> lock(mutex_input);
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
                 input_status_2 = input_status_1;
                 input_status_1 = input_status;
                 input_status = msg;
-                //unlock();
             };
             input_status_sub_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(mvibot_seri_+"/input_user_status",qos_profile,input_status_callback);
             //
             auto gpio_info_callback = [this](std_msgs::msg::String msg)->void{
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
                 parameters = json::parse(msg.data);
                 // cout<<parameters<<endl;
                 process_data();
@@ -80,7 +69,6 @@ class gpio_function : public rclcpp::Node{
             gpio_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/gpio_info", qos_profile, gpio_info_callback);
             //
             auto gpio_function_status_callback = [this](std_msgs::msg::String msg)->void{
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
                 cout<<"gpio|received request,status"<<endl;
                 if(msg.data == "active"){
                     request = 1;
@@ -107,28 +95,20 @@ class gpio_function : public rclcpp::Node{
             //init timer
             //
             auto action_timer_callback = [this]()->void{
-                std::lock_guard<std::recursive_mutex> lock(mutex_common);
                 cout<<"gpio|request:"<<request<<"|state:"<<status<<endl;
                 if(request == 1){
                     int res;
                     res = action();
-                    pub_function_state_gpio(res);
+                    pub_function_state(res);
                 }
             };
-            action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
+            action_timer_ = this->create_wall_timer(500ms, action_timer_callback);
         }
-        void send_history(string status, string info);
-        void pub_function_state_gpio(int st);
-        void pub_output_set(string pin, string state);
+        void pub_function_state(int st);
         void process_data();
         int action();
 };
-void gpio_function::send_history(string status, string info){
-    static std_msgs::msg::String history_msg;
-    history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
-    history_pub_->publish(history_msg);
-}
-void gpio_function::pub_function_state_gpio(int st){
+void gpio_function::pub_function_state(int st){
     std_msgs::msg::String msg;
     if(st == Active_) msg.data = "active";
     else if(st == Finish_) msg.data = "finish";
@@ -137,9 +117,8 @@ void gpio_function::pub_function_state_gpio(int st){
     else if(st == Stop_) msg.data = "stop";
     else if(st == True_) msg.data = "true";
     else if(st == False_) msg.data = "false";
-    gpio_function_state_pub_->publish(msg);
+    function_state_pub_->publish(msg);
 }
-
 void gpio_function::process_data(){
     std::lock_guard<std::recursive_mutex> lock(mutex_common);
     std::map<std::string, json> output_parameters;

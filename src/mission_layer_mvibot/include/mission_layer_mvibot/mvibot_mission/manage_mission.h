@@ -34,8 +34,6 @@ class manage_mission : public rclcpp::Node{
         string action_mode_mission;
         string mission_execution_time, learning_path_time;
         //
-        std_msgs::msg::Float32MultiArray input_status, input_status_1, input_status_2;
-        std_msgs::msg::Float32MultiArray output_status;
         int motor_left_ready = 0;
         int motor_right_ready = 0;
         int brush_status = 0, brush_status_f = 0;
@@ -122,22 +120,8 @@ class manage_mission : public rclcpp::Node{
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr motor_right_status_sub_;
         //get status battery
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr battery_status_sub_;
-        //get input, output
-        rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr input_status_sub_;
-        rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr output_status_sub_;
         //get status function
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr gpio_function_state_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr footprint_function_state_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr config_function_state_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr navigation_function_state_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr marker_function_state_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr sleep_function_state_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr var_function_state_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr lift_function_state_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr brush_function_state_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr suction_function_state_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr loadmap_function_state_sub_;
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr initialpose_function_state_sub_;
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr function_state_sub_;
         //timer
         rclcpp::TimerBase::SharedPtr execute_mission_timer_;
         rclcpp::TimerBase::SharedPtr controll_timer_;
@@ -153,10 +137,6 @@ class manage_mission : public rclcpp::Node{
             tf_Listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_Buffer_);
             tf_Broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
             //
-            output_status.data.resize(12);
-            input_status.data.resize(30);
-            input_status_1=input_status;
-            input_status_2=input_status_1;
 	        action_mode_mission = "N_A";
             active_mission_id = "";
             status = Finish_;
@@ -246,17 +226,6 @@ class manage_mission : public rclcpp::Node{
                 }
             };
             reset_mission_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/reset_mission", qos_profile, reset_mission_callback);
-            // update gpio
-            auto output_status_callback = [this](std_msgs::msg::Float32MultiArray msg)->void{
-                output_status = msg;
-            };
-            output_status_sub_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(mvibot_seri_+"/output_user_status",qos_profile, output_status_callback);
-            auto input_status_callback = [this](std_msgs::msg::Float32MultiArray msg)->void{
-                input_status_2 = input_status_1;
-                input_status_1 = input_status;
-                input_status = msg;
-            };
-            input_status_sub_ = this->create_subscription<std_msgs::msg::Float32MultiArray>(mvibot_seri_+"/input_user_status",qos_profile,input_status_callback);
             //status motor
             auto motor_left_status_callback = [this](std_msgs::msg::String msg)->void{
                 static string_Iv2 data;
@@ -358,8 +327,7 @@ class manage_mission : public rclcpp::Node{
             };
             learning_path_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/learning_path", qos_profile, learning_path_callback);
             //get state of function
-            //gpio
-            auto gpio_function_state_callback = [this](std_msgs::msg::String msg)->void{
+            auto function_state_callback = [this](std_msgs::msg::String msg)->void{
                 if(msg.data == "stop") state = Stop_;
                 else if(msg.data == "active") state = Active_;
                 else if(msg.data == "finish") state = Finish_;
@@ -368,108 +336,7 @@ class manage_mission : public rclcpp::Node{
                 else if(msg.data == "true") state = True_;
                 else if(msg.data == "false") state = False_;
             };
-            gpio_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/gpio_function_state", qos_profile, gpio_function_state_callback);
-            //footprint
-            auto footprint_function_state_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "stop") state = Stop_;
-                else if(msg.data == "active") state = Active_;
-                else if(msg.data == "finish") state = Finish_;
-                else if(msg.data == "cancel") state = Cancel_;
-                else if(msg.data == "error") state = Error_;
-            };
-            footprint_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/footprint_function_state", qos_profile, footprint_function_state_callback);
-            //config
-            auto config_function_state_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "stop") state = Stop_;
-                else if(msg.data == "active") state = Active_;
-                else if(msg.data == "finish") state = Finish_;
-                else if(msg.data == "cancel") state = Cancel_;
-                else if(msg.data == "error") state = Error_;
-            };
-            config_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/config_function_state", qos_profile, config_function_state_callback);
-            //var
-            auto var_function_state_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "stop") state = Stop_;
-                else if(msg.data == "active") state = Active_;
-                else if(msg.data == "finish") state = Finish_;
-                else if(msg.data == "cancel") state = Cancel_;
-                else if(msg.data == "error") state = Error_;
-                else if(msg.data == "true") state = True_;
-                else if(msg.data == "false") state = False_;
-            };
-            var_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/variable_function_state", qos_profile, var_function_state_callback);
-            //sleep
-            auto sleep_function_state_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "stop") state = Stop_;
-                else if(msg.data == "active") state = Active_;
-                else if(msg.data == "finish") state = Finish_;
-                else if(msg.data == "cancel") state = Cancel_;
-                else if(msg.data == "error") state = Error_;
-            };
-            sleep_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/sleep_function_state", qos_profile, sleep_function_state_callback);
-            //navigation
-            auto navigation_function_state_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "stop") state = Stop_;
-                else if(msg.data == "active") state = Active_;
-                else if(msg.data == "finish") state = Finish_;
-                else if(msg.data == "cancel") state = Cancel_;
-                else if(msg.data == "error") state = Error_;
-            };
-            navigation_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/navigation_function_state", qos_profile, navigation_function_state_callback);
-            //marker
-            auto marker_function_state_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "stop") state = Stop_;
-                else if(msg.data == "active") state = Active_;
-                else if(msg.data == "finish") state = Finish_;
-                else if(msg.data == "cancel") state = Cancel_;
-                else if(msg.data == "error") state = Error_;
-            };
-            marker_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/marker_function_state", qos_profile, marker_function_state_callback);
-            //lift
-            auto lift_function_state_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "stop") state = Stop_;
-                else if(msg.data == "active") state = Active_;
-                else if(msg.data == "finish") state = Finish_;
-                else if(msg.data == "cancel") state = Cancel_;
-                else if(msg.data == "error") state = Error_;
-            };
-            lift_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/lift_function_state", qos_profile, lift_function_state_callback);
-            //brush
-            auto brush_function_state_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "stop") state = Stop_;
-                else if(msg.data == "active") state = Active_;
-                else if(msg.data == "finish") state = Finish_;
-                else if(msg.data == "cancel") state = Cancel_;
-                else if(msg.data == "error") state = Error_;
-            };
-            brush_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/brush_function_state", qos_profile, brush_function_state_callback);
-            //suction
-            auto suction_function_state_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "stop") state = Stop_;
-                else if(msg.data == "active") state = Active_;
-                else if(msg.data == "finish") state = Finish_;
-                else if(msg.data == "cancel") state = Cancel_;
-                else if(msg.data == "error") state = Error_;
-            };
-            suction_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/suction_function_state", qos_profile, suction_function_state_callback);
-            //loadmap
-            auto loadmap_function_state_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "stop") state = Stop_;
-                else if(msg.data == "active") state = Active_;
-                else if(msg.data == "finish") state = Finish_;
-                else if(msg.data == "cancel") state = Cancel_;
-                else if(msg.data == "error") state = Error_;
-            };
-            loadmap_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/loadmap_function_state", qos_profile, loadmap_function_state_callback);
-            //initialpose
-            auto initialpose_function_state_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "stop") state = Stop_;
-                else if(msg.data == "active") state = Active_;
-                else if(msg.data == "finish") state = Finish_;
-                else if(msg.data == "cancel") state = Cancel_;
-                else if(msg.data == "error") state = Error_;
-            };
-            initialpose_function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/initialpose_function_state", qos_profile, initialpose_function_state_callback);
+            function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/function_state", qos_profile, function_state_callback);
             //init timer//
             auto execute_mission_timer_callback = [this]()->void{
                 execute_mission();
@@ -502,7 +369,7 @@ class manage_mission : public rclcpp::Node{
                     x_l = robot_pose[0];
                     y_l = robot_pose[1];
                     last_movement_time = now_time;
-		     is_stuck = false;
+		            is_stuck = false;
                 }
                 if(status != Finish_) no_move_duration = (now_time - last_movement_time).seconds();
                 else {
@@ -688,7 +555,7 @@ void manage_mission::set_led(string mode_action){
     else{
         if(status == Active_){
             if(mode_action == "mission_normal") pub_led(0,100,0,1,1,1,1);
-            else if(mode_action == "mission_charge_battery") pub_led(0,100,100,2,2,2,2);
+            else if(mode_action == "mission_charge_battery") pub_led(0,100,0,2,2,2,2);
         }
         else if(status == Error_) pub_led(100,0,0,1,1,1,1);
         else if(status == Stop_) pub_led(100,100,0,2,2,2,2);
@@ -1116,7 +983,7 @@ void manage_mission::execute_mission(){
         next_to = "";
         
         if(active_mission_id != ""){
-	    //reset buffer and curl
+            //reset buffer and curl
             readBuffer.clear();
             curl_easy_reset(curl);
             //get data for api
@@ -1202,7 +1069,7 @@ void manage_mission::execute_mission(){
             else if(res == Error_){
                 pub_stop_robot();
                 status = Error_;
-            } 
+            }
             else if(res == Finish_){
                 if(queue_content.empty()){
                     active_content = next_to;

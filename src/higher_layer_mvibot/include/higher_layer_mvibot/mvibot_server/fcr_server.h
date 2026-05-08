@@ -3,8 +3,6 @@
 using namespace std;
     class fcr_server : public rclcpp::Node{
     private:
-        //mutex var
-        // std::recursive_mutex mutex_common;
         //robot var
         string mvibot_seri_, mvibot_seri_f_;
         string mode="";
@@ -14,15 +12,13 @@ using namespace std;
         int load_map_ = -1;
         int map_server_state = -1, slam_toolbox_state = -1;
         int load_map_first = 0;
-        // nav_msgs::msg::OccupancyGrid map_selector;
         //declare pub//
-        rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr map_pub_;
+        // rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr map_pub_;
         //declare sub//
         //sub map
-        rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr map_sub_;
+        // rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr map_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr map_request_sub_;
         //sub robot
-        // rclcpp::Subscription<std_msgs::msg::String>::SharedPtr history_robot_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr robot_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr infor_robot_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr sensor_status_sub_;
@@ -33,13 +29,10 @@ using namespace std;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr input_status_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr output_status_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr robot_config_sub_;
-        // rclcpp::Subscription<std_msgs::msg::String>::SharedPtr pos_robot_sub_;
-        //sub request reset slam_toolbox
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr reset_slam_toolbox_sub_;
         //declare service //
         rclcpp::Client<nav2_msgs::srv::SaveMap>::SharedPtr save_map_srv_;
         rclcpp::Client<nav2_msgs::srv::LoadMap>::SharedPtr load_map_srv_;
-	rclcpp::Client<slam_toolbox::srv::SerializePoseGraph>::SharedPtr save_serialize_map_srv_;
+	    rclcpp::Client<slam_toolbox::srv::SerializePoseGraph>::SharedPtr save_serialize_map_srv_;
         rclcpp::Client<lifecycle_msgs::srv::GetState>::SharedPtr get_state_map_server_srv_;
         rclcpp::Client<lifecycle_msgs::srv::GetState>::SharedPtr get_state_slam_srv_;
         //declare timer
@@ -60,7 +53,7 @@ using namespace std;
             qos_profile_map.reliability(RMW_QOS_POLICY_RELIABILITY_RELIABLE);
             qos_profile_map.durability(RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL);
             //init pub//
-            map_pub_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("map2",qos_profile_map);
+            // map_pub_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("map2",qos_profile_map);
             //init sub//
             //get robot
             auto robot_callback = [this](std_msgs::msg::String msg)->void{
@@ -82,10 +75,6 @@ using namespace std;
                         my_robots[my_robots.size()-1].id=my_robots.size();
                         cout << "robot_id: "<<my_robots[my_robots.size()-1].id<<endl;
                         my_robots[my_robots.size()-1].update_database=0;
-                        // my_robots[my_robots.size()-1].node=new node_v2_3;
-                        // my_robots[my_robots.size()-1].node->name_seri=my_robots[my_robots.size()-1].name_seri;   
-                        // my_robots[my_robots.size()-1].node->init();
-                        // printf("Add new: %s \n" , my_robots[my_robots.size()-1].name_seri.c_str());
                     }
                 }  
 
@@ -209,11 +198,11 @@ using namespace std;
                 }
             };
             robot_config_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/config_robot", qos_profile, robot_config_callback);
-            //get map
-            auto map_callback = [this](nav_msgs::msg::OccupancyGrid msg)->void{
-                my_map = msg;
-            };
-            map_sub_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>(mvibot_seri_+"/map", qos_profile_map, map_callback);
+            // //get map
+            // auto map_callback = [this](nav_msgs::msg::OccupancyGrid msg)->void{
+            //     my_map = msg;
+            // };
+            // map_sub_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>(mvibot_seri_+"/map", qos_profile_map, map_callback);
             //get request map
             auto request_map_callback = [this](std_msgs::msg::String msg)->void{ //msg="request:0|action:active_map|name_map:...", request(save_map, delete_map, active_map)
                 static string data;
@@ -231,58 +220,20 @@ using namespace std;
                 if(action_map == "active_map") name_map_active =name_map;
             };
             map_request_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/request_map",qos_profile, request_map_callback);
-            //reset slam toolbox
-            auto reset_slam_toolbox_callback = [this](std_msgs::msg::String msg)->void{
-                if(msg.data == "1"){
-                    string cmd="";
-                    cmd="ros2 lifecycle set /slam_toolbox deactivate";
-                    system(cmd.c_str());
-                    RCLCPP_INFO(this->get_logger(),"slam toolbox inactive");
-                    sleep(5);
-                    cmd="";
-                    cmd="ros2 lifecycle set /slam_toolbox activate";
-                    system(cmd.c_str());
-                    RCLCPP_INFO(this->get_logger(),"slam toolbox active");
-                }
-            };
-            reset_slam_toolbox_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/reset_slam_toolbox",qos_profile, reset_slam_toolbox_callback);
             //init service
             load_map_srv_=this->create_client<nav2_msgs::srv::LoadMap>("map_server/load_map");
             save_map_srv_=this->create_client<nav2_msgs::srv::SaveMap>("map_saver/save_map");
-	    save_serialize_map_srv_ = this->create_client<slam_toolbox::srv::SerializePoseGraph>("/slam_toolbox/serialize_map");
+	        save_serialize_map_srv_ = this->create_client<slam_toolbox::srv::SerializePoseGraph>("/slam_toolbox/serialize_map");
             get_state_map_server_srv_ = this->create_client<lifecycle_msgs::srv::GetState>("map_server/get_state");
             get_state_slam_srv_ = this->create_client<lifecycle_msgs::srv::GetState>("/slam_toolbox/get_state");
-            //
-            // name_map_active = "28_11ok";
-            // // run map server
-            // while(!load_map_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
-            //     RCLCPP_INFO(rclcpp::get_logger("Map"),"Load Map service not available");
-            //     sleep(1);
-            // }
-            // if(name_map_active!=""){
-            //     string map_url;
-            //     map_url = package_path + "maps/" + name_map_active + ".yaml";
-            //     load_map(map_url);
-            //     process_map_active = 1;
-            //     update_map_database = 1;
-            //     action_map = "active_map";
-            // }
-            ///////////////
             //init timer//
             auto map_timer_callback = [this]()->void{
                 std::lock_guard<std::recursive_mutex> lock(mutex_common);
-                // //execute request(save_map, delete_map, active_map)
-                // process_request_map();
-                // //pub map with layer map
-                // cout<<"start pub map"<<endl;
-                // pub_map();
-                //////
                 if(map_server_state == 3 || slam_toolbox_state == 3){
                     if(load_map_first == 1 && map_server_state == 3){
                         if(name_map_active!=""){
                             string map_url;
-                            //map_url = package_path + "maps/" + name_map_active + ".yaml";
-			    map_url = "/assets/maps/" + name_map_active + ".yaml";
+			                map_url = "/assets/maps/" + name_map_active + ".yaml";
                             load_map(map_url);
                             process_map_active = 1;
                             update_map_database = 1;
@@ -292,9 +243,9 @@ using namespace std;
                     }
                     //execute request(save_map, delete_map, active_map)
                     process_request_map();
-                    //pub map with layer map
-                    cout<<"start pub map"<<endl;
-                    pub_map();
+                    // //pub map with layer map
+                    // cout<<"start pub map"<<endl;
+                    // pub_map();
                 }
             };
             map_timer_ = this->create_wall_timer(100ms, map_timer_callback);
@@ -307,10 +258,10 @@ using namespace std;
         double getyaw(geometry_msgs::msg::Quaternion quat_msg);
         string load_file(string name_file);
         nav_msgs::msg::OccupancyGrid get_map_select(string path);
-        void pub_map();
+        // void pub_map();
         int load_map(string map_url);
         int save_map(string map_topic, string map_url);
-	int save_serialize_map(string map_url);
+	    int save_serialize_map(string map_url);
         void get_state_map_server();
         void get_state_slam_toolbox();
         void process_request_map(); 
@@ -446,105 +397,105 @@ double fcr_server::getyaw(geometry_msgs::msg::Quaternion quat_msg){
     tf2::Matrix3x3(quat_tf).getRPY(roll, pitch, yaw);
     return yaw;
 }
-void fcr_server::pub_map(){
-    static float creat_fun=0;
-	if(creat_fun==1)
-	{
-        static int have_to_pub;
-        // static uint32_t n=0;
-        static nav_msgs::msg::OccupancyGrid map_var;
-        have_to_pub=0;
-        //kiem tra yeu cau lay map
-        // if(request_map==1){
-        //     request_map=0;
-        //     have_to_pub=1;
-        // }
-        if(process_map_active ==1){
-            process_map_active = 0;
-            have_to_pub=1;
-        }
-        //kiem tra sub map
-        // if(map_pub_->get_subscription_count()!=n){
-        //     n=map_pub_->get_subscription_count();
-        //     have_to_pub=1;
-        // }
-        //Kiem tra layer
-        std::lock_guard<std::recursive_mutex> lock(mutext_layer_map);
-        for(int i=0;i<my_layers.size();i++){
-            if(my_layers[i].is_have==0) {
-                have_to_pub=1;
-                my_layers.erase(my_layers.begin()+i);
-                i--;
-            }
-        }
-        //Kiem tra pub layer
-        for(int i=0;i<my_layers.size();i++){
-            //
-            if(my_layers[i].is_pub==0) {
-                my_layers[i].is_pub=1;
-                have_to_pub=1;
-            }
-        }
-        if(have_to_pub==1){
-            have_to_pub=0;
-            // for(int i=0;i<my_map.data.size();i++) my_map.data[i]=-1;
-            map_var=my_map;
-            for(int i=0;i<map_var.data.size();i++)
-            {
-                static float x,y;
-                static float x_origin,y_origin,yaw_origin;
-                x_origin=map_var.info.origin.position.x;
-                y_origin=map_var.info.origin.position.y;
-                // yaw_origin=tf::getYaw(map_var.info.origin.orientation);
-                yaw_origin = getyaw(map_var.info.origin.orientation);
-                // convert to x y origin
-                x=(float)(i-(uint32_t)(i/map_var.info.width)*map_var.info.width)*map_var.info.resolution;
-                y=(float)((uint32_t)(i/map_var.info.width))*map_var.info.resolution;
-                //
-                x=x+x_origin;
-                y=y+y_origin;
-                //
-                static float dis;
-                dis=sqrt(x*x+y*y);
-                static float ampha;
-                ampha=atan2(y,x);
-                //
-                ampha=ampha+yaw_origin;
-                x=dis*cos(ampha);
-                y=dis*sin(ampha);
-                // check cost map layer
-                // cout<<"check cost map layer"<<endl;
-                for(int j=0;j<my_layers.size();j++){
-                    if(name_map_active==my_layers[j].name_map){
-                        static float x_layer,y_layer,yaw_layer;
-                        x_layer=x-my_layers[j].xo;
-                        y_layer=y-my_layers[j].yo;
-                        yaw_layer=0-my_layers[j].yawo;
-                        //
-                        static float dis_layer;
-                        dis_layer=sqrt(x_layer*x_layer+y_layer*y_layer);
-                        //
-                        static float ampha_layer;
-                        ampha_layer=atan2(y_layer,x_layer);
-                        ampha_layer=ampha_layer+yaw_layer;
-                        x_layer=dis_layer*cos(ampha_layer);
-                        y_layer=dis_layer*sin(ampha_layer);
-                        //
-                        if(fabs(x_layer)<=my_layers[j].width/2 &  fabs(y_layer)<=my_layers[j].heigth/2) {
-                            static float vlaue_cost;
-                            if(my_layers[j].type_layer=="dead_zone") vlaue_cost=100;
-                            if(my_layers[j].type_layer=="high_zone") vlaue_cost=95;
-                            if(map_var.data[i] < vlaue_cost) map_var.data[i]=vlaue_cost;
-                        }
-                    }
-                }
-                //
-            }
-            cout<<"act pub map"<<endl;
-            map_pub_->publish(map_var);
-        }
-	} else creat_fun=1;
-}
+// void fcr_server::pub_map(){
+//     static float creat_fun=0;
+// 	if(creat_fun==1)
+// 	{
+//         static int have_to_pub;
+//         // static uint32_t n=0;
+//         static nav_msgs::msg::OccupancyGrid map_var;
+//         have_to_pub=0;
+//         //kiem tra yeu cau lay map
+//         // if(request_map==1){
+//         //     request_map=0;
+//         //     have_to_pub=1;
+//         // }
+//         if(process_map_active ==1){
+//             process_map_active = 0;
+//             have_to_pub=1;
+//         }
+//         //kiem tra sub map
+//         // if(map_pub_->get_subscription_count()!=n){
+//         //     n=map_pub_->get_subscription_count();
+//         //     have_to_pub=1;
+//         // }
+//         //Kiem tra layer
+//         std::lock_guard<std::recursive_mutex> lock(mutext_layer_map);
+//         for(int i=0;i<my_layers.size();i++){
+//             if(my_layers[i].is_have==0) {
+//                 have_to_pub=1;
+//                 my_layers.erase(my_layers.begin()+i);
+//                 i--;
+//             }
+//         }
+//         //Kiem tra pub layer
+//         for(int i=0;i<my_layers.size();i++){
+//             //
+//             if(my_layers[i].is_pub==0) {
+//                 my_layers[i].is_pub=1;
+//                 have_to_pub=1;
+//             }
+//         }
+//         if(have_to_pub==1){
+//             have_to_pub=0;
+//             // for(int i=0;i<my_map.data.size();i++) my_map.data[i]=-1;
+//             map_var=my_map;
+//             for(int i=0;i<map_var.data.size();i++)
+//             {
+//                 static float x,y;
+//                 static float x_origin,y_origin,yaw_origin;
+//                 x_origin=map_var.info.origin.position.x;
+//                 y_origin=map_var.info.origin.position.y;
+//                 // yaw_origin=tf::getYaw(map_var.info.origin.orientation);
+//                 yaw_origin = getyaw(map_var.info.origin.orientation);
+//                 // convert to x y origin
+//                 x=(float)(i-(uint32_t)(i/map_var.info.width)*map_var.info.width)*map_var.info.resolution;
+//                 y=(float)((uint32_t)(i/map_var.info.width))*map_var.info.resolution;
+//                 //
+//                 x=x+x_origin;
+//                 y=y+y_origin;
+//                 //
+//                 static float dis;
+//                 dis=sqrt(x*x+y*y);
+//                 static float ampha;
+//                 ampha=atan2(y,x);
+//                 //
+//                 ampha=ampha+yaw_origin;
+//                 x=dis*cos(ampha);
+//                 y=dis*sin(ampha);
+//                 // check cost map layer
+//                 // cout<<"check cost map layer"<<endl;
+//                 for(int j=0;j<my_layers.size();j++){
+//                     if(name_map_active==my_layers[j].name_map){
+//                         static float x_layer,y_layer,yaw_layer;
+//                         x_layer=x-my_layers[j].xo;
+//                         y_layer=y-my_layers[j].yo;
+//                         yaw_layer=0-my_layers[j].yawo;
+//                         //
+//                         static float dis_layer;
+//                         dis_layer=sqrt(x_layer*x_layer+y_layer*y_layer);
+//                         //
+//                         static float ampha_layer;
+//                         ampha_layer=atan2(y_layer,x_layer);
+//                         ampha_layer=ampha_layer+yaw_layer;
+//                         x_layer=dis_layer*cos(ampha_layer);
+//                         y_layer=dis_layer*sin(ampha_layer);
+//                         //
+//                         if(fabs(x_layer)<=my_layers[j].width/2 &  fabs(y_layer)<=my_layers[j].heigth/2) {
+//                             static float vlaue_cost;
+//                             if(my_layers[j].type_layer=="dead_zone") vlaue_cost=100;
+//                             if(my_layers[j].type_layer=="high_zone") vlaue_cost=95;
+//                             if(map_var.data[i] < vlaue_cost) map_var.data[i]=vlaue_cost;
+//                         }
+//                     }
+//                 }
+//                 //
+//             }
+//             cout<<"act pub map"<<endl;
+//             map_pub_->publish(map_var);
+//         }
+// 	} else creat_fun=1;
+// }
 void fcr_server::process_request_map(){
     // RCLCPP_INFO(rclcpp::get_logger("Map"),"check process request map");
     if(request_map == 1){
@@ -552,21 +503,21 @@ void fcr_server::process_request_map(){
             string map_topic, map_url;
             map_topic = "/map";
             //map_url = package_path + "maps/" + name_map;
-	    map_url = "/assets/maps/" + name_map;
+	        map_url = "/assets/maps/" + name_map;
             save_map(map_topic, map_url);
-	    save_serialize_map(map_url);
+	        save_serialize_map(map_url);
         }
         else if(action_map == "delete_map"){
             static string cmd;
             cmd="";
             //cmd=cmd+"rm "+package_path+"maps/"+name_map+".*";
-	    cmd=cmd+"sudo rm "+"/assets/maps/"+name_map+".*";
+	        cmd=cmd+"sudo rm "+"/assets/maps/"+name_map+".*";
             system(cmd.c_str());
         }
         else if(action_map == "active_map"){
             string map_url;
             //map_url = package_path + "maps/" + name_map_active + ".yaml";
-	    map_url = "/assets/maps/" + name_map_active + ".yaml";
+	        map_url = "/assets/maps/" + name_map_active + ".yaml";
             load_map(map_url);
             process_map_active = 1;
         }

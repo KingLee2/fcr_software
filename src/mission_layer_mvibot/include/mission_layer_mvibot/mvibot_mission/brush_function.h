@@ -20,8 +20,7 @@ class brush_function : public rclcpp::Node{
         int brush  = 0;
         int brush_state = 0;
         //declare pub
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr brush_function_state_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr brush_state_pub_;
         //declare sub
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr brush_info_sub_;
@@ -38,8 +37,7 @@ class brush_function : public rclcpp::Node{
             mvibot_seri_f_ = mvibot_seri_;
             mvibot_seri_f_.erase(0,1);
             //init publisher
-            history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
-            brush_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("brush_function_state",1);
+            function_state_pub_ = this->create_publisher<std_msgs::msg::String>("function_state",1);
             brush_state_pub_ = this->create_publisher<std_msgs::msg::String>("brush_state",1);
             //init subscriber
             //
@@ -77,12 +75,6 @@ class brush_function : public rclcpp::Node{
             brush_function_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/brush_function_status", qos_profile, brush_function_status_callback);
             //
             auto brush_callback = [this](std_msgs::msg::String msg)->void{
-                //get state brush
-                // string_Iv2 data1, data2;
-                // data1.detect(msg.data,"","|","");
-                // data2.detect(data1.data1[1],"",":","");
-                // brush_state = stoi(data2.data1[1]);
-                // cout << "brush_state: "<<brush_state<<endl;
                 char ch_last = msg.data.back();
                 if( ch_last=='0') brush_state = 0;
                 else if(ch_last == '1') brush_state = 1;
@@ -96,23 +88,17 @@ class brush_function : public rclcpp::Node{
                 if(request == 1){
                     int res;
                     res = action();
-                    pub_function_state_brush(res);
+                    pub_function_state(res);
                 }
             };
-            action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
+            action_timer_ = this->create_wall_timer(500ms, action_timer_callback);
         }
-        void pub_function_state_brush(int st);
+        void pub_function_state(int st);
         void pub_state_brush(int st);
-        void send_history(string status, string info);
         void process_data();
         int action();
 };
-void brush_function::send_history(string status, string info){
-    static std_msgs::msg::String history_msg;
-    history_msg.data = mvibot_seri_f_+"|" + "status:"+status + "|" + "content:" + info;
-    history_pub_->publish(history_msg);
-}
-void brush_function::pub_function_state_brush(int st){
+void brush_function::pub_function_state(int st){
     std_msgs::msg::String msg;
     if(st == Active_) msg.data = "active";
     else if(st == Finish_) msg.data = "finish";
@@ -121,7 +107,7 @@ void brush_function::pub_function_state_brush(int st){
     else if(st == Stop_) msg.data = "stop";
     else if(st == True_) msg.data = "true";
     else if(st == False_) msg.data = "false";
-    brush_function_state_pub_->publish(msg);
+    function_state_pub_->publish(msg);
 }
 void brush_function::pub_state_brush(int st){
     std_msgs::msg::String msg;

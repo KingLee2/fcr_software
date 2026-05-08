@@ -19,7 +19,7 @@ class initialpose_function : public rclcpp::Node{
         geometry_msgs::msg::PoseWithCovarianceStamped initialPose;
         geometry_msgs::msg::PoseWithCovarianceStamped robotPose;
         //declare pub
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr initialpose_function_state_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
         rclcpp::Publisher<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr initialize_pose_pub_;
         //declare sub
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr initialpose_info_sub_;
@@ -33,13 +33,13 @@ class initialpose_function : public rclcpp::Node{
             rclcpp::QoS qos_profile(rclcpp::KeepLast(10));
             qos_profile.best_effort();
             rclcpp::QoS qos_amcl(rclcpp::KeepLast(1));
-            qos_amcl.best_effort();     // 🔥 match AMCL
+            qos_amcl.best_effort();
             qos_amcl.durability_volatile();
             mvibot_seri_ = this->get_namespace();
             mvibot_seri_f_ = mvibot_seri_;
             mvibot_seri_f_.erase(0,1);
             //init publisher
-            initialpose_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("initialpose_function_state",1);
+            function_state_pub_ = this->create_publisher<std_msgs::msg::String>("function_state",1);
             initialize_pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>("initialpose",qos_amcl);
             //init subscriber
             auto robot_pose_callback = [this](geometry_msgs::msg::PoseWithCovarianceStamped msg)->void{
@@ -86,14 +86,14 @@ class initialpose_function : public rclcpp::Node{
                 if(request == 1){
                     int res;
                     res = action();
-                    pub_function_state_initialpose(res);
+                    pub_function_state(res);
                 }
             };
-            action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
+            action_timer_ = this->create_wall_timer(1000ms, action_timer_callback);
         }
         float getyaw(double data1, double data2);
         int check_robot_position();
-        void pub_function_state_initialpose(int st);
+        void pub_function_state(int st);
         void process_data();
         int action();
 };
@@ -132,7 +132,7 @@ int initialpose_function::check_robot_position(){
     if(dis <= 0.05 && fabs(sin(angle2)-sin(angle1))<=0.05 && fabs(cos(angle2)-cos(angle1))<=0.05) return 1;
     return 0;
 }
-void initialpose_function::pub_function_state_initialpose(int st){
+void initialpose_function::pub_function_state(int st){
     std_msgs::msg::String msg;
     if(st == Active_) msg.data = "active";
     else if(st == Finish_) msg.data = "finish";
@@ -141,7 +141,7 @@ void initialpose_function::pub_function_state_initialpose(int st){
     else if(st == Stop_) msg.data = "stop";
     else if(st == True_) msg.data = "true";
     else if(st == False_) msg.data = "false";
-    initialpose_function_state_pub_->publish(msg);
+    function_state_pub_->publish(msg);
 }
 void initialpose_function::process_data(){
     initialPose.header.frame_id = "map";

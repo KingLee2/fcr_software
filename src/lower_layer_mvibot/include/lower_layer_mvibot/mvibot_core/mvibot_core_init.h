@@ -13,7 +13,7 @@ using namespace std;
     // mode operating for robot
     string mode = "navigation";
     string mvibot_seri="mvibot";
-    string define_path = "/home/mvibot/floorCleaningRobot_ws/"; //src/lower_layer_mvibot/";
+    string define_path = "/home/mvibot/floorCleaningRobot_ws/";
     // param robot 
     float R=0.085,L=0.52;
     float gear=20;
@@ -23,14 +23,12 @@ using namespace std;
     float volume=100;
     float low_battery=20;
     // lift brush param
-    // float lift_temperature_microcontroller = 0;
     int lift_brush_control_receive_uart = 0;
     int lift_brush_power_receive_uart = 0;
     float lift_brush_power_send_uart = 0;
     float lift_brush_control_send_uart = 0;
     int lift_brush_mode = 0;
     std_msgs::msg::Float32 lift_brush_data;
-    // std_msgs::msg::Float32MultiArray lift_cylinder_value;
     // lift suction param
     int lift_suction_control_receive_uart = 0;
     int lift_suction_power_receive_uart = 0;
@@ -70,15 +68,6 @@ using namespace std;
     int battery_live_status=0;
     int battery_small_live_status=0;
     int uart_live = 0;
-    // // speed control
-    // int motor_stop=0;
-    // int robot_emg;
-    // float v_set1,v_set2,v_set3,w_set1,w_set2,w_set3;
-    // float ts_speed_control;
-    // float time_out_cmd_vel;
-    // process data uart 
-    // std::vector<uint8_t> data_receive={};
-    // std::vector<uint8_t> data_tran={};
     // battery 
     float battery_soc=-1;
     float battery_vol=0;
@@ -91,26 +80,18 @@ using namespace std;
     float battery_current=0;
     float battery_cell[8];
     int battery1_charge;
-    // int battery2_charge;
     int battery_status_charge;
     //gpio
     std_msgs::msg::Float32MultiArray input_user;
     std_msgs::msg::Float32MultiArray output_user;
-    // std_msgs::msg::Float32MultiArray output_user_set;
     // led & color
     float green,red,blue;
     float led_r,led_l,led_f,led_b;
     // odom
     nav_msgs::msg::Odometry odom_wheel;
-    // float x_wheel=0,y_wheel=0,theta_wheel=0;
-    // float vx_wheel,vy_wheel,vth_wheel;
-    // sensor_msgs::msg::Imu imu_msg;
     float distance_robot=0;
     float distance_wheel_right=0;
     float distance_wheel_left=0;
-    // // music
-    // int status_music_n=0;
-    // int start_music_n=0;
     // update software
     float software_update=0;
     float software_update_status=0;
@@ -135,14 +116,6 @@ using namespace std;
     int charge_control_status = 0;                     
     int charge_receive_uart_status = 0;
     //mutex var
-    // std::recursive_mutex mutex_common;
-    std::mutex mutex_common;
-    std::mutex mutex_motor;
-    std::mutex mutex_battery;
-    std::mutex mutex_gpio;
-    std::mutex mutex_sensor;
-    std::mutex mutex_led;
-    //
     std::mutex mutex_socket;
     std::mutex mutex_odom;
     std::mutex mutex_tool;
