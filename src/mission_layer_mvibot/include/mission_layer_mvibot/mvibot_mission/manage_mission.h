@@ -377,7 +377,7 @@ class manage_mission : public rclcpp::Node{
                     is_stuck = false;
                 }
                 RCLCPP_INFO(this->get_logger(),"duration: %f", no_move_duration);
-                if(no_move_duration > 30.0) is_stuck = true;
+                if(no_move_duration > 15.0) is_stuck = true;
                 if(status != Finish_ && brush_status == 1 && is_stuck){
                     //pub brush off
                     pub_state_brush(0);
