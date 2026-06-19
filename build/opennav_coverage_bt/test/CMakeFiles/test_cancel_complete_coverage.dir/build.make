@@ -145,6 +145,7 @@ test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libvisualization_msgs__ro
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_behavior_tree.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_compute_path_to_pose_action_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_compute_path_through_poses_action_bt_node.so
+test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_concatenate_paths_action_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_controller_cancel_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_wait_cancel_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_spin_cancel_bt_node.so
@@ -172,6 +173,7 @@ test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_initial_pose_rece
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_is_battery_charging_condition_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_is_battery_low_condition_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_are_error_codes_active_condition_bt_node.so
+test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_are_poses_near_condition_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_would_a_controller_recovery_help_condition_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_would_a_planner_recovery_help_condition_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_would_a_smoother_recovery_help_condition_bt_node.so
@@ -187,6 +189,7 @@ test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_recovery_node_bt_
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_navigate_to_pose_action_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_navigate_through_poses_action_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_remove_passed_goals_action_bt_node.so
+test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_get_current_pose_action_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_get_pose_from_path_action_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_pipeline_sequence_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_round_robin_node_bt_node.so
@@ -197,6 +200,9 @@ test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_smoother_selector
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_goal_checker_selector_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_progress_checker_selector_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_goal_updated_controller_bt_node.so
+test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_compute_and_track_route_cancel_bt_node.so
+test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_compute_and_track_route_bt_node.so
+test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libnav2_compute_route_bt_node.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/librclcpp.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/librclcpp_action.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/librclcpp_lifecycle.so
@@ -301,7 +307,7 @@ test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libvisualization_msgs__ro
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libvoxel_grid.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libclass_loader.so
 test/test_cancel_complete_coverage: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.1.0
-test/test_cancel_complete_coverage: /usr/lib/x86_64-linux-gnu/libtinyxml2.so.10.0.0
+test/test_cancel_complete_coverage: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libtinyxml2.so.9.0.0
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libsensor_msgs__rosidl_typesupport_fastrtps_c.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libsensor_msgs__rosidl_typesupport_fastrtps_cpp.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libsensor_msgs__rosidl_typesupport_introspection_c.so
@@ -436,7 +442,7 @@ test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libbuiltin_interfaces__ro
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
-test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/librmw.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
 test/test_cancel_complete_coverage: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so

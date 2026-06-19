@@ -1,1 +1,1 @@
-/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/examples/dual_camera/README.md
+/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/examples/dual_camera/README.md

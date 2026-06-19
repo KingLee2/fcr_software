@@ -1,1 +1,1 @@
-/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/include/realsense_node_factory.h
+/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/include/realsense_node_factory.h

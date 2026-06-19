@@ -40,6 +40,7 @@
 #include "std_msgs/msg/u_int8_multi_array.hpp"
 #include "opennav_coverage_msgs/action/navigate_complete_coverage.hpp"
 #include "opennav_coverage_msgs/action/compute_coverage_path.hpp"
+#include "apriltag_msgs/msg/april_tag_detection_array.hpp"
 //#include <nav_msgs/GetPlan.h>
 //#include <slam_toolbox_msgs/SerializePoseGraph.h>
 

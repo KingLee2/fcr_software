@@ -55,6 +55,11 @@ function(ament_cmake_symlink_install_directory cmake_current_source_dir)
         # remove trailing slash
         string(SUBSTRING "${dir}" 0 ${offset} dir)
       endif()
+      
+      # Create destination directory.
+      # This does *not* solve the problem of empty directories WITHIN the install tree,
+      # but does make sure that the top-level directory specified by the caller gets created.
+      file(MAKE_DIRECTORY "${destination}")
 
       # glob recursive files
       set(relative_files "")
@@ -390,6 +395,12 @@ include("/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/ament_cm
 
 # install("TARGETS" "opennav_coverage_msgs_s__rosidl_typesupport_c" "DESTINATION" "lib/python3.12/site-packages/opennav_coverage_msgs")
 include("/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/ament_cmake_symlink_install_targets_2_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/ament_cmake_index/share/ament_index/resource_index/rust_packages/opennav_coverage_msgs" "DESTINATION" "share/ament_index/resource_index/rust_packages")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/opennav_coverage/opennav_coverage_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/ament_cmake_index/share/ament_index/resource_index/rust_packages/opennav_coverage_msgs" "DESTINATION" "share/ament_index/resource_index/rust_packages")
+
+# install(DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/rosidl_generator_rs/opennav_coverage_msgs/rust" "DESTINATION" "share/opennav_coverage_msgs")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/opennav_coverage/opennav_coverage_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/rosidl_generator_rs/opennav_coverage_msgs/rust" "DESTINATION" "share/opennav_coverage_msgs")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/rosidl_adapter/opennav_coverage_msgs/msg/Coordinate.idl" "DESTINATION" "share/opennav_coverage_msgs/msg")
 ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/opennav_coverage/opennav_coverage_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/rosidl_adapter/opennav_coverage_msgs/msg/Coordinate.idl" "DESTINATION" "share/opennav_coverage_msgs/msg")

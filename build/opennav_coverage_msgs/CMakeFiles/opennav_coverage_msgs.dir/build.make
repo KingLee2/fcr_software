@@ -151,6 +151,8 @@ CMakeFiles/opennav_coverage_msgs: /opt/ros/jazzy/share/nav_msgs/msg/MapMetaData.
 CMakeFiles/opennav_coverage_msgs: /opt/ros/jazzy/share/nav_msgs/msg/OccupancyGrid.idl
 CMakeFiles/opennav_coverage_msgs: /opt/ros/jazzy/share/nav_msgs/msg/Odometry.idl
 CMakeFiles/opennav_coverage_msgs: /opt/ros/jazzy/share/nav_msgs/msg/Path.idl
+CMakeFiles/opennav_coverage_msgs: /opt/ros/jazzy/share/nav_msgs/msg/Trajectory.idl
+CMakeFiles/opennav_coverage_msgs: /opt/ros/jazzy/share/nav_msgs/msg/TrajectoryPoint.idl
 CMakeFiles/opennav_coverage_msgs: /opt/ros/jazzy/share/nav_msgs/srv/GetMap.idl
 CMakeFiles/opennav_coverage_msgs: /opt/ros/jazzy/share/nav_msgs/srv/GetPlan.idl
 CMakeFiles/opennav_coverage_msgs: /opt/ros/jazzy/share/nav_msgs/srv/LoadMap.idl

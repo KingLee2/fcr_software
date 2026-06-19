@@ -6,22 +6,16 @@
 using namespace std;
 using json = nlohmann::json;
 //class lift, brush, suction, temperature, sensor, battery, config
-class wifi{
-	public:
-		string ssid;
-		string signal;
-		string active;
-		string security;
-};
-class n_wifi{
-	public:
-		vector<wifi> n_wifi_;
-		void add_wifi(string ssid, string signal, string active, string security);
-		void print();
-		string string_msg();
-};
 class tool_node : public rclcpp::Node{
     private:
+        //wifwi
+        struct WifiInfo
+            {
+                std::string ssid;
+                int signal;
+                std::string active;
+                std::string security;
+            };
         //declare var 
         string mvibot_seri_;
         float ts_scan_sensor;
@@ -48,8 +42,6 @@ class tool_node : public rclcpp::Node{
         // ready sensor when radar 1 2 camera 1 2 is ready
         int dym_set_camera1=0,dym_set_camera2=0;
         int reset_radar1,reset_radar2,reset_camera1,reset_camera2;
-        //config and connect wifi
-        n_wifi my_wifi;
         //history
         json his_content;
         //
@@ -416,19 +408,21 @@ class tool_node : public rclcpp::Node{
                 pub_battery_status();
                 pub_battery_cell_status();
                 //
-                // scan_wifi();
+                scan_wifi();
             };
             timer_ = this->create_wall_timer(1000ms, timer_callback);
         }
         void send_history(string status, string info);
         //
+        string exec_cmd(const std::string &cmd);
         string load_file(string name_file);
         void robot_load_config();
         void pub_robot_config();
         void pub_robot();
         void pub_information_robot();
+        //
+        vector<std::string> splitNmcliLine(const std::string &line);
         void scan_wifi();
-        void pub_robot_list_wifi(string data);
         //
         void pub_sensor_status();
         void check_sensor();
@@ -446,54 +440,7 @@ class tool_node : public rclcpp::Node{
         void pub_battery_status();
         void pub_battery_cell_status();
 };
-void n_wifi::add_wifi(string ssid, string signal, string active, string security){
-	static int is_have;
-	is_have=0;
-	for(int i=0;i<n_wifi_.size();i++){
-		if(n_wifi_[i].ssid==ssid){
-			is_have=1;
-			if(stof_f(signal)>stof_f(n_wifi_[i].signal)){
-				n_wifi_[i].signal=signal;
-			}
-			if(active=="yes"){
-				n_wifi_[i].active=active;
-			}
-			break;
-		}
-	}
-	//
-	if(is_have==0){
-		n_wifi_.resize(n_wifi_.size()+1);
-		n_wifi_[n_wifi_.size()-1].ssid=ssid;
-		n_wifi_[n_wifi_.size()-1].signal=signal;
-		n_wifi_[n_wifi_.size()-1].active=active;
-		n_wifi_[n_wifi_.size()-1].security=security;
-	}
-}
-void n_wifi::print(){
-	for(int i=0;i<n_wifi_.size();i++){
-		cout<<"SSID:";
-		cout<<n_wifi_[i].ssid;
-		cout<<"\tsignal:"<<n_wifi_[i].signal;
-		cout<<"\tactive:"<<n_wifi_[i].active;
-		cout<<"\tsecurity:"<<n_wifi_[i].security<<endl;
-	}
-}
-string n_wifi::string_msg(){
-    json data_json;
-	string data_str;
-    data_json["wifi_list"] = json::array();
-	for(int i=0;i<n_wifi_.size();i++){
-        json wifi_json;
-        wifi_json["ssid"] = n_wifi_[i].ssid;
-        wifi_json["signal"] = n_wifi_[i].signal;
-        wifi_json["active"] = n_wifi_[i].active;
-        wifi_json["security"] = n_wifi_[i].security;
-        data_json["wifi_list"].push_back(wifi_json);
-	}
-    data_str = data_json.dump();
-    return data_str;
-}
+
 void tool_node::send_history(string status, string info){
     std_msgs::msg::String history_msg;
     json history_json;
@@ -504,6 +451,20 @@ void tool_node::send_history(string status, string info){
     history_pub_->publish(history_msg);
 }
 //
+string tool_node::exec_cmd(const std::string &cmd){
+    std::array<char, 512> buffer;
+    std::string result;
+    FILE *pipe = popen(cmd.c_str(), "r");
+    if (!pipe){
+        RCLCPP_ERROR(this->get_logger(),"popen failed");
+        return "";
+    }
+    while (fgets(buffer.data(), buffer.size(), pipe) != nullptr){
+        result += buffer.data();
+    }
+    pclose(pipe);
+    return result;
+}
 string tool_node::load_file(string name_file){
     //
     static string value_return;
@@ -613,21 +574,24 @@ void tool_node::robot_load_config(){
     config=load_file("is_master");
     if(config!="-1") robot_config_string+="is_master:"+config+"|";  
     //
-    config="ip -4 addr show "+my_port+" | grep -oP '(?<=inet\\s)\\d+(\\.\\d+){3}'";
-    config=exec(config.c_str());
-    config.erase(std::remove(config.begin(), config.end(), '\n'), config.cend());
-    robot_config_string+="ip_robot:"+config;//+"|"; 
-    try{
-        std::ofstream file(define_path+"config/ip_robot");
-        if (!file.is_open()){
-            cout<<"error open file ip_robot"<<endl;
-            return;
-        }
-        file <<config;
-        file.close();
-    }catch(const std::exception& e){
-        cout<<"error| update ip_robot into file:"<<e.what()<<endl;
-    }
+    // config="ip -4 addr show "+my_port+" | grep -oP '(?<=inet\\s)\\d+(\\.\\d+){3}'";
+    // config=exec(config.c_str());
+    // config.erase(std::remove(config.begin(), config.end(), '\n'), config.cend());
+    // robot_config_string+="ip_robot:"+config;//+"|"; 
+    // try{
+    //     std::ofstream file(define_path+"config/ip_robot");
+    //     if (!file.is_open()){
+    //         cout<<"error open file ip_robot"<<endl;
+    //         return;
+    //     }
+    //     file <<config;
+    //     file.close();
+    // }catch(const std::exception& e){
+    //     cout<<"error| update ip_robot into file:"<<e.what()<<endl;
+    // }
+    //
+    config=load_file("ip_robot");
+    if(config!="-1") robot_config_string+="ip_robot:"+config;
     /*
     config=load_file("ip_node");
     if(config!="-1") robot_config_string+="ip_node:"+config;//+"|";  
@@ -686,34 +650,110 @@ void tool_node::pub_robot_config(){
         robot_config_pub_->publish(msg);
     }else creat_fun=1;
 }
-void tool_node::pub_robot_list_wifi(string data){
-    std_msgs::msg::String msg;
-    msg.data = data;
-    list_wifi_pub_->publish(msg);
+vector<std::string> tool_node::splitNmcliLine(const std::string &line){
+    std::vector<std::string> fields;
+    std::string current;
+    bool escape = false;
+    for (char c : line){
+        if (escape)
+        {
+            current += c;
+            escape = false;
+        }
+        else if (c == '\\')
+        {
+            escape = true;
+        }
+        else if (c == ':')
+        {
+            fields.push_back(current);
+            current.clear();
+        }
+        else
+        {
+            current += c;
+        }
+    }
+    fields.push_back(current);
+    return fields;
 }
 void tool_node::scan_wifi(){
-    string out_put="";
-	string_Iv2 data;
-    out_put=exec("sudo nmcli -t -f SSID,signal,active,security device wifi list --rescan yes");
-    // process data
-    data.detect(out_put,"","\n","");
-    my_wifi.n_wifi_.resize(0);
-    for(int i=0;i<data.data1.size();i++){
-        if(data.data1[i]!=""){
-            static string_Iv2 data2;
-            data2.detect(data.data1[i],"",":","");
-            if(data2.data1.size()==4){
-                if(data2.data1[0]!=""){
-                    my_wifi.add_wifi(data2.data1[0],data2.data1[1],data2.data1[2],data2.data1[3]);
-                }
+    std::string cmd ="nmcli -t -e yes -f SSID,SIGNAL,ACTIVE,SECURITY device wifi list"; // --rescan yes";
+    std::string output = exec_cmd(cmd);
+    if (output.empty())
+    {
+        RCLCPP_WARN(this->get_logger(),"wifi scan empty");
+        return;
+    }
+    std::stringstream ss(output);
+    std::string line;
+    // keep strongest signal for each SSID
+    std::map<std::string, WifiInfo> wifi_map;
+    while (std::getline(ss, line))
+    {
+        if (line.empty()) continue;
+        auto fields = splitNmcliLine(line);
+        if (fields.size() < 4) continue;
+        std::string ssid = fields[0];
+        // skip hidden SSID
+        if (ssid.empty()) continue;
+        int signal = 0;
+        string active;
+        try{
+            signal = std::stoi(fields[1]);
+            active = fields[2];
+        }
+        catch (...){
+            continue;
+        }
+        WifiInfo wifi;
+        wifi.ssid = ssid;
+        wifi.signal = signal;
+        wifi.active = fields[2];
+        wifi.security = fields[3];
+        // keep strongest AP
+        if (wifi_map.find(ssid) == wifi_map.end()){
+            wifi_map[ssid] = wifi;
+        }
+        else{
+            if(active == "yes") wifi_map[ssid] = wifi;
+            else if(signal > wifi_map[ssid].signal && active != "yes"){
+                wifi_map[ssid] = wifi;
             }
         }
     }
-    // 
-    cout<<"my list wifi"<<endl;
-    my_wifi.print();
-    //
-    pub_robot_list_wifi(my_wifi.string_msg());
+    // map -> vector
+    std::vector<WifiInfo> wifi_list;
+
+    for (auto &item : wifi_map)
+    {
+        wifi_list.push_back(item.second);
+    }
+    // sort by signal descending
+    std::sort(
+        wifi_list.begin(),
+        wifi_list.end(),
+        [](const WifiInfo &a, const WifiInfo &b)
+        {
+            return a.signal > b.signal;
+        });
+    // Create JSON
+    json root;
+    root["wifi_list"] = json::array();
+    for (const auto &wifi : wifi_list)
+    {
+        json wifi_json;
+        wifi_json["ssid"] = wifi.ssid;
+        wifi_json["signal"] = wifi.signal;
+        wifi_json["active"] = wifi.active;
+        wifi_json["security"] = wifi.security;
+        root["wifi_list"].push_back(wifi_json);
+    }
+    // Publish
+    std_msgs::msg::String msg;
+    msg.data = root.dump();
+    list_wifi_pub_->publish(msg);
+    RCLCPP_INFO(this->get_logger(),"wifi scan published");
 }
 //
 void tool_node::pub_sensor_status(){

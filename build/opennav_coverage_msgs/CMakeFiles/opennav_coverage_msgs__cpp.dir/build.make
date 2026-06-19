@@ -229,6 +229,8 @@ rosidl_generator_cpp/opennav_coverage_msgs/msg/coordinate.hpp: /opt/ros/jazzy/sh
 rosidl_generator_cpp/opennav_coverage_msgs/msg/coordinate.hpp: /opt/ros/jazzy/share/nav_msgs/msg/OccupancyGrid.idl
 rosidl_generator_cpp/opennav_coverage_msgs/msg/coordinate.hpp: /opt/ros/jazzy/share/nav_msgs/msg/Odometry.idl
 rosidl_generator_cpp/opennav_coverage_msgs/msg/coordinate.hpp: /opt/ros/jazzy/share/nav_msgs/msg/Path.idl
+rosidl_generator_cpp/opennav_coverage_msgs/msg/coordinate.hpp: /opt/ros/jazzy/share/nav_msgs/msg/Trajectory.idl
+rosidl_generator_cpp/opennav_coverage_msgs/msg/coordinate.hpp: /opt/ros/jazzy/share/nav_msgs/msg/TrajectoryPoint.idl
 rosidl_generator_cpp/opennav_coverage_msgs/msg/coordinate.hpp: /opt/ros/jazzy/share/nav_msgs/srv/GetMap.idl
 rosidl_generator_cpp/opennav_coverage_msgs/msg/coordinate.hpp: /opt/ros/jazzy/share/nav_msgs/srv/GetPlan.idl
 rosidl_generator_cpp/opennav_coverage_msgs/msg/coordinate.hpp: /opt/ros/jazzy/share/nav_msgs/srv/LoadMap.idl

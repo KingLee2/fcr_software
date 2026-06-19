@@ -31,6 +31,11 @@ class marker_function : public rclcpp::Node{
                 scan_safe=msg;
             };
             laser_scan_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(mvibot_seri_+"/laser/scan",qos_profile,scan_callback);
+            //apriltag
+            auto apriltag_callback = [this](apriltag_msgs::msg::AprilTagDetectionArray msg) ->void{
+                apriltag_ = msg;
+            };
+            apriltag_sub_ = this->create_subscription<apriltag_msgs::msg::AprilTagDetectionArray>(mvibot_seri_+"/detections",qos_profile, apriltag_callback);
             //
             auto marker_info_callback = [this](std_msgs::msg::String msg)->void{
                 parameters = json::parse(msg.data);
@@ -103,6 +108,7 @@ class marker_function : public rclcpp::Node{
         int request = 0; //request = 1: yeu cau thuc thi, request = 0: khong co yeu cau thuc thi
         sensor_msgs::msg::LaserScan scan_safe;
         string marker_type;
+        int tag_id;
         //
         double x_set=0;
         double y_set=0;
@@ -114,6 +120,8 @@ class marker_function : public rclcpp::Node{
         geometry_msgs::msg::PoseStamped pose_o_robot,pose_n_robot;
         double *robot_position;
         double *robot_position_get;
+        //detect apriltag
+        apriltag_msgs::msg::AprilTagDetectionArray apriltag_;
         // offset transfrom
         double off_set_dis=0;
         double off_set_angle=0;
@@ -132,6 +140,8 @@ class marker_function : public rclcpp::Node{
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr marker_info_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr marker_function_status_sub_;
         rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr laser_scan_sub_;
+        //detect apriltag
+        rclcpp::Subscription<apriltag_msgs::msg::AprilTagDetectionArray>::SharedPtr apriltag_sub_;
         //service
         rclcpp::Client<rcl_interfaces::srv::GetParameters>::SharedPtr get_footprint_local_client_;
         //declare timer
@@ -176,6 +186,11 @@ void marker_function::process_data(){
     else if(marker_type == "none_marker_angle"){
         off_set_angle = stof(parameters["off_set_angle"].get<string>());
     }
+    else if(marker_type == "apriltag_marker"){
+        off_set_dis = stof(parameters["off_set_dis"].get<string>());
+        tag_id = stoi(parameters["tag_id"].get<string>());
+    }
+    cout<<"marker|finish_process_data"<<endl;
 }
 double marker_function::getyaw(geometry_msgs::msg::Quaternion quat_msg){
     //get angle around Z
@@ -494,78 +509,397 @@ int marker_function::move_to_goal(){
 int marker_function::action(){
     static int res;
     if(status==Active_){
-        // static string config_set,config_return;
-        cout<<"marker|step: "<<step<<endl;
-        if(step == 0){
-            res=caculate_transforms_ofset();
-            cout<<"marker|set goal|res: "<<res<<endl;
-            if(res == 1) step = 1;
-            return Active_;
-        }
-        else if(step >= 1){
-            send_tranform(x_set,y_set,z_set,w_set,mvibot_seri_f_+"/odom",mvibot_seri_f_+"/base_marker");
-            cout<<"marker|send tranform "<<endl;
-            if(step == 1){
-                res=check_send_transforms_tf_frame();
-                cout<<"marker|check send tranform|res: "<<res<<endl;
-                if(res==1) step=2;
-                return Active_;
+	cout<<"marker|marker_type:"<<marker_type<<endl;
+        if(marker_type == "apriltag_marker"){
+            //check detect apriltag
+            static string frame_id, child_frame_id;
+            static geometry_msgs::msg::TransformStamped tf_m_to_odom, tf_bm_to_odom, tf_bf_to_tag, transformStamped_m, transformStamped_md;
+            static vector<geometry_msgs::msg::TransformStamped> tf_marker;
+            static geometry_msgs::msg::TransformStamped tf_bm_to_bf;
+            static geometry_msgs::msg::Vector3 translation_;
+            static geometry_msgs::msg::Quaternion rotation_;
+            static double dis_r,yaw_r, K, v_r, w_r;
+            const double Kp = 0.3;
+	        cout<<"marker|marker_type:"<<marker_type<<"|step:"<<step<<endl;
+            if(step == 0){
+		        cout<<"marker|marker_type:"<<marker_type<<"|step:"<<step<<"|tag_id:"<<apriltag_.detections[0].id<<"|family:"<<apriltag_.detections[0].family<<endl;
+                if(apriltag_.detections[0].id == tag_id && apriltag_.detections[0].family == "tag36h11"){
+                    try{
+                        tf_bf_to_tag=tf_Buffer_->lookupTransform("tag_"+to_string(tag_id), mvibot_seri_f_+"/base_footprint", tf2::TimePointZero, tf2::durationFromSec(0.1));
+                    } catch(tf2::TransformException &e){
+                        RCLCPP_ERROR(this->get_logger(),"Error occured1: %s ", e.what());
+                        return Active_;
+                    }
+                    static double x_check, z_check;
+                    static int trigger = 0;
+                    x_check = tf_bf_to_tag.transform.translation.x;
+                    z_check = tf_bf_to_tag.transform.translation.z;
+                    if(z_check>1.35 && z_check<1.45 && x_check>-0.1 && x_check<0.1 && trigger == 0){
+                        //send tranform base_marker frame
+                        frame_id = "tag_"+to_string(tag_id);
+                        child_frame_id = mvibot_seri_f_+"/marker";
+                        cout<<"marker|marker_type:"<<marker_type<<"|step:"<<step<<"|frame_id:"<<frame_id<<"|child_frame_id:"<<child_frame_id<<endl;
+                        //send transform marker
+                        transformStamped_m.header.stamp = this->get_clock()->now();
+                        transformStamped_m.header.frame_id = frame_id;
+                        transformStamped_m.child_frame_id = child_frame_id;
+
+                        transformStamped_m.transform.translation.x = 0;
+                        transformStamped_m.transform.translation.y = 0;
+                        transformStamped_m.transform.translation.z = off_set_dis;
+
+                        transformStamped_m.transform.rotation.x = -0.5;
+                        transformStamped_m.transform.rotation.y = -0.5;
+                        transformStamped_m.transform.rotation.z = -0.5;
+                        transformStamped_m.transform.rotation.w = 0.5;
+                        tf_Broadcaster_->sendTransform(transformStamped_m);
+                        //get transform marker -->odom after detecting apriltag marker
+                        try{
+                            tf_m_to_odom=tf_Buffer_->lookupTransform(mvibot_seri_f_+"/odom", mvibot_seri_f_+"/marker", tf2::TimePointZero, tf2::durationFromSec(0.1));
+                        } catch(tf2::TransformException &e){
+                            RCLCPP_ERROR(this->get_logger(),"Error occured1: %s ", e.what());
+                            return Active_;
+                        }
+                        tf_marker.push_back(tf_m_to_odom);
+                        if(tf_marker.size() >= 40){
+                            double x = 0.0, y = 0.0, z = 0.0, sum_sin_yaw = 0.0, sum_cos_yaw = 0.0, yaw, n, yaw_avg;
+                            tf2::Quaternion q;
+                            for(const auto &tf : tf_marker)
+                            {
+                                //sum translation
+                                x += tf.transform.translation.x;
+                                y += tf.transform.translation.y;
+                                z += tf.transform.translation.z;
+                                //sum yaw
+                                yaw = getyaw(tf.transform.rotation);
+                                sum_sin_yaw += sin(yaw);
+                                sum_cos_yaw += cos(yaw);
+                            }
+                            n = static_cast<double>(tf_marker.size());
+                            // average translation
+                            x /= n;
+                            y /= n;
+                            z /= n;
+                            //average yaw
+                            yaw_avg = atan2(sum_sin_yaw, sum_cos_yaw);
+                            q.setRPY(0.0,0.0,yaw_avg);
+                            q.normalize();
+                            //
+                            transformStamped_md.header.frame_id = mvibot_seri_f_+"/odom";
+                            transformStamped_md.child_frame_id = mvibot_seri_f_+"/base_marker";
+                            transformStamped_md.transform.translation.x = x;
+                            transformStamped_md.transform.translation.y = y;
+                            transformStamped_md.transform.translation.z = z;
+                            transformStamped_md.transform.rotation = tf2::toMsg(q);
+                            tf_marker.clear();
+                            step = 1;
+                        }
+                    }
+                    else{
+                        cout<<"marker|marker_type:"<<marker_type<<"|trigger:"<<trigger<<endl;
+                        if(trigger == 0){
+                            //send transform marker
+                            cout<<"marker|marker_type:"<<marker_type<<"|trigger:"<<trigger<<"|send transform marker"<<endl;
+                            transformStamped_m.header.stamp = this->get_clock()->now();
+                            transformStamped_m.header.frame_id = "tag_"+to_string(tag_id);
+                            transformStamped_m.child_frame_id = mvibot_seri_f_ + "/marker";
+
+                            transformStamped_m.transform.translation.x = 0;
+                            transformStamped_m.transform.translation.y = 0;
+                            transformStamped_m.transform.translation.z = 1.4;
+
+                            transformStamped_m.transform.rotation.x = -0.5;
+                            transformStamped_m.transform.rotation.y = -0.5;
+                            transformStamped_m.transform.rotation.z = -0.5;
+                            transformStamped_m.transform.rotation.w = 0.5;
+                            tf_Broadcaster_->sendTransform(transformStamped_m);
+                            trigger = 1;
+                            return Active_;
+                        }
+                        else if(trigger == 1){
+                            //get transform marker -->odom after detecting apriltag marker
+                            cout<<"marker|marker_type:"<<marker_type<<"|trigger:"<<trigger<<"|get transform marker to odom"<<endl;
+                            try{
+                                tf_m_to_odom=tf_Buffer_->lookupTransform(mvibot_seri_f_+"/odom", mvibot_seri_f_+"/marker", tf2::TimePointZero, tf2::durationFromSec(0.1));
+                            } catch(tf2::TransformException &e){
+                                RCLCPP_ERROR(this->get_logger(),"Error occured1: %s ", e.what());
+                                return Active_;
+                            }
+                            trigger = 2;
+                            return Active_;
+                        }
+                        else if(trigger>=2){
+                            cout<<"marker|marker_type:"<<marker_type<<"|trigger:"<<trigger<<"|send transform base_marker to odom"<<endl;
+                            //send transform base_marker -->odom
+                            tf_bm_to_odom = tf_m_to_odom;
+                            tf_bm_to_odom.header.stamp = this->get_clock()->now();
+                            tf_bm_to_odom.child_frame_id = mvibot_seri_f_+"/base_marker";
+                            tf_Broadcaster_->sendTransform(tf_bm_to_odom);
+                            if(trigger == 2){
+                                trigger = 3;
+                                return Active_;
+                            }
+                            else if(trigger >= 3){
+                                //get tranform base_marker --> base_footprint
+                                cout<<"marker|marker_type:"<<marker_type<<"|trigger:"<<trigger<<"|get transform base_maker to base_footprint"<<endl;
+                                try{
+                                    tf_bm_to_bf=tf_Buffer_->lookupTransform(mvibot_seri_f_+"/base_footprint", mvibot_seri_f_+"/base_marker", tf2::TimePointZero, tf2::durationFromSec(0.1));
+                                } catch(tf2::TransformException &e){
+                                    RCLCPP_ERROR(this->get_logger(),"Error occured1: %s ", e.what());
+                                    return Active_;
+                                }
+                                if(trigger == 3){
+                                    trigger = 4;
+                                    return Active_;
+                                }
+                                else if(trigger == 4){
+                                    std::cout<<"marker|Get footprint robot for moving to checker!"<<endl;
+                                    if(get_footprint() == 1) {
+                                        std::cout<<"marker|Finish get footprint robot!"<<endl;                  
+                                        trigger=5;
+                                    }
+                                    return Active_;
+                                }
+                                else if(trigger == 5){
+                                    std::cout<<"marker|Action move to checker!"<<endl;
+                                    //check safe
+                                    // safe
+                                        if(safe==0) {
+                                            if(check_safe()==1)  safe=30;
+                                        }
+                                        else{
+                                            if(check_safe()==0) safe--;
+                                            if(safe<0) safe=0;
+                                        }
+                                    //
+                                    translation_ = tf_bm_to_bf.transform.translation;
+                                    rotation_ = tf_bm_to_bf.transform.rotation;
+                                    //get dis
+                                    dis_r = std::hypot(translation_.x,translation_.y);
+                                    //get yaw
+                                    yaw_r = getyaw(rotation_);
+                                    //check yaw = 90+-0.5, dis(x,y)=+-0.005
+                                    if(fabs(dis_r) < 0.005){
+                                        if(fabs(yaw_r) < 0.008){
+                                            trigger=0;
+                                            pub_cmd_vel(0.0,0.0);
+                                            return Active_;
+                                        }
+                                        else{
+                                            //set w
+                                            w_r = Kp*yaw_r;
+                                            v_r = 0.0;
+                                        }
+                                    }
+                                    else{
+                                        if(fabs(translation_.x)<2*fabs(translation_.y)){
+                                            if(translation_.x > 0){
+                                                v_r = -0.1;
+                                                w_r = 0.0;
+                                            }
+                                            else{
+                                                v_r = 0.1;
+                                                w_r = 0.0;
+                                            }
+                                        }
+                                        else{
+                                            //curvature (duong cong quy dao)
+                                            K = (2*translation_.y)/(dis_r*dis_r);
+                                            //set (w,v)
+                                            //set v
+                                            if(translation_.x < 0) v_r = -Kp*dis_r;
+                                            else v_r = Kp*dis_r;
+                                            //
+                                            if(fabs(v_r)>0.3) v_r = v_r*0.3/fabs(v_r);
+                                            else if(fabs(v_r)<0.005) v_r = v_r*0.005/fabs(v_r);
+                                            //set w
+                                            w_r = v_r*K;
+                                        }
+                                    }
+                                    cout<<"marker|x:"<<translation_.x<<"|y:"<<translation_.y<<"|dis:"<<dis_r<<"|yaw:"<<yaw_r<<"|K:"<<K<<"|v_r:"<<v_r<<"|w_r:"<<w_r<<endl;
+                                    //pub velocity
+                                    if(safe!=0){
+                                        cout<<"marker|not safe: pub velocity 0"<<endl;
+                                        pub_cmd_vel(0,0);
+                                        cout<<"marker|not safe: done pub velocity 0"<<endl;
+                                    }else pub_cmd_vel(v_r,w_r);
+                                    return Active_;
+                                }
+                            }
+                        //
+                        }
+                    }
+                    return Active_;
+                }
             }
-            else if(step >=2){
-                static int status_transfrom_pose;
-                status_transfrom_pose=tranfrom_pose_marker(1,"base_marker", "base_footprint");
-                cout<<"marker|get tranform base_footprint to base_marker|res: "<<status_transfrom_pose<<endl;
-                if(step==2){
-                    //std::cout<<"marker|Check first pose is match with position robot!"<<endl;
-                    if(status_transfrom_pose==1){
-                        //if(check_first_tranfrom_pose_marker()){
-                        //    std::cout<<"marker|Fisrt pose is match with postion robot"<<endl;
-                        //    step=3;
-                        //}
-			step=3;
-                    }
+            else if(step >= 1){
+                //send transform base_marker -->odom
+		        tf_bm_to_odom = transformStamped_md;
+                tf_bm_to_odom.header.stamp = this->get_clock()->now();
+                tf_bm_to_odom.child_frame_id = mvibot_seri_f_+"/base_marker";
+                tf_Broadcaster_->sendTransform(tf_bm_to_odom);
+                if(step == 1){
+                    step = 2;
                     return Active_;
                 }
-                else if(step == 3){
-                    std::cout<<"marker|Get footprint robot!"<<endl;
-                    if(get_footprint() == 1) {
-                        std::cout<<"marker|Finish get footprint robot!"<<endl;                  
-                        step=4;
+                else if(step >= 2){
+                    //get tranform base_marker --> base_footprint
+                    try{
+                        tf_bm_to_bf=tf_Buffer_->lookupTransform(mvibot_seri_f_+"/base_footprint", mvibot_seri_f_+"/base_marker", tf2::TimePointZero, tf2::durationFromSec(0.1));
+                    } catch(tf2::TransformException &e){
+                        RCLCPP_ERROR(this->get_logger(),"Error occured1: %s ", e.what());
+                        return Active_;
                     }
-                    return Active_;
-                }
-                else if(step == 4){
-                    std::cout<<"marker|Action move!"<<endl;
-                    if(status_transfrom_pose){
+                    if(step == 2){
+                        step = 3;
+                        return Active_;
+                    }
+                    else if(step == 3){
+                        std::cout<<"marker|Get footprint robot!"<<endl;
+                        if(get_footprint() == 1) {
+                            std::cout<<"marker|Finish get footprint robot!"<<endl;                  
+                            step=4;
+                        }
+                        return Active_;
+                    }
+                    else if(step == 4){
+                        std::cout<<"marker|Action move!"<<endl;
+                        //check safe
+                        safe_x1=0.0;safe_x2=0.0;safe_y1=0.0;safe_y2=0.0;
                         // safe
-                        if(safe==0) {
-                            if(check_safe()==1)  safe=30;
+                            if(safe==0) {
+                                if(check_safe()==1)  safe=30;
+                            }
+                            else{
+                                if(check_safe()==0) safe--;
+                                if(safe<0) safe=0;
+                            }
+                        //
+                        translation_ = tf_bm_to_bf.transform.translation;
+                        rotation_ = tf_bm_to_bf.transform.rotation;
+                        //get dis
+                        dis_r = std::hypot(translation_.x,translation_.y);
+                        //get yaw
+                        yaw_r = getyaw(rotation_);
+                        //check yaw = 90+-0.5, dis(x,y)=+-0.005
+                        if(fabs(dis_r) < 0.005){
+                            if(fabs(yaw_r) < 0.008){
+                                step=0;
+                                status = Finish_;
+                                request = 0;
+                                pub_cmd_vel(0.0,0.0);
+                                //
+                                off_set_dis=0.0;
+                                off_set_angle=0.0;
+                                //
+                                std::cout<<"Finish marker"<<endl;
+                                return Finish_;
+                            }
+                            else{
+                                //set w
+                                w_r = Kp*yaw_r;
+                                v_r = 0.0;
+                            }
                         }
                         else{
-                            if(check_safe()==0) safe--;
-                            if(safe<0) safe=0;
-                        }
-                        //
-                        res = move_to_goal();
-                        cout<<"marker|move to goal with res: "<<res<<endl;
-                        if(res==1){
-                            step=0;
-                            status = Finish_;
-                            request = 0;
-                            pub_cmd_vel(0.0,0.0);
+                            //curvature (duong cong quy dao)
+                            K = (2*translation_.y)/(dis_r*dis_r);
+                            //set (w,v)
+                            //set v
+                            if(translation_.x < 0) v_r = -Kp*dis_r;
+                            else v_r = Kp*dis_r;
                             //
-                            off_set_dis=0.0;
-                            off_set_angle=0.0;
-                            //
-                            std::cout<<"Finish marker"<<endl;
-                            return Finish_;
+                            if(fabs(v_r)>0.3) v_r = v_r*0.3/fabs(v_r);
+                            else if(fabs(v_r)<0.005) v_r = v_r*0.005/fabs(v_r);
+                            //set w
+                            w_r = v_r*K;
                         }
+                        cout<<"marker|x:"<<translation_.x<<"|y:"<<translation_.y<<"|dis:"<<dis_r<<"|yaw:"<<yaw_r<<"|K:"<<K<<"|v_r:"<<v_r<<"|w_r:"<<w_r<<endl;
+                        //pub velocity
+                        if(safe!=0){
+                            cout<<"marker|not safe: pub velocity 0"<<endl;
+                            pub_cmd_vel(0,0);
+                            cout<<"marker|not safe: done pub velocity 0"<<endl;
+                        }else pub_cmd_vel(v_r,w_r);
+                        return Active_;
                     }
-                    return Active_;
                 }
             }
         }
-    }else{
+        else{
+            cout<<"marker|step: "<<step<<endl;
+            if(step == 0){
+                res=caculate_transforms_ofset();
+                cout<<"marker|set goal|res: "<<res<<endl;
+                if(res == 1) step = 1;
+                return Active_;
+            }
+            else if(step >= 1){
+                send_tranform(x_set,y_set,z_set,w_set,mvibot_seri_f_+"/odom",mvibot_seri_f_+"/base_marker");
+                cout<<"marker|send tranform "<<endl;
+                if(step == 1){
+                    res=check_send_transforms_tf_frame();
+                    cout<<"marker|check send tranform|res: "<<res<<endl;
+                    if(res==1) step=2;
+                    return Active_;
+                }
+                else if(step >=2){
+                    static int status_transfrom_pose;
+                    status_transfrom_pose=tranfrom_pose_marker(1,"base_marker", "base_footprint");
+                    cout<<"marker|get tranform base_footprint to base_marker|res: "<<status_transfrom_pose<<endl;
+                    if(step==2){
+                        //std::cout<<"marker|Check first pose is match with position robot!"<<endl;
+                        if(status_transfrom_pose==1){
+                            //if(check_first_tranfrom_pose_marker()){
+                            //    std::cout<<"marker|Fisrt pose is match with postion robot"<<endl;
+                            //    step=3;
+                            //}
+                            step=3;
+                        }
+                        return Active_;
+                    }
+                    else if(step == 3){
+                        std::cout<<"marker|Get footprint robot!"<<endl;
+                        if(get_footprint() == 1) {
+                            std::cout<<"marker|Finish get footprint robot!"<<endl;                  
+                            step=4;
+                        }
+                        return Active_;
+                    }
+                    else if(step == 4){
+                        std::cout<<"marker|Action move!"<<endl;
+                        if(status_transfrom_pose){
+                            // safe
+                            if(safe==0) {
+                                if(check_safe()==1)  safe=30;
+                            }
+                            else{
+                                if(check_safe()==0) safe--;
+                                if(safe<0) safe=0;
+                            }
+                            //
+                            res = move_to_goal();
+                            cout<<"marker|move to goal with res: "<<res<<endl;
+                            if(res==1){
+                                step=0;
+                                status = Finish_;
+                                request = 0;
+                                pub_cmd_vel(0.0,0.0);
+                                //
+                                off_set_dis=0.0;
+                                off_set_angle=0.0;
+                                //
+                                std::cout<<"Finish marker"<<endl;
+                                return Finish_;
+                            }
+                        }
+                        return Active_;
+                    }
+                }
+            }
+        }
+    }
+    else{
         //pub_cmd_vel(0.0, 0.0);
         return status;
     }

@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera
+CMAKE_SOURCE_DIR = /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera
@@ -106,6 +106,6 @@ gtest/CMakeFiles/gtest_main.dir/clean:
 .PHONY : gtest/CMakeFiles/gtest_main.dir/clean
 
 gtest/CMakeFiles/gtest_main.dir/depend:
-	cd /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera /opt/ros/jazzy/src/gtest_vendor /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera/gtest /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera/gtest/CMakeFiles/gtest_main.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera /opt/ros/jazzy/src/gtest_vendor /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera/gtest /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera/gtest/CMakeFiles/gtest_main.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : gtest/CMakeFiles/gtest_main.dir/depend
 

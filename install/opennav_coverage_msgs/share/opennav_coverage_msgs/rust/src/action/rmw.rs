@@ -1,0 +1,1 @@
+/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/rosidl_generator_rs/opennav_coverage_msgs/rust/src/action/rmw.rs

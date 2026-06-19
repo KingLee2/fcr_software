@@ -1,4 +1,4 @@
-# Install script for directory: /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera
+# Install script for directory: /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

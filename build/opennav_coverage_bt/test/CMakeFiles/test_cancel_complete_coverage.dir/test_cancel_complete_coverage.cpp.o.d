@@ -280,25 +280,21 @@ test/CMakeFiles/test_cancel_complete_coverage.dir/test_cancel_complete_coverage.
  /opt/ros/jazzy/src/gtest_vendor/include/gtest/gtest_pred_impl.h \
  /opt/ros/jazzy/src/gtest_vendor/include/gtest/gtest_prod.h \
  /opt/ros/jazzy/include/behaviortree_cpp/bt_factory.h \
- /usr/include/c++/13/filesystem /usr/include/c++/13/bits/fs_fwd.h \
- /usr/include/c++/13/bits/fs_path.h /usr/include/c++/13/codecvt \
- /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
- /opt/ros/jazzy/include/behaviortree_cpp/contrib/magic_enum.hpp \
  /opt/ros/jazzy/include/behaviortree_cpp/behavior_tree.h \
- /opt/ros/jazzy/include/behaviortree_cpp/controls/parallel_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/control_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/action_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/leaf_node.h \
  /opt/ros/jazzy/include/behaviortree_cpp/tree_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/signal.h \
  /opt/ros/jazzy/include/behaviortree_cpp/basic_types.h \
- /usr/include/c++/13/chrono \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/safe_any.hpp \
- /usr/include/c++/13/charconv /usr/include/c++/13/typeindex \
- /opt/ros/jazzy/include/behaviortree_cpp/contrib/any.hpp \
  /opt/ros/jazzy/include/behaviortree_cpp/contrib/expected.hpp \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/demangle_util.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/exceptions.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/strcat.hpp \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/safe_any.hpp \
+ /usr/include/c++/13/charconv \
+ /opt/ros/jazzy/include/behaviortree_cpp/contrib/any.hpp \
  /opt/ros/jazzy/include/behaviortree_cpp/utils/convert_impl.hpp \
- /usr/include/c++/13/cmath /usr/include/math.h \
- /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/simple_string.hpp \
+ /usr/include/c++/13/cstring /usr/include/c++/13/cmath \
+ /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
@@ -319,15 +315,15 @@ test/CMakeFiles/test_cancel_complete_coverage.dir/test_cancel_complete_coverage.
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
  /usr/include/c++/13/tr1/riemann_zeta.tcc \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/simple_string.hpp \
- /usr/include/c++/13/cstring \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/strcat.hpp \
- /opt/ros/jazzy/include/behaviortree_cpp/exceptions.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/demangle_util.h \
+ /usr/include/c++/13/chrono /usr/include/c++/13/typeindex \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/polymorphic_cast_registry.hpp \
+ /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/shared_mutex \
  /opt/ros/jazzy/include/behaviortree_cpp/utils/strcat.hpp \
  /opt/ros/jazzy/include/behaviortree_cpp/blackboard.h \
  /opt/ros/jazzy/include/behaviortree_cpp/contrib/json.hpp \
- /usr/include/c++/13/algorithm \
- /usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /usr/include/c++/13/forward_list /usr/include/c++/13/bits/forward_list.h \
  /usr/include/c++/13/bits/forward_list.tcc /usr/include/c++/13/valarray \
  /usr/include/c++/13/bits/valarray_array.h \
@@ -339,53 +335,59 @@ test/CMakeFiles/test_cancel_complete_coverage.dir/test_cancel_complete_coverage.
  /usr/include/c++/13/bits/gslice_array.h \
  /usr/include/c++/13/bits/mask_array.h \
  /usr/include/c++/13/bits/indirect_array.h /usr/include/c++/13/version \
+ /usr/include/c++/13/filesystem /usr/include/c++/13/bits/fs_fwd.h \
+ /usr/include/c++/13/bits/fs_path.h /usr/include/c++/13/codecvt \
+ /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
  /usr/include/c++/13/numeric /usr/include/c++/13/bits/stl_numeric.h \
  /usr/include/c++/13/pstl/glue_numeric_defs.h \
  /opt/ros/jazzy/include/behaviortree_cpp/utils/locked_reference.hpp \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/wakeup_signal.hpp \
  /opt/ros/jazzy/include/behaviortree_cpp/scripting/script_parser.hpp \
- /opt/ros/jazzy/include/behaviortree_cpp/controls/parallel_all_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/controls/reactive_sequence.h \
- /opt/ros/jazzy/include/behaviortree_cpp/controls/reactive_fallback.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/signal.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/wakeup_signal.hpp \
+ /usr/include/c++/13/future /usr/include/c++/13/bits/atomic_futex.h \
+ /usr/include/c++/13/bits/std_thread.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/always_failure_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/always_success_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/script_condition.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/condition_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/script_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/set_blackboard_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/sleep_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/timer_queue.h \
+ /usr/include/c++/13/queue /usr/include/c++/13/deque \
+ /usr/include/c++/13/bits/stl_deque.h /usr/include/c++/13/bits/deque.tcc \
+ /usr/include/c++/13/bits/stl_queue.h /usr/include/c++/13/thread \
+ /usr/include/c++/13/bits/this_thread_sleep.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/test_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/unset_blackboard_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/updated_action.h \
  /opt/ros/jazzy/include/behaviortree_cpp/controls/fallback_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/control_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/if_then_else_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/parallel_all_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/parallel_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/reactive_fallback.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/reactive_sequence.h \
  /opt/ros/jazzy/include/behaviortree_cpp/controls/sequence_node.h \
  /opt/ros/jazzy/include/behaviortree_cpp/controls/sequence_with_memory_node.h \
  /opt/ros/jazzy/include/behaviortree_cpp/controls/switch_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/controls/if_then_else_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/try_catch_node.h \
  /opt/ros/jazzy/include/behaviortree_cpp/controls/while_do_else_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/action_node.h \
- /usr/include/c++/13/thread /usr/include/c++/13/bits/std_thread.h \
- /usr/include/c++/13/bits/this_thread_sleep.h /usr/include/c++/13/future \
- /usr/include/c++/13/bits/atomic_futex.h \
- /opt/ros/jazzy/include/behaviortree_cpp/leaf_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/condition_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/inverter_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorator_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/retry_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/repeat_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/run_once_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/subtree_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/loop_node.h \
- /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
- /usr/include/c++/13/bits/deque.tcc \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/updated_decorator.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/always_success_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/always_failure_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/script_condition.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/script_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/set_blackboard_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/test_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/timer_queue.h \
- /usr/include/c++/13/queue /usr/include/c++/13/bits/stl_queue.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/sleep_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/unset_blackboard_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/updated_action.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/force_success_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/force_failure_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/keep_running_until_failure_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/script_precondition.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/timeout_node.h \
  /opt/ros/jazzy/include/behaviortree_cpp/decorators/delay_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorator_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/force_failure_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/force_success_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/inverter_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/keep_running_until_failure_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/loop_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/repeat_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/retry_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/run_once_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/script_precondition.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/subtree_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/timeout_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/updated_decorator.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/contrib/magic_enum.hpp \
  /opt/ros/jazzy/include/nav2_behavior_tree/utils/test_action_server.hpp \
  /opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp \
  /usr/include/c++/13/csignal \
@@ -641,7 +643,6 @@ test/CMakeFiles/test_cancel_complete_coverage.dir/test_cancel_complete_coverage.
  /opt/ros/jazzy/include/rclcpp/rclcpp/dynamic_typesupport/dynamic_message_type.hpp \
  /opt/ros/jazzy/include/rclcpp/rclcpp/dynamic_typesupport/dynamic_serialization_support.hpp \
  /opt/ros/jazzy/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp \
- /usr/include/c++/13/shared_mutex \
  /opt/ros/jazzy/include/rclcpp/rclcpp/experimental/buffers/intra_process_buffer.hpp \
  /opt/ros/jazzy/include/rclcpp/rclcpp/experimental/buffers/buffer_implementation_base.hpp \
  /opt/ros/jazzy/include/rclcpp/rclcpp/experimental/ros_message_intra_process_buffer.hpp \

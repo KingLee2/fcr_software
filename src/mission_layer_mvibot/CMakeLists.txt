@@ -23,6 +23,7 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(nav2_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(opennav_coverage_msgs REQUIRED)
+find_package(apriltag_msgs REQUIRED)
 find_package(CURL REQUIRED)
 # find_package(Fields2Cover REQUIRED) #add
 # uncomment the following section in order to fill in
@@ -62,7 +63,7 @@ install(DIRECTORY
 # target_link_libraries(${library_name} Fields2Cover) #add
 # target_include_directories(${library_name} PRIVATE ${Fields2Cover_INCLUDE_DIRS}) #add
 add_executable(mvibot_mission src/mvibot_mission.cpp)
-ament_target_dependencies(mvibot_mission rclcpp std_msgs geometry_msgs nav_msgs nav2_msgs rclcpp_action tf2_ros tf2_geometry_msgs tf2 sensor_msgs visualization_msgs opennav_coverage_msgs)
+ament_target_dependencies(mvibot_mission rclcpp std_msgs geometry_msgs nav_msgs nav2_msgs rclcpp_action tf2_ros tf2_geometry_msgs tf2 sensor_msgs visualization_msgs opennav_coverage_msgs apriltag_msgs)
 target_link_libraries(mvibot_mission
   CURL::libcurl
 )

@@ -202,7 +202,7 @@ mvibot_core: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fastrt
 mvibot_core: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
 mvibot_core: /opt/ros/jazzy/lib/librmw.so
 mvibot_core: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
-mvibot_core: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+mvibot_core: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 mvibot_core: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
 mvibot_core: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_cpp.so
 mvibot_core: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_c.so

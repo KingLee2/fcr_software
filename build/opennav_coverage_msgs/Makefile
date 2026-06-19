@@ -418,6 +418,19 @@ opennav_coverage_msgs__py/fast:
 	$(MAKE) $(MAKESILENT) -f /home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/opennav_coverage_msgs__py/CMakeFiles/opennav_coverage_msgs__py.dir/build.make /home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/opennav_coverage_msgs__py/CMakeFiles/opennav_coverage_msgs__py.dir/build
 .PHONY : opennav_coverage_msgs__py/fast
 
+#=============================================================================
+# Target rules for targets named opennav_coverage_msgs__rs
+
+# Build rule for target.
+opennav_coverage_msgs__rs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 opennav_coverage_msgs__rs
+.PHONY : opennav_coverage_msgs__rs
+
+# fast build rule for target.
+opennav_coverage_msgs__rs/fast:
+	$(MAKE) $(MAKESILENT) -f /home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/opennav_coverage_msgs__rs/CMakeFiles/opennav_coverage_msgs__rs.dir/build.make /home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_msgs/opennav_coverage_msgs__rs/CMakeFiles/opennav_coverage_msgs__rs.dir/build
+.PHONY : opennav_coverage_msgs__rs/fast
+
 rosidl_generator_c/opennav_coverage_msgs/action/detail/compute_coverage_path__description.o: rosidl_generator_c/opennav_coverage_msgs/action/detail/compute_coverage_path__description.c.o
 .PHONY : rosidl_generator_c/opennav_coverage_msgs/action/detail/compute_coverage_path__description.o
 
@@ -3149,6 +3162,7 @@ help:
 	@echo "... opennav_coverage_msgs__cpp"
 	@echo "... opennav_coverage_msgs__py"
 	@echo "... opennav_coverage_msgs__rosidl_generator_type_description"
+	@echo "... opennav_coverage_msgs__rs"
 	@echo "... opennav_coverage_msgs_uninstall"
 	@echo "... uninstall"
 	@echo "... opennav_coverage_msgs__rosidl_generator_c"

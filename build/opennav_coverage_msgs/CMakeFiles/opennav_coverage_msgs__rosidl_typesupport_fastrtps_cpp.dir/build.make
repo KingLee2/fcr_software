@@ -164,6 +164,8 @@ rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/co
 rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/msg/OccupancyGrid.idl
 rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/msg/Odometry.idl
 rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/msg/Path.idl
+rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/msg/Trajectory.idl
+rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/msg/TrajectoryPoint.idl
 rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/srv/GetMap.idl
 rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/srv/GetPlan.idl
 rosidl_typesupport_fastrtps_cpp/opennav_coverage_msgs/msg/detail/dds_fastrtps/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/srv/LoadMap.idl
@@ -426,7 +428,7 @@ libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so: /opt/ros/jazzy/lib
 libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so: /opt/ros/jazzy/lib/libservice_msgs__rosidl_typesupport_fastrtps_cpp.so
 libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
 libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
-libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so: /opt/ros/jazzy/lib/librmw.so
 libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
 libopennav_coverage_msgs__rosidl_typesupport_fastrtps_cpp.so: /opt/ros/jazzy/lib/libaction_msgs__rosidl_generator_c.so

@@ -5,9 +5,9 @@
 #include <string.h>
 
 #include "opennav_coverage_msgs/msg/detail/path_components__type_support.h"
-#include "opennav_coverage_msgs/msg/detail/path_components__struct.h"
-#include "rosidl_typesupport_interface/macros.h"
 #include "opennav_coverage_msgs/msg/detail/path_components__functions.h"
+#include "rosidl_typesupport_interface/macros.h"
+#include "opennav_coverage_msgs/msg/detail/path_components__struct.h"
 
 #ifdef __cplusplus
 extern "C"

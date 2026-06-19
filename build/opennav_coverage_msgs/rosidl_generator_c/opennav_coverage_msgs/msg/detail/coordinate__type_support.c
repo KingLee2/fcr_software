@@ -4,9 +4,9 @@
 
 #include <string.h>
 
-#include "opennav_coverage_msgs/msg/detail/coordinate__functions.h"
-#include "opennav_coverage_msgs/msg/detail/coordinate__struct.h"
 #include "opennav_coverage_msgs/msg/detail/coordinate__type_support.h"
+#include "opennav_coverage_msgs/msg/detail/coordinate__struct.h"
+#include "opennav_coverage_msgs/msg/detail/coordinate__functions.h"
 #include "rosidl_typesupport_interface/macros.h"
 
 #ifdef __cplusplus

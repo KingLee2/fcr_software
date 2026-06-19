@@ -392,7 +392,7 @@ class manage_mission : public rclcpp::Node{
                 }
                 //
                 //save coverage pose and learning path
-                if(action_mode_mission == "mission_normal"){
+                if(action_mode_mission == "mopping_mission"){
                     dis = std::hypot(robot_pose[0]-x_f, robot_pose[1]-y_f);
                     if(dis >= 0.05){
                         x_f = robot_pose[0];
@@ -554,8 +554,8 @@ void manage_mission::set_led(string mode_action){
     if(mode_action == "learning_path") pub_led(100,0,100,1,1,1,1);
     else{
         if(status == Active_){
-            if(mode_action == "mission_normal") pub_led(0,100,0,1,1,1,1);
-            else if(mode_action == "mission_charge_battery") pub_led(0,100,0,2,2,2,2);
+            if(mode_action == "mopping_mission") pub_led(0,100,0,1,1,1,1);
+            else if(mode_action == "sub_mission") pub_led(0,100,0,2,2,2,2);
         }
         else if(status == Error_) pub_led(100,0,0,1,1,1,1);
         else if(status == Stop_) pub_led(100,100,0,2,2,2,2);
@@ -1030,11 +1030,11 @@ void manage_mission::execute_mission(){
                 for (const auto& [key, value] : mission_.contents_map) {
                     if (value.contains("type") && value["type"] == "start") {
                         active_content = key;
-                        if(action_mode_mission == "mission_normal") {
+                        if(action_mode_mission == "mopping_mission") {
                             mission_execution_time = get_time_string();
-                            his_content["type"] = "mission_normal";
+                            his_content["type"] = "mopping_mission";
                         }
-                        else his_content["type"] = "mission_charge_battery";
+                        else his_content["type"] = "sub_mission";
                         his_content["state"] = "run";
                         his_content["description"] = mission_.mission_name;
                         send_history("normal", his_content.dump());

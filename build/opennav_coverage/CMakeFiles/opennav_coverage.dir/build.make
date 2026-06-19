@@ -266,7 +266,7 @@ opennav_coverage: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_f
 opennav_coverage: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
 opennav_coverage: /opt/ros/jazzy/lib/librmw.so
 opennav_coverage: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
-opennav_coverage: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+opennav_coverage: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 opennav_coverage: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
 opennav_coverage: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_cpp.so
 opennav_coverage: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_c.so

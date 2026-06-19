@@ -1,0 +1,642 @@
+[0.000000] (-) TimerEvent: {}
+[0.000217] (-) JobUnselected: {'identifier': 'fields2cover'}
+[0.000238] (-) JobUnselected: {'identifier': 'higher_layer_mvibot'}
+[0.000251] (-) JobUnselected: {'identifier': 'ira_laser_tools'}
+[0.000261] (-) JobUnselected: {'identifier': 'lower_layer_mvibot'}
+[0.000270] (-) JobUnselected: {'identifier': 'mission_layer_mvibot'}
+[0.000279] (-) JobUnselected: {'identifier': 'opennav_coverage'}
+[0.000287] (-) JobUnselected: {'identifier': 'opennav_coverage_bt'}
+[0.000294] (-) JobUnselected: {'identifier': 'opennav_coverage_demo'}
+[0.000302] (-) JobUnselected: {'identifier': 'opennav_coverage_msgs'}
+[0.000310] (-) JobUnselected: {'identifier': 'opennav_coverage_navigator'}
+[0.000319] (-) JobUnselected: {'identifier': 'opennav_row_coverage'}
+[0.000334] (-) JobUnselected: {'identifier': 'pointcloud_to_laserscan'}
+[0.000344] (-) JobUnselected: {'identifier': 'realsense2_camera_msgs'}
+[0.000352] (-) JobUnselected: {'identifier': 'realsense2_description'}
+[0.000360] (-) JobUnselected: {'identifier': 'sllidar_ros2'}
+[0.000367] (-) JobUnselected: {'identifier': 'tf2_web_republisher'}
+[0.000378] (-) JobUnselected: {'identifier': 'tf2_web_republisher_interfaces'}
+[0.000392] (realsense2_camera) JobQueued: {'identifier': 'realsense2_camera', 'dependencies': OrderedDict({'realsense2_camera_msgs': '/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs'})}
+[0.000625] (realsense2_camera) JobStarted: {'identifier': 'realsense2_camera'}
+[0.013846] (realsense2_camera) JobProgress: {'identifier': 'realsense2_camera', 'progress': 'cmake'}
+[0.014078] (realsense2_camera) Command: {'cmd': ['/usr/bin/cmake', '/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'SSH_CLIENT': '10.0.71.65 60822 22', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher/lib:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces/lib:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/lib:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot/floorCleaningRobot_ws/src', 'NVM_BIN': '/home/mvibot/.nvm/versions/node/v24.12.0/bin', 'SSH_TTY': '/dev/pts/2', 'NVM_INC': '/home/mvibot/.nvm/versions/node/v24.12.0/include/node', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'NVM_DIR': '/home/mvibot/.nvm', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'PKG_CONFIG_PATH': '/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/x86_64-linux-gnu/pkgconfig:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/pkgconfig', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '4', 'PATH': '/home/mvibot/.nvm/versions/node/v24.12.0/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces:/home/mvibot/floorCleaningRobot_ws/install/sllidar_ros2:/home/mvibot/floorCleaningRobot_ws/install/realsense2_description:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/lower_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools:/home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.0.71.65 60822 10.0.70.63 22', 'NVM_CD_FLAGS': '', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_demo:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces:/home/mvibot/floorCleaningRobot_ws/install/sllidar_ros2:/home/mvibot/floorCleaningRobot_ws/install/realsense2_description:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/lower_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools:/home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/fields2cover:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy'}), 'shell': False}
+[0.099930] (-) TimerEvent: {}
+[0.199409] (realsense2_camera) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.199997] (-) TimerEvent: {}
+[0.300248] (-) TimerEvent: {}
+[0.333256] (realsense2_camera) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.353165] (realsense2_camera) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.400332] (-) TimerEvent: {}
+[0.449003] (realsense2_camera) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.456372] (realsense2_camera) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.456787] (realsense2_camera) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.457378] (realsense2_camera) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.466868] (realsense2_camera) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.500417] (-) TimerEvent: {}
+[0.553070] (realsense2_camera) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.560376] (realsense2_camera) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.560553] (realsense2_camera) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.560992] (realsense2_camera) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.561397] (realsense2_camera) StdoutLine: {'line': b'-- Create Release Build.\n'}
+[0.570700] (realsense2_camera) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.600502] (-) TimerEvent: {}
+[0.700748] (-) TimerEvent: {}
+[0.706789] (realsense2_camera) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[0.771519] (realsense2_camera) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.800885] (-) TimerEvent: {}
+[0.833508] (realsense2_camera) StdoutLine: {'line': b'-- Found builtin_interfaces: 2.0.3 (/opt/ros/jazzy/share/builtin_interfaces/cmake)\n'}
+[0.890191] (realsense2_camera) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.901036] (-) TimerEvent: {}
+[0.910397] (realsense2_camera) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.934509] (realsense2_camera) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.960211] (realsense2_camera) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.983815] (realsense2_camera) StdoutLine: {'line': b'-- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)\n'}
+[1.001186] (-) TimerEvent: {}
+[1.101521] (-) TimerEvent: {}
+[1.153194] (realsense2_camera) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[1.159339] (realsense2_camera) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.201612] (-) TimerEvent: {}
+[1.263995] (realsense2_camera) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[1.284112] (realsense2_camera) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[1.301799] (-) TimerEvent: {}
+[1.303866] (realsense2_camera) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.395990] (realsense2_camera) StdoutLine: {'line': b'-- Found image_transport: 5.1.7 (/opt/ros/jazzy/share/image_transport/cmake)\n'}
+[1.401897] (-) TimerEvent: {}
+[1.433888] (realsense2_camera) StdoutLine: {'line': b'-- Found rclcpp_action: 28.1.18 (/opt/ros/jazzy/share/rclcpp_action/cmake)\n'}
+[1.491361] (realsense2_camera) StdoutLine: {'line': b'-- Found rclcpp_components: 28.1.18 (/opt/ros/jazzy/share/rclcpp_components/cmake)\n'}
+[1.502033] (-) TimerEvent: {}
+[1.523254] (realsense2_camera) StdoutLine: {'line': b'-- Found realsense2_camera_msgs: 4.56.4 (/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs/share/realsense2_camera_msgs/cmake)\n'}
+[1.560347] (realsense2_camera) StdoutLine: {'line': b'-- Found std_srvs: 5.3.7 (/opt/ros/jazzy/share/std_srvs/cmake)\n'}
+[1.582049] (realsense2_camera) StdoutLine: {'line': b'-- Found nav_msgs: 5.3.7 (/opt/ros/jazzy/share/nav_msgs/cmake)\n'}
+[1.602146] (-) TimerEvent: {}
+[1.611681] (realsense2_camera) StdoutLine: {'line': b'-- Found tf2_ros: 0.36.20 (/opt/ros/jazzy/share/tf2_ros/cmake)\n'}
+[1.663215] (realsense2_camera) StdoutLine: {'line': b'-- Found diagnostic_updater: 4.2.6 (/opt/ros/jazzy/share/diagnostic_updater/cmake)\n'}
+[1.697481] (realsense2_camera) StdoutLine: {'line': b'-- Found OpenCV: /usr (found version "4.6.0") found components: core \n'}
+[1.701842] (realsense2_camera) StdoutLine: {'line': b'-- Build for ROS2 Jazzy\n'}
+[1.702199] (-) TimerEvent: {}
+[1.707622] (realsense2_camera) StdoutLine: {'line': b'-- Found ament_cmake_gtest: 2.5.6 (/opt/ros/jazzy/share/ament_cmake_gtest/cmake)\n'}
+[1.713010] (realsense2_camera) StdoutLine: {'line': b"-- Found gtest sources under '/opt/ros/jazzy/src/gtest_vendor': C++ tests using 'Google Test' will be built\n"}
+[1.716580] (realsense2_camera) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.802328] (-) TimerEvent: {}
+[1.820758] (realsense2_camera) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[1.821676] (realsense2_camera) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.825977] (realsense2_camera) StdoutLine: {'line': b'-- Found ament_cmake_pytest: 2.5.6 (/opt/ros/jazzy/share/ament_cmake_pytest/cmake)\n'}
+[1.902481] (-) TimerEvent: {}
+[2.002693] (-) TimerEvent: {}
+[2.102922] (-) TimerEvent: {}
+[2.203157] (-) TimerEvent: {}
+[2.303371] (-) TimerEvent: {}
+[2.403627] (-) TimerEvent: {}
+[2.503853] (-) TimerEvent: {}
+[2.604255] (-) TimerEvent: {}
+[2.704472] (-) TimerEvent: {}
+[2.804674] (-) TimerEvent: {}
+[2.904907] (-) TimerEvent: {}
+[3.005124] (-) TimerEvent: {}
+[3.105352] (-) TimerEvent: {}
+[3.205558] (-) TimerEvent: {}
+[3.305814] (-) TimerEvent: {}
+[3.406030] (-) TimerEvent: {}
+[3.506249] (-) TimerEvent: {}
+[3.606583] (-) TimerEvent: {}
+[3.706863] (-) TimerEvent: {}
+[3.807174] (-) TimerEvent: {}
+[3.907409] (-) TimerEvent: {}
+[4.007679] (-) TimerEvent: {}
+[4.107932] (-) TimerEvent: {}
+[4.208184] (-) TimerEvent: {}
+[4.308372] (-) TimerEvent: {}
+[4.408567] (-) TimerEvent: {}
+[4.508768] (-) TimerEvent: {}
+[4.608971] (-) TimerEvent: {}
+[4.709189] (-) TimerEvent: {}
+[4.798749] (realsense2_camera) StdoutLine: {'line': b'-- rs_device_info:\n'}
+[4.799150] (realsense2_camera) StdoutLine: {'line': b'-- Device Name                   Serial Number       Firmware Version\n'}
+[4.799304] (realsense2_camera) StdoutLine: {'line': b'Intel RealSense D435I         243222076688        5.16.0.1\n'}
+[4.799485] (realsense2_camera) StdoutLine: {'line': b'Intel RealSense D435          336222075697        5.16.0.1\n'}
+[4.799635] (realsense2_camera) StdoutLine: {'line': b'\n'}
+[4.799784] (realsense2_camera) StdoutLine: {'line': b'-- D455 device found\n'}
+[4.809321] (-) TimerEvent: {}
+[4.909663] (-) TimerEvent: {}
+[5.009870] (-) TimerEvent: {}
+[5.110080] (-) TimerEvent: {}
+[5.210312] (-) TimerEvent: {}
+[5.310518] (-) TimerEvent: {}
+[5.410728] (-) TimerEvent: {}
+[5.510968] (-) TimerEvent: {}
+[5.611196] (-) TimerEvent: {}
+[5.711376] (-) TimerEvent: {}
+[5.811582] (-) TimerEvent: {}
+[5.911788] (-) TimerEvent: {}
+[6.012016] (-) TimerEvent: {}
+[6.112208] (-) TimerEvent: {}
+[6.212361] (-) TimerEvent: {}
+[6.312569] (-) TimerEvent: {}
+[6.412819] (-) TimerEvent: {}
+[6.513033] (-) TimerEvent: {}
+[6.613239] (-) TimerEvent: {}
+[6.713435] (-) TimerEvent: {}
+[6.813630] (-) TimerEvent: {}
+[6.913816] (-) TimerEvent: {}
+[7.014005] (-) TimerEvent: {}
+[7.114212] (-) TimerEvent: {}
+[7.214390] (-) TimerEvent: {}
+[7.314623] (-) TimerEvent: {}
+[7.414848] (-) TimerEvent: {}
+[7.515036] (-) TimerEvent: {}
+[7.545237] (realsense2_camera) StdoutLine: {'line': b'-- Configuring done (7.5s)\n'}
+[7.571959] (realsense2_camera) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[7.578328] (realsense2_camera) StdoutLine: {'line': b'-- Build files have been written to: /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera\n'}
+[7.590395] (realsense2_camera) CommandEnded: {'returncode': 0}
+[7.590792] (realsense2_camera) JobProgress: {'identifier': 'realsense2_camera', 'progress': 'build'}
+[7.591319] (realsense2_camera) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera', '--', '-j8', '-l8'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'SSH_CLIENT': '10.0.71.65 60822 22', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher/lib:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces/lib:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/lib:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot/floorCleaningRobot_ws/src', 'NVM_BIN': '/home/mvibot/.nvm/versions/node/v24.12.0/bin', 'SSH_TTY': '/dev/pts/2', 'NVM_INC': '/home/mvibot/.nvm/versions/node/v24.12.0/include/node', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'NVM_DIR': '/home/mvibot/.nvm', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'PKG_CONFIG_PATH': '/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/x86_64-linux-gnu/pkgconfig:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/pkgconfig', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '4', 'PATH': '/home/mvibot/.nvm/versions/node/v24.12.0/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces:/home/mvibot/floorCleaningRobot_ws/install/sllidar_ros2:/home/mvibot/floorCleaningRobot_ws/install/realsense2_description:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/lower_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools:/home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.0.71.65 60822 10.0.70.63 22', 'NVM_CD_FLAGS': '', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_demo:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces:/home/mvibot/floorCleaningRobot_ws/install/sllidar_ros2:/home/mvibot/floorCleaningRobot_ws/install/realsense2_description:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/lower_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools:/home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/fields2cover:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy'}), 'shell': False}
+[7.615130] (-) TimerEvent: {}
+[7.638367] (realsense2_camera) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o\x1b[0m\n'}
+[7.639699] (realsense2_camera) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera_node.dir/rclcpp_components/node_main_realsense2_camera_node.cpp.o\x1b[0m\n'}
+[7.639812] (realsense2_camera) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o\x1b[0m\n'}
+[7.639898] (realsense2_camera) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/base_realsense_node.cpp.o\x1b[0m\n'}
+[7.639954] (realsense2_camera) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/parameters.cpp.o\x1b[0m\n'}
+[7.640030] (realsense2_camera) StdoutLine: {'line': b'[ 24%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/realsense_node_factory.cpp.o\x1b[0m\n'}
+[7.640108] (realsense2_camera) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/rs_node_setup.cpp.o\x1b[0m\n'}
+[7.642510] (realsense2_camera) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/ros_sensor.cpp.o\x1b[0m\n'}
+[7.715300] (-) TimerEvent: {}
+[7.815802] (-) TimerEvent: {}
+[7.917468] (-) TimerEvent: {}
+[8.017753] (-) TimerEvent: {}
+[8.118139] (-) TimerEvent: {}
+[8.219828] (-) TimerEvent: {}
+[8.320396] (-) TimerEvent: {}
+[8.421536] (-) TimerEvent: {}
+[8.488015] (realsense2_camera) StdoutLine: {'line': b'[ 36%] \x1b[32m\x1b[1mLinking CXX static library libgtest_main.a\x1b[0m\n'}
+[8.521791] (-) TimerEvent: {}
+[8.538564] (realsense2_camera) StdoutLine: {'line': b'[ 36%] Built target gtest_main\n'}
+[8.556251] (realsense2_camera) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/ros_utils.cpp.o\x1b[0m\n'}
+[8.622416] (-) TimerEvent: {}
+[8.722735] (-) TimerEvent: {}
+[8.823020] (-) TimerEvent: {}
+[8.924393] (-) TimerEvent: {}
+[9.024680] (-) TimerEvent: {}
+[9.124984] (-) TimerEvent: {}
+[9.225453] (-) TimerEvent: {}
+[9.325915] (-) TimerEvent: {}
+[9.429557] (-) TimerEvent: {}
+[9.529974] (-) TimerEvent: {}
+[9.630271] (-) TimerEvent: {}
+[9.730742] (-) TimerEvent: {}
+[9.831090] (-) TimerEvent: {}
+[9.931463] (-) TimerEvent: {}
+[10.031756] (-) TimerEvent: {}
+[10.132043] (-) TimerEvent: {}
+[10.232340] (-) TimerEvent: {}
+[10.333149] (-) TimerEvent: {}
+[10.434243] (-) TimerEvent: {}
+[10.535238] (-) TimerEvent: {}
+[10.636041] (-) TimerEvent: {}
+[10.738758] (-) TimerEvent: {}
+[10.839185] (-) TimerEvent: {}
+[10.939603] (-) TimerEvent: {}
+[11.039902] (-) TimerEvent: {}
+[11.140202] (-) TimerEvent: {}
+[11.240633] (-) TimerEvent: {}
+[11.342018] (-) TimerEvent: {}
+[11.442679] (-) TimerEvent: {}
+[11.544668] (-) TimerEvent: {}
+[11.645192] (-) TimerEvent: {}
+[11.748593] (-) TimerEvent: {}
+[11.849139] (-) TimerEvent: {}
+[11.949485] (-) TimerEvent: {}
+[12.050128] (-) TimerEvent: {}
+[12.152618] (-) TimerEvent: {}
+[12.257929] (-) TimerEvent: {}
+[12.359837] (-) TimerEvent: {}
+[12.470128] (-) TimerEvent: {}
+[12.576893] (-) TimerEvent: {}
+[12.678878] (-) TimerEvent: {}
+[12.780596] (-) TimerEvent: {}
+[12.881838] (-) TimerEvent: {}
+[12.982331] (-) TimerEvent: {}
+[13.083402] (-) TimerEvent: {}
+[13.183731] (-) TimerEvent: {}
+[13.284549] (-) TimerEvent: {}
+[13.385804] (-) TimerEvent: {}
+[13.486398] (-) TimerEvent: {}
+[13.587397] (-) TimerEvent: {}
+[13.687691] (-) TimerEvent: {}
+[13.733948] (realsense2_camera) StdoutLine: {'line': b'[ 44%] \x1b[32m\x1b[1mLinking CXX executable realsense2_camera_node\x1b[0m\n'}
+[13.787903] (-) TimerEvent: {}
+[13.888394] (-) TimerEvent: {}
+[13.990545] (-) TimerEvent: {}
+[14.044895] (realsense2_camera) StdoutLine: {'line': b'[ 44%] Built target realsense2_camera_node\n'}
+[14.063189] (realsense2_camera) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/dynamic_params.cpp.o\x1b[0m\n'}
+[14.090659] (-) TimerEvent: {}
+[14.190981] (-) TimerEvent: {}
+[14.291296] (-) TimerEvent: {}
+[14.393073] (-) TimerEvent: {}
+[14.495459] (-) TimerEvent: {}
+[14.598287] (-) TimerEvent: {}
+[14.698614] (-) TimerEvent: {}
+[14.799198] (-) TimerEvent: {}
+[14.813467] (realsense2_camera) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/sensor_params.cpp.o\x1b[0m\n'}
+[14.899311] (-) TimerEvent: {}
+[15.001535] (-) TimerEvent: {}
+[15.101901] (-) TimerEvent: {}
+[15.202337] (-) TimerEvent: {}
+[15.302774] (-) TimerEvent: {}
+[15.403225] (-) TimerEvent: {}
+[15.506548] (-) TimerEvent: {}
+[15.606966] (-) TimerEvent: {}
+[15.707479] (-) TimerEvent: {}
+[15.807931] (-) TimerEvent: {}
+[15.909705] (-) TimerEvent: {}
+[16.010119] (-) TimerEvent: {}
+[16.111502] (-) TimerEvent: {}
+[16.211975] (-) TimerEvent: {}
+[16.312482] (-) TimerEvent: {}
+[16.413492] (-) TimerEvent: {}
+[16.513928] (-) TimerEvent: {}
+[16.615036] (-) TimerEvent: {}
+[16.715491] (-) TimerEvent: {}
+[16.821518] (-) TimerEvent: {}
+[16.921832] (-) TimerEvent: {}
+[17.022158] (-) TimerEvent: {}
+[17.122503] (-) TimerEvent: {}
+[17.222803] (-) TimerEvent: {}
+[17.323251] (-) TimerEvent: {}
+[17.423722] (-) TimerEvent: {}
+[17.524186] (-) TimerEvent: {}
+[17.625595] (-) TimerEvent: {}
+[17.726056] (-) TimerEvent: {}
+[17.826547] (-) TimerEvent: {}
+[17.927400] (-) TimerEvent: {}
+[18.027699] (-) TimerEvent: {}
+[18.128162] (-) TimerEvent: {}
+[18.229608] (-) TimerEvent: {}
+[18.252921] (realsense2_camera) StdoutLine: {'line': b'[ 56%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/named_filter.cpp.o\x1b[0m\n'}
+[18.329822] (-) TimerEvent: {}
+[18.430229] (-) TimerEvent: {}
+[18.532628] (-) TimerEvent: {}
+[18.632951] (-) TimerEvent: {}
+[18.733262] (-) TimerEvent: {}
+[18.833583] (-) TimerEvent: {}
+[18.933914] (-) TimerEvent: {}
+[19.035972] (-) TimerEvent: {}
+[19.136290] (-) TimerEvent: {}
+[19.236631] (-) TimerEvent: {}
+[19.336943] (-) TimerEvent: {}
+[19.439554] (-) TimerEvent: {}
+[19.539872] (-) TimerEvent: {}
+[19.640211] (-) TimerEvent: {}
+[19.740531] (-) TimerEvent: {}
+[19.840834] (-) TimerEvent: {}
+[19.941163] (-) TimerEvent: {}
+[20.041488] (-) TimerEvent: {}
+[20.141799] (-) TimerEvent: {}
+[20.242399] (-) TimerEvent: {}
+[20.342717] (-) TimerEvent: {}
+[20.443409] (-) TimerEvent: {}
+[20.543764] (-) TimerEvent: {}
+[20.645535] (-) TimerEvent: {}
+[20.745928] (-) TimerEvent: {}
+[20.846420] (-) TimerEvent: {}
+[20.948206] (-) TimerEvent: {}
+[21.051408] (-) TimerEvent: {}
+[21.151782] (-) TimerEvent: {}
+[21.252176] (-) TimerEvent: {}
+[21.352734] (-) TimerEvent: {}
+[21.456260] (-) TimerEvent: {}
+[21.556629] (-) TimerEvent: {}
+[21.657023] (-) TimerEvent: {}
+[21.757577] (-) TimerEvent: {}
+[21.858116] (-) TimerEvent: {}
+[21.958648] (-) TimerEvent: {}
+[22.061562] (-) TimerEvent: {}
+[22.162256] (-) TimerEvent: {}
+[22.262645] (-) TimerEvent: {}
+[22.363025] (-) TimerEvent: {}
+[22.463414] (-) TimerEvent: {}
+[22.563807] (-) TimerEvent: {}
+[22.566698] (realsense2_camera) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX static library libgtest.a\x1b[0m\n'}
+[22.664414] (-) TimerEvent: {}
+[22.690406] (realsense2_camera) StdoutLine: {'line': b'[ 60%] Built target gtest\n'}
+[22.709477] (realsense2_camera) StdoutLine: {'line': b'[ 64%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/pointcloud_filter.cpp.o\x1b[0m\n'}
+[22.764542] (-) TimerEvent: {}
+[22.864943] (-) TimerEvent: {}
+[22.965373] (-) TimerEvent: {}
+[23.066737] (-) TimerEvent: {}
+[23.167288] (-) TimerEvent: {}
+[23.268868] (-) TimerEvent: {}
+[23.369271] (-) TimerEvent: {}
+[23.472882] (-) TimerEvent: {}
+[23.573403] (-) TimerEvent: {}
+[23.640021] (realsense2_camera) StdoutLine: {'line': b'[ 68%] \x1b[32mBuilding CXX object CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o\x1b[0m\n'}
+[23.674445] (-) TimerEvent: {}
+[23.781374] (-) TimerEvent: {}
+[23.882262] (-) TimerEvent: {}
+[23.984045] (-) TimerEvent: {}
+[24.084427] (-) TimerEvent: {}
+[24.187606] (-) TimerEvent: {}
+[24.225282] (realsense2_camera) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/align_depth_filter.cpp.o\x1b[0m\n'}
+[24.287734] (-) TimerEvent: {}
+[24.388122] (-) TimerEvent: {}
+[24.488665] (-) TimerEvent: {}
+[24.589061] (-) TimerEvent: {}
+[24.689418] (-) TimerEvent: {}
+[24.789811] (-) TimerEvent: {}
+[24.890222] (-) TimerEvent: {}
+[24.990647] (-) TimerEvent: {}
+[25.092602] (-) TimerEvent: {}
+[25.193001] (-) TimerEvent: {}
+[25.293393] (-) TimerEvent: {}
+[25.351280] (realsense2_camera) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/profile_manager.cpp.o\x1b[0m\n'}
+[25.393512] (-) TimerEvent: {}
+[25.493883] (-) TimerEvent: {}
+[25.596537] (-) TimerEvent: {}
+[25.696912] (-) TimerEvent: {}
+[25.797286] (-) TimerEvent: {}
+[25.897694] (-) TimerEvent: {}
+[25.933716] (realsense2_camera) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking CXX executable gtest_template\x1b[0m\n'}
+[25.997823] (-) TimerEvent: {}
+[26.098431] (-) TimerEvent: {}
+[26.173392] (realsense2_camera) StdoutLine: {'line': b'[ 80%] Built target gtest_template\n'}
+[26.192163] (realsense2_camera) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/image_publisher.cpp.o\x1b[0m\n'}
+[26.198558] (-) TimerEvent: {}
+[26.300264] (-) TimerEvent: {}
+[26.401062] (-) TimerEvent: {}
+[26.453346] (realsense2_camera) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/tfs.cpp.o\x1b[0m\n'}
+[26.503409] (-) TimerEvent: {}
+[26.603792] (-) TimerEvent: {}
+[26.704177] (-) TimerEvent: {}
+[26.804571] (-) TimerEvent: {}
+[26.904960] (-) TimerEvent: {}
+[27.005347] (-) TimerEvent: {}
+[27.105718] (-) TimerEvent: {}
+[27.206409] (-) TimerEvent: {}
+[27.307410] (-) TimerEvent: {}
+[27.373113] (realsense2_camera) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/actions.cpp.o\x1b[0m\n'}
+[27.407539] (-) TimerEvent: {}
+[27.508422] (-) TimerEvent: {}
+[27.608785] (-) TimerEvent: {}
+[27.709408] (-) TimerEvent: {}
+[27.818191] (-) TimerEvent: {}
+[27.919728] (-) TimerEvent: {}
+[28.020956] (-) TimerEvent: {}
+[28.121858] (-) TimerEvent: {}
+[28.222697] (-) TimerEvent: {}
+[28.324721] (-) TimerEvent: {}
+[28.425116] (-) TimerEvent: {}
+[28.525538] (-) TimerEvent: {}
+[28.627570] (-) TimerEvent: {}
+[28.728113] (-) TimerEvent: {}
+[28.829412] (-) TimerEvent: {}
+[28.929767] (-) TimerEvent: {}
+[29.030147] (-) TimerEvent: {}
+[29.131415] (-) TimerEvent: {}
+[29.235266] (-) TimerEvent: {}
+[29.335633] (-) TimerEvent: {}
+[29.436422] (-) TimerEvent: {}
+[29.536778] (-) TimerEvent: {}
+[29.637148] (-) TimerEvent: {}
+[29.739432] (-) TimerEvent: {}
+[29.840073] (-) TimerEvent: {}
+[29.940426] (-) TimerEvent: {}
+[30.041141] (-) TimerEvent: {}
+[30.151859] (-) TimerEvent: {}
+[30.252380] (-) TimerEvent: {}
+[30.352925] (-) TimerEvent: {}
+[30.453472] (-) TimerEvent: {}
+[30.554650] (-) TimerEvent: {}
+[30.655230] (-) TimerEvent: {}
+[30.758583] (-) TimerEvent: {}
+[30.858955] (-) TimerEvent: {}
+[30.959516] (-) TimerEvent: {}
+[31.060047] (-) TimerEvent: {}
+[31.160597] (-) TimerEvent: {}
+[31.263584] (-) TimerEvent: {}
+[31.364094] (-) TimerEvent: {}
+[31.464610] (-) TimerEvent: {}
+[31.565130] (-) TimerEvent: {}
+[31.665672] (-) TimerEvent: {}
+[31.766561] (-) TimerEvent: {}
+[31.867533] (-) TimerEvent: {}
+[31.968099] (-) TimerEvent: {}
+[32.070583] (-) TimerEvent: {}
+[32.171103] (-) TimerEvent: {}
+[32.271660] (-) TimerEvent: {}
+[32.370589] (realsense2_camera) StdoutLine: {'line': b'[ 96%] \x1b[32mBuilding CXX object CMakeFiles/realsense2_camera.dir/src/ros_param_backend.cpp.o\x1b[0m\n'}
+[32.371758] (-) TimerEvent: {}
+[32.472237] (-) TimerEvent: {}
+[32.574645] (-) TimerEvent: {}
+[32.675164] (-) TimerEvent: {}
+[32.775709] (-) TimerEvent: {}
+[32.876821] (-) TimerEvent: {}
+[32.978574] (-) TimerEvent: {}
+[33.079121] (-) TimerEvent: {}
+[33.180426] (-) TimerEvent: {}
+[33.280823] (-) TimerEvent: {}
+[33.382576] (-) TimerEvent: {}
+[33.482967] (-) TimerEvent: {}
+[33.585582] (-) TimerEvent: {}
+[33.686110] (-) TimerEvent: {}
+[33.786658] (-) TimerEvent: {}
+[33.887172] (-) TimerEvent: {}
+[33.989587] (-) TimerEvent: {}
+[34.090191] (-) TimerEvent: {}
+[34.190756] (-) TimerEvent: {}
+[34.293283] (-) TimerEvent: {}
+[34.393823] (-) TimerEvent: {}
+[34.494510] (-) TimerEvent: {}
+[34.595052] (-) TimerEvent: {}
+[34.697614] (-) TimerEvent: {}
+[34.798131] (-) TimerEvent: {}
+[34.898653] (-) TimerEvent: {}
+[34.999159] (-) TimerEvent: {}
+[35.099579] (-) TimerEvent: {}
+[35.202686] (-) TimerEvent: {}
+[35.303173] (-) TimerEvent: {}
+[35.403672] (-) TimerEvent: {}
+[35.504234] (-) TimerEvent: {}
+[35.608605] (-) TimerEvent: {}
+[35.709147] (-) TimerEvent: {}
+[35.809683] (-) TimerEvent: {}
+[35.910227] (-) TimerEvent: {}
+[36.010757] (-) TimerEvent: {}
+[36.111245] (-) TimerEvent: {}
+[36.211740] (-) TimerEvent: {}
+[36.312131] (-) TimerEvent: {}
+[36.412524] (-) TimerEvent: {}
+[36.514503] (-) TimerEvent: {}
+[36.615041] (-) TimerEvent: {}
+[36.715513] (-) TimerEvent: {}
+[36.816017] (-) TimerEvent: {}
+[36.917930] (-) TimerEvent: {}
+[37.018520] (-) TimerEvent: {}
+[37.119418] (-) TimerEvent: {}
+[37.219788] (-) TimerEvent: {}
+[37.320387] (-) TimerEvent: {}
+[37.420850] (-) TimerEvent: {}
+[37.521309] (-) TimerEvent: {}
+[37.621836] (-) TimerEvent: {}
+[37.722292] (-) TimerEvent: {}
+[37.822821] (-) TimerEvent: {}
+[37.923184] (-) TimerEvent: {}
+[38.023555] (-) TimerEvent: {}
+[38.124185] (-) TimerEvent: {}
+[38.224654] (-) TimerEvent: {}
+[38.325089] (-) TimerEvent: {}
+[38.425421] (-) TimerEvent: {}
+[38.525919] (-) TimerEvent: {}
+[38.626276] (-) TimerEvent: {}
+[38.726791] (-) TimerEvent: {}
+[38.827142] (-) TimerEvent: {}
+[38.927498] (-) TimerEvent: {}
+[39.027852] (-) TimerEvent: {}
+[39.128212] (-) TimerEvent: {}
+[39.228571] (-) TimerEvent: {}
+[39.328916] (-) TimerEvent: {}
+[39.429273] (-) TimerEvent: {}
+[39.529640] (-) TimerEvent: {}
+[39.629983] (-) TimerEvent: {}
+[39.730339] (-) TimerEvent: {}
+[39.830679] (-) TimerEvent: {}
+[39.931018] (-) TimerEvent: {}
+[40.031381] (-) TimerEvent: {}
+[40.131775] (-) TimerEvent: {}
+[40.232143] (-) TimerEvent: {}
+[40.332494] (-) TimerEvent: {}
+[40.432852] (-) TimerEvent: {}
+[40.533199] (-) TimerEvent: {}
+[40.633551] (-) TimerEvent: {}
+[40.733905] (-) TimerEvent: {}
+[40.834258] (-) TimerEvent: {}
+[40.934638] (-) TimerEvent: {}
+[41.035005] (-) TimerEvent: {}
+[41.136392] (-) TimerEvent: {}
+[41.236735] (-) TimerEvent: {}
+[41.337073] (-) TimerEvent: {}
+[41.437405] (-) TimerEvent: {}
+[41.537746] (-) TimerEvent: {}
+[41.638092] (-) TimerEvent: {}
+[41.738402] (-) TimerEvent: {}
+[41.838733] (-) TimerEvent: {}
+[41.939084] (-) TimerEvent: {}
+[42.039407] (-) TimerEvent: {}
+[42.139760] (-) TimerEvent: {}
+[42.240120] (-) TimerEvent: {}
+[42.340695] (-) TimerEvent: {}
+[42.441033] (-) TimerEvent: {}
+[42.541393] (-) TimerEvent: {}
+[42.641733] (-) TimerEvent: {}
+[42.742081] (-) TimerEvent: {}
+[42.842427] (-) TimerEvent: {}
+[42.942785] (-) TimerEvent: {}
+[43.043136] (-) TimerEvent: {}
+[43.143497] (-) TimerEvent: {}
+[43.243838] (-) TimerEvent: {}
+[43.344093] (-) TimerEvent: {}
+[43.444445] (-) TimerEvent: {}
+[43.544721] (-) TimerEvent: {}
+[43.645005] (-) TimerEvent: {}
+[43.745283] (-) TimerEvent: {}
+[43.845523] (-) TimerEvent: {}
+[43.945772] (-) TimerEvent: {}
+[44.046027] (-) TimerEvent: {}
+[44.146305] (-) TimerEvent: {}
+[44.246561] (-) TimerEvent: {}
+[44.346798] (-) TimerEvent: {}
+[44.447031] (-) TimerEvent: {}
+[44.547275] (-) TimerEvent: {}
+[44.647514] (-) TimerEvent: {}
+[44.747765] (-) TimerEvent: {}
+[44.848019] (-) TimerEvent: {}
+[44.948271] (-) TimerEvent: {}
+[45.048530] (-) TimerEvent: {}
+[45.148786] (-) TimerEvent: {}
+[45.249046] (-) TimerEvent: {}
+[45.349305] (-) TimerEvent: {}
+[45.449541] (-) TimerEvent: {}
+[45.549795] (-) TimerEvent: {}
+[45.650028] (-) TimerEvent: {}
+[45.665422] (realsense2_camera) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library librealsense2_camera.so\x1b[0m\n'}
+[45.750163] (-) TimerEvent: {}
+[45.850474] (-) TimerEvent: {}
+[45.950717] (-) TimerEvent: {}
+[46.050965] (-) TimerEvent: {}
+[46.151213] (-) TimerEvent: {}
+[46.151877] (realsense2_camera) StdoutLine: {'line': b'[100%] Built target realsense2_camera\n'}
+[46.211263] (realsense2_camera) CommandEnded: {'returncode': 0}
+[46.245053] (realsense2_camera) JobProgress: {'identifier': 'realsense2_camera', 'progress': 'install'}
+[46.251314] (-) TimerEvent: {}
+[46.261888] (realsense2_camera) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera'], 'cwd': '/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'mvibot', 'SSH_CLIENT': '10.0.71.65 60822 22', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher/lib:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces/lib:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/lib:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage/lib:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/mvibot', 'OLDPWD': '/home/mvibot/floorCleaningRobot_ws/src', 'NVM_BIN': '/home/mvibot/.nvm/versions/node/v24.12.0/bin', 'SSH_TTY': '/dev/pts/2', 'NVM_INC': '/home/mvibot/.nvm/versions/node/v24.12.0/include/node', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'NVM_DIR': '/home/mvibot/.nvm', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'mvibot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'PKG_CONFIG_PATH': '/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/x86_64-linux-gnu/pkgconfig:/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/pkgconfig', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '4', 'PATH': '/home/mvibot/.nvm/versions/node/v24.12.0/bin:/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'ROS_DOMAIN_ID': '10', 'AMENT_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces:/home/mvibot/floorCleaningRobot_ws/install/sllidar_ros2:/home/mvibot/floorCleaningRobot_ws/install/realsense2_description:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/lower_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools:/home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.0.71.65 60822 10.0.70.63 22', 'NVM_CD_FLAGS': '', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/build/opennav_coverage_demo:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo/lib/python3.12/site-packages:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera_msgs:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher:/home/mvibot/floorCleaningRobot_ws/install/tf2_web_republisher_interfaces:/home/mvibot/floorCleaningRobot_ws/install/sllidar_ros2:/home/mvibot/floorCleaningRobot_ws/install/realsense2_description:/home/mvibot/floorCleaningRobot_ws/install/realsense2_camera:/home/mvibot/floorCleaningRobot_ws/install/pointcloud_to_laserscan:/home/mvibot/floorCleaningRobot_ws/install/opennav_row_coverage:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_navigator:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_bt:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage:/home/mvibot/floorCleaningRobot_ws/install/mission_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_msgs:/home/mvibot/floorCleaningRobot_ws/install/lower_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools:/home/mvibot/floorCleaningRobot_ws/install/higher_layer_mvibot:/home/mvibot/floorCleaningRobot_ws/install/fields2cover:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy'}), 'shell': False}
+[46.275296] (realsense2_camera) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[46.275646] (realsense2_camera) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[46.276492] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/config/global_settings.yaml\n'}
+[46.284696] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/lib/realsense2_camera/realsense2_camera_node\n'}
+[46.292661] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/lib/librealsense2_camera.so\n'}
+[46.301639] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/align_depth_filter.h\n'}
+[46.308859] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/base_realsense_node.h\n'}
+[46.316940] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/constants.h\n'}
+[46.324443] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/dynamic_params.h\n'}
+[46.331836] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/gl_window.h\n'}
+[46.339094] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/image_publisher.h\n'}
+[46.346853] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/named_filter.h\n'}
+[46.351395] (-) TimerEvent: {}
+[46.354593] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/pointcloud_filter.h\n'}
+[46.362188] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/profile_manager.h\n'}
+[46.369788] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/realsense_node_factory.h\n'}
+[46.377094] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/ros_node_base.h\n'}
+[46.385382] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/ros_param_backend.h\n'}
+[46.392435] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/ros_sensor.h\n'}
+[46.399981] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/ros_utils.h\n'}
+[46.407402] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/include/sensor_params.h\n'}
+[46.416149] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/launch/default.rviz\n'}
+[46.423676] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/launch/rs_intra_process_demo_launch.py\n'}
+[46.431139] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/launch/rs_launch.py\n'}
+[46.438660] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/launch/rs_multi_camera_launch.py\n'}
+[46.446177] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/launch/rs_multi_camera_launch_sync.py\n'}
+[46.451489] (-) TimerEvent: {}
+[46.458158] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/align_depth/README.md\n'}
+[46.465944] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/align_depth/rs_align_depth_launch.py\n'}
+[46.473420] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/d500_tables/calib_config_example.json\n'}
+[46.480858] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/dual_camera/README.md\n'}
+[46.488619] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/dual_camera/rs_dual_camera_launch.py\n'}
+[46.495960] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/dual_camera/rviz/dual_camera_pointcloud.rviz\n'}
+[46.503521] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/launch_from_rosbag/README.md\n'}
+[46.510864] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/launch_from_rosbag/rs_launch_from_rosbag.py\n'}
+[46.518391] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/launch_params_from_file/README.md\n'}
+[46.526523] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/launch_params_from_file/config/config.yaml\n'}
+[46.534551] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/launch_params_from_file/rs_launch_get_params_from_yaml.py\n'}
+[46.542071] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/pointcloud/README.md\n'}
+[46.549811] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/pointcloud/rs_d405_pointcloud_launch.py\n'}
+[46.551578] (-) TimerEvent: {}
+[46.557288] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/pointcloud/rs_d455_pointcloud_launch.py\n'}
+[46.565122] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/pointcloud/rs_pointcloud_infra_launch.py\n'}
+[46.572762] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/pointcloud/rs_pointcloud_launch.py\n'}
+[46.580394] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/pointcloud/rviz/pointcloud.rviz\n'}
+[46.587767] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/examples/pointcloud/rviz/urdf_pointcloud.rviz\n'}
+[46.595308] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/environment/library_path.sh\n'}
+[46.603099] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/environment/library_path.dsv\n'}
+[46.611623] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/ament_index/resource_index/package_run_dependencies/realsense2_camera\n'}
+[46.619501] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/ament_index/resource_index/parent_prefix_path/realsense2_camera\n'}
+[46.626870] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/environment/ament_prefix_path.sh\n'}
+[46.634308] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/environment/ament_prefix_path.dsv\n'}
+[46.641875] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/environment/path.sh\n'}
+[46.649820] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/environment/path.dsv\n'}
+[46.651648] (-) TimerEvent: {}
+[46.658234] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/local_setup.bash\n'}
+[46.666389] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/local_setup.sh\n'}
+[46.674034] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/local_setup.zsh\n'}
+[46.681615] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/local_setup.dsv\n'}
+[46.689309] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/package.dsv\n'}
+[46.696994] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/ament_index/resource_index/packages/realsense2_camera\n'}
+[46.704587] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/ament_index/resource_index/rclcpp_components/realsense2_camera\n'}
+[46.712030] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[46.719681] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[46.727000] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[46.734870] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/cmake/realsense2_cameraConfig.cmake\n'}
+[46.744117] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/cmake/realsense2_cameraConfig-version.cmake\n'}
+[46.751772] (-) TimerEvent: {}
+[46.753240] (realsense2_camera) StdoutLine: {'line': b'-- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/realsense2_camera/share/realsense2_camera/package.xml\n'}
+[46.764584] (realsense2_camera) CommandEnded: {'returncode': 0}
+[46.853058] (-) TimerEvent: {}
+[46.862840] (realsense2_camera) JobEnded: {'identifier': 'realsense2_camera', 'rc': 0}
+[46.868568] (-) EventReactorShutdown: {}

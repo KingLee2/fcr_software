@@ -162,6 +162,8 @@ rosidl_typesupport_cpp/opennav_coverage_msgs/msg/coordinate__type_support.cpp: /
 rosidl_typesupport_cpp/opennav_coverage_msgs/msg/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/msg/OccupancyGrid.idl
 rosidl_typesupport_cpp/opennav_coverage_msgs/msg/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/msg/Odometry.idl
 rosidl_typesupport_cpp/opennav_coverage_msgs/msg/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/msg/Path.idl
+rosidl_typesupport_cpp/opennav_coverage_msgs/msg/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/msg/Trajectory.idl
+rosidl_typesupport_cpp/opennav_coverage_msgs/msg/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/msg/TrajectoryPoint.idl
 rosidl_typesupport_cpp/opennav_coverage_msgs/msg/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/srv/GetMap.idl
 rosidl_typesupport_cpp/opennav_coverage_msgs/msg/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/srv/GetPlan.idl
 rosidl_typesupport_cpp/opennav_coverage_msgs/msg/coordinate__type_support.cpp: /opt/ros/jazzy/share/nav_msgs/srv/LoadMap.idl

@@ -1,1 +1,1 @@
-/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/launch/rs_multi_camera_launch.py
+/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/launch/rs_multi_camera_launch.py

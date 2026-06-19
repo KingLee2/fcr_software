@@ -1,1 +1,1 @@
-/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/include/profile_manager.h
+/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/include/profile_manager.h

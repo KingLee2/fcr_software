@@ -194,7 +194,7 @@ CMakeFiles/opennav_coverage_navigator.dir/src/coverage_navigator.cpp.o: \
  /usr/include/c++/13/bits/stl_heap.h \
  /usr/include/c++/13/bits/uniform_int_dist.h \
  /usr/include/c++/13/pstl/glue_algorithm_defs.h /usr/include/c++/13/array \
- /usr/include/c++/13/compare \
+ /usr/include/c++/13/compare /usr/include/c++/13/cstdint \
  /opt/ros/jazzy/include/rosidl_runtime_cpp/rosidl_runtime_cpp/bounded_vector.hpp \
  /usr/include/c++/13/stdexcept /usr/include/c++/13/utility \
  /usr/include/c++/13/bits/stl_relops.h \
@@ -364,7 +364,6 @@ CMakeFiles/opennav_coverage_navigator.dir/src/coverage_navigator.cpp.o: \
  /opt/ros/jazzy/include/type_description_interfaces/type_description_interfaces/msg/rosidl_generator_c__visibility_control.h \
  /opt/ros/jazzy/include/type_description_interfaces/type_description_interfaces/srv/detail/get_type_description__type_support.h \
  /opt/ros/jazzy/include/rcpputils/rcpputils/filesystem_helper.hpp \
- /usr/include/c++/13/cstdint \
  /opt/ros/jazzy/include/rcpputils/rcpputils/visibility_control.hpp \
  /opt/ros/jazzy/include/rclcpp/rclcpp/logging.hpp \
  /opt/ros/jazzy/include/rcutils/rcutils/logging_macros.h \
@@ -920,20 +919,20 @@ CMakeFiles/opennav_coverage_navigator.dir/src/coverage_navigator.cpp.o: \
  /opt/ros/jazzy/include/nav2_behavior_tree/bt_action_server.hpp \
  /opt/ros/jazzy/include/nav2_behavior_tree/behavior_tree_engine.hpp \
  /opt/ros/jazzy/include/behaviortree_cpp/behavior_tree.h \
- /opt/ros/jazzy/include/behaviortree_cpp/controls/parallel_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/control_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/action_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/leaf_node.h \
  /opt/ros/jazzy/include/behaviortree_cpp/tree_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/signal.h \
  /opt/ros/jazzy/include/behaviortree_cpp/basic_types.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/contrib/expected.hpp \
+ /opt/ros/jazzy/include/behaviortree_cpp/exceptions.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/strcat.hpp \
  /opt/ros/jazzy/include/behaviortree_cpp/utils/safe_any.hpp \
  /usr/include/c++/13/charconv \
  /opt/ros/jazzy/include/behaviortree_cpp/contrib/any.hpp \
- /opt/ros/jazzy/include/behaviortree_cpp/contrib/expected.hpp \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/demangle_util.h \
  /opt/ros/jazzy/include/behaviortree_cpp/utils/convert_impl.hpp \
  /opt/ros/jazzy/include/behaviortree_cpp/utils/simple_string.hpp \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/strcat.hpp \
- /opt/ros/jazzy/include/behaviortree_cpp/exceptions.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/demangle_util.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/polymorphic_cast_registry.hpp \
  /opt/ros/jazzy/include/behaviortree_cpp/utils/strcat.hpp \
  /opt/ros/jazzy/include/behaviortree_cpp/blackboard.h \
  /opt/ros/jazzy/include/behaviortree_cpp/contrib/json.hpp \
@@ -950,50 +949,57 @@ CMakeFiles/opennav_coverage_navigator.dir/src/coverage_navigator.cpp.o: \
  /usr/include/c++/13/bits/indirect_array.h /usr/include/c++/13/version \
  /usr/include/c++/13/any \
  /opt/ros/jazzy/include/behaviortree_cpp/utils/locked_reference.hpp \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/wakeup_signal.hpp \
  /opt/ros/jazzy/include/behaviortree_cpp/scripting/script_parser.hpp \
- /opt/ros/jazzy/include/behaviortree_cpp/controls/parallel_all_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/controls/reactive_sequence.h \
- /opt/ros/jazzy/include/behaviortree_cpp/controls/reactive_fallback.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/signal.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/wakeup_signal.hpp \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/always_failure_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/always_success_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/script_condition.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/condition_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/script_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/set_blackboard_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/sleep_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/utils/timer_queue.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/test_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/unset_blackboard_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/actions/updated_action.h \
  /opt/ros/jazzy/include/behaviortree_cpp/controls/fallback_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/control_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/if_then_else_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/parallel_all_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/parallel_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/reactive_fallback.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/reactive_sequence.h \
  /opt/ros/jazzy/include/behaviortree_cpp/controls/sequence_node.h \
  /opt/ros/jazzy/include/behaviortree_cpp/controls/sequence_with_memory_node.h \
  /opt/ros/jazzy/include/behaviortree_cpp/controls/switch_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/controls/if_then_else_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/controls/try_catch_node.h \
  /opt/ros/jazzy/include/behaviortree_cpp/controls/while_do_else_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/action_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/leaf_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/condition_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/inverter_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorator_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/retry_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/repeat_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/run_once_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/subtree_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/loop_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/updated_decorator.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/always_success_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/always_failure_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/script_condition.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/script_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/set_blackboard_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/test_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/utils/timer_queue.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/sleep_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/unset_blackboard_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/actions/updated_action.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/force_success_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/force_failure_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/keep_running_until_failure_node.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/script_precondition.h \
- /opt/ros/jazzy/include/behaviortree_cpp/decorators/timeout_node.h \
  /opt/ros/jazzy/include/behaviortree_cpp/decorators/delay_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorator_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/force_failure_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/force_success_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/inverter_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/keep_running_until_failure_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/loop_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/repeat_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/retry_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/run_once_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/script_precondition.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/subtree_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/timeout_node.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/decorators/updated_decorator.h \
  /opt/ros/jazzy/include/behaviortree_cpp/bt_factory.h \
  /opt/ros/jazzy/include/behaviortree_cpp/contrib/magic_enum.hpp \
+ /opt/ros/jazzy/include/behaviortree_cpp/loggers/groot2_publisher.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/loggers/abstract_logger.h \
+ /opt/ros/jazzy/include/behaviortree_cpp/loggers/groot2_protocol.h \
+ /usr/include/c++/13/random /usr/include/c++/13/bits/random.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/opt_random.h \
+ /usr/include/c++/13/bits/random.tcc \
  /opt/ros/jazzy/include/behaviortree_cpp/xml_parsing.h \
  /opt/ros/jazzy/include/behaviortree_cpp/bt_parser.h \
  /opt/ros/jazzy/include/nav2_behavior_tree/ros_topic_logger.hpp \
- /opt/ros/jazzy/include/behaviortree_cpp/loggers/abstract_logger.h \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/msg/behavior_tree_log.hpp \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/msg/detail/behavior_tree_log__struct.hpp \
  /opt/ros/jazzy/include/nav2_msgs/nav2_msgs/msg/detail/behavior_tree_status_change__struct.hpp \

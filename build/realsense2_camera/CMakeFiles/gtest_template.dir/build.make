@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera
+CMAKE_SOURCE_DIR = /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera
@@ -70,18 +70,18 @@ include CMakeFiles/gtest_template.dir/progress.make
 include CMakeFiles/gtest_template.dir/flags.make
 
 CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o: CMakeFiles/gtest_template.dir/flags.make
-CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o: /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/test/gtest_template.cpp
+CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o: /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/test/gtest_template.cpp
 CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o: CMakeFiles/gtest_template.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o -MF CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o.d -o CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o -c /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/test/gtest_template.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o -MF CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o.d -o CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o -c /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/test/gtest_template.cpp
 
 CMakeFiles/gtest_template.dir/test/gtest_template.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/gtest_template.dir/test/gtest_template.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/test/gtest_template.cpp > CMakeFiles/gtest_template.dir/test/gtest_template.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/test/gtest_template.cpp > CMakeFiles/gtest_template.dir/test/gtest_template.cpp.i
 
 CMakeFiles/gtest_template.dir/test/gtest_template.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/gtest_template.dir/test/gtest_template.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/test/gtest_template.cpp -o CMakeFiles/gtest_template.dir/test/gtest_template.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/test/gtest_template.cpp -o CMakeFiles/gtest_template.dir/test/gtest_template.cpp.s
 
 # Object files for target gtest_template
 gtest_template_OBJECTS = \
@@ -117,6 +117,6 @@ CMakeFiles/gtest_template.dir/clean:
 .PHONY : CMakeFiles/gtest_template.dir/clean
 
 CMakeFiles/gtest_template.dir/depend:
-	cd /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera/CMakeFiles/gtest_template.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera /home/mvibot/floorCleaningRobot_ws/build/realsense2_camera/CMakeFiles/gtest_template.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/gtest_template.dir/depend
 

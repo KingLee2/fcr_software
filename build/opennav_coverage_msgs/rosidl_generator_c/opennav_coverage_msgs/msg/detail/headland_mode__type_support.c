@@ -6,8 +6,8 @@
 
 #include "opennav_coverage_msgs/msg/detail/headland_mode__struct.h"
 #include "opennav_coverage_msgs/msg/detail/headland_mode__functions.h"
-#include "rosidl_typesupport_interface/macros.h"
 #include "opennav_coverage_msgs/msg/detail/headland_mode__type_support.h"
+#include "rosidl_typesupport_interface/macros.h"
 
 #ifdef __cplusplus
 extern "C"

@@ -2,6 +2,7 @@
 echo start
 echo config internet
 # name and mode for robot
+name_seri="$(</home/mvibot/floorCleaningRobot_ws/config/name_seri)"
 robot_type_connect="$(</home/mvibot/floorCleaningRobot_ws/config/robot_type_connect)"
 # lan port control
 lan_port="$(</home/mvibot/floorCleaningRobot_ws/config/lan_port)"
@@ -31,14 +32,14 @@ fi
 #config wifi
 sudo nmcli connection delete mvibot_hotspot 
 sudo nmcli connection delete mvibot_cardwifi
-if [[ "$wifi_type" = "hots_pot" ]]
+if [[ "$wifi_type" = "hotspot" ]]
 then
    echo hotspot mode 
    sudo nmcli connection delete mvibot_hotspot 
-   sudo nmcli connection add type wifi ifname $wifi_port con-name mvibot_hotspot  ssid "$name_seri-hostpot"
+   sudo nmcli connection add type wifi ifname $wifi_port con-name mvibot_hotspot  ssid "$name_seri-hotspot"
    sudo nmcli connection modify mvibot_hotspot  802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared
    sudo nmcli connection modify mvibot_hotspot wifi-sec.key-mgmt wpa-psk
-   sudo nmcli connection modify mvibot_hotspot wifi-sec.psk "$name_seri@"
+   sudo nmcli connection modify mvibot_hotspot wifi-sec.psk "$name_seri@12345"
    sudo nmcli connection up mvibot_hotspot
 else
    echo wireless mode
@@ -79,3 +80,5 @@ else
 	ip_check="$(ip -4 addr show $lan_port | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
    done   
 fi
+# write IP into config file
+echo "$ip_check" > /home/mvibot/floorCleaningRobot_ws/config/ip_robot

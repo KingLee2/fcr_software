@@ -353,7 +353,7 @@ opennav_row_coverage: /opt/ros/jazzy/lib/libunique_identifier_msgs__rosidl_types
 opennav_row_coverage: /opt/ros/jazzy/lib/libservice_msgs__rosidl_typesupport_fastrtps_cpp.so
 opennav_row_coverage: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
 opennav_row_coverage: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
-opennav_row_coverage: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+opennav_row_coverage: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 opennav_row_coverage: /opt/ros/jazzy/lib/librmw.so
 opennav_row_coverage: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
 opennav_row_coverage: /opt/ros/jazzy/lib/libaction_msgs__rosidl_typesupport_introspection_c.so

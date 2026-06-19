@@ -5,8 +5,8 @@
 #include <string.h>
 
 #include "opennav_coverage_msgs/msg/detail/swath_mode__functions.h"
-#include "opennav_coverage_msgs/msg/detail/swath_mode__type_support.h"
 #include "opennav_coverage_msgs/msg/detail/swath_mode__struct.h"
+#include "opennav_coverage_msgs/msg/detail/swath_mode__type_support.h"
 #include "rosidl_typesupport_interface/macros.h"
 
 #ifdef __cplusplus

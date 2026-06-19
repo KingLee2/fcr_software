@@ -16,6 +16,14 @@ serial_camera1="$(</home/mvibot/floorCleaningRobot_ws/config/serial_camera1)"
 serial_camera2="$(</home/mvibot/floorCleaningRobot_ws/config/serial_camera2)"
 #
 robot_type_connect="$(</home/mvibot/floorCleaningRobot_ws/config/robot_type_connect)"
+# port
+lan_port="$(</home/mvibot/floorCleaningRobot_ws/config/lan_port)"
+wifi_port="$(</home/mvibot/floorCleaningRobot_ws/config/wifi_port)"
+#
+DEV=/dev/video0
+# Focus
+v4l2-ctl -d $DEV --set-ctrl=focus_automatic_continuous=0
+v4l2-ctl -d $DEV --set-ctrl=focus_absolute=420
 # start control ros
 if [[ "$robot_type_connect" = "wifi" ]]
 then
@@ -39,6 +47,8 @@ else
         ip_check="$(ip -4 addr show $lan_port | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
    done   
 fi
+# write IP into config file
+echo "$ip_check" > /home/mvibot/floorCleaningRobot_ws/config/ip_robot
 #launch file
 #launch server
 ros2 launch higher_layer_mvibot bringup_server_launch.py &

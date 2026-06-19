@@ -50,6 +50,21 @@ def generate_launch_description():
         'launch',
         'mvibot_scan_filter_launch.py'
     )
+    camera_2D_include=os.path.join(
+        get_package_share_directory('lower_layer_mvibot'),
+        'launch',
+        'mvibot_camera_2D_launch.py'
+    )
+    image_rec_include=os.path.join(
+        get_package_share_directory('lower_layer_mvibot'),
+        'launch',
+        'mvibot_image_rectify_launch.py'
+    )
+    apriltag_include=os.path.join(
+        get_package_share_directory('lower_layer_mvibot'),
+        'launch',
+        'mvibot_apriltag_launch.py'
+    )
     core_include=os.path.join(
         get_package_share_directory('lower_layer_mvibot'),
         'launch',
@@ -102,6 +117,24 @@ def generate_launch_description():
             ),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(scan_filter_include),
+                launch_arguments={
+                    'mvibot_seri': mvibot_seri
+                }.items()
+            ),
+	    IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(camera_2D_include),
+                launch_arguments={
+                    'mvibot_seri': mvibot_seri
+                }.items()
+            ),
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(image_rec_include),
+                launch_arguments={
+                    'mvibot_seri': mvibot_seri
+                }.items()
+            ),
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(apriltag_include),
                 launch_arguments={
                     'mvibot_seri': mvibot_seri
                 }.items()

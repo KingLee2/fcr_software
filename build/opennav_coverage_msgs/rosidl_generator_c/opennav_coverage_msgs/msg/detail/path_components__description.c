@@ -23,15 +23,15 @@ opennav_coverage_msgs__msg__PathComponents__get_type_hash(
 #include <string.h>
 
 // Include directives for referenced types
-#include "geometry_msgs/msg/detail/point32__functions.h"
 #include "geometry_msgs/msg/detail/point__functions.h"
 #include "std_msgs/msg/detail/header__functions.h"
 #include "geometry_msgs/msg/detail/quaternion__functions.h"
-#include "geometry_msgs/msg/detail/pose_stamped__functions.h"
 #include "builtin_interfaces/msg/detail/time__functions.h"
+#include "geometry_msgs/msg/detail/pose_stamped__functions.h"
 #include "nav_msgs/msg/detail/path__functions.h"
 #include "opennav_coverage_msgs/msg/detail/swath__functions.h"
 #include "geometry_msgs/msg/detail/pose__functions.h"
+#include "geometry_msgs/msg/detail/point32__functions.h"
 
 // Hashes for external referenced types
 #ifndef NDEBUG

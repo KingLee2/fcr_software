@@ -142,6 +142,7 @@ libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libvis
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_behavior_tree.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_compute_path_to_pose_action_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_compute_path_through_poses_action_bt_node.so
+libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_concatenate_paths_action_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_controller_cancel_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_wait_cancel_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_spin_cancel_bt_node.so
@@ -169,6 +170,7 @@ libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_is_battery_charging_condition_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_is_battery_low_condition_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_are_error_codes_active_condition_bt_node.so
+libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_are_poses_near_condition_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_would_a_controller_recovery_help_condition_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_would_a_planner_recovery_help_condition_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_would_a_smoother_recovery_help_condition_bt_node.so
@@ -184,6 +186,7 @@ libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_navigate_to_pose_action_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_navigate_through_poses_action_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_remove_passed_goals_action_bt_node.so
+libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_get_current_pose_action_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_get_pose_from_path_action_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_pipeline_sequence_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_round_robin_node_bt_node.so
@@ -194,6 +197,9 @@ libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_goal_checker_selector_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_progress_checker_selector_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_goal_updated_controller_bt_node.so
+libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_compute_and_track_route_cancel_bt_node.so
+libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_compute_and_track_route_bt_node.so
+libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav2_compute_route_bt_node.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/librclcpp.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/librclcpp_action.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/librclcpp_lifecycle.so
@@ -297,7 +303,7 @@ libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libmap
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libnav_msgs__rosidl_generator_c.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libclass_loader.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.1.0
-libopennav_cancel_complete_coverage_action_bt_node.so: /usr/lib/x86_64-linux-gnu/libtinyxml2.so.10.0.0
+libopennav_cancel_complete_coverage_action_bt_node.so: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libtinyxml2.so.9.0.0
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libstd_srvs__rosidl_typesupport_fastrtps_c.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libstd_srvs__rosidl_typesupport_introspection_c.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libstd_srvs__rosidl_typesupport_fastrtps_cpp.so
@@ -433,7 +439,7 @@ libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libbui
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
-libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/librmw.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
 libopennav_cancel_complete_coverage_action_bt_node.so: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so

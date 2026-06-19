@@ -4,10 +4,10 @@
 
 #include <string.h>
 
-#include "opennav_coverage_msgs/msg/detail/swath__type_support.h"
 #include "opennav_coverage_msgs/msg/detail/swath__functions.h"
-#include "opennav_coverage_msgs/msg/detail/swath__struct.h"
+#include "opennav_coverage_msgs/msg/detail/swath__type_support.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "opennav_coverage_msgs/msg/detail/swath__struct.h"
 
 #ifdef __cplusplus
 extern "C"

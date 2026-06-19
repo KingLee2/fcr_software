@@ -1,5 +1,5 @@
 CMakeFiles/gtest_template.dir/test/gtest_template.cpp.o: \
- /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/test/gtest_template.cpp \
+ /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera/test/gtest_template.cpp \
  /usr/include/stdc-predef.h \
  /opt/ros/jazzy/src/gtest_vendor/include/gtest/gtest.h \
  /usr/include/c++/13/cstddef \
