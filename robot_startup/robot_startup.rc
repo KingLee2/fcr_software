@@ -20,7 +20,7 @@ robot_type_connect="$(</home/mvibot/floorCleaningRobot_ws/config/robot_type_conn
 lan_port="$(</home/mvibot/floorCleaningRobot_ws/config/lan_port)"
 wifi_port="$(</home/mvibot/floorCleaningRobot_ws/config/wifi_port)"
 #
-DEV=/dev/video0
+DEV=/dev/video12
 # Focus
 v4l2-ctl -d $DEV --set-ctrl=focus_automatic_continuous=0
 v4l2-ctl -d $DEV --set-ctrl=focus_absolute=420
@@ -50,20 +50,21 @@ fi
 # write IP into config file
 echo "$ip_check" > /home/mvibot/floorCleaningRobot_ws/config/ip_robot
 #launch file
-#launch server
-ros2 launch higher_layer_mvibot bringup_server_launch.py &
-#launch robot
-ros2 launch lower_layer_mvibot mvibot_kernel_launch.py &
-ros2 launch lower_layer_mvibot mvibot_firmware_launch.py mvibot_seri:="$name_seri" serial_no_1:="$serial_camera1" serial_no_2:="$serial_camera2" &
-if [[ "$mode" = "navigation" ]]
-then
-	echo robot execute navigation
-   	ros2 launch mission_layer_mvibot mvibot_amcl_launch.py mvibot_seri:="$name_seri" &
-   	ros2 launch mission_layer_mvibot mvibot_navigation_launch.py mvibot_seri:="$name_seri" &
-	ros2 launch mission_layer_mvibot mvibot_mission_launch.py &
-else
-        echo robot execute slam
-fi
+ros2 launch higher_layer_mvibot bringup_launch.py &
+##launch server
+#ros2 launch higher_layer_mvibot bringup_server_launch.py &
+##launch robot
+#ros2 launch lower_layer_mvibot mvibot_kernel_launch.py &
+#ros2 launch lower_layer_mvibot mvibot_firmware_launch.py mvibot_seri:="$name_seri" serial_no_1:="$serial_camera1" serial_no_2:="$serial_camera2" &
+#if [[ "$mode" = "navigation" ]]
+#then
+#	echo robot execute navigation
+#   	ros2 launch mission_layer_mvibot mvibot_amcl_launch.py mvibot_seri:="$name_seri" &
+#   	ros2 launch mission_layer_mvibot mvibot_navigation_launch.py mvibot_seri:="$name_seri" &
+#	ros2 launch mission_layer_mvibot mvibot_mission_launch.py &
+#else
+#        echo robot execute slam
+#fi
 while :
 do
   echo "An Infinite loop"

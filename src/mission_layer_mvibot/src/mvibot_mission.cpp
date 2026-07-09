@@ -9,6 +9,7 @@
 #include "../include/mission_layer_mvibot/mvibot_mission/sleep_function.h"
 #include "../include/mission_layer_mvibot/mvibot_mission/brush_function.h"
 #include "../include/mission_layer_mvibot/mvibot_mission/suction_function.h"
+#include "../include/mission_layer_mvibot/mvibot_mission/charge_function.h"
 #include "../include/mission_layer_mvibot/mvibot_mission/lift_function.h"
 #include "../include/mission_layer_mvibot/mvibot_mission/map_function.h"
 #include "../include/mission_layer_mvibot/mvibot_mission/initialpose_function.h"
@@ -42,6 +43,7 @@ int main(int argc, char **argv){
     auto sleep_ = std::make_shared<sleep_function>("sleep_function",mvibot_seri_);
     auto brush_ = std::make_shared<brush_function>("brush_function",mvibot_seri_);
     auto suction_ = std::make_shared<suction_function>("suction_function",mvibot_seri_);
+    auto charge_ = std::make_shared<charge_function>("charge_function",mvibot_seri_);
     auto lift_ = std::make_shared<lift_function>("lift_function",mvibot_seri_);
     auto config_ = std::make_shared<config_function>("config_function",mvibot_seri_);
     auto marker_ = std::make_shared<marker_function>("marker_function",mvibot_seri_);
@@ -55,6 +57,7 @@ int main(int argc, char **argv){
     executor.add_node(sleep_);
     executor.add_node(brush_);
     executor.add_node(suction_);
+    executor.add_node(charge_);
     executor.add_node(lift_);
     executor.add_node(config_);
     executor.add_node(marker_);

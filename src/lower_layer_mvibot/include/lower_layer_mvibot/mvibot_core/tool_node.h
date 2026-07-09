@@ -309,7 +309,7 @@ class tool_node : public rclcpp::Node{
                 std::lock_guard<std::mutex> lock(mutex_tool);
                 radar2_live_status = 1;
             };
-            laser_scan2_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(mvibot_seri_+"/laser/scan1",qos_profile,laser_scan2_callback);
+            laser_scan2_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(mvibot_seri_+"/laser/scan2",qos_profile,laser_scan2_callback);
             auto camera1_scan_callback = [this](sensor_msgs::msg::LaserScan::SharedPtr msg)->void{
                 std::lock_guard<std::mutex> lock(mutex_tool);
                 camera1_live_status = 1;
@@ -1106,7 +1106,10 @@ void tool_node::pub_status_charge(){
     if(creat_fun==1){
             static std_msgs::msg::String msg;
             msg.data=mvibot_seri+"|";
-            msg.data=msg.data+"charge_status"+":"+to_string(charge_receive_uart_status);
+	    if(charge_receive_uart_status == 1 && battery_status_charge == 1) msg.data=msg.data+"charge_status:1";
+	    else if(charge_receive_uart_status == 1 && battery_status_charge == 0) msg.data=msg.data+"charge_status:2";
+            else msg.data=msg.data+"charge_status:0";
+            //msg.data=msg.data+"charge_status"+":"+to_string(charge_receive_uart_status);
             charge_status_pub_->publish(msg);
     }else creat_fun=1;
 }

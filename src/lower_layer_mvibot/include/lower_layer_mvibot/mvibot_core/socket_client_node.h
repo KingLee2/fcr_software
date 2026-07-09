@@ -221,7 +221,7 @@ void socket_client_node::process_data_uart_read(){
                 battery_mah_now=(float)((uint16_t)data_receive[battery_mah_now_H_re]<<8| data_receive[battery_mah_now_L_re]);
                 battery_mah_max=(float)((uint16_t)data_receive[battery_mah_max_H_re]<<8| data_receive[battery_mah_max_L_re]);
                 battery_current=(float)((int16_t)(data_receive[battery_current_H_re]<<8 | data_receive[battery_current_L_re]));
-                if(battery_current>=0) battery_status_charge=1;
+                if(battery_current>0) battery_status_charge=1;
                 else battery_status_charge=0;
                 battery_temperature=(float)(data_receive[battery_temperature1_re]+data_receive[battery_temperature1_re])/2;
                 //
@@ -248,6 +248,10 @@ void socket_client_node::process_data_uart_read(){
         // }
 	// RCLCPP_INFO(rclcpp::get_logger("Data_receive"), "byte lift_suction: %d, byte 41: %d", (int)data_receive[cylinder_suction_control_re], (int)data_receive[41]);
 	// RCLCPP_INFO(rclcpp::get_logger("Data_receive"), "byte 41: %d, byte 42: %d, byte 43: %d, byte 44: %d, byte 45: %d, byte 46: %d, byte 47: %d, byte 48: %d", (int)data_receive[41], (int)data_receive[42], (int)data_receive[43], (int)data_receive[44], (int)data_receive[45], (int)data_receive[46], (int)data_receive[47], (int)data_receive[48]);
+	RCLCPP_INFO(rclcpp::get_logger("Data_receive"), 
+        "soc: %d, vol_H: %d, vol_L: %d, mah_now_H: %d, mah_now_L: %d, mah_max_H: %d, mah_max_L: %d,current_H: %d, current_L: %d, battery_1: %d, battery_2: %d", 
+        (int)data_receive[battery_soc_re], (int)data_receive[battery_vol_H_re],(int)data_receive[battery_vol_L_re], (int)data_receive[battery_mah_now_H_re], (int)data_receive[battery_mah_now_L_re], (int)data_receive[battery_mah_max_H_re],
+        (int)data_receive[battery_mah_max_L_re], (int)data_receive[battery_current_H_re],(int)data_receive[battery_current_L_re],(int)data_receive[battery_temperature1_re],(int)data_receive[battery_temperature1_re]);
     }
 }
 void socket_client_node::process_data_uart_write(){

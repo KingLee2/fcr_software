@@ -129,7 +129,7 @@ int initialpose_function::check_robot_position(){
     angle2 = getyaw(z_robot,w_robot);
 
     //
-    if(dis <= 0.05 && fabs(sin(angle2)-sin(angle1))<=0.05 && fabs(cos(angle2)-cos(angle1))<=0.05) return 1;
+    if(dis <= 0.1 && fabs(sin(angle2)-sin(angle1))<=0.1 && fabs(cos(angle2)-cos(angle1))<=0.1) return 1;
     return 0;
 }
 void initialpose_function::pub_function_state(int st){

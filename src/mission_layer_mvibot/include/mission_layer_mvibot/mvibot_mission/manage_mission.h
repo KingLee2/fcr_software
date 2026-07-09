@@ -87,6 +87,9 @@ class manage_mission : public rclcpp::Node{
         //suction
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr suction_info_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr suction_function_state_pub_;
+	//charge
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr charge_info_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr charge_function_state_pub_;
         //loadmap
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr loadmap_info_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr loadmap_function_state_pub_;
@@ -193,6 +196,9 @@ class manage_mission : public rclcpp::Node{
             //suction
             suction_info_pub_ = this->create_publisher<std_msgs::msg::String>("suction_info",1);
             suction_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("suction_function_status",1);
+	    //charge
+            charge_info_pub_ = this->create_publisher<std_msgs::msg::String>("charge_info",1);
+            charge_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("charge_function_status",1);
             //loadmap
             loadmap_info_pub_ = this->create_publisher<std_msgs::msg::String>("loadmap_info",1);
             loadmap_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("loadmap_function_status",1);
@@ -377,7 +383,7 @@ class manage_mission : public rclcpp::Node{
                     is_stuck = false;
                 }
                 RCLCPP_INFO(this->get_logger(),"duration: %f", no_move_duration);
-                if(no_move_duration > 15.0) is_stuck = true;
+                if(no_move_duration > 10.0) is_stuck = true;
                 if(status != Finish_ && brush_status == 1 && is_stuck){
                     //pub brush off
                     pub_state_brush(0);
@@ -951,6 +957,11 @@ int manage_mission::execute_content(mission& mission, vector<string>& queue_cont
         time_out = stof(content["time_out"].get<string>());
         return handle_content(content, time_out, timer, status, suction_info_pub_, suction_function_state_pub_);
     }
+    else if(type == "charge"){
+        static double time_out;
+        time_out = stof(content["time_out"].get<string>());
+        return handle_content(content, time_out, timer, status, charge_info_pub_, charge_function_state_pub_);
+    }
     else if(type == "loadmap"){
         static double time_out;
         time_out = stof(content["time_out"].get<string>());
@@ -990,7 +1001,8 @@ void manage_mission::execute_mission(){
             RCLCPP_INFO(this->get_logger(),"get data for api");
             if (curl) {
                 //get api
-                api_str = "http://"+ip_robot+":6430/api/v1/wf/"+active_mission_id;
+                //api_str = "http://"+ip_robot+":6430/api/v1/wf/"+active_mission_id;
+		api_str = "http://127.0.0.1:6430/api/v1/wf/"+active_mission_id;
                 RCLCPP_INFO(this->get_logger(),"api: %s", api_str.c_str());
                 //get data
                 curl_easy_setopt(curl, CURLOPT_URL, api_str.c_str());

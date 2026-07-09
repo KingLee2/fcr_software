@@ -82,7 +82,7 @@ class sleep_function : public rclcpp::Node{
                     pub_function_state(res);
                 }
             };
-            action_timer_ = this->create_wall_timer(1000ms, action_timer_callback);
+            action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
         }
         void pub_function_state(int st);
         void process_data();

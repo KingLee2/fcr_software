@@ -259,7 +259,7 @@ mvibot_server: /opt/ros/jazzy/lib/x86_64-linux-gnu/libpoint_cloud_transport.so
 mvibot_server: /opt/ros/jazzy/lib/libmessage_filters.so
 mvibot_server: /opt/ros/jazzy/lib/liburdf.so
 mvibot_server: /opt/ros/jazzy/lib/x86_64-linux-gnu/liburdfdom_model.so.4.0
-mvibot_server: /usr/lib/x86_64-linux-gnu/libtinyxml2.so.10.0.0
+mvibot_server: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libtinyxml2.so.9.0.0
 mvibot_server: /opt/ros/jazzy/lib/librviz_rendering.so
 mvibot_server: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.13
 mvibot_server: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.13
@@ -375,7 +375,7 @@ mvibot_server: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fast
 mvibot_server: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_c.so
 mvibot_server: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
 mvibot_server: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
-mvibot_server: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+mvibot_server: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 mvibot_server: /opt/ros/jazzy/lib/librmw.so
 mvibot_server: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
 mvibot_server: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so
