@@ -147,8 +147,8 @@ void lift_function::process_data(){
 int lift_function::action(){
     if(status == Active_){
         if(object == "lift_brush"){
-            if(mode == "lift_up"){
-                pub_lift_brush(0);
+            if(mode == "lift_down"){
+                pub_lift_brush(1);
                 if(lift_brush_value >= lift_up){
                     status = Finish_;
                     request = 0;
@@ -158,8 +158,8 @@ int lift_function::action(){
                 }
                 else return Active_;
             }
-            else if(mode == "lift_down"){
-                pub_lift_brush(1);
+            else if(mode == "lift_up"){
+                pub_lift_brush(0);
                 if(lift_brush_value <= lift_down){
                     status = Finish_;
                     request = 0;

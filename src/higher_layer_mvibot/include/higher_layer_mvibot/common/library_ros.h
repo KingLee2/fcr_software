@@ -37,6 +37,7 @@
 #include <nav2_msgs/srv/load_map.hpp>
 #include <slam_toolbox/srv/serialize_pose_graph.hpp>
 #include <lifecycle_msgs/srv/get_state.hpp>
+#include <lifecycle_msgs/srv/change_state.hpp>
 #include <nav2_msgs/srv/clear_entire_costmap.hpp>
 #include <rcl_interfaces/srv/set_parameters.hpp>
 #include <rcl_interfaces/srv/get_parameters.hpp>

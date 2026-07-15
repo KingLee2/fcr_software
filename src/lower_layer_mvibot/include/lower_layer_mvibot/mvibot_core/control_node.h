@@ -497,12 +497,12 @@ class control_node : public rclcpp::Node{
                     led_b=1;
                 }
             }
-            if(local_battery_status_charge==1){
-                set_color_led(0,0,100);
-                led_r=1;
-                led_l=1;
-                led_b=1;
-            }
+//            if(local_battery_status_charge==1){
+//                set_color_led(0,0,100);
+//                led_r=1;
+//                led_l=1;
+//                led_b=1;
+//            }
             if(local_software_update==1){
                 set_color_led(0,0,100);
                 led_r=2;

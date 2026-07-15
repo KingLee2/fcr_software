@@ -11,6 +11,7 @@ using namespace std;
         int save_map_ = -1;
         int load_map_ = -1;
         int map_server_state = -1, slam_toolbox_state = -1;
+	bool map_transition_trigger=false, slam_transition_trigger=false;
         int load_map_first = 0;
         //declare pub//
         // rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr map_pub_;
@@ -35,6 +36,8 @@ using namespace std;
 	    rclcpp::Client<slam_toolbox::srv::SerializePoseGraph>::SharedPtr save_serialize_map_srv_;
         rclcpp::Client<lifecycle_msgs::srv::GetState>::SharedPtr get_state_map_server_srv_;
         rclcpp::Client<lifecycle_msgs::srv::GetState>::SharedPtr get_state_slam_srv_;
+	rclcpp::Client<lifecycle_msgs::srv::ChangeState>::SharedPtr change_state_map_server_srv_;
+        rclcpp::Client<lifecycle_msgs::srv::ChangeState>::SharedPtr change_state_slam_toolbox_srv_;
         //declare timer
         rclcpp::TimerBase::SharedPtr map_timer_;
         rclcpp::TimerBase::SharedPtr check_map_server_timer_;
@@ -226,6 +229,8 @@ using namespace std;
 	        save_serialize_map_srv_ = this->create_client<slam_toolbox::srv::SerializePoseGraph>("/slam_toolbox/serialize_map");
             get_state_map_server_srv_ = this->create_client<lifecycle_msgs::srv::GetState>("map_server/get_state");
             get_state_slam_srv_ = this->create_client<lifecycle_msgs::srv::GetState>("/slam_toolbox/get_state");
+	    change_state_map_server_srv_ = this->create_client<lifecycle_msgs::srv::ChangeState>("map_server/change_state");
+            change_state_slam_toolbox_srv_ = this->create_client<lifecycle_msgs::srv::ChangeState>("/slam_toolbox/change_state");
             //init timer//
             auto map_timer_callback = [this]()->void{
                 std::lock_guard<std::recursive_mutex> lock(mutex_common);
@@ -247,6 +252,12 @@ using namespace std;
                     // cout<<"start pub map"<<endl;
                     // pub_map();
                 }
+		else if(map_server_state != 3 && map_server_state != -1){
+                    change_state_map_server(map_server_state);
+                }
+                else if(slam_toolbox_state != 3 && slam_toolbox_state != -1){
+                    change_state_slam_toolbox(slam_toolbox_state);
+                }
             };
             map_timer_ = this->create_wall_timer(100ms, map_timer_callback);
             auto check_map_server_timer_callback = [this]()->void{
@@ -264,6 +275,8 @@ using namespace std;
 	    int save_serialize_map(string map_url);
         void get_state_map_server();
         void get_state_slam_toolbox();
+	void change_state_map_server(int map_server_state);
+        void change_state_slam_toolbox(int slam_toolbox_state);
         void process_request_map(); 
 };
 string fcr_server::load_file(string name_file){
@@ -388,6 +401,70 @@ void fcr_server::get_state_slam_toolbox(){
         }
     };
     auto future = get_state_slam_srv_->async_send_request(req,get_state_slam_toolbox_service_callback);
+}
+void fcr_server::change_state_map_server(int map_server_state){
+    RCLCPP_INFO(rclcpp::get_logger("Map"), "Change state map server");
+    if(!change_state_map_server_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
+        RCLCPP_INFO(rclcpp::get_logger("Map"),"Change state map server service not available");
+        return ;
+    }
+    //send request
+    auto req = std::make_shared<lifecycle_msgs::srv::ChangeState::Request>();
+    if(map_server_state == 1) req->transition.id = lifecycle_msgs::msg::Transition::TRANSITION_CONFIGURE;
+    else if(map_server_state == 2) req->transition.id = lifecycle_msgs::msg::Transition::TRANSITION_ACTIVATE;
+    else return;
+    auto change_state_map_server_service_callback = [this](rclcpp::Client<lifecycle_msgs::srv::ChangeState>::SharedFuture result){
+        std::shared_ptr<lifecycle_msgs::srv::ChangeState_Response> res;
+        try{
+            res = result.get();
+        }
+        catch(const std::exception &e){
+            RCLCPP_ERROR(rclcpp::get_logger("Map"),"ChangeState exception: %s",e.what());
+        }
+        RCLCPP_INFO(rclcpp::get_logger("Map"),"%d",res->success);
+        if(res->success == true){
+            RCLCPP_INFO(rclcpp::get_logger("Map"),"Map server is ACTIVE");
+        }
+        else{
+            RCLCPP_INFO(rclcpp::get_logger("Map"),"Change state MAP SERVER fail");
+        }
+	map_transition_trigger = false;
+    };
+    if(map_transition_trigger) return;
+    map_transition_trigger = true;
+    auto future = change_state_map_server_srv_->async_send_request(req,change_state_map_server_service_callback);
+}
+void fcr_server::change_state_slam_toolbox(int slam_toolbox_state){
+    RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"), "Change state slam toolbox");
+    if(!change_state_slam_toolbox_srv_->wait_for_service(std::chrono::duration<float>(0.5))){
+        RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"),"Change state slam toolbox service not available");
+        return ;
+    }
+    //send request
+    auto req = std::make_shared<lifecycle_msgs::srv::ChangeState::Request>();
+    if(slam_toolbox_state == 1) req->transition.id = lifecycle_msgs::msg::Transition::TRANSITION_CONFIGURE;
+    else if(slam_toolbox_state == 2) req->transition.id = lifecycle_msgs::msg::Transition::TRANSITION_ACTIVATE;
+    else return;
+    auto change_state_slam_toolbox_service_callback = [this](rclcpp::Client<lifecycle_msgs::srv::ChangeState>::SharedFuture result){
+        std::shared_ptr<lifecycle_msgs::srv::ChangeState_Response> res;
+        try{
+            res = result.get();
+        }
+        catch(const std::exception &e){
+            RCLCPP_ERROR(rclcpp::get_logger("Slam Toolbox"),"ChangeState exception: %s",e.what());
+        }
+        RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"),"%d",res->success);
+        if(res->success == true){
+            RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"),"Slam Toolbox is ACTIVE");
+        }
+        else{
+            RCLCPP_INFO(rclcpp::get_logger("Slam Toolbox"),"Change state Slam Toolbox fail");
+        }
+	slam_transition_trigger = false;
+    };
+    if(slam_transition_trigger) return;
+    slam_transition_trigger = true;
+    auto future = change_state_slam_toolbox_srv_->async_send_request(req,change_state_slam_toolbox_service_callback);
 }
 double fcr_server::getyaw(geometry_msgs::msg::Quaternion quat_msg){
     //get angle around Z

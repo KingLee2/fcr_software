@@ -25,7 +25,7 @@ def generate_launch_description():
         executable='realsense2_camera_node',
         parameters = [
             LaunchConfiguration('camera_D435_param_file'),
-            {"serial_no": [LaunchConfiguration("serial_no_1")],
+            {"serial_no": LaunchConfiguration("serial_no_1"),
             "base_frame_id": LaunchConfiguration("mvibot_seri"),
             #"diagnostics_period": "1.0",
             "respawn": "true"}],
@@ -38,7 +38,7 @@ def generate_launch_description():
         executable='realsense2_camera_node',
         parameters = [
             LaunchConfiguration('camera_D435i_param_file'),
-            {"serial_no": [LaunchConfiguration("serial_no_2")],
+            {"serial_no": LaunchConfiguration("serial_no_2"),
             "base_frame_id": LaunchConfiguration("mvibot_seri"),
             #"diagnostics_period": "1.0",
             "respawn": "true"}],
