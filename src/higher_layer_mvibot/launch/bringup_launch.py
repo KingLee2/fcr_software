@@ -1,6 +1,6 @@
 import os
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, TimerAction
 from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_xml.launch_description_sources import XMLLaunchDescriptionSource
@@ -113,21 +113,49 @@ def generate_launch_description():
     )
 
     ld.add_action(
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(server_launch)
+            )
+        )
+    ld.add_action(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(kernel_launch)
         )
     )
-
-    ld.add_action(
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(firmware_launch),
-            launch_arguments={
-                'mvibot_seri': mvibot_seri,
-                'serial_no_1': serial_camera1,
-                'serial_no_2': serial_camera2
-            }.items()
-        )
+    firmware_start = TimerAction(
+        period=2.0,
+        actions=[
+            # IncludeLaunchDescription(
+            #     PythonLaunchDescriptionSource(kernel_launch)
+            # ),
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(firmware_launch),
+                launch_arguments={
+                    'mvibot_seri': mvibot_seri,
+                    'serial_no_1': serial_camera1,
+                    'serial_no_2': serial_camera2
+                }.items()
+            )
+        ]
     )
+    ld.add_action(firmware_start)
+
+    # ld.add_action(
+    #     IncludeLaunchDescription(
+    #         PythonLaunchDescriptionSource(kernel_launch)
+    #     )
+    # )
+
+    # ld.add_action(
+    #     IncludeLaunchDescription(
+    #         PythonLaunchDescriptionSource(firmware_launch),
+    #         launch_arguments={
+    #             'mvibot_seri': mvibot_seri,
+    #             'serial_no_1': serial_camera1,
+    #             'serial_no_2': serial_camera2
+    #         }.items()
+    #     )
+    # )
 
     if mode == "mapping":
         ld.add_action(
@@ -163,33 +191,58 @@ def generate_launch_description():
             )
         )
 
-        ld.add_action(
-            IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(amcl_launch),
-                launch_arguments={
-                    'mvibot_seri': mvibot_seri
-                }.items()
-            )
-        )
+    #     ld.add_action(
+    #         IncludeLaunchDescription(
+    #             PythonLaunchDescriptionSource(amcl_launch),
+    #             launch_arguments={
+    #                 'mvibot_seri': mvibot_seri
+    #             }.items()
+    #         )
+    #     )
 
-        ld.add_action(
-            IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(navigation_launch),
-                launch_arguments={
-                    'mvibot_seri': mvibot_seri
-                }.items()
-            )
-        )
-        ld.add_action(
-            IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(mission_launch)
-            )
-        )
+    #     ld.add_action(
+    #         IncludeLaunchDescription(
+    #             PythonLaunchDescriptionSource(navigation_launch),
+    #             launch_arguments={
+    #                 'mvibot_seri': mvibot_seri
+    #             }.items()
+    #         )
+    #     )
+    #     ld.add_action(
+    #         IncludeLaunchDescription(
+    #             PythonLaunchDescriptionSource(mission_launch)
+    #         )
+    #     )
+        nav_start = TimerAction(
+            period=10.0,
+            actions=[
 
-    ld.add_action(
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(server_launch)
+                # IncludeLaunchDescription(
+                #     PythonLaunchDescriptionSource(map_server_launch),
+                #     launch_arguments={
+                #         'mvibot_seri': mvibot_seri
+                #     }.items()
+                # ),
+
+                IncludeLaunchDescription(
+                    PythonLaunchDescriptionSource(amcl_launch),
+                    launch_arguments={
+                        'mvibot_seri': mvibot_seri
+                    }.items()
+                ),
+
+                IncludeLaunchDescription(
+                    PythonLaunchDescriptionSource(navigation_launch),
+                    launch_arguments={
+                        'mvibot_seri': mvibot_seri
+                    }.items()
+                ),
+
+                IncludeLaunchDescription(
+                    PythonLaunchDescriptionSource(mission_launch)
+                )
+            ]
         )
-    )
+        ld.add_action(nav_start)
 
     return ld

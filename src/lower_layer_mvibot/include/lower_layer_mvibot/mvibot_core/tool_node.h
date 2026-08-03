@@ -324,8 +324,14 @@ class tool_node : public rclcpp::Node{
             auto brush_status_callback = [this](std_msgs::msg::String msg)->void{
                 std::lock_guard<std::mutex> lock(mutex_tool);
                 //nhan du lieu gan vao bien gui uart
-                if(msg.data == "1") brush_send_uart_status = 1;
-                else if(msg.data == "0") brush_send_uart_status = 0;
+                if(msg.data == "1"){
+			brush_send_uart_status = 1;
+			valve_send_uart_status = 1;
+		}
+                else if(msg.data == "0"){
+			brush_send_uart_status = 0;
+			valve_send_uart_status = 0;
+		}
             };
             brush_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/brush_state", qos_profile, brush_status_callback);
             //suction

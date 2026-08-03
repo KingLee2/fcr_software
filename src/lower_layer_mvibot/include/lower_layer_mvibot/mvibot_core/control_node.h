@@ -17,6 +17,7 @@ class control_node : public rclcpp::Node{
             w_set1 = 0.0;
             w_set2 = 0.0;
             w_set3 = 0.0;
+	    red_ = 100; green_ = 100; blue_ = 100; led_l_ = 1; led_r_ = 1; led_b_ = 1; led_f_ = 1;
             //create sub
             ////
             auto motor_enable_callback = [this](std_msgs::msg::String::SharedPtr msg){
@@ -425,13 +426,44 @@ class control_node : public rclcpp::Node{
                     w_set1=0;
                 }
                 // acceleration for robot
-                if(v_set1>v_set2) {
-                    v_set2+=(ax/4)*(float)ts_speed_control;
-                    if(v_set2>v_set1) v_set2=v_set1;
+                // if(v_set1>v_set2) {
+                //     v_set2+=(ax/4)*(float)ts_speed_control;
+                //     if(v_set2>v_set1) v_set2=v_set1;
+                // }
+                // if(v_set1<v_set2){
+                //     v_set2-=ax*(float)ts_speed_control;
+                //     if(v_set2<v_set1) v_set2=v_set1;
+                // }
+		//
+		if(v_set1 > 0){
+                    if(v_set1>v_set2) {
+                        v_set2+=(ax/4)*(float)ts_speed_control;
+                        if(v_set2>v_set1) v_set2=v_set1;
+                    }
+                    if(v_set1<v_set2){
+                        v_set2-=ax*4*(float)ts_speed_control;
+                        if(v_set2<v_set1) v_set2=v_set1;
+                    }
                 }
-                if(v_set1<v_set2){
-                    v_set2-=ax*(float)ts_speed_control;
-                    if(v_set2<v_set1) v_set2=v_set1;
+                else if(v_set1 < 0){
+                    if(v_set1<v_set2){
+                        v_set2-=(ax/4)*(float)ts_speed_control;
+                        if(v_set2<v_set1) v_set2=v_set1;
+                    }
+                    if(v_set1>v_set2) {
+                        v_set2+=ax*4*(float)ts_speed_control;
+                        if(v_set2>v_set1) v_set2=v_set1;
+                    }
+                }
+                else if (v_set1 == 0){
+                    if(v_set2 >= 0){
+                        v_set2-=ax*4*(float)ts_speed_control;
+                        if(v_set2 < 0) v_set2 = 0;
+                    }
+                    else{
+                        v_set2+=ax*4*(float)ts_speed_control;
+                        if(v_set2 > 0) v_set2 = 0;
+                    }
                 }
                 if(w_set1>w_set2) {
                         w_set2+=aw*(float)ts_speed_control;

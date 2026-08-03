@@ -21,6 +21,7 @@ class socket_client_node : public rclcpp::Node{
             //init pub //
             //history
             history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
+	    test_pub_ = this->create_publisher<std_msgs::msg::String>("test",1);
             //init sub//
             //shutdown robot
             auto robot_shutdown_callback = [this](std_msgs::msg::String msg)->void{
@@ -80,6 +81,7 @@ class socket_client_node : public rclcpp::Node{
         json his_content;
         //declare pub history
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
+	rclcpp::Publisher<std_msgs::msg::String>::SharedPtr test_pub_;
         //declare sub
         //shutdown robot
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr robot_shutdown_sub_;
@@ -252,6 +254,10 @@ void socket_client_node::process_data_uart_read(){
         "soc: %d, vol_H: %d, vol_L: %d, mah_now_H: %d, mah_now_L: %d, mah_max_H: %d, mah_max_L: %d,current_H: %d, current_L: %d, battery_1: %d, battery_2: %d", 
         (int)data_receive[battery_soc_re], (int)data_receive[battery_vol_H_re],(int)data_receive[battery_vol_L_re], (int)data_receive[battery_mah_now_H_re], (int)data_receive[battery_mah_now_L_re], (int)data_receive[battery_mah_max_H_re],
         (int)data_receive[battery_mah_max_L_re], (int)data_receive[battery_current_H_re],(int)data_receive[battery_current_L_re],(int)data_receive[battery_temperature1_re],(int)data_receive[battery_temperature1_re]);
+	std_msgs::msg::String msg_test;
+        msg_test.data = "byte 41: " + to_string(data_receive[41]) + ",byte 42: " + to_string(data_receive[42]) + ",byte 43: " + to_string(data_receive[43]) + ",byte 44: " + to_string(data_receive[44])
+        + ",byte 45: " + to_string(data_receive[45]) + ",byte 46: " + to_string(data_receive[46]) + ",byte 47: " + to_string(data_receive[47]) + ",byte 48: " + to_string(data_receive[48]) + ",byte 6: " + to_string(data_receive[6]) + ",byte 21: " + to_string(data_receive[21]);
+        test_pub_->publish(msg_test);
     }
 }
 void socket_client_node::process_data_uart_write(){

@@ -1,6 +1,6 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, TimerAction
 from launch.substitutions import LaunchConfiguration, TextSubstitution
 import os
 
@@ -28,8 +28,11 @@ def generate_launch_description():
             {"serial_no": LaunchConfiguration("serial_no_1"),
             "base_frame_id": LaunchConfiguration("mvibot_seri"),
             #"diagnostics_period": "1.0",
-            "respawn": "true"}],
+            # "respawn": "true"
+	}],
         output = "screen",
+	respawn=True,
+        respawn_delay=5.0
     )
     camera_D435i_node = Node(
         namespace = LaunchConfiguration('mvibot_seri'),
@@ -41,8 +44,11 @@ def generate_launch_description():
             {"serial_no": LaunchConfiguration("serial_no_2"),
             "base_frame_id": LaunchConfiguration("mvibot_seri"),
             #"diagnostics_period": "1.0",
-            "respawn": "true"}],
+            #"respawn": "true"
+	}],
         output = "screen",
+	respawn=True,
+        respawn_delay=5.0
     )
     ld = LaunchDescription()
     ld.add_action(name_seri_arg)
@@ -51,5 +57,6 @@ def generate_launch_description():
     ld.add_action(camera_D435_param_file_arg)
     ld.add_action(camera_D435i_param_file_arg)
     ld.add_action(camera_D435_node)
+    #ld.add_action(camera_D435i_node)
     ld.add_action(camera_D435i_node)
     return ld

@@ -1,6 +1,6 @@
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.actions import GroupAction
+from launch.actions import GroupAction, TimerAction
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, TextSubstitution
@@ -67,9 +67,73 @@ def generate_launch_description():
         'mvibot_bt_navigator_launch.py'
     )
     #run
-    navigation_group=GroupAction(
+    # navigation_group=GroupAction(
+    #     actions=[
+    #         # PushROSNamespace(namespace=mvibot_namespace),
+    #         IncludeLaunchDescription(
+    #             PythonLaunchDescriptionSource(planner_server_include),
+    #             launch_arguments={
+    #                 'mvibot_seri': mvibot_seri
+    #             }.items()
+    #         ),
+    #         IncludeLaunchDescription(
+    #             PythonLaunchDescriptionSource(coverage_server_include),
+    #             launch_arguments={
+    #                 'mvibot_seri': mvibot_seri
+    #             }.items()
+    #         ),
+    #         IncludeLaunchDescription(
+    #             PythonLaunchDescriptionSource(controller_server_include),
+    #             launch_arguments={
+    #                 'mvibot_seri': mvibot_seri
+    #             }.items()
+    #         ),
+    #         IncludeLaunchDescription(
+    #             PythonLaunchDescriptionSource(behavior_server_include),
+    #             launch_arguments={
+    #                 'mvibot_seri': mvibot_seri
+    #             }.items()
+    #         ),
+    #         IncludeLaunchDescription(
+    #             PythonLaunchDescriptionSource(smoother_server_include),
+    #             launch_arguments={
+    #                 'mvibot_seri': mvibot_seri
+    #             }.items()
+    #         ),
+    #         IncludeLaunchDescription(
+    #             PythonLaunchDescriptionSource(lifecycle_manager_navigation_include),
+    #             launch_arguments={
+    #                 'mvibot_seri': mvibot_seri
+    #             }.items()
+    #         ),
+    #         #IncludeLaunchDescription(
+    #         #    PythonLaunchDescriptionSource(waypoint_follower_include),
+    #         #    launch_arguments={
+    #         #        'mvibot_seri': mvibot_seri
+    #         #    }.items()
+    #         #),
+    #         #IncludeLaunchDescription(
+    #         #    PythonLaunchDescriptionSource(velocity_smoother_include),
+    #         #    launch_arguments={
+    #         #        'mvibot_seri': mvibot_seri
+    #         #    }.items()
+    #         #),
+    #         #IncludeLaunchDescription(
+    #         #    PythonLaunchDescriptionSource(collision_monitor_include),
+    #         #    launch_arguments={
+    #         #        'mvibot_seri': mvibot_seri
+    #         #    }.items()
+    #         #),
+	#     IncludeLaunchDescription(
+    #             PythonLaunchDescriptionSource(bt_navigator_include),
+    #             launch_arguments={
+    #                 'mvibot_seri': mvibot_seri
+    #             }.items()
+    #         )
+    #     ]
+    # )
+    stage1 = GroupAction(
         actions=[
-            # PushROSNamespace(namespace=mvibot_namespace),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(planner_server_include),
                 launch_arguments={
@@ -81,15 +145,15 @@ def generate_launch_description():
                 launch_arguments={
                     'mvibot_seri': mvibot_seri
                 }.items()
-            ),
+            )
+        ]
+    )
+
+    stage2 = TimerAction(
+        period=2.0,
+        actions=[
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(controller_server_include),
-                launch_arguments={
-                    'mvibot_seri': mvibot_seri
-                }.items()
-            ),
-            IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(behavior_server_include),
                 launch_arguments={
                     'mvibot_seri': mvibot_seri
                 }.items()
@@ -99,33 +163,33 @@ def generate_launch_description():
                 launch_arguments={
                     'mvibot_seri': mvibot_seri
                 }.items()
-            ),
+            )
+        ]
+    )
+
+    stage3 = TimerAction(
+        period=4.0,
+        actions=[
             IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(lifecycle_manager_navigation_include),
+                PythonLaunchDescriptionSource(behavior_server_include),
                 launch_arguments={
                     'mvibot_seri': mvibot_seri
                 }.items()
             ),
-            #IncludeLaunchDescription(
-            #    PythonLaunchDescriptionSource(waypoint_follower_include),
-            #    launch_arguments={
-            #        'mvibot_seri': mvibot_seri
-            #    }.items()
-            #),
-            #IncludeLaunchDescription(
-            #    PythonLaunchDescriptionSource(velocity_smoother_include),
-            #    launch_arguments={
-            #        'mvibot_seri': mvibot_seri
-            #    }.items()
-            #),
-            #IncludeLaunchDescription(
-            #    PythonLaunchDescriptionSource(collision_monitor_include),
-            #    launch_arguments={
-            #        'mvibot_seri': mvibot_seri
-            #    }.items()
-            #),
-	    IncludeLaunchDescription(
+            IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(bt_navigator_include),
+                launch_arguments={
+                    'mvibot_seri': mvibot_seri
+                }.items()
+            )
+        ]
+    )
+
+    stage4 = TimerAction(
+        period=6.0,
+        actions=[
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(lifecycle_manager_navigation_include),
                 launch_arguments={
                     'mvibot_seri': mvibot_seri
                 }.items()
@@ -135,5 +199,8 @@ def generate_launch_description():
 
     ld=LaunchDescription()
     ld.add_action(mvibot_seri_arg)
-    ld.add_action(navigation_group)
+    ld.add_action(stage1)
+    ld.add_action(stage2)
+    ld.add_action(stage3)
+    ld.add_action(stage4)
     return ld

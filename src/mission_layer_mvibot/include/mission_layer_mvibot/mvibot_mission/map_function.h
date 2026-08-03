@@ -144,9 +144,9 @@ int loadmap_function::action(){
         else if(result_srv == 1) return Active_;
         else if(result_srv == 2) {
             result_srv = 0;
-            status = Error_;
-            request = 0;
-            return Error_;
+            status = Active_;
+            request = 1;
+            return Active_;
         }
         else if(result_srv == 3){
             result_srv = 0;

@@ -24,8 +24,8 @@ def generate_launch_description():
 			"transform_tolerance": 0.01,
 			"min_height": 0.05,
 			"max_height": 2.0,
-			"angle_min": -3.1400001049,
-			"angle_max": 3.1400001049,
+			"angle_min": -1.57, #-3.1400001049,
+			"angle_max": 1.57, #3.1400001049,
 			"angle_increment": 0.0174532923847,
 			"scan_time": 0.3333,   #0.3333
 			"range_min": 0.0,

@@ -105,7 +105,7 @@ void sleep_function::process_data(){
 }
 int sleep_function::action(){
     if(status == Active_){
-        time += 1.0;
+        time += 0.05;
         if(time>=time_sleep){
             status = Finish_;
             request = 0;

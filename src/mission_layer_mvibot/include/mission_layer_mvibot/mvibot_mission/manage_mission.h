@@ -39,6 +39,7 @@ class manage_mission : public rclcpp::Node{
         int brush_status = 0, brush_status_f = 0;
         int status = Finish_;
         string active_mission_id = "";
+	string type = "";
         int state;
         int step_handle_content = 0;
         int step_try_catch = 0;
@@ -220,11 +221,11 @@ class manage_mission : public rclcpp::Node{
             brush_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/brush_status", qos_profile, brush_callback);
             auto reset_mission_callback = [this](std_msgs::msg::String msg)->void{
                 if(status != Active_){
-                    mission_.reset();
                     his_content["type"] = action_mode_mission;
                     his_content["state"] = "reset";
                     his_content["description"] = mission_.mission_name;
                     send_history("warning", his_content.dump());
+		    mission_.reset();
                     reset_function();
                     action_mode_mission = "N_A";
                     step_handle_content = 0;
@@ -384,7 +385,7 @@ class manage_mission : public rclcpp::Node{
                 }
                 RCLCPP_INFO(this->get_logger(),"duration: %f", no_move_duration);
                 if(no_move_duration > 10.0) is_stuck = true;
-                if(status != Finish_ && brush_status == 1 && is_stuck){
+                if(status != Finish_ && brush_status == 1 && is_stuck && type == "navigation"){
                     //pub brush off
                     pub_state_brush(0);
                     brush_pause_stuck = true;
@@ -417,7 +418,7 @@ class manage_mission : public rclcpp::Node{
                     angle1 = getyaw(z_f,w_f);
                     angle2 = getyaw(robot_pose[2],robot_pose[3]);
                     denta_angle = fabs(angle2-angle1);
-                    if(dis >= 1.0 || denta_angle >= 0.35){ //1.0m and 0.35rad
+                    if(dis >= 1.0 || denta_angle >= 0.14){ //1.0m and 0.35rad
                         x_f = robot_pose[00];
                         y_f = robot_pose[1];
                         z_f = robot_pose[2];
@@ -726,7 +727,7 @@ int manage_mission::handle_content(const json& content, const double& time_out, 
 int manage_mission::execute_content(mission& mission, vector<string>& queue_content, string& active_content, string& next_to, int& status){
     json content;
     static double timer = 0.0;
-    static string type = "";
+    // static string type = "";
     content = mission.contents_map[active_content];
     type = content["type"].get<string>();
     cout<<"Content ID: "<<active_content<<endl;
@@ -1099,6 +1100,7 @@ void manage_mission::execute_mission(){
                     status = Finish_;
                     mission_execution_time = "";
                     active_content = "";
+		    type = "";
                     his_content["type"] = action_mode_mission;
                     his_content["state"] = "finish";
                     his_content["description"] = mission_.mission_name;

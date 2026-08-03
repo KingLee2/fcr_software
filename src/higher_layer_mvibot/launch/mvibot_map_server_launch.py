@@ -40,7 +40,7 @@ def generate_launch_description():
         name='lifecycle_manager_map_server',
         respawn=True,
         output='screen',
-        parameters=[{'autostart': autostart}, {'node_names': lifecycle_nodes}]
+        parameters=[{'autostart': autostart}, {'node_names': lifecycle_nodes}, {'bond_timeout': 10.0}]
     )
     ld=LaunchDescription()
     ld.add_action(mvibot_seri_arg)

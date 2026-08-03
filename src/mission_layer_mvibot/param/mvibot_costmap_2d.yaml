@@ -20,7 +20,7 @@ local_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         enabled: true
         cost_scaling_factor: 3.0 #1.0 #Exponential decay factor across inflation radius.
-        inflation_radius: 0.55 #1.2 #Radius to inflate costmap around lethal obstacles.
+        inflation_radius: 0.5 #1.2 #Radius to inflate costmap around lethal obstacles.
 
       voxel_layer:
         plugin: "nav2_costmap_2d::VoxelLayer"
@@ -119,7 +119,7 @@ global_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         enabled: true
         cost_scaling_factor: 3.0 #2.0 #Exponential decay factor across inflation radius.
-        inflation_radius: 0.55 #Radius to inflate costmap around lethal obstacles.
+        inflation_radius: 0.5 #Radius to inflate costmap around lethal obstacles.
 
       voxel_layer:
         plugin: "nav2_costmap_2d::VoxelLayer"
