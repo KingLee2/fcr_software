@@ -18,7 +18,7 @@ class brush_function : public rclcpp::Node{
         int status = Finish_;
         int request = 0; //request = 1: yeu cau thuc thi, request = 0: khong co yeu cau thuc thi
         int brush  = 0;
-        int brush_state = 0;
+        int brush_state = 0, valve_state;
         //declare pub
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr brush_state_pub_;
@@ -26,6 +26,7 @@ class brush_function : public rclcpp::Node{
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr brush_info_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr brush_function_status_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr brush_status_sub_;
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr valve_status_sub_;
         //declare timer
         rclcpp::TimerBase::SharedPtr action_timer_;
         
@@ -81,6 +82,14 @@ class brush_function : public rclcpp::Node{
                 cout << "brush_state: "<<brush_state<<endl;
             };
             brush_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/brush_status", qos_profile, brush_callback);
+            //
+            auto valve_callback = [this](std_msgs::msg::String msg)->void{
+                char ch_last = msg.data.back();
+                if( ch_last=='0') valve_state = 0;
+                else if(ch_last == '1') valve_state = 1;
+                cout << "valve_state: "<<valve_state<<endl;
+            };
+            valve_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/valve_status", qos_profile, valve_callback);
             //init timer
             //
             auto action_timer_callback = [this]()->void{
@@ -122,7 +131,7 @@ void brush_function::process_data(){
 int brush_function::action(){
     if(status == Active_){
         pub_state_brush(brush);
-        if(brush == brush_state){
+        if(brush == brush_state && brush == valve_state){
             status = Finish_;
             request = 0;
             return Finish_;

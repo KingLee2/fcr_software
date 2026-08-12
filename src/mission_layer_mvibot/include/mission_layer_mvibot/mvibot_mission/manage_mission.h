@@ -36,10 +36,10 @@ class manage_mission : public rclcpp::Node{
         //
         int motor_left_ready = 0;
         int motor_right_ready = 0;
-        int brush_status = 0, brush_status_f = 0;
+        int valve_status = 0, valve_status_f = 0;
         int status = Finish_;
         string active_mission_id = "";
-	string type = "";
+	    string type = "";
         int state;
         int step_handle_content = 0;
         int step_try_catch = 0;
@@ -51,8 +51,8 @@ class manage_mission : public rclcpp::Node{
         CURLcode result;
         std::string readBuffer;
         //pub
-        //brush state
-        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr brush_state_pub_;
+        //valve state
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr valve_state_pub_;
         //information mission active
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr active_mission_info_pub_;
         //robot
@@ -88,7 +88,7 @@ class manage_mission : public rclcpp::Node{
         //suction
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr suction_info_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr suction_function_state_pub_;
-	//charge
+	    //charge
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr charge_info_pub_;
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr charge_function_state_pub_;
         //loadmap
@@ -111,8 +111,8 @@ class manage_mission : public rclcpp::Node{
         //sub
         //mission
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr reset_mission_sub_;
-        //get brush status
-        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr brush_status_sub_;
+        //get valve status
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr valve_status_sub_;
         //get request robot (stop,continues)
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr get_request_robot_sub_;
         //get request learning path
@@ -153,8 +153,8 @@ class manage_mission : public rclcpp::Node{
             curl_global_init(CURL_GLOBAL_DEFAULT);
             curl = curl_easy_init();
             // init pub//
-            //brush state
-            brush_state_pub_ = this->create_publisher<std_msgs::msg::String>("brush_state",1);
+            //valve
+            valve_state_pub_ = this->create_publisher<std_msgs::msg::String>("valve_state",1);
             // active mission pub
             active_mission_info_pub_ = this->create_publisher<std_msgs::msg::String>("active_mission_info",1);
             //stop robot
@@ -197,7 +197,7 @@ class manage_mission : public rclcpp::Node{
             //suction
             suction_info_pub_ = this->create_publisher<std_msgs::msg::String>("suction_info",1);
             suction_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("suction_function_status",1);
-	    //charge
+	        //charge
             charge_info_pub_ = this->create_publisher<std_msgs::msg::String>("charge_info",1);
             charge_function_state_pub_ = this->create_publisher<std_msgs::msg::String>("charge_function_status",1);
             //loadmap
@@ -212,20 +212,20 @@ class manage_mission : public rclcpp::Node{
             learning_path_pub_ = this->create_publisher<std_msgs::msg::String>("learning_path_pose",1);
             status_learning_path_pub_ = this->create_publisher<std_msgs::msg::String>("learning_path_status",1);
             ///init subscriber///
-            //brush status
-            auto brush_callback = [this](std_msgs::msg::String msg)->void{
+            //valve status
+            auto valve_callback = [this](std_msgs::msg::String msg)->void{
                 char ch_last = msg.data.back();
-                if( ch_last=='0') brush_status = 0;
-                else if(ch_last == '1') brush_status = 1;
+                if( ch_last=='0') valve_status = 0;
+                else if(ch_last == '1') valve_status = 1;
             };
-            brush_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/brush_status", qos_profile, brush_callback);
+            valve_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/valve_status", qos_profile, valve_callback);
             auto reset_mission_callback = [this](std_msgs::msg::String msg)->void{
                 if(status != Active_){
                     his_content["type"] = action_mode_mission;
                     his_content["state"] = "reset";
                     his_content["description"] = mission_.mission_name;
                     send_history("warning", his_content.dump());
-		    mission_.reset();
+		        mission_.reset();
                     reset_function();
                     action_mode_mission = "N_A";
                     step_handle_content = 0;
@@ -362,7 +362,7 @@ class manage_mission : public rclcpp::Node{
                 static rclcpp::Time last_movement_time = this->now();
                 static double x_f = 0, y_f = 0, z_f, w_f, x_l, y_l;
                 static double dis = 0, angle1 = 0, angle2 = 0, denta_angle = 0, no_move_duration;
-                static bool is_stuck = false, brush_pause_stuck = false;
+                static bool is_stuck = false, valve_pause_stuck = false;
                 robot_pose = get_position_tf("map",mvibot_seri_f_+"/base_footprint");
                 //pub robot position
                 data = mvibot_seri_f_+"|x:"+to_string(robot_pose[0])+"|y:"+to_string(robot_pose[1])+"|thz:"+to_string(robot_pose[2])+"|thw:"+to_string(robot_pose[3]);
@@ -372,7 +372,7 @@ class manage_mission : public rclcpp::Node{
                 auto now_time = this->now();
                 dis = std::hypot(robot_pose[0]-x_l, robot_pose[1]-y_l);
                 RCLCPP_INFO(this->get_logger(),"dis: %f", dis);
-                if(dis > 1.0){
+                if(dis > 0.5){ //1.0
                     x_l = robot_pose[0];
                     y_l = robot_pose[1];
                     last_movement_time = now_time;
@@ -384,18 +384,18 @@ class manage_mission : public rclcpp::Node{
                     is_stuck = false;
                 }
                 RCLCPP_INFO(this->get_logger(),"duration: %f", no_move_duration);
-                if(no_move_duration > 10.0) is_stuck = true;
-                if(status != Finish_ && brush_status == 1 && is_stuck && type == "navigation"){
+                if(no_move_duration > 5.0) is_stuck = true;
+                if(status != Finish_ && valve_status == 1 && is_stuck && type == "navigation"){
                     //pub brush off
-                    pub_state_brush(0);
-                    brush_pause_stuck = true;
-                    RCLCPP_INFO(this->get_logger(),"turn off brush");
+                    pub_state_valve(0);
+                    valve_pause_stuck = true;
+                    RCLCPP_INFO(this->get_logger(),"turn off valve");
                 }
-                if(status != Finish_ && brush_pause_stuck && !is_stuck){
+                if(status != Finish_ && valve_pause_stuck && !is_stuck){
                     //pub brush on
-                    pub_state_brush(1);
-                    brush_pause_stuck = false;
-                    RCLCPP_INFO(this->get_logger(),"return on brush");
+                    pub_state_valve(1);
+                    valve_pause_stuck = false;
+                    RCLCPP_INFO(this->get_logger(),"turn on valve");
                 }
                 //
                 //save coverage pose and learning path
@@ -418,7 +418,7 @@ class manage_mission : public rclcpp::Node{
                     angle1 = getyaw(z_f,w_f);
                     angle2 = getyaw(robot_pose[2],robot_pose[3]);
                     denta_angle = fabs(angle2-angle1);
-                    if(dis >= 1.0 || denta_angle >= 0.14){ //1.0m and 0.35rad
+                    if(dis >= 1.0 || denta_angle >= 0.1){ //1.0m and 0.35rad
                         x_f = robot_pose[00];
                         y_f = robot_pose[1];
                         z_f = robot_pose[2];
@@ -448,7 +448,7 @@ class manage_mission : public rclcpp::Node{
         double *get_position_tf(string name1, string name2);
         void send_history(string status, string info);
         void pub_robot_position(string data);
-        void pub_state_brush(int st);
+        void pub_state_valve(int st);
         void pub_led(float red, float green, float blue, float ll, float lr, float lb, float lf);
         void set_led(string mode_action);
         void set_sound(string mode_action);
@@ -535,11 +535,11 @@ void manage_mission::pub_robot_position(string data){
     msg.data = data;
     robot_position_pub_->publish(msg);
 }
-void manage_mission::pub_state_brush(int st){
+void manage_mission::pub_state_valve(int st){
     std_msgs::msg::String msg;
     if(st == 1) msg.data = "1";
     else if (st == 0) msg.data = "0";
-    brush_state_pub_->publish(msg);
+    valve_state_pub_->publish(msg);
 }
 void manage_mission::pub_led(float red, float green, float blue, float ll, float lr, float lb, float lf){
     static float creat_fun=0;

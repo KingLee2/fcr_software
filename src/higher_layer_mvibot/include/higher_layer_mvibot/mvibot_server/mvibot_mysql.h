@@ -211,30 +211,41 @@ class fcr_database : public rclcpp::Node{
                 static string string_cmd_mysql;
                 static time_t now_time;
                 static tm* now_tm;
-                string_.resize(3,"");
+		static rclcpp::Time last_time = this->now();
+                double duration;
+                string_.resize(9,"");
                 std::lock_guard<std::recursive_mutex> lock(mutex_robot);
-                data.detect(msg.data,"","|","");
-                for(int i=0;i<my_robots.size();i++){
-                    if(my_robots[i].name_seri==data.data1[0]){
-                        string_cmd_mysql="";
-                        string_cmd_mysql=string_cmd_mysql+"INSERT INTO battery_status_chart (robot_id,created_at,soc) ";
-                        for(int j=1;j<data.data1.size();j++){
-                            static string_Iv2 data2;
-                            data2.detect(data.data1[i],"",":","");
-                            if(data2.data1[0]=="soc"){
-                                string_[0]=data.data1[0];
-                                string_[1]=data2.data1[0];
-                                string_[2]=data2.data1[1];
-                                break;
+		auto get_now_time = this->now();
+                duration = (get_now_time - last_time).seconds();
+                if(duration >= 60.0){
+                    last_time = get_now_time;
+                    data.detect(msg.data,"","|","");
+                    for(int i=0;i<my_robots.size();i++){
+                        if(my_robots[i].name_seri==data.data1[0]){
+                            string_cmd_mysql="";
+                            string_cmd_mysql=string_cmd_mysql+"INSERT INTO battery_status_chart (robot_id,created_at,soc,vol,cycle,capacity_now,capacity_max,charge,current,num_cell,temperature) ";
+                            for(int j=1;j<data.data1.size();j++){
+                                string_Iv2 data2;
+                                data2.detect(data.data1[j],"",":","");
+                                if(data2.data1[0]=="soc") string_[0]=data2.data1[1];
+                                else if(data2.data1[0]=="vol") string_[1]=data2.data1[1];
+                                else if(data2.data1[0]=="cycle") string_[2]=data2.data1[1];
+                                else if(data2.data1[0]=="capacity_now") string_[3]=data2.data1[1];
+                                else if(data2.data1[0]=="capacity_max") string_[4]=data2.data1[1];
+                                else if(data2.data1[0]=="charge") string_[5]=data2.data1[1];
+                                else if(data2.data1[0]=="current") string_[6]=data2.data1[1];
+                                else if(data2.data1[0]=="num_cell") string_[7]=data2.data1[1];
+                                else if(data2.data1[0]=="temperature") string_[8]=data2.data1[1];
                             }
+                            string_cmd_mysql=string_cmd_mysql+"VALUES ("+to_string(my_robots[i].id)+",'"+get_time_string()+"',"+string_[0]+","+string_[1]+","+string_[2]+","+string_[3]+","+string_[4]+","+string_[5]+","+string_[6]+","+string_[7]+","+string_[8]+")";
+                            std::cout << string_cmd_mysql << std::endl;
+                            database_execmd(string_cmd_mysql);
+			    RCLCPP_INFO(this->get_logger(),"INSERT BATTERY STATUS CHART");
+                            // my_robots[i].battery_status_chart ="";
                         }
-                        string_cmd_mysql=string_cmd_mysql+"VALUES ("+to_string(my_robots[i].id)+",'"+get_time_string()+"',"+string_[2]+")";
-                        std::cout << string_cmd_mysql << std::endl;
-                        database_execmd(string_cmd_mysql);
-                        // my_robots[i].battery_status_chart ="";
                     }
-                }
-                // oss.str("");
+                    // oss.str("");
+		}
             };
             battery_status_chart_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/battery_status", qos_profile, battery_status_chart_callback);
         }
@@ -482,6 +493,14 @@ void fcr_database::table_init(){
     // battery_status_chart.add_colume("name_seri","VARCHAR(255)");
     battery_status_chart.add_colume("created_at","DATETIME");
     battery_status_chart.add_colume("soc","INT");
+    battery_status_chart.add_colume("vol","FLOAT(4,2)");
+    battery_status_chart.add_colume("cycle","INT");
+    battery_status_chart.add_colume("capacity_now","FLOAT(6,3)");
+    battery_status_chart.add_colume("capacity_max","FLOAT(6,3)");    
+    battery_status_chart.add_colume("charge","INT");    
+    battery_status_chart.add_colume("current","FLOAT(5,2)");    
+    battery_status_chart.add_colume("num_cell","INT");    
+    battery_status_chart.add_colume("temperature","FLOAT(3,1)");
     battery_status_chart.init_table_FK("my_robot","robot_id");
     //
     map.table_name="map";

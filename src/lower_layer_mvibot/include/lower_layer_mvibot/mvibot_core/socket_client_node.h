@@ -22,6 +22,7 @@ class socket_client_node : public rclcpp::Node{
             //history
             history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
 	    test_pub_ = this->create_publisher<std_msgs::msg::String>("test",1);
+	    check_motor_veloc_pub_ = this->create_publisher<std_msgs::msg::String>("check_motor_velocity",1);
             //init sub//
             //shutdown robot
             auto robot_shutdown_callback = [this](std_msgs::msg::String msg)->void{
@@ -82,6 +83,7 @@ class socket_client_node : public rclcpp::Node{
         //declare pub history
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
 	rclcpp::Publisher<std_msgs::msg::String>::SharedPtr test_pub_;
+	rclcpp::Publisher<std_msgs::msg::String>::SharedPtr check_motor_veloc_pub_;
         //declare sub
         //shutdown robot
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr robot_shutdown_sub_;
@@ -256,8 +258,19 @@ void socket_client_node::process_data_uart_read(){
         (int)data_receive[battery_mah_max_L_re], (int)data_receive[battery_current_H_re],(int)data_receive[battery_current_L_re],(int)data_receive[battery_temperature1_re],(int)data_receive[battery_temperature1_re]);
 	std_msgs::msg::String msg_test;
         msg_test.data = "byte 41: " + to_string(data_receive[41]) + ",byte 42: " + to_string(data_receive[42]) + ",byte 43: " + to_string(data_receive[43]) + ",byte 44: " + to_string(data_receive[44])
-        + ",byte 45: " + to_string(data_receive[45]) + ",byte 46: " + to_string(data_receive[46]) + ",byte 47: " + to_string(data_receive[47]) + ",byte 48: " + to_string(data_receive[48]) + ",byte 6: " + to_string(data_receive[6]) + ",byte 21: " + to_string(data_receive[21]);
+        + ",byte 45: " + to_string(data_receive[45]) + ",byte 46: " + to_string(data_receive[46]) + ",byte 47: " + to_string(data_receive[47]) + ",byte 48: " + to_string(data_receive[48]) + ",byte 6: " + to_string(data_receive[6]) + ",byte 21: " + to_string(data_receive[21])
+	+ ",motor right H: " + to_string(data_receive[motor1_speed_H_re]) + ",motor right L: " + to_string(data_receive[motor1_speed_L_re]) + ",veloc right tran: " + to_string(local_vr_out) + ",veloc right receive: " + to_string(vr)
+        + ",motor left H: " + to_string(data_receive[motor2_speed_H_re]) + ",motor left L: " + to_string(data_receive[motor2_speed_L_re]) + ",veloc left tran: " + to_string(local_vl_out) + ",veloc left receive: " + to_string(vl);
         test_pub_->publish(msg_test);
+	//
+        if(fabs(local_vr_out - local_vl_out) <0.3){
+            if(fabs(local_vr_out/vr - local_vl_out/vl) > 0.3){
+                std_msgs::msg::String check_motor_msg;
+                check_motor_msg.data = ",motor right H: " + to_string(data_receive[motor1_speed_H_re]) + ",motor right L: " + to_string(data_receive[motor1_speed_L_re]) + ",veloc right tran: " + to_string(local_vr_out) + ",veloc right receive: " + to_string(vr)
+                + ",motor left H: " + to_string(data_receive[motor2_speed_H_re]) + ",motor left L: " + to_string(data_receive[motor2_speed_L_re]) + ",veloc left tran: " + to_string(local_vl_out) + ",veloc left receive: " + to_string(vl);
+                check_motor_veloc_pub_->publish(check_motor_msg);
+            }
+        }
     }
 }
 void socket_client_node::process_data_uart_write(){

@@ -214,7 +214,7 @@ def generate_launch_description():
     #         )
     #     )
         nav_start = TimerAction(
-            period=10.0,
+            period=2.0,
             actions=[
 
                 # IncludeLaunchDescription(
@@ -231,12 +231,12 @@ def generate_launch_description():
                     }.items()
                 ),
 
-                IncludeLaunchDescription(
-                    PythonLaunchDescriptionSource(navigation_launch),
-                    launch_arguments={
-                        'mvibot_seri': mvibot_seri
-                    }.items()
-                ),
+                # IncludeLaunchDescription(
+                #     PythonLaunchDescriptionSource(navigation_launch),
+                #     launch_arguments={
+                #         'mvibot_seri': mvibot_seri
+                #     }.items()
+                # ),
 
                 IncludeLaunchDescription(
                     PythonLaunchDescriptionSource(mission_launch)
