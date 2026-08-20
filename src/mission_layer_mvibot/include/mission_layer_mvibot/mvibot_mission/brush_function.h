@@ -46,7 +46,7 @@ class brush_function : public rclcpp::Node{
                 parameters = json::parse(msg.data);
                 // cout<<parameters<<endl;
                 process_data();
-                request = 1;
+                // request = 1;
             };
             brush_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/brush_info", qos_profile, brush_info_callback);
             //
@@ -100,7 +100,7 @@ class brush_function : public rclcpp::Node{
                     pub_function_state(res);
                 }
             };
-            action_timer_ = this->create_wall_timer(500ms, action_timer_callback);
+            action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
         }
         void pub_function_state(int st);
         void pub_state_brush(int st);

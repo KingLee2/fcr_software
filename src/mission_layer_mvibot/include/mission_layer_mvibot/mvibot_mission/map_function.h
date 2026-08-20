@@ -43,7 +43,7 @@ class loadmap_function : public rclcpp::Node{
                 parameters = json::parse(msg.data);
                 // cout<<parameters<<endl;
                 process_data();
-                request = 1;
+                // request = 1;
             };
             loadmap_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/loadmap_info", qos_profile, loadmap_info_callback);
             //

@@ -52,7 +52,7 @@ class navigation_function : public rclcpp::Node{
                 parameters = json::parse(msg.data);
                 cout<<msg.data<<endl;
                 process_data();
-                request = 1;
+                // request = 1;
                 step = 0;
             };
             navigation_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/navigation_info", qos_profile, navigation_info_callback);

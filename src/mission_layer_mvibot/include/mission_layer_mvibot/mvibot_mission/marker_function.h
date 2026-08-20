@@ -41,7 +41,7 @@ class marker_function : public rclcpp::Node{
                 parameters = json::parse(msg.data);
                 // cout<<parameters<<endl;
                 process_data();
-                request = 1;
+                // request = 1;
 		        step = 0;
             };
             marker_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/marker_info", qos_profile, marker_info_callback);

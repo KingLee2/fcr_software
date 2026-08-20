@@ -113,7 +113,7 @@ class variable_function : public rclcpp::Node{
                 // cout<<parameters<<endl;
                 process_data();
                 print(1);
-                request = 1;
+                // request = 1;
             };
             variable_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/variable_info", qos_profile, variable_info_callback);
             //
@@ -151,7 +151,7 @@ class variable_function : public rclcpp::Node{
                     pub_function_state(res);
                 }
             };
-            action_timer_ = this->create_wall_timer(500ms, action_timer_callback);
+            action_timer_ = this->create_wall_timer(50ms, action_timer_callback);
         }
         void pub_function_state(int st);
         void print(int n);

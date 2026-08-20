@@ -37,6 +37,12 @@ class manage_mission : public rclcpp::Node{
         int motor_left_ready = 0;
         int motor_right_ready = 0;
         int valve_status = 0, valve_status_f = 0;
+        int battery_soc = 50, battery_soc_f = 50, battery_filter = 50;
+        const float ANPHA_BATTERY_FILTER = 0.1;
+        int battery_low_soc = 20;
+        int battery_mission_trigger = 0;
+        int MAX_BATTERY_SOC = 100;
+        int charge_state = 0;
         int status = Finish_;
         string active_mission_id = "";
 	    string type = "";
@@ -50,9 +56,20 @@ class manage_mission : public rclcpp::Node{
         CURL* curl;
         CURLcode result;
         std::string readBuffer;
+        //telegram
+        string bot_token, chat_id, text;
         //pub
         //valve state
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr valve_state_pub_;
+        //brush
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr brush_state_pub_;
+        //suction
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr suction_state_pub_;
+        //lift
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_brush_power_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_brush_control_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_suction_power_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr lift_suction_control_pub_;
         //information mission active
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr active_mission_info_pub_;
         //robot
@@ -124,6 +141,8 @@ class manage_mission : public rclcpp::Node{
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr motor_right_status_sub_;
         //get status battery
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr battery_status_sub_;
+        //get status charge
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr charge_status_sub_;
         //get status function
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr function_state_sub_;
         //timer
@@ -147,14 +166,28 @@ class manage_mission : public rclcpp::Node{
             state = N_A_;
             motor_left_ready = 0;
             motor_right_ready = 0;
+            //
+            bot_token = "8834617424:AAFoiL2dgH8YNcUS5CTWnWPEaeUFoVA9K4M";
+            chat_id = "7220296293";
             //get ip_robot
             ip_robot = load_file("ip_robot");
+            battery_low_soc = stoi(load_file("robot_low_battery"));
             //init curl
             curl_global_init(CURL_GLOBAL_DEFAULT);
             curl = curl_easy_init();
             // init pub//
             //valve
             valve_state_pub_ = this->create_publisher<std_msgs::msg::String>("valve_state",1);
+            //brush state
+            brush_state_pub_ = this->create_publisher<std_msgs::msg::String>("brush_state",1);
+            // suction state
+            suction_state_pub_ = this->create_publisher<std_msgs::msg::String>("suction_state",1);
+            // lift brush
+            lift_brush_power_pub_ = this->create_publisher<std_msgs::msg::String>("lift_brush_power",1);
+            lift_brush_control_pub_ = this->create_publisher<std_msgs::msg::String>("lift_brush_control",1);
+            // lift suction
+            lift_suction_power_pub_ = this->create_publisher<std_msgs::msg::String>("lift_suction_power",1);
+            lift_suction_control_pub_ = this->create_publisher<std_msgs::msg::String>("lift_suction_control",1);
             // active mission pub
             active_mission_info_pub_ = this->create_publisher<std_msgs::msg::String>("active_mission_info",1);
             //stop robot
@@ -212,6 +245,34 @@ class manage_mission : public rclcpp::Node{
             learning_path_pub_ = this->create_publisher<std_msgs::msg::String>("learning_path_pose",1);
             status_learning_path_pub_ = this->create_publisher<std_msgs::msg::String>("learning_path_status",1);
             ///init subscriber///
+            //battery status
+            auto battery_status_callback = [this](std_msgs::msg::String msg)->void{
+                if(msg.data != "N/A"){
+                    static string_Iv2 data;
+                    data.detect(msg.data,"","|","");
+                    for(int i=1;i<data.data1.size();i++){
+                        static string_Iv2 data1;
+                        data1.detect(data.data1[i],"",":","");
+                        if(data1.data1[0]=="soc"){
+                            battery_soc_f = battery_soc;
+                            battery_soc = stoi_f(data1.data1[1]);
+                            if(abs(battery_soc - battery_soc_f) < 3) battery_filter = round(ANPHA_BATTERY_FILTER*battery_soc + (1- ANPHA_BATTERY_FILTER)*battery_soc_f);
+                        }
+                    }
+                }
+                RCLCPP_INFO(this->get_logger(),"battery_soc: %d",battery_filter);
+            };
+            battery_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/battery_status", qos_profile, battery_status_callback);
+            //charge status
+            //
+            auto charge_callback = [this](std_msgs::msg::String msg)->void{
+                char ch_last = msg.data.back();
+                if( ch_last=='0') charge_state = 0;
+                else if(ch_last == '1') charge_state = 1;
+                else if(ch_last == '2') charge_state = 2;
+                cout << "charge_state: "<<charge_state<<endl;
+            };
+            charge_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/charge_status", qos_profile, charge_callback);
             //valve status
             auto valve_callback = [this](std_msgs::msg::String msg)->void{
                 char ch_last = msg.data.back();
@@ -225,11 +286,13 @@ class manage_mission : public rclcpp::Node{
                     his_content["state"] = "reset";
                     his_content["description"] = mission_.mission_name;
                     send_history("warning", his_content.dump());
-		        mission_.reset();
+		            mission_.reset();
                     reset_function();
                     action_mode_mission = "N_A";
                     step_handle_content = 0;
                     step_try_catch = 0;
+                    battery_mission_trigger = 0;
+                    RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
                 }
             };
             reset_mission_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/reset_mission", qos_profile, reset_mission_callback);
@@ -307,8 +370,12 @@ class manage_mission : public rclcpp::Node{
                 json msg_json;
                 msg_json = json::parse(msg.data);
                 if(status == Finish_) {
-                    active_mission_id = msg_json["active_mission_id"].get<string>();
-                    action_mode_mission = msg_json["action_mode_mission"].get<string>();
+                    if(charge_state == 0){
+                        active_mission_id = msg_json["active_mission_id"].get<string>();
+                        action_mode_mission = msg_json["action_mode_mission"].get<string>();
+                        battery_mission_trigger = 0;
+                        RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
+                    }
                 }
             };
             get_mission_executed_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/executed_mission", qos_profile, mission_executed_callback);
@@ -386,16 +453,20 @@ class manage_mission : public rclcpp::Node{
                 RCLCPP_INFO(this->get_logger(),"duration: %f", no_move_duration);
                 if(no_move_duration > 5.0) is_stuck = true;
                 if(status != Finish_ && valve_status == 1 && is_stuck && type == "navigation"){
-                    //pub brush off
+                    //pub valve off
                     pub_state_valve(0);
                     valve_pause_stuck = true;
                     RCLCPP_INFO(this->get_logger(),"turn off valve");
                 }
                 if(status != Finish_ && valve_pause_stuck && !is_stuck){
-                    //pub brush on
+                    //pub valve on
                     pub_state_valve(1);
                     valve_pause_stuck = false;
                     RCLCPP_INFO(this->get_logger(),"turn on valve");
+                }
+		if(status != Finish_ && type == "brush"){
+                    is_stuck = false;
+                    valve_pause_stuck = false;
                 }
                 //
                 //save coverage pose and learning path
@@ -419,7 +490,7 @@ class manage_mission : public rclcpp::Node{
                     angle2 = getyaw(robot_pose[2],robot_pose[3]);
                     denta_angle = fabs(angle2-angle1);
                     if(dis >= 1.0 || denta_angle >= 0.1){ //1.0m and 0.35rad
-                        x_f = robot_pose[00];
+                        x_f = robot_pose[0];
                         y_f = robot_pose[1];
                         z_f = robot_pose[2];
                         w_f = robot_pose[3];
@@ -444,11 +515,17 @@ class manage_mission : public rclcpp::Node{
         }
         string load_file(string name_file);
         string get_time_string();
+        bool sendTelegramMessage(const string& bot_token, const string& chat_id, const string& text);
+        void sendNotification(string robot, string status, int battery, string task, string error);
         float getyaw(double data1, double data2);
         double *get_position_tf(string name1, string name2);
         void send_history(string status, string info);
         void pub_robot_position(string data);
         void pub_state_valve(int st);
+        void pub_state_brush(int st);
+        void pub_state_suction(int st);
+        void pub_state_lift_brush(int st);
+        void pub_state_lift_suction(int st);
         void pub_led(float red, float green, float blue, float ll, float lr, float lb, float lf);
         void set_led(string mode_action);
         void set_sound(string mode_action);
@@ -488,6 +565,40 @@ string manage_mission::get_time_string(){
     now_tm = gmtime(&now_time);
     oss << put_time(now_tm, "%Y-%m-%d %H:%M:%S");
     return oss.str();
+}
+bool manage_mission::sendTelegramMessage(const string& bot_token, const string& chat_id, const string& text){
+    //reset buffer and curl
+    readBuffer.clear();
+    curl_easy_reset(curl);
+    //get data for api
+    RCLCPP_INFO(this->get_logger(),"send message to telegram");
+    if (curl) {
+        //get api
+        string url;
+        url = "https://api.telegram.org/bot" + bot_token + "/sendMessage";
+        // Escape nội dung text
+        char* escaped_text = curl_easy_escape(curl, text.c_str(), text.length());
+        std::string post_fields ="chat_id=" + chat_id + "&text=" + escaped_text;
+        curl_free(escaped_text);
+        //get data
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_POST, 1L);
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_fields.c_str());
+
+        result = curl_easy_perform(curl);
+        if(result == CURLE_OK) return true;
+    }
+    return false;
+}
+void manage_mission::sendNotification(string robot_name, string robot_state, int battery, string task, string error_code){
+    stringstream ss;
+    ss << "🤖 Robot: " << robot_name << "\n";
+    ss << "📍 State: " << robot_state << "\n";
+    ss << "🔋 Battery: " << battery << "%\n";
+    ss << "📦 Mission: " << task << "\n";
+    ss << "⚠️ Error: " << error_code;
+    text = ss.str();
+    sendTelegramMessage(bot_token, chat_id, text);
 }
 float manage_mission::getyaw(double data1, double data2){
     geometry_msgs::msg::Quaternion quat_msg;
@@ -540,6 +651,32 @@ void manage_mission::pub_state_valve(int st){
     if(st == 1) msg.data = "1";
     else if (st == 0) msg.data = "0";
     valve_state_pub_->publish(msg);
+}
+void manage_mission::pub_state_brush(int st){
+    std_msgs::msg::String msg;
+    if(st == 1) msg.data = "1";
+    else if (st == 0) msg.data = "0";
+    brush_state_pub_->publish(msg);
+}
+void manage_mission::pub_state_suction(int st){
+    std_msgs::msg::String msg;
+    if(st == 1) msg.data = "1";
+    else if (st == 0) msg.data = "0";
+    suction_state_pub_->publish(msg);
+}
+void manage_mission::pub_state_lift_brush(int st){
+    std_msgs::msg::String msg;
+    if(st == 1) msg.data = "1";
+    else if (st == 0) msg.data = "0";
+    lift_brush_power_pub_->publish(msg);
+    lift_brush_control_pub_->publish(msg);
+}
+void manage_mission::pub_state_lift_suction(int st){
+    std_msgs::msg::String msg;
+    if(st == 1) msg.data = "1";
+    else if (st == 0) msg.data = "0";
+    lift_suction_power_pub_->publish(msg);
+    lift_suction_control_pub_->publish(msg);
 }
 void manage_mission::pub_led(float red, float green, float blue, float ll, float lr, float lb, float lf){
     static float creat_fun=0;
@@ -628,6 +765,9 @@ void manage_mission::reset_function(){
     brush_function_state_pub_->publish(state_msg);
     suction_function_state_pub_->publish(state_msg);
     lift_function_state_pub_->publish(state_msg);
+    charge_function_state_pub_ ->publish(state_msg);
+    initialpose_function_state_pub_ ->publish(state_msg);
+    loadmap_function_state_pub_ ->publish(state_msg);
     status = Finish_;
 }
 int manage_mission::handle_content(const json& content, const double& time_out, double& timer, int& status, rclcpp::Publisher<std_msgs::msg::String>::SharedPtr info_pub, rclcpp::Publisher<std_msgs::msg::String>::SharedPtr state_pub){
@@ -637,6 +777,7 @@ int manage_mission::handle_content(const json& content, const double& time_out, 
     if(step_handle_content == 0){
         if(status == Active_){
             // cout<<"INFOMATION CONTENT: "<< content["parameters"]<<endl;
+	    state = N_A_;
             info_msg.data = content["parameters"].dump();
             info_pub->publish(info_msg);
             state_msg.data = "active";
@@ -988,13 +1129,44 @@ void manage_mission::execute_mission(){
         if(status == Active_) status = Stop_;
         RCLCPP_INFO(this->get_logger(),"motor is not ready");
     }
+    //check battery
+    if(battery_filter<=battery_low_soc){
+        if((action_mode_mission == "mopping_mission" || action_mode_mission == "N_A") && battery_mission_trigger == 0 && charge_state == 0){                                                               
+            //
+            status = Stop_;
+            mission_.reset();
+            reset_function();
+            pub_state_brush(0);
+            pub_state_suction(0);
+            pub_state_lift_brush(0);
+            pub_state_lift_suction(0);
+            //send notification
+            sendNotification("Moshi", "low battery", battery_filter, "none", "Low battery, I need to go to a charging station.");
+            //set trigger goto charging
+            action_mode_mission = "battery_charge_mission";
+            battery_mission_trigger = 1;
+            RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
+        }
+    }
+    else {
+        if(action_mode_mission == "N_A" && charge_state!=0 && battery_filter >= MAX_BATTERY_SOC){
+            //send notification
+            sendNotification("Moshi", "full battery", battery_filter, "none", "Full battery, I need to go to the docking");
+            //set trigger goto the docking
+            action_mode_mission = "battery_charge_mission";
+            battery_mission_trigger = 3;
+            RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
+            //
+        }
+    }
+    //run mission
     if(status==Finish_){
         RCLCPP_INFO(this->get_logger(),"continue execute mission, status finish");
         active_content = "";
         queue_content.resize(0);
         next_to = "";
         
-        if(active_mission_id != ""){
+        if(active_mission_id != "" || battery_mission_trigger == 1 || battery_mission_trigger == 3){
             //reset buffer and curl
             readBuffer.clear();
             curl_easy_reset(curl);
@@ -1003,7 +1175,9 @@ void manage_mission::execute_mission(){
             if (curl) {
                 //get api
                 //api_str = "http://"+ip_robot+":6430/api/v1/wf/"+active_mission_id;
-		api_str = "http://127.0.0.1:6430/api/v1/wf/"+active_mission_id;
+		        if(battery_mission_trigger == 1) api_str = "http://127.0.0.1:6430/api/v1/wf/setting/charging";
+                else if (battery_mission_trigger == 3) api_str = "http://127.0.0.1:6430/api/v1/wf/setting/parking";
+                else api_str = "http://127.0.0.1:6430/api/v1/wf/"+active_mission_id;
                 RCLCPP_INFO(this->get_logger(),"api: %s", api_str.c_str());
                 //get data
                 curl_easy_setopt(curl, CURLOPT_URL, api_str.c_str());
@@ -1014,29 +1188,39 @@ void manage_mission::execute_mission(){
 
                 if (result != CURLE_OK) {
                     std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(result) << std::endl;
+                    battery_mission_trigger = 0;
+                    RCLCPP_INFO(this->get_logger(),"GET API FAIL");
                 } else {
                     try {
                         RCLCPP_INFO(this->get_logger(),"load data to mission_");
                         mission_json = json::parse(readBuffer);
-                        mission_.mission_id = mission_json["mission_id"].get<string>();
-                        mission_.mission_name = mission_json["mission_name"].get<string>();
-                        if (mission_json.contains("contents") && mission_json["contents"].is_object()) {
-                            for (auto& [key, value] : mission_json["contents"].items()) {
-                                mission_.contents_map[key] = value;
-                            }
+                        if(mission_json.is_null()){
+                            battery_mission_trigger = 0;
+                            RCLCPP_INFO(this->get_logger(),"mission json has null");
                         }
-                        RCLCPP_INFO(this->get_logger(),"mission_id: %s",mission_.mission_id.c_str());
-                        RCLCPP_INFO(this->get_logger(),"mission_name: %s",mission_.mission_name.c_str());
+                        else if(mission_json.empty()){
+                            battery_mission_trigger = 0;
+                            RCLCPP_INFO(this->get_logger(),"mission json empty");
+                        }
+                        else{
+                            mission_.mission_id = mission_json["mission_id"].get<string>();
+                            mission_.mission_name = mission_json["mission_name"].get<string>();
+                            if (mission_json.contains("contents") && mission_json["contents"].is_object()) {
+                                for (auto& [key, value] : mission_json["contents"].items()) {
+                                    mission_.contents_map[key] = value;
+                                }
+                            }
+                            RCLCPP_INFO(this->get_logger(),"mission_id: %s",mission_.mission_id.c_str());
+                            RCLCPP_INFO(this->get_logger(),"mission_name: %s",mission_.mission_name.c_str());
+                        }
                     }
                     catch (std::exception& e) {
                         std::cerr << "JSON parse error: " << e.what() << std::endl;
+                        battery_mission_trigger = 0;
                     }
                 }
-
-                // curl_easy_cleanup(curl);
             }
-            // curl_global_cleanup();
-
+            
             //run mission_
             RCLCPP_INFO(this->get_logger(),"check run mission_");
             if(!mission_.contents_map.empty()){
@@ -1047,7 +1231,7 @@ void manage_mission::execute_mission(){
                             mission_execution_time = get_time_string();
                             his_content["type"] = "mopping_mission";
                         }
-                        else his_content["type"] = "sub_mission";
+                        else his_content["type"] = action_mode_mission;
                         his_content["state"] = "run";
                         his_content["description"] = mission_.mission_name;
                         send_history("normal", his_content.dump());
@@ -1066,6 +1250,8 @@ void manage_mission::execute_mission(){
             RCLCPP_INFO(this->get_logger(),"continue execute mission, status error");
             //pub stop robot
             pub_stop_robot();
+            //send notification
+            sendNotification("Moshi", "Error", battery_filter, mission_.mission_name, "Robot is error, help me!!!");
         }
         else {
             //execute mission main
@@ -1097,14 +1283,24 @@ void manage_mission::execute_mission(){
                     else active_content = queue_content[0];
                 }
                 if(mission_.contents_map[active_content]["type"].get<string>() == "end"){
+                    if(action_mode_mission == "battery_charge_mission" && battery_mission_trigger == 1){
+                        battery_mission_trigger = 2;
+                        RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
+                    }
+                    else if(action_mode_mission == "battery_charge_mission" && battery_mission_trigger == 3) {
+                        battery_mission_trigger = 0;
+                        RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
+                    }
                     status = Finish_;
                     mission_execution_time = "";
                     active_content = "";
-		    type = "";
+		            type = "";
                     his_content["type"] = action_mode_mission;
                     his_content["state"] = "finish";
                     his_content["description"] = mission_.mission_name;
                     send_history("normal", his_content.dump());
+                    //send notification
+                    sendNotification("Moshi", "Finish mission", battery_filter, mission_.mission_name, "None");
                     action_mode_mission = "N_A";
                     mission_.reset();
                 }
