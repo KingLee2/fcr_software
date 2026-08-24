@@ -48,7 +48,6 @@ class manage_mission : public rclcpp::Node{
 	    string type = "";
         int state;
         int step_handle_content = 0;
-        int step_try_catch = 0;
         double ts_execute_callback = 0.05;
         json his_content;
         string learning_path_name = "";
@@ -290,7 +289,6 @@ class manage_mission : public rclcpp::Node{
                     reset_function();
                     action_mode_mission = "N_A";
                     step_handle_content = 0;
-                    step_try_catch = 0;
                     battery_mission_trigger = 0;
                     RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
                 }
@@ -464,7 +462,7 @@ class manage_mission : public rclcpp::Node{
                     valve_pause_stuck = false;
                     RCLCPP_INFO(this->get_logger(),"turn on valve");
                 }
-		if(status != Finish_ && type == "brush"){
+                if(status != Finish_ && type == "brush"){
                     is_stuck = false;
                     valve_pause_stuck = false;
                 }
@@ -535,7 +533,7 @@ class manage_mission : public rclcpp::Node{
         void reset_function();
         int handle_content(const json& content, const double& time_out, double & timer, int& status, rclcpp::Publisher<std_msgs::msg::String>::SharedPtr info_pub, rclcpp::Publisher<std_msgs::msg::String>::SharedPtr state_pub);
         void execute_mission();
-        int execute_content(mission& mission, vector<string>& queue_content, string& active_content, string& next_to, int& status);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+        int execute_content(mission& mission, vector<string>& queue_content, string& active_content, int& status);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 };
 string manage_mission::load_file(string name_file){
     //
@@ -777,7 +775,7 @@ int manage_mission::handle_content(const json& content, const double& time_out, 
     if(step_handle_content == 0){
         if(status == Active_){
             // cout<<"INFOMATION CONTENT: "<< content["parameters"]<<endl;
-	    state = N_A_;
+            state = N_A_;
             info_msg.data = content["parameters"].dump();
             info_pub->publish(info_msg);
             state_msg.data = "active";
@@ -865,47 +863,49 @@ int manage_mission::handle_content(const json& content, const double& time_out, 
         }
     }
 }
-int manage_mission::execute_content(mission& mission, vector<string>& queue_content, string& active_content, string& next_to, int& status){
+int manage_mission::execute_content(mission& mission, vector<string>& queue_content, string& active_content, int& status){
     json content;
+    string next_to = "";
     static double timer = 0.0;
-    // static string type = "";
     content = mission.contents_map[active_content];
     type = content["type"].get<string>();
     cout<<"Content ID: "<<active_content<<endl;
     cout<<"Type: "<<type<<endl;
     if(type == "start"){
-        next_to = content["content"]["next"].get<string>();
+        next_to = content["content"].contains("next") ? content["content"]["next"].get<string>() : "";
+        if (!next_to.empty()) {
+            queue_content.insert(queue_content.begin(),next_to);
+        }
+        return Finish_;
+    }
+    else if(type == "end"){
+        queue_content.clear();
         return Finish_;
     }
     else if(type == "group"){
-        static std::vector<string> do_content;
-        if(next_to == "") {
-            next_to = content["content"]["next"].get<string>();
-            cout<<"Next to: "<<next_to<<endl;
-        }
-        if(!queue_content.empty()){
-            queue_content.erase(queue_content.begin());
-        }
+        std::vector<string> do_content;
         do_content = content["content"]["body"].get<std::vector<string>>();
+        next_to = content["content"].contains("next") ? content["content"]["next"].get<string>() : "";
+        queue_content.erase(queue_content.begin());
         queue_content.insert(queue_content.begin(),do_content.begin(),do_content.end());
-        active_content = queue_content[0];
-        return Active_;
+        if(!next_to.empty()) {
+            queue_content.insert(queue_content.begin() + do_content.size(), next_to);
+        }
+        return Finish_;
     }
     else if(type == "if_else"){
         static string cond_id;
         static std::vector<string> then_content, else_content;
         int res;
         cond_id = content["content"]["condition"].get<string>();
+        next_to = content["content"].contains("next") ? content["content"]["next"].get<string>() : "";
         if(cond_id != ""){
-            res = execute_content(mission, queue_content, cond_id, next_to, status);
+            res = execute_content(mission, queue_content, cond_id, status);
             if(res!=True_ && res!=False_) return Active_;
             else{
-                if(next_to == "") {
-                    next_to = content["content"]["next"].get<string>();
-                    cout<<"Next to: "<<next_to<<endl;
-                }
-                if(!queue_content.empty()){
-                    queue_content.erase(queue_content.begin());
+                queue_content.erase(queue_content.begin());
+                if(!next_to.empty()) {
+                    queue_content.insert(queue_content.begin(), next_to);
                 }
                 if(res == True_){
                     then_content = content["content"]["then"].get<std::vector<string>>();
@@ -915,100 +915,80 @@ int manage_mission::execute_content(mission& mission, vector<string>& queue_cont
                     else_content = content["content"]["else"].get<std::vector<string>>();
                     queue_content.insert(queue_content.begin(),else_content.begin(),else_content.end());
                 }
-                active_content = queue_content[0];
-                return Active_;
+                return Finish_;
             }
         }
-        else return Finish_;
+        else{
+            queue_content.erase(queue_content.begin());
+            if(!next_to.empty()) {
+                queue_content.insert(queue_content.begin(), next_to);
+            } 
+            return Finish_;
+        }
     }
     else if(type == "while_do"){
         static string cond_id;
         static std::vector<string> do_content;
         int res;
         cond_id = content["content"]["condition"].get<string>();
+        next_to = content["content"].contains("next") ? content["content"]["next"].get<string>() : "";
         if(cond_id != ""){
-            res = execute_content(mission, queue_content, cond_id, next_to, status);
+            res = execute_content(mission, queue_content, cond_id, status);
             if(res!=True_ && res!=False_) return Active_;
             else{
-                if(next_to == "") {
-                    next_to = content["content"]["next"].get<string>();
-                    cout<<"Next to: "<<next_to<<endl;
-                }
                 if(res == True_){
                     do_content = content["content"]["do"].get<std::vector<string>>();
                     queue_content.insert(queue_content.begin(),do_content.begin(),do_content.end());
                     active_content = queue_content[0];
                     return Active_;
                 }
-                else return Finish_;
+                else{
+                    queue_content.erase(queue_content.begin());
+                    // next_to = content["content"].contains("next") ? content["content"]["next"].get<string>() : "";
+                    if(!next_to.empty()) {
+                        queue_content.insert(queue_content.begin(), next_to);
+                    }
+                    return Finish_;
+                }
             }
         }
-        else return Finish_;
+        else{
+            queue_content.erase(queue_content.begin());
+            if(!next_to.empty()) {
+                queue_content.insert(queue_content.begin(), next_to);
+            }
+            return Finish_;
+        }
     }
     else if(type == "try_catch"){
-       static vector<string> try_catch_content;
-       static vector<string> try_catch_queue;
-       static string active_try_catch;
-       if(step_try_catch == 0){
-            if(next_to == "") {
-                next_to = content["content"]["next"].get<string>();
-                cout<<"Next to: "<<next_to<<endl;
-            }
-            // Tao hang doi thuc thi try-catch
-            try_catch_queue.resize(0);
-            try_catch_content = content["content"]["try"].get<std::vector<string>>();
-            if(try_catch_content.empty()) return Finish_;
-            try_catch_queue.resize(try_catch_content.size());
-            try_catch_queue = try_catch_content;
-            step_try_catch = 1;
-            return Active_;
-       }
-       else if(step_try_catch == 1){
-            //thuc thi try
-            int res;
-            active_try_catch = try_catch_queue[0];
-            res = execute_content(mission, queue_content, active_try_catch, next_to, status);
-            if(res == Active_) return Active_;
-            else if(res == Finish_){
-                try_catch_queue.erase(try_catch_queue.begin());
-                if(try_catch_queue.empty()){
-                    step_try_catch = 0;
-                    return Finish_;
-                }
-                else return Active_;
-            }
-            else if(res == Error_){
-                try_catch_content = content["content"]["catch"].get<std::vector<string>>();
-                if(try_catch_content.empty()) return Finish_;
-                try_catch_queue.resize(try_catch_content.size());
-                try_catch_queue = try_catch_content;
-                step_try_catch = 2;
-                return Active_;
-            }
-       }
-       else if(step_try_catch == 2){
-        //thuc thi catch
-            int res;
-            active_try_catch = try_catch_queue[0];
-            res = execute_content(mission, queue_content, active_try_catch, next_to, status);
-            if(res == Active_) return Active_;
-            else if(res == Finish_){
-                try_catch_queue.erase(try_catch_queue.begin());
-                if(try_catch_queue.empty()){
-                    step_try_catch = 0;
-                    return Finish_;
-                }
-                else return Active_;
-            }
-            else if(res == Error_) return Error_;
-       }
+        vector<string> try_content = content["content"]["try"].get<std::vector<string>>();
+        vector<string> catch_content = content["content"]["catch"].get<std::vector<string>>();
+        next_to = content["content"].contains("next") ? content["content"]["next"].get<string>() : "";
+        // Tạo một Catch Marker Node ảo để lưu giữ khối catch trong map
+        string catch_marker_id = "MARKER_CATCH_" + active_content;
+        json catch_marker_node;
+        catch_marker_node["type"] = "catch_marker";
+        catch_marker_node["catch_content"] = catch_content;
+        mission.contents_map[catch_marker_id] = catch_marker_node;
+        //
+        queue_content.erase(queue_content.begin());
+        if (!next_to.empty()) {
+            queue_content.insert(queue_content.begin(), next_to);
+        }
+        queue_content.insert(queue_content.begin(), catch_marker_id);
+        if (!try_content.empty()) queue_content.insert(queue_content.begin(), try_content.begin(), try_content.end());
+        return Finish_;
+    }
+    else if (type == "catch_marker") {
+        queue_content.erase(queue_content.begin());
+        return Finish_;
     }
     else if(type == "and"){
         static vector<string>and_contents_list;
         static int i=0;
         int res;
         and_contents_list = content["content"]["body"].get<std::vector<string>>();
-        res = execute_content(mission, queue_content, and_contents_list[i], next_to, status);
+        res = execute_content(mission, queue_content, and_contents_list[i], status);
         if(res != True_ && res != False_){
             if(res == Error_) return Error_;
             return Active_;
@@ -1031,7 +1011,7 @@ int manage_mission::execute_content(mission& mission, vector<string>& queue_cont
         static int i=0;
         int res;
         or_contents_list = content["content"]["body"].get<std::vector<string>>();
-        res = execute_content(mission, queue_content, or_contents_list[i], next_to, status);
+        res = execute_content(mission, queue_content, or_contents_list[i], status);
         if(res != True_ && res != False_){
             if(res == Error_) return Error_;
             return Active_;
@@ -1049,77 +1029,30 @@ int manage_mission::execute_content(mission& mission, vector<string>& queue_cont
         }
         else return Active_;
     }
-    else if(type == "gpio"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, gpio_info_pub_, gpio_function_state_pub_);
-    }
-    else if(type == "footprint"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, footprint_info_pub_, footprint_function_state_pub_);
-    }
-    else if(type == "config"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>()); 
-        return handle_content(content, time_out, timer, status, config_info_pub_, config_function_state_pub_);
-    }
-    else if(type == "navigation"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, navigation_info_pub_, navigation_function_state_pub_);
-    }
-    else if(type == "marker"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, marker_info_pub_, marker_function_state_pub_);
-    }
-    else if(type == "var"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, var_info_pub_, var_function_state_pub_);
-    }
-    else if(type == "sleep"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, sleep_info_pub_, sleep_function_state_pub_);
-    }
-    else if(type == "lift"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, lift_info_pub_, lift_function_state_pub_);
-    }
-    else if(type == "brush"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, brush_info_pub_, brush_function_state_pub_);
-    }
-    else if(type == "suction"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, suction_info_pub_, suction_function_state_pub_);
-    }
-    else if(type == "charge"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, charge_info_pub_, charge_function_state_pub_);
-    }
-    else if(type == "loadmap"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, loadmap_info_pub_, loadmap_function_state_pub_);
-    }
-    else if(type == "initialpose"){
-        static double time_out;
-        time_out = stof(content["time_out"].get<string>());
-        return handle_content(content, time_out, timer, status, initialpose_info_pub_, initialpose_function_state_pub_);
+    else{
+        double time_out = stof(content["time_out"].get<string>());
+        int res;
+        if(type == "gpio") res = handle_content(content, time_out, timer, status, gpio_info_pub_, gpio_function_state_pub_);
+        else if(type == "footprint") res = handle_content(content, time_out, timer, status, footprint_info_pub_, footprint_function_state_pub_);
+        else if(type == "config") res = handle_content(content, time_out, timer, status, config_info_pub_, config_function_state_pub_);
+        else if(type == "navigation") res = handle_content(content, time_out, timer, status, navigation_info_pub_, navigation_function_state_pub_);
+        else if(type == "marker") res = handle_content(content, time_out, timer, status, marker_info_pub_, marker_function_state_pub_);
+        else if(type == "var") res = handle_content(content, time_out, timer, status, var_info_pub_, var_function_state_pub_);
+        else if(type == "sleep") res = handle_content(content, time_out, timer, status, sleep_info_pub_, sleep_function_state_pub_);
+        else if(type == "lift") res = handle_content(content, time_out, timer, status, lift_info_pub_, lift_function_state_pub_);
+        else if(type == "brush") res = handle_content(content, time_out, timer, status, brush_info_pub_, brush_function_state_pub_);
+        else if(type == "suction") res = handle_content(content, time_out, timer, status, suction_info_pub_, suction_function_state_pub_);
+        else if(type == "charge") res = handle_content(content, time_out, timer, status, charge_info_pub_, charge_function_state_pub_);
+        else if(type == "loadmap") res = handle_content(content, time_out, timer, status, loadmap_info_pub_, loadmap_function_state_pub_);
+        else if(type == "initialpose") res = handle_content(content, time_out, timer, status, initialpose_info_pub_, initialpose_function_state_pub_);
+        if(res == Finish_) queue_content.erase(queue_content.begin());
+        return res; 
     }
 }
 void manage_mission::execute_mission(){
     //var
     RCLCPP_INFO(this->get_logger(),"start execute mission");
     static vector<string> queue_content;
-    static string next_to = "";
     static string active_content = "";
     static int active_content_sum;
     static int res;
@@ -1164,8 +1097,6 @@ void manage_mission::execute_mission(){
         RCLCPP_INFO(this->get_logger(),"continue execute mission, status finish");
         active_content = "";
         queue_content.resize(0);
-        next_to = "";
-        
         if(active_mission_id != "" || battery_mission_trigger == 1 || battery_mission_trigger == 3){
             //reset buffer and curl
             readBuffer.clear();
@@ -1220,7 +1151,6 @@ void manage_mission::execute_mission(){
                     }
                 }
             }
-            
             //run mission_
             RCLCPP_INFO(this->get_logger(),"check run mission_");
             if(!mission_.contents_map.empty()){
@@ -1247,18 +1177,34 @@ void manage_mission::execute_mission(){
     }
     else {
         if (status == Error_){
-            RCLCPP_INFO(this->get_logger(),"continue execute mission, status error");
-            //pub stop robot
-            pub_stop_robot();
-            //send notification
-            sendNotification("Moshi", "Error", battery_filter, mission_.mission_name, "Robot is error, help me!!!");
+            //
+            auto marker_it = std::find_if(queue_content.begin(), queue_content.end(), [](const string& id) {
+                return id.rfind("MARKER_CATCH_", 0) == 0; // Check prefix MARKER_CATCH_
+            });
+            if (marker_it != queue_content.end()) {
+                string marker_id = *marker_it;
+                json catch_node = mission_.contents_map[marker_id];
+                vector<string> catch_body = catch_node["catch_content"].get<vector<string>>();
+                queue_content.erase(queue_content.begin(), marker_it + 1);
+                //
+                if (!catch_body.empty()) queue_content.insert(queue_content.begin(), catch_body.begin(), catch_body.end());
+                active_content = queue_content[0];
+                state = N_A_;
+                status = Active_;
+            } else {
+                RCLCPP_INFO(this->get_logger(),"continue execute mission, status error");
+                //pub stop robot
+                pub_stop_robot();
+                //send notification
+                sendNotification("Moshi", "Error", battery_filter, mission_.mission_name, "Robot is error, help me!!!");
+                status = Error_;
+            }
         }
         else {
             //execute mission main
             RCLCPP_INFO(this->get_logger(),"before execute content|status: %d", status);
-            res = execute_content(mission_, queue_content, active_content, next_to, status);
+            res = execute_content(mission_, queue_content, active_content, status);
             RCLCPP_INFO(this->get_logger(),"result execute content: %d", res);
-
             if(res == Active_) {
                 status = Active_;
             }
@@ -1271,18 +1217,6 @@ void manage_mission::execute_mission(){
             }
             else if(res == Finish_){
                 if(queue_content.empty()){
-                    active_content = next_to;
-                    next_to = "";
-                }
-                else{
-                    queue_content.erase(queue_content.begin());
-                    if(queue_content.empty()){
-                        active_content = next_to;
-                        next_to = "";
-                    }
-                    else active_content = queue_content[0];
-                }
-                if(mission_.contents_map[active_content]["type"].get<string>() == "end"){
                     if(action_mode_mission == "battery_charge_mission" && battery_mission_trigger == 1){
                         battery_mission_trigger = 2;
                         RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
@@ -1304,9 +1238,13 @@ void manage_mission::execute_mission(){
                     action_mode_mission = "N_A";
                     mission_.reset();
                 }
-                else status = Active_;
+                else {
+                    active_content = queue_content[0];
+                    status = Active_;
+                }
             }
-            pub_active_mission_info(action_mode_mission, mission_.mission_id, active_content, to_string(active_content_sum));
+            else status = Active_;
         }
+        pub_active_mission_info(action_mode_mission, mission_.mission_id, active_content, to_string(active_content_sum));
     }
 }
