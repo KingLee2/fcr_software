@@ -5,3 +5,4 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("tf2_web_republisher_interfaces__py")
+subdirs("tf2_web_republisher_interfaces__rs")

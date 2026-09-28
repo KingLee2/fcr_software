@@ -6,5 +6,5 @@ C_DEFINES = -DROS_PACKAGE_NAME=\"tf2_web_republisher_interfaces\" -Dtf2_web_repu
 
 C_INCLUDES = -I/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/rosidl_generator_c -I/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/rosidl_generator_py -I/opt/ros/jazzy/include/rmw -I/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/rosidl_typesupport_introspection_c -isystem /usr/include/python3.12 -isystem /opt/ros/jazzy/include/builtin_interfaces -isystem /opt/ros/jazzy/include/rosidl_runtime_c -isystem /opt/ros/jazzy/include/rcutils -isystem /opt/ros/jazzy/include/rosidl_typesupport_interface -isystem /opt/ros/jazzy/include/geometry_msgs -isystem /opt/ros/jazzy/include/std_msgs -isystem /opt/ros/jazzy/include/service_msgs -isystem /opt/ros/jazzy/include/action_msgs -isystem /opt/ros/jazzy/include/unique_identifier_msgs -isystem /opt/ros/jazzy/include/rosidl_typesupport_introspection_c -isystem /opt/ros/jazzy/include/rosidl_typesupport_c -isystem /opt/ros/jazzy/include/rosidl_dynamic_typesupport
 
-C_FLAGS = -fPIC -Wall -Wextra
+C_FLAGS = -O3 -DNDEBUG -fPIC -Wall -Wextra
 

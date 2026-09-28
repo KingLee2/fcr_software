@@ -196,7 +196,7 @@ libpointcloud_to_laserscan.so: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_
 libpointcloud_to_laserscan.so: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
 libpointcloud_to_laserscan.so: /opt/ros/jazzy/lib/librmw.so
 libpointcloud_to_laserscan.so: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
-libpointcloud_to_laserscan.so: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+libpointcloud_to_laserscan.so: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 libpointcloud_to_laserscan.so: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
 libpointcloud_to_laserscan.so: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_cpp.so
 libpointcloud_to_laserscan.so: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_c.so

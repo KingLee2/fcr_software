@@ -198,7 +198,7 @@ test/test_tf_web_republisher: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_
 test/test_tf_web_republisher: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so
 test/test_tf_web_republisher: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
 test/test_tf_web_republisher: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
-test/test_tf_web_republisher: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+test/test_tf_web_republisher: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 test/test_tf_web_republisher: /opt/ros/jazzy/lib/librmw.so
 test/test_tf_web_republisher: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
 test/test_tf_web_republisher: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so

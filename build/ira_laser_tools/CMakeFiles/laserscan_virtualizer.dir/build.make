@@ -94,10 +94,10 @@ laserscan_virtualizer: CMakeFiles/laserscan_virtualizer.dir/src/laserscan_virtua
 laserscan_virtualizer: CMakeFiles/laserscan_virtualizer.dir/build.make
 laserscan_virtualizer: /opt/ros/jazzy/lib/librclcpp_lifecycle.so
 laserscan_virtualizer: /opt/ros/jazzy/lib/liblaser_geometry.so
-laserscan_virtualizer: /opt/ros/jazzy/lib/libpcl_ros_tf.a
 laserscan_virtualizer: /opt/ros/jazzy/lib/libpcd_to_pointcloud_lib.so
 laserscan_virtualizer: /opt/ros/jazzy/lib/libpcl_ros_filters.so
 laserscan_virtualizer: /opt/ros/jazzy/lib/libpointcloud_to_pcd_lib.so
+laserscan_virtualizer: /opt/ros/jazzy/lib/libcombined_pointcloud_to_pcd_lib.so
 laserscan_virtualizer: /usr/lib/x86_64-linux-gnu/libpcl_common.so
 laserscan_virtualizer: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so
 laserscan_virtualizer: /usr/lib/x86_64-linux-gnu/libpcl_octree.so
@@ -137,7 +137,8 @@ laserscan_virtualizer: /opt/ros/jazzy/lib/liblifecycle_msgs__rosidl_typesupport_
 laserscan_virtualizer: /opt/ros/jazzy/lib/liblifecycle_msgs__rosidl_generator_py.so
 laserscan_virtualizer: /opt/ros/jazzy/lib/liblifecycle_msgs__rosidl_typesupport_c.so
 laserscan_virtualizer: /opt/ros/jazzy/lib/liblifecycle_msgs__rosidl_generator_c.so
-laserscan_virtualizer: /opt/ros/jazzy/lib/libpcl_ros_tf.a
+laserscan_virtualizer: /opt/ros/jazzy/lib/libpcl_ros_filter.so
+laserscan_virtualizer: /opt/ros/jazzy/lib/libpcl_ros_tf.so
 laserscan_virtualizer: /usr/lib/x86_64-linux-gnu/libpcl_common.so
 laserscan_virtualizer: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so
 laserscan_virtualizer: /usr/lib/x86_64-linux-gnu/libpcl_octree.so
@@ -263,7 +264,7 @@ laserscan_virtualizer: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupp
 laserscan_virtualizer: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
 laserscan_virtualizer: /opt/ros/jazzy/lib/librmw.so
 laserscan_virtualizer: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
-laserscan_virtualizer: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+laserscan_virtualizer: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 laserscan_virtualizer: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
 laserscan_virtualizer: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_cpp.so
 laserscan_virtualizer: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_c.so

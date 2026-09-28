@@ -1,5 +1,5 @@
 # CMake generated Testfile for 
-# Source directory: /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description
+# Source directory: /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description
 # Build directory: /home/mvibot/floorCleaningRobot_ws/build/realsense2_description
 # 
 # This file includes the relevant testing commands required for 

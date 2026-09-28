@@ -418,6 +418,19 @@ tf2_web_republisher_interfaces__py/fast:
 	$(MAKE) $(MAKESILENT) -f /home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/tf2_web_republisher_interfaces__py/CMakeFiles/tf2_web_republisher_interfaces__py.dir/build.make /home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/tf2_web_republisher_interfaces__py/CMakeFiles/tf2_web_republisher_interfaces__py.dir/build
 .PHONY : tf2_web_republisher_interfaces__py/fast
 
+#=============================================================================
+# Target rules for targets named tf2_web_republisher_interfaces__rs
+
+# Build rule for target.
+tf2_web_republisher_interfaces__rs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tf2_web_republisher_interfaces__rs
+.PHONY : tf2_web_republisher_interfaces__rs
+
+# fast build rule for target.
+tf2_web_republisher_interfaces__rs/fast:
+	$(MAKE) $(MAKESILENT) -f /home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/tf2_web_republisher_interfaces__rs/CMakeFiles/tf2_web_republisher_interfaces__rs.dir/build.make /home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/tf2_web_republisher_interfaces__rs/CMakeFiles/tf2_web_republisher_interfaces__rs.dir/build
+.PHONY : tf2_web_republisher_interfaces__rs/fast
+
 rosidl_generator_c/tf2_web_republisher_interfaces/action/detail/tf_subscription__description.o: rosidl_generator_c/tf2_web_republisher_interfaces/action/detail/tf_subscription__description.c.o
 .PHONY : rosidl_generator_c/tf2_web_republisher_interfaces/action/detail/tf_subscription__description.o
 
@@ -1229,6 +1242,7 @@ help:
 	@echo "... tf2_web_republisher_interfaces__cpp"
 	@echo "... tf2_web_republisher_interfaces__py"
 	@echo "... tf2_web_republisher_interfaces__rosidl_generator_type_description"
+	@echo "... tf2_web_republisher_interfaces__rs"
 	@echo "... tf2_web_republisher_interfaces_uninstall"
 	@echo "... uninstall"
 	@echo "... tf2_web_republisher_interfaces__rosidl_generator_c"

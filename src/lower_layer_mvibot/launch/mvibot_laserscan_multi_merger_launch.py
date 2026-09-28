@@ -28,7 +28,7 @@ def generate_launch_description():
 			"angle_increment": 0.01745329251,
 			"scan_time": 0.0333333,
 			"range_min": 0.0,
-			"range_max": 5.0,
+			"range_max": 16.0,
 		}],
 	)
 	#Init node to merge 2 camera data with base_link frame

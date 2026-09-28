@@ -6,5 +6,5 @@ CXX_DEFINES = -DROSIDL_GENERATOR_C_BUILDING_DLL_tf2_web_republisher_interfaces -
 
 CXX_INCLUDES = -I/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/rosidl_generator_c -isystem /opt/ros/jazzy/include/builtin_interfaces -isystem /opt/ros/jazzy/include/rosidl_runtime_c -isystem /opt/ros/jazzy/include/rcutils -isystem /opt/ros/jazzy/include/rosidl_typesupport_interface -isystem /opt/ros/jazzy/include/geometry_msgs -isystem /opt/ros/jazzy/include/std_msgs -isystem /opt/ros/jazzy/include/service_msgs -isystem /opt/ros/jazzy/include/action_msgs -isystem /opt/ros/jazzy/include/unique_identifier_msgs -isystem /opt/ros/jazzy/include/rosidl_typesupport_c
 
-CXX_FLAGS = -fPIC -Wall
+CXX_FLAGS = -O3 -DNDEBUG -fPIC -Wall
 

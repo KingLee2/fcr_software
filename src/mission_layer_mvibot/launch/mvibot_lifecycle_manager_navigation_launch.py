@@ -18,7 +18,7 @@ def generate_launch_description():
         'planner_server',
         'coverage_server',
         'controller_server',
-        'smoother_server',
+        # 'smoother_server',
         'behavior_server',
         #'velocity_smoother',
         #'collision_monitor',

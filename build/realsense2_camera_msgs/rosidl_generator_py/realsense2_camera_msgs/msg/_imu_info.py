@@ -110,18 +110,15 @@ class IMUInfo(metaclass=Metaclass_IMUInfo):
         if 'data' not in kwargs:
             self.data = numpy.zeros(12, dtype=numpy.float64)
         else:
-            self.data = numpy.array(kwargs.get('data'), dtype=numpy.float64)
-            assert self.data.shape == (12, )
+            self.data = kwargs.get('data')
         if 'noise_variances' not in kwargs:
             self.noise_variances = numpy.zeros(3, dtype=numpy.float64)
         else:
-            self.noise_variances = numpy.array(kwargs.get('noise_variances'), dtype=numpy.float64)
-            assert self.noise_variances.shape == (3, )
+            self.noise_variances = kwargs.get('noise_variances')
         if 'bias_variances' not in kwargs:
             self.bias_variances = numpy.zeros(3, dtype=numpy.float64)
         else:
-            self.bias_variances = numpy.array(kwargs.get('bias_variances'), dtype=numpy.float64)
-            assert self.bias_variances.shape == (3, )
+            self.bias_variances = kwargs.get('bias_variances')
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')

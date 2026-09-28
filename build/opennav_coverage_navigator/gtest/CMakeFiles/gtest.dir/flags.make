@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/mvibot/floorCleaningRobot_ws/src/opennav_coverage/opennav_coverage_navigator/include -I/opt/ros/jazzy/src/gtest_vendor/. -isystem /opt/ros/jazzy/src/gtest_vendor/include
 
-CXX_FLAGS = -std=gnu++17 -fPIC -Wno-missing-field-initializers -Wall -Wextra -Wpedantic -Werror -Wdeprecated -fPIC -Wnull-dereference -Wno-null-dereference
+CXX_FLAGS = -O3 -DNDEBUG -std=gnu++17 -fPIC -Wno-missing-field-initializers -Wall -Wextra -Wpedantic -Werror -Wdeprecated -fPIC -Wnull-dereference -Wno-null-dereference
 

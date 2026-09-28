@@ -1,5 +1,5 @@
 # CMake generated Testfile for 
-# Source directory: /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/sllidar_ros2
+# Source directory: /home/mvibot/floorCleaningRobot_ws/src/sllidar_ros2
 # Build directory: /home/mvibot/floorCleaningRobot_ws/build/sllidar_ros2
 # 
 # This file includes the relevant testing commands required for 

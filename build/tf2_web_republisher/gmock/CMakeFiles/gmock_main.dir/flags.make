@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/opt/ros/jazzy/src/gmock_vendor/include -I/opt/ros/jazzy/src/gmock_vendor/. -I/opt/ros/jazzy/src/gtest_vendor/include -I/opt/ros/jazzy/src/gtest_vendor
 
-CXX_FLAGS = 
+CXX_FLAGS = -O3 -DNDEBUG
 

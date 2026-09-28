@@ -6,8 +6,8 @@
 
 #include "tf2_web_republisher_interfaces/action/detail/tf_subscription__functions.h"
 #include "tf2_web_republisher_interfaces/action/detail/tf_subscription__type_support.h"
-#include "tf2_web_republisher_interfaces/action/detail/tf_subscription__struct.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "tf2_web_republisher_interfaces/action/detail/tf_subscription__struct.h"
 
 #ifdef __cplusplus
 extern "C"

@@ -1,1 +1,1 @@
-/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/Metadata.msg
+/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/Metadata.msg

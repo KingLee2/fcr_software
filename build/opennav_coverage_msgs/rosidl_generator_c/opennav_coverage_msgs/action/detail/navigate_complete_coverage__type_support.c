@@ -4,10 +4,10 @@
 
 #include <string.h>
 
-#include "opennav_coverage_msgs/action/detail/navigate_complete_coverage__type_support.h"
 #include "opennav_coverage_msgs/action/detail/navigate_complete_coverage__struct.h"
-#include "rosidl_typesupport_interface/macros.h"
+#include "opennav_coverage_msgs/action/detail/navigate_complete_coverage__type_support.h"
 #include "opennav_coverage_msgs/action/detail/navigate_complete_coverage__functions.h"
+#include "rosidl_typesupport_interface/macros.h"
 
 #ifdef __cplusplus
 extern "C"

@@ -143,7 +143,7 @@ laserscan_to_pointcloud_node: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_t
 laserscan_to_pointcloud_node: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
 laserscan_to_pointcloud_node: /opt/ros/jazzy/lib/librmw.so
 laserscan_to_pointcloud_node: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
-laserscan_to_pointcloud_node: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+laserscan_to_pointcloud_node: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 laserscan_to_pointcloud_node: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
 laserscan_to_pointcloud_node: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_cpp.so
 laserscan_to_pointcloud_node: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_c.so

@@ -143,7 +143,7 @@ tf2_web_republisher_node: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_types
 tf2_web_republisher_node: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
 tf2_web_republisher_node: /opt/ros/jazzy/lib/librmw.so
 tf2_web_republisher_node: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
-tf2_web_republisher_node: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+tf2_web_republisher_node: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 tf2_web_republisher_node: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
 tf2_web_republisher_node: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_cpp.so
 tf2_web_republisher_node: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_c.so

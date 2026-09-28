@@ -4,10 +4,10 @@
 
 #include <string.h>
 
-#include "realsense2_camera_msgs/msg/detail/imu_info__type_support.h"
-#include "realsense2_camera_msgs/msg/detail/imu_info__functions.h"
 #include "realsense2_camera_msgs/msg/detail/imu_info__struct.h"
+#include "realsense2_camera_msgs/msg/detail/imu_info__type_support.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "realsense2_camera_msgs/msg/detail/imu_info__functions.h"
 
 #ifdef __cplusplus
 extern "C"

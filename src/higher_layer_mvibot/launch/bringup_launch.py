@@ -125,9 +125,6 @@ def generate_launch_description():
     firmware_start = TimerAction(
         period=2.0,
         actions=[
-            # IncludeLaunchDescription(
-            #     PythonLaunchDescriptionSource(kernel_launch)
-            # ),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(firmware_launch),
                 launch_arguments={
@@ -139,23 +136,6 @@ def generate_launch_description():
         ]
     )
     ld.add_action(firmware_start)
-
-    # ld.add_action(
-    #     IncludeLaunchDescription(
-    #         PythonLaunchDescriptionSource(kernel_launch)
-    #     )
-    # )
-
-    # ld.add_action(
-    #     IncludeLaunchDescription(
-    #         PythonLaunchDescriptionSource(firmware_launch),
-    #         launch_arguments={
-    #             'mvibot_seri': mvibot_seri,
-    #             'serial_no_1': serial_camera1,
-    #             'serial_no_2': serial_camera2
-    #         }.items()
-    #     )
-    # )
 
     if mode == "mapping":
         ld.add_action(
@@ -190,40 +170,9 @@ def generate_launch_description():
                 }.items()
             )
         )
-
-    #     ld.add_action(
-    #         IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource(amcl_launch),
-    #             launch_arguments={
-    #                 'mvibot_seri': mvibot_seri
-    #             }.items()
-    #         )
-    #     )
-
-    #     ld.add_action(
-    #         IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource(navigation_launch),
-    #             launch_arguments={
-    #                 'mvibot_seri': mvibot_seri
-    #             }.items()
-    #         )
-    #     )
-    #     ld.add_action(
-    #         IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource(mission_launch)
-    #         )
-    #     )
         nav_start = TimerAction(
-            period=2.0,
+            period=1.0,
             actions=[
-
-                # IncludeLaunchDescription(
-                #     PythonLaunchDescriptionSource(map_server_launch),
-                #     launch_arguments={
-                #         'mvibot_seri': mvibot_seri
-                #     }.items()
-                # ),
-
                 IncludeLaunchDescription(
                     PythonLaunchDescriptionSource(amcl_launch),
                     launch_arguments={

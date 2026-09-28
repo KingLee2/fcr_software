@@ -55,6 +55,11 @@ function(ament_cmake_symlink_install_directory cmake_current_source_dir)
         # remove trailing slash
         string(SUBSTRING "${dir}" 0 ${offset} dir)
       endif()
+      
+      # Create destination directory.
+      # This does *not* solve the problem of empty directories WITHIN the install tree,
+      # but does make sure that the top-level directory specified by the caller gets created.
+      file(MAKE_DIRECTORY "${destination}")
 
       # glob recursive files
       set(relative_files "")
@@ -366,6 +371,12 @@ include("/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces
 
 # install("TARGETS" "tf2_web_republisher_interfaces_s__rosidl_typesupport_c" "DESTINATION" "lib/python3.12/site-packages/tf2_web_republisher_interfaces")
 include("/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/ament_cmake_symlink_install_targets_2_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/ament_cmake_index/share/ament_index/resource_index/rust_packages/tf2_web_republisher_interfaces" "DESTINATION" "share/ament_index/resource_index/rust_packages")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/tf2_web_republisher/tf2_web_republisher_interfaces" FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/ament_cmake_index/share/ament_index/resource_index/rust_packages/tf2_web_republisher_interfaces" "DESTINATION" "share/ament_index/resource_index/rust_packages")
+
+# install(DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/rosidl_generator_rs/tf2_web_republisher_interfaces/rust" "DESTINATION" "share/tf2_web_republisher_interfaces")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/tf2_web_republisher/tf2_web_republisher_interfaces" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/rosidl_generator_rs/tf2_web_republisher_interfaces/rust" "DESTINATION" "share/tf2_web_republisher_interfaces")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/rosidl_adapter/tf2_web_republisher_interfaces/msg/TFArray.idl" "DESTINATION" "share/tf2_web_republisher_interfaces/msg")
 ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/tf2_web_republisher/tf2_web_republisher_interfaces" FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/rosidl_adapter/tf2_web_republisher_interfaces/msg/TFArray.idl" "DESTINATION" "share/tf2_web_republisher_interfaces/msg")

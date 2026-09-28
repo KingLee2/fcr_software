@@ -4,9 +4,9 @@
 
 #include <string.h>
 
-#include "rosidl_typesupport_interface/macros.h"
 #include "opennav_coverage_msgs/msg/detail/row_swath_mode__functions.h"
 #include "opennav_coverage_msgs/msg/detail/row_swath_mode__type_support.h"
+#include "rosidl_typesupport_interface/macros.h"
 #include "opennav_coverage_msgs/msg/detail/row_swath_mode__struct.h"
 
 #ifdef __cplusplus

@@ -307,7 +307,7 @@ test/test_compute_coverage_path: /opt/ros/jazzy/lib/libvisualization_msgs__rosid
 test/test_compute_coverage_path: /opt/ros/jazzy/lib/libvoxel_grid.so
 test/test_compute_coverage_path: /opt/ros/jazzy/lib/libclass_loader.so
 test/test_compute_coverage_path: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.1.0
-test/test_compute_coverage_path: /home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/libtinyxml2.so.9.0.0
+test/test_compute_coverage_path: /usr/lib/x86_64-linux-gnu/libtinyxml2.so.10.0.0
 test/test_compute_coverage_path: /opt/ros/jazzy/lib/libsensor_msgs__rosidl_typesupport_fastrtps_c.so
 test/test_compute_coverage_path: /opt/ros/jazzy/lib/libsensor_msgs__rosidl_typesupport_fastrtps_cpp.so
 test/test_compute_coverage_path: /opt/ros/jazzy/lib/libsensor_msgs__rosidl_typesupport_introspection_c.so

@@ -51,7 +51,7 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+CMAKE_BUILD_TYPE:STRING=Release
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -277,6 +277,9 @@ PKG_CONFIG_ARGN:STRING=
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
+//Select ROS middleware implementation to link against
+RMW_IMPLEMENTATION:STRING=rmw_fastrtps_cpp
+
 //Set user wait point in startup (for debug)
 SET_USER_BREAK_AT_STARTUP:BOOL=OFF
 
@@ -284,7 +287,7 @@ SET_USER_BREAK_AT_STARTUP:BOOL=OFF
 SITE:STRING=mvibot
 
 //The directory containing a CMake configuration file for TinyXML2.
-TinyXML2_DIR:PATH=/home/mvibot/floorCleaningRobot_ws/install/fields2cover/lib/cmake/tinyxml2
+TinyXML2_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/tinyxml2
 
 //Enable lifecycle nodes (ON/OFF)
 USE_LIFECYCLE_NODE:BOOL=OFF

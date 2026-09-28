@@ -17,15 +17,15 @@ controller_server:
     # Progress checker parameters
     progress_checker:
       plugin: "nav2_controller::SimpleProgressChecker"
-      required_movement_radius: 0.1 #0.25    #Minimum amount a robot must move to be progressing to goal (m).
-      movement_time_allowance: 2.0 #10.0
+      required_movement_radius: 0.25 #0.25    #Minimum amount a robot must move to be progressing to goal (m).
+      movement_time_allowance: 10.0 #10.0
 
     #goal checker parameters
     goal_checker:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.05
+      xy_goal_tolerance: 0.15 #0.25
+      yaw_goal_tolerance: 0.25 #0.05
     
     FollowPath:
       plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
@@ -34,7 +34,7 @@ controller_server:
       min_lookahead_dist: 0.5 #0.7
       max_lookahead_dist: 1.5 #0.9
       lookahead_time: 2.0 #1.5 #2.0
-      rotate_to_heading_angular_vel: 1.8
+      rotate_to_heading_angular_vel: 1.5 #1.8
       use_velocity_scaled_lookahead_dist: true
       min_approach_linear_velocity: 0.00
       approach_velocity_scaling_dist: 1.0 #0.6

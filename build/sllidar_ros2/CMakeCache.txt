@@ -45,7 +45,7 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+CMAKE_BUILD_TYPE:STRING=Release
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -268,6 +268,9 @@ PKG_CONFIG_ARGN:STRING=
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
+//Select ROS middleware implementation to link against
+RMW_IMPLEMENTATION:STRING=rmw_fastrtps_cpp
+
 //Name of the computer/site where compile is being run
 SITE:STRING=mvibot
 
@@ -455,7 +458,7 @@ sllidar_ros2_BINARY_DIR:STATIC=/home/mvibot/floorCleaningRobot_ws/build/sllidar_
 sllidar_ros2_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-sllidar_ros2_SOURCE_DIR:STATIC=/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/sllidar_ros2
+sllidar_ros2_SOURCE_DIR:STATIC=/home/mvibot/floorCleaningRobot_ws/src/sllidar_ros2
 
 //The directory containing a CMake configuration file for statistics_msgs.
 statistics_msgs_DIR:PATH=/opt/ros/jazzy/share/statistics_msgs/cmake
@@ -557,7 +560,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/sllidar_ros2
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/mvibot/floorCleaningRobot_ws/src/sllidar_ros2
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

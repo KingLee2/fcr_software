@@ -196,7 +196,7 @@ liblaserscan_to_pointcloud.so: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_
 liblaserscan_to_pointcloud.so: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
 liblaserscan_to_pointcloud.so: /opt/ros/jazzy/lib/librmw.so
 liblaserscan_to_pointcloud.so: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
-liblaserscan_to_pointcloud.so: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+liblaserscan_to_pointcloud.so: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 liblaserscan_to_pointcloud.so: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
 liblaserscan_to_pointcloud.so: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_cpp.so
 liblaserscan_to_pointcloud.so: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_c.so

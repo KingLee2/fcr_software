@@ -4,10 +4,10 @@
 
 #include <string.h>
 
-#include "realsense2_camera_msgs/action/detail/triggered_calibration__functions.h"
 #include "realsense2_camera_msgs/action/detail/triggered_calibration__struct.h"
-#include "realsense2_camera_msgs/action/detail/triggered_calibration__type_support.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "realsense2_camera_msgs/action/detail/triggered_calibration__type_support.h"
+#include "realsense2_camera_msgs/action/detail/triggered_calibration__functions.h"
 
 #ifdef __cplusplus
 extern "C"

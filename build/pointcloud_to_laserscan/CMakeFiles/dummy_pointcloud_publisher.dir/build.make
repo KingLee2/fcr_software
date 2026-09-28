@@ -158,7 +158,7 @@ dummy_pointcloud_publisher: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typ
 dummy_pointcloud_publisher: /opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so
 dummy_pointcloud_publisher: /opt/ros/jazzy/lib/librmw.so
 dummy_pointcloud_publisher: /opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so
-dummy_pointcloud_publisher: /opt/ros/jazzy/lib/libfastcdr.so.2.2.5
+dummy_pointcloud_publisher: /opt/ros/jazzy/lib/libfastcdr.so.2.2.7
 dummy_pointcloud_publisher: /opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
 dummy_pointcloud_publisher: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_cpp.so
 dummy_pointcloud_publisher: /opt/ros/jazzy/lib/librosidl_typesupport_introspection_c.so

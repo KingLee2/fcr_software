@@ -1,4 +1,4 @@
-# Install script for directory: /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs
+# Install script for directory: /home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "")
+    set(CMAKE_INSTALL_CONFIG_NAME "Release")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -256,8 +256,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_generator_cExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_generator_cExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_generator_cExport-release.cmake")
   endif()
 endif()
 
@@ -279,8 +279,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_typesupport_fastrtps_cExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_typesupport_fastrtps_cExport-release.cmake")
   endif()
 endif()
 
@@ -302,8 +302,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_introspection_cExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_introspection_cExport-release.cmake")
   endif()
 endif()
 
@@ -325,8 +325,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_cExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_cExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_cExport-release.cmake")
   endif()
 endif()
 
@@ -368,8 +368,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_typesupport_fastrtps_cppExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_typesupport_fastrtps_cppExport-release.cmake")
   endif()
 endif()
 
@@ -391,8 +391,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_introspection_cppExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_introspection_cppExport-release.cmake")
   endif()
 endif()
 
@@ -414,8 +414,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_cppExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_cppExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/realsense2_camera_msgs__rosidl_typesupport_cppExport-release.cmake")
   endif()
 endif()
 
@@ -437,14 +437,15 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_generator_pyExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_generator_pyExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/realsense2_camera_msgs/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/CMakeFiles/Export/c18498dd6a8c0cac999895645a64baa0/export_realsense2_camera_msgs__rosidl_generator_pyExport-release.cmake")
   endif()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/realsense2_camera_msgs__py/cmake_install.cmake")
+  include("/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/realsense2_camera_msgs__rs/cmake_install.cmake")
 
 endif()
 

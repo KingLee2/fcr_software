@@ -24,10 +24,10 @@ realsense2_camera_msgs__msg__RGBD__get_type_hash(
 
 // Include directives for referenced types
 #include "std_msgs/msg/detail/header__functions.h"
+#include "sensor_msgs/msg/detail/camera_info__functions.h"
+#include "sensor_msgs/msg/detail/image__functions.h"
 #include "sensor_msgs/msg/detail/region_of_interest__functions.h"
 #include "builtin_interfaces/msg/detail/time__functions.h"
-#include "sensor_msgs/msg/detail/image__functions.h"
-#include "sensor_msgs/msg/detail/camera_info__functions.h"
 
 // Hashes for external referenced types
 #ifndef NDEBUG

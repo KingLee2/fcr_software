@@ -55,6 +55,11 @@ function(ament_cmake_symlink_install_directory cmake_current_source_dir)
         # remove trailing slash
         string(SUBSTRING "${dir}" 0 ${offset} dir)
       endif()
+      
+      # Create destination directory.
+      # This does *not* solve the problem of empty directories WITHIN the install tree,
+      # but does make sure that the top-level directory specified by the caller gets created.
+      file(MAKE_DIRECTORY "${destination}")
 
       # glob recursive files
       set(relative_files "")
@@ -311,67 +316,67 @@ message(STATUS "Execute custom install script")
 # begin of custom install code
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/rosidl_interfaces")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/rosidl_interfaces")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/rosidl_interfaces")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/IMUInfo.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/IMUInfo.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/IMUInfo.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/Extrinsics.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/Extrinsics.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/Extrinsics.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/Metadata.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/Metadata.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/Metadata.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/RGBD.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/RGBD.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/msg/RGBD.json" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/srv/DeviceInfo.json" "DESTINATION" "share/realsense2_camera_msgs/srv")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/srv/DeviceInfo.json" "DESTINATION" "share/realsense2_camera_msgs/srv")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/srv/DeviceInfo.json" "DESTINATION" "share/realsense2_camera_msgs/srv")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/srv/CalibConfigRead.json" "DESTINATION" "share/realsense2_camera_msgs/srv")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/srv/CalibConfigRead.json" "DESTINATION" "share/realsense2_camera_msgs/srv")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/srv/CalibConfigRead.json" "DESTINATION" "share/realsense2_camera_msgs/srv")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/srv/CalibConfigWrite.json" "DESTINATION" "share/realsense2_camera_msgs/srv")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/srv/CalibConfigWrite.json" "DESTINATION" "share/realsense2_camera_msgs/srv")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/srv/CalibConfigWrite.json" "DESTINATION" "share/realsense2_camera_msgs/srv")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/action/TriggeredCalibration.json" "DESTINATION" "share/realsense2_camera_msgs/action")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/action/TriggeredCalibration.json" "DESTINATION" "share/realsense2_camera_msgs/action")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_type_description/realsense2_camera_msgs/action/TriggeredCalibration.json" "DESTINATION" "share/realsense2_camera_msgs/action")
 
 # install(DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_c/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.h")
-ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_c/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.h")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_c/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.h")
 
 # install(FILES "/opt/ros/jazzy/lib/python3.12/site-packages/ament_package/template/environment_hook/library_path.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/opt/ros/jazzy/lib/python3.12/site-packages/ament_package/template/environment_hook/library_path.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/opt/ros/jazzy/lib/python3.12/site-packages/ament_package/template/environment_hook/library_path.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/library_path.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/library_path.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/library_path.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
 
 # install(DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_fastrtps_c/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN_EXCLUDE" "*.cpp")
-ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_fastrtps_c/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN_EXCLUDE" "*.cpp")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_fastrtps_c/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN_EXCLUDE" "*.cpp")
 
 # install(DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_introspection_c/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.h")
-ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_introspection_c/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.h")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_introspection_c/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.h")
 
 # install(DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_cpp/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.hpp")
-ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_cpp/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.hpp")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_cpp/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.hpp")
 
 # install(DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_fastrtps_cpp/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN_EXCLUDE" "*.cpp")
-ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_fastrtps_cpp/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN_EXCLUDE" "*.cpp")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_fastrtps_cpp/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN_EXCLUDE" "*.cpp")
 
 # install(DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_introspection_cpp/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.hpp")
-ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_introspection_cpp/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.hpp")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_typesupport_introspection_cpp/realsense2_camera_msgs/" "DESTINATION" "include/realsense2_camera_msgs/realsense2_camera_msgs" "PATTERN" "*.hpp")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/pythonpath.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/pythonpath.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/pythonpath.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/pythonpath.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/pythonpath.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/pythonpath.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
 
 # install(DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_python/realsense2_camera_msgs/realsense2_camera_msgs.egg-info/" "DESTINATION" "lib/python3.12/site-packages/realsense2_camera_msgs-4.56.4-py3.12.egg-info")
-ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_python/realsense2_camera_msgs/realsense2_camera_msgs.egg-info/" "DESTINATION" "lib/python3.12/site-packages/realsense2_camera_msgs-4.56.4-py3.12.egg-info")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_python/realsense2_camera_msgs/realsense2_camera_msgs.egg-info/" "DESTINATION" "lib/python3.12/site-packages/realsense2_camera_msgs-4.56.4-py3.12.egg-info")
 
 # install(DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_py/realsense2_camera_msgs/" "DESTINATION" "lib/python3.12/site-packages/realsense2_camera_msgs" "PATTERN_EXCLUDE" "*.pyc" "PATTERN_EXCLUDE" "__pycache__")
-ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_py/realsense2_camera_msgs/" "DESTINATION" "lib/python3.12/site-packages/realsense2_camera_msgs" "PATTERN_EXCLUDE" "*.pyc" "PATTERN_EXCLUDE" "__pycache__")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_py/realsense2_camera_msgs/" "DESTINATION" "lib/python3.12/site-packages/realsense2_camera_msgs" "PATTERN_EXCLUDE" "*.pyc" "PATTERN_EXCLUDE" "__pycache__")
 
 # install("TARGETS" "realsense2_camera_msgs_s__rosidl_typesupport_fastrtps_c" "DESTINATION" "lib/python3.12/site-packages/realsense2_camera_msgs")
 include("/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
@@ -382,113 +387,119 @@ include("/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_c
 # install("TARGETS" "realsense2_camera_msgs_s__rosidl_typesupport_c" "DESTINATION" "lib/python3.12/site-packages/realsense2_camera_msgs")
 include("/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_symlink_install_targets_2_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/rust_packages/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/rust_packages")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/rust_packages/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/rust_packages")
+
+# install(DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_rs/realsense2_camera_msgs/rust" "DESTINATION" "share/realsense2_camera_msgs")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" DIRECTORY "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_generator_rs/realsense2_camera_msgs/rust" "DESTINATION" "share/realsense2_camera_msgs")
+
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/IMUInfo.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/IMUInfo.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/IMUInfo.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/Extrinsics.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/Extrinsics.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/Extrinsics.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/Metadata.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/Metadata.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/Metadata.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/RGBD.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/RGBD.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/msg/RGBD.idl" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/srv/DeviceInfo.idl" "DESTINATION" "share/realsense2_camera_msgs/srv")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/srv/DeviceInfo.idl" "DESTINATION" "share/realsense2_camera_msgs/srv")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/srv/DeviceInfo.idl" "DESTINATION" "share/realsense2_camera_msgs/srv")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/srv/CalibConfigRead.idl" "DESTINATION" "share/realsense2_camera_msgs/srv")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/srv/CalibConfigRead.idl" "DESTINATION" "share/realsense2_camera_msgs/srv")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/srv/CalibConfigRead.idl" "DESTINATION" "share/realsense2_camera_msgs/srv")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/srv/CalibConfigWrite.idl" "DESTINATION" "share/realsense2_camera_msgs/srv")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/srv/CalibConfigWrite.idl" "DESTINATION" "share/realsense2_camera_msgs/srv")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/srv/CalibConfigWrite.idl" "DESTINATION" "share/realsense2_camera_msgs/srv")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/action/TriggeredCalibration.idl" "DESTINATION" "share/realsense2_camera_msgs/action")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/action/TriggeredCalibration.idl" "DESTINATION" "share/realsense2_camera_msgs/action")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_adapter/realsense2_camera_msgs/action/TriggeredCalibration.idl" "DESTINATION" "share/realsense2_camera_msgs/action")
 
-# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/IMUInfo.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/IMUInfo.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/IMUInfo.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/IMUInfo.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
-# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/Extrinsics.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/Extrinsics.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/Extrinsics.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/Extrinsics.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
-# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/Metadata.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/Metadata.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/Metadata.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/Metadata.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
-# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/RGBD.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/RGBD.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/RGBD.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/msg/RGBD.msg" "DESTINATION" "share/realsense2_camera_msgs/msg")
 
-# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/DeviceInfo.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/DeviceInfo.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/DeviceInfo.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/DeviceInfo.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
 
-# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/CalibConfigRead.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/CalibConfigRead.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/CalibConfigRead.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/CalibConfigRead.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
 
-# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/CalibConfigWrite.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/CalibConfigWrite.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/CalibConfigWrite.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/srv/CalibConfigWrite.srv" "DESTINATION" "share/realsense2_camera_msgs/srv")
 
-# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/action/TriggeredCalibration.action" "DESTINATION" "share/realsense2_camera_msgs/action")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/action/TriggeredCalibration.action" "DESTINATION" "share/realsense2_camera_msgs/action")
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/action/TriggeredCalibration.action" "DESTINATION" "share/realsense2_camera_msgs/action")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/action/TriggeredCalibration.action" "DESTINATION" "share/realsense2_camera_msgs/action")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
 
 # install(FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
 
 # install(FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/realsense2_camera_msgs/environment")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/realsense2_camera_msgs/environment")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/realsense2_camera_msgs")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/realsense2_camera_msgs")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/realsense2_camera_msgs")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/realsense2_camera_msgs")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/realsense2_camera_msgs")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/realsense2_camera_msgs")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/realsense2_camera_msgs")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/realsense2_camera_msgs")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/realsense2_camera_msgs")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/realsense2_camera_msgs")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/realsense2_camera_msgs")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/realsense2_camera_msgs")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/realsense2_camera_msgs")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/realsense2_camera_msgs")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/realsense2_camera_msgs")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/packages/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/packages")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/packages/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/packages")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_index/share/ament_index/resource_index/packages/realsense2_camera_msgs" "DESTINATION" "share/ament_index/resource_index/packages")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_cmake/rosidl_cmake-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_cmake/rosidl_cmake-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_cmake/rosidl_cmake-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_include_directories/ament_cmake_export_include_directories-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_include_directories/ament_cmake_export_include_directories-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_include_directories/ament_cmake_export_include_directories-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_libraries/ament_cmake_export_libraries-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_libraries/ament_cmake_export_libraries-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_libraries/ament_cmake_export_libraries-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_targets/ament_cmake_export_targets-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_targets/ament_cmake_export_targets-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_export_targets/ament_cmake_export_targets-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_cmake/rosidl_cmake_export_typesupport_targets-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_cmake/rosidl_cmake_export_typesupport_targets-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_cmake/rosidl_cmake_export_typesupport_targets-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/rosidl_cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_core/realsense2_camera_msgsConfig.cmake" "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_core/realsense2_camera_msgsConfig-version.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_core/realsense2_camera_msgsConfig.cmake" "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_core/realsense2_camera_msgsConfig-version.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_core/realsense2_camera_msgsConfig.cmake" "/home/mvibot/floorCleaningRobot_ws/build/realsense2_camera_msgs/ament_cmake_core/realsense2_camera_msgsConfig-version.cmake" "DESTINATION" "share/realsense2_camera_msgs/cmake")
 
-# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/package.xml" "DESTINATION" "share/realsense2_camera_msgs")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/package.xml" "DESTINATION" "share/realsense2_camera_msgs")
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/package.xml" "DESTINATION" "share/realsense2_camera_msgs")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs" FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_camera_msgs/package.xml" "DESTINATION" "share/realsense2_camera_msgs")

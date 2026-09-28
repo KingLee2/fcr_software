@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/sllidar_ros2
+CMAKE_SOURCE_DIR = /home/mvibot/floorCleaningRobot_ws/src/sllidar_ros2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/mvibot/floorCleaningRobot_ws/build/sllidar_ros2
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/mvibot/floorCleaningRobot_ws/build/sllidar_ros2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/sllidar_ros2 /home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/sllidar_ros2 /home/mvibot/floorCleaningRobot_ws/build/sllidar_ros2 /home/mvibot/floorCleaningRobot_ws/build/sllidar_ros2 /home/mvibot/floorCleaningRobot_ws/build/sllidar_ros2/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/mvibot/floorCleaningRobot_ws/build/sllidar_ros2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mvibot/floorCleaningRobot_ws/src/sllidar_ros2 /home/mvibot/floorCleaningRobot_ws/src/sllidar_ros2 /home/mvibot/floorCleaningRobot_ws/build/sllidar_ros2 /home/mvibot/floorCleaningRobot_ws/build/sllidar_ros2 /home/mvibot/floorCleaningRobot_ws/build/sllidar_ros2/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/uninstall.dir/depend
 

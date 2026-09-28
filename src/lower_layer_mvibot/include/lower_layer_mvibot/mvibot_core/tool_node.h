@@ -567,6 +567,7 @@ void tool_node::robot_load_config(){
     if(config!="-1") robot_config_string+="robot_volume:"+config+"|";
     //
     config=load_file("robot_low_battery");
+    if(config!="-1") low_battery=stof_f(config);
     if(config!="-1") robot_config_string+="robot_low_battery:"+config+"|";
     //
     config=load_file("robot_type_connect");
@@ -1024,7 +1025,7 @@ void tool_node::check_sensor(){
         if(mode == "navigation"){
             string command;
             command="";
-            command=command+"ros2 launch mission_layer_mvibot mvibot_navigation_launch.py mvibot_seri:="+mvibot_seri+" &";
+            command=command+"ros2 launch mission_layer_mvibot mvibot_navigation_launch.py mvibot_seri:="+mvibot_seri+" >> /tmp/mvibot_navigation_launch.log 2>&1 &";
             system(command.c_str());
         }
         start_software_launch=1;

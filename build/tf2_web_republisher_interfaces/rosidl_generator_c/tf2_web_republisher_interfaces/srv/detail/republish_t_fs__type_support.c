@@ -4,10 +4,10 @@
 
 #include <string.h>
 
-#include "tf2_web_republisher_interfaces/srv/detail/republish_t_fs__struct.h"
-#include "tf2_web_republisher_interfaces/srv/detail/republish_t_fs__functions.h"
 #include "tf2_web_republisher_interfaces/srv/detail/republish_t_fs__type_support.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "tf2_web_republisher_interfaces/srv/detail/republish_t_fs__struct.h"
+#include "tf2_web_republisher_interfaces/srv/detail/republish_t_fs__functions.h"
 
 #ifdef __cplusplus
 extern "C"

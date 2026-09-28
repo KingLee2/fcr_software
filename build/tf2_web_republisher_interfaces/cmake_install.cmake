@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "")
+    set(CMAKE_INSTALL_CONFIG_NAME "Release")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -243,6 +243,11 @@ endif()
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/tf2_web_republisher_interfaces__rs/cmake_install.cmake")
+endif()
+
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake/export_tf2_web_republisher_interfaces__rosidl_generator_cExport.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
@@ -261,8 +266,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_generator_cExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_generator_cExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_generator_cExport-release.cmake")
   endif()
 endif()
 
@@ -284,8 +289,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_typesupport_fastrtps_cExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_typesupport_fastrtps_cExport-release.cmake")
   endif()
 endif()
 
@@ -327,8 +332,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_typesupport_fastrtps_cppExport-release.cmake")
   endif()
 endif()
 
@@ -350,8 +355,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_introspection_cExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_introspection_cExport-release.cmake")
   endif()
 endif()
 
@@ -373,8 +378,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_cExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_cExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_cExport-release.cmake")
   endif()
 endif()
 
@@ -396,8 +401,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_introspection_cppExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_introspection_cppExport-release.cmake")
   endif()
 endif()
 
@@ -419,8 +424,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_cppExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_cppExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/tf2_web_republisher_interfaces__rosidl_typesupport_cppExport-release.cmake")
   endif()
 endif()
 
@@ -442,8 +447,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     unset(_cmake_export_file_changed)
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_generator_pyExport.cmake")
-  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_generator_pyExport-noconfig.cmake")
+  if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/tf2_web_republisher_interfaces/cmake" TYPE FILE FILES "/home/mvibot/floorCleaningRobot_ws/build/tf2_web_republisher_interfaces/CMakeFiles/Export/3070cddd8575132609349deb84298aab/export_tf2_web_republisher_interfaces__rosidl_generator_pyExport-release.cmake")
   endif()
 endif()
 

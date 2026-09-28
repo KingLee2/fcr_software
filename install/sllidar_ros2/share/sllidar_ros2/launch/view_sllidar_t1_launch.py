@@ -1,1 +1,1 @@
-/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/sllidar_ros2/launch/view_sllidar_t1_launch.py
+/home/mvibot/floorCleaningRobot_ws/src/sllidar_ros2/launch/view_sllidar_t1_launch.py

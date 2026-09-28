@@ -4,10 +4,10 @@
 
 #include <string.h>
 
-#include "tf2_web_republisher_interfaces/msg/detail/tf_array__struct.h"
-#include "tf2_web_republisher_interfaces/msg/detail/tf_array__functions.h"
 #include "tf2_web_republisher_interfaces/msg/detail/tf_array__type_support.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "tf2_web_republisher_interfaces/msg/detail/tf_array__functions.h"
+#include "tf2_web_republisher_interfaces/msg/detail/tf_array__struct.h"
 
 #ifdef __cplusplus
 extern "C"

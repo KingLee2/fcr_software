@@ -55,6 +55,11 @@ function(ament_cmake_symlink_install_directory cmake_current_source_dir)
         # remove trailing slash
         string(SUBSTRING "${dir}" 0 ${offset} dir)
       endif()
+      
+      # Create destination directory.
+      # This does *not* solve the problem of empty directories WITHIN the install tree,
+      # but does make sure that the top-level directory specified by the caller gets created.
+      file(MAKE_DIRECTORY "${destination}")
 
       # glob recursive files
       set(relative_files "")
@@ -311,46 +316,46 @@ message(STATUS "Execute custom install script")
 # begin of custom install code
 
 # install(DIRECTORY "launch" "meshes" "rviz" "urdf" "DESTINATION" "share/realsense2_description")
-ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" DIRECTORY "launch" "meshes" "rviz" "urdf" "DESTINATION" "share/realsense2_description")
+ament_cmake_symlink_install_directory("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" DIRECTORY "launch" "meshes" "rviz" "urdf" "DESTINATION" "share/realsense2_description")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/realsense2_description" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/realsense2_description" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/realsense2_description" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/realsense2_description" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/realsense2_description" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/realsense2_description" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
 
 # install(FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/realsense2_description/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/realsense2_description/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/realsense2_description/environment")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/realsense2_description/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/realsense2_description/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/realsense2_description/environment")
 
 # install(FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/realsense2_description/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/realsense2_description/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/opt/ros/jazzy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/realsense2_description/environment")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/realsense2_description/environment")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/realsense2_description/environment")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/realsense2_description/environment")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/realsense2_description")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/realsense2_description")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/realsense2_description")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/realsense2_description")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/realsense2_description")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/realsense2_description")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/realsense2_description")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/realsense2_description")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/realsense2_description")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/realsense2_description")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/realsense2_description")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/realsense2_description")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/realsense2_description")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/realsense2_description")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/realsense2_description")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_index/share/ament_index/resource_index/packages/realsense2_description" "DESTINATION" "share/ament_index/resource_index/packages")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_index/share/ament_index/resource_index/packages/realsense2_description" "DESTINATION" "share/ament_index/resource_index/packages")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_index/share/ament_index/resource_index/packages/realsense2_description" "DESTINATION" "share/ament_index/resource_index/packages")
 
 # install(FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_core/realsense2_descriptionConfig.cmake" "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_core/realsense2_descriptionConfig-version.cmake" "DESTINATION" "share/realsense2_description/cmake")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_core/realsense2_descriptionConfig.cmake" "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_core/realsense2_descriptionConfig-version.cmake" "DESTINATION" "share/realsense2_description/cmake")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_core/realsense2_descriptionConfig.cmake" "/home/mvibot/floorCleaningRobot_ws/build/realsense2_description/ament_cmake_core/realsense2_descriptionConfig-version.cmake" "DESTINATION" "share/realsense2_description/cmake")
 
-# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description/package.xml" "DESTINATION" "share/realsense2_description")
-ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/src/floorCleaningRobot_ws/src/realsense-ros/realsense2_description/package.xml" "DESTINATION" "share/realsense2_description")
+# install(FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description/package.xml" "DESTINATION" "share/realsense2_description")
+ament_cmake_symlink_install_files("/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description" FILES "/home/mvibot/floorCleaningRobot_ws/src/realsense-ros/realsense2_description/package.xml" "DESTINATION" "share/realsense2_description")

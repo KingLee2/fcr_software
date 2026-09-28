@@ -5,9 +5,9 @@
 #include <string.h>
 
 #include "opennav_coverage_msgs/msg/detail/route_mode__struct.h"
-#include "opennav_coverage_msgs/msg/detail/route_mode__functions.h"
 #include "opennav_coverage_msgs/msg/detail/route_mode__type_support.h"
 #include "rosidl_typesupport_interface/macros.h"
+#include "opennav_coverage_msgs/msg/detail/route_mode__functions.h"
 
 #ifdef __cplusplus
 extern "C"
