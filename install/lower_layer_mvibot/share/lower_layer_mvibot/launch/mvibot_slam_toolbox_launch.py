@@ -1,1 +1,0 @@
-/home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/launch/mvibot_slam_toolbox_launch.py

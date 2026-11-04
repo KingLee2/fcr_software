@@ -53,7 +53,7 @@ def generate_launch_description():
         executable='controller_server',
         namespace=[TextSubstitution(text='/'),mvibot_seri],
         name='controller_server',
-        respawn=True,
+        respawn=False,
         output='screen',
         parameters=[configured_controller_params,configured_costmap_params]
     )

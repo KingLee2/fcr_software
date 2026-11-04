@@ -96,13 +96,11 @@ def generate_launch_description():
             XMLLaunchDescriptionSource(rosbridge_launch)
         )
     )
-
     ld.add_action(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(tf2_launch)
         )
     )
-
     ld.add_action(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(map_saver_launch),
@@ -111,12 +109,11 @@ def generate_launch_description():
             }.items()
         )
     )
-
     ld.add_action(
-            IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(server_launch)
-            )
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(server_launch)
         )
+    )
     ld.add_action(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(kernel_launch)
@@ -171,25 +168,25 @@ def generate_launch_description():
             )
         )
         nav_start = TimerAction(
-            period=1.0,
+            period=30.0,
             actions=[
-                IncludeLaunchDescription(
-                    PythonLaunchDescriptionSource(amcl_launch),
-                    launch_arguments={
-                        'mvibot_seri': mvibot_seri
-                    }.items()
-                ),
-
                 # IncludeLaunchDescription(
-                #     PythonLaunchDescriptionSource(navigation_launch),
+                #     PythonLaunchDescriptionSource(amcl_launch),
                 #     launch_arguments={
                 #         'mvibot_seri': mvibot_seri
                 #     }.items()
                 # ),
 
                 IncludeLaunchDescription(
-                    PythonLaunchDescriptionSource(mission_launch)
-                )
+                    PythonLaunchDescriptionSource(navigation_launch),
+                    launch_arguments={
+                        'mvibot_seri': mvibot_seri
+                    }.items()
+                ),
+
+                # IncludeLaunchDescription(
+                #     PythonLaunchDescriptionSource(mission_launch)
+                # )
             ]
         )
         ld.add_action(nav_start)

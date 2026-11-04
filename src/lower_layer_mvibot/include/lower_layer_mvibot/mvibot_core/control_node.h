@@ -426,52 +426,29 @@ class control_node : public rclcpp::Node{
                     w_set1=0;
                 }
                 // acceleration for robot
-                // if(v_set1>v_set2) {
-                //     v_set2+=(ax/4)*(float)ts_speed_control;
-                //     if(v_set2>v_set1) v_set2=v_set1;
-                // }
-                // if(v_set1<v_set2){
-                //     v_set2-=ax*(float)ts_speed_control;
-                //     if(v_set2<v_set1) v_set2=v_set1;
-                // }
-		//
-		if(v_set1 > 0){
-                    if(v_set1>v_set2) {
-                        v_set2+=(ax/4)*(float)ts_speed_control;
-                        if(v_set2>v_set1) v_set2=v_set1;
-                    }
-                    if(v_set1<v_set2){
-                        v_set2-=ax*4*(float)ts_speed_control;
-                        if(v_set2<v_set1) v_set2=v_set1;
-                    }
+                float error_a, error_w;
+                float ka_up = 5.0, ka_down = 10.0, a_up = 0.3, a_down = 2.0;
+                float kw_up = 5.0, kw_down = 10.0, w_up = 0.5, w_down = 3.0;
+                error_a = (v_set1 - v_set2);
+                if(abs(error_a)< 0.001) v_set2 = v_set1;
+                else{
+                    const bool accelerating =(v_set1 * v_set2 >= 0.0) && (abs(v_set1) > abs(v_set2));
+                    const float a_max = accelerating ? a_up : a_down;
+                    const float k_a = accelerating ? ka_up : ka_down;
+                    const float acceleration =min(a_max, k_a * abs(error_a));
+                    const float delta_v = min(abs(error_a), acceleration * ts_speed_control);
+                    v_set2 += (error_a/abs(error_a))*delta_v;
                 }
-                else if(v_set1 < 0){
-                    if(v_set1<v_set2){
-                        v_set2-=(ax/4)*(float)ts_speed_control;
-                        if(v_set2<v_set1) v_set2=v_set1;
-                    }
-                    if(v_set1>v_set2) {
-                        v_set2+=ax*4*(float)ts_speed_control;
-                        if(v_set2>v_set1) v_set2=v_set1;
-                    }
-                }
-                else if (v_set1 == 0){
-                    if(v_set2 >= 0){
-                        v_set2-=ax*4*(float)ts_speed_control;
-                        if(v_set2 < 0) v_set2 = 0;
-                    }
-                    else{
-                        v_set2+=ax*4*(float)ts_speed_control;
-                        if(v_set2 > 0) v_set2 = 0;
-                    }
-                }
-                if(w_set1>w_set2) {
-                        w_set2+=aw*(float)ts_speed_control;
-                        if(w_set2>w_set1) w_set2=w_set1;
-                }
-                if(w_set1<w_set2){
-                        w_set2-=aw*(float)ts_speed_control;
-                        if(w_set2<w_set1) w_set2=w_set1;
+                //
+                error_w = (w_set1 - w_set2);
+                if(abs(error_w)< 0.001) w_set2 = w_set1;
+                else{
+                    const bool accelerating_w =(w_set1 * w_set2 >= 0.0) && (abs(w_set1) > abs(w_set2));
+                    const float w_max = accelerating_w ? w_up : w_down;
+                    const float k_w = accelerating_w ? kw_up : kw_down;
+                    const float angle_acc = min(w_max, k_w * abs(error_w));
+                    const float delta_w = min(abs(error_w), angle_acc * ts_speed_control);
+                    w_set2 += (error_w/abs(error_w))*delta_w;
                 }
                 // if have iso safe, must write here -> v_set3 w_set3
                 v_set3=v_set2;
@@ -596,7 +573,7 @@ class control_node : public rclcpp::Node{
         }
         void music_control(){
             if((motor_right_state_error !=0 && motor_right_state_live ==1) || (motor_left_state_error !=0  && motor_left_state_live ==1)){
-                if(status_music_n!=1) on_music(1);
+                // if(status_music_n!=1) on_music(1);
             }else{
                 if(status_music_n!=start_music_n) on_music(start_music_n);
             }

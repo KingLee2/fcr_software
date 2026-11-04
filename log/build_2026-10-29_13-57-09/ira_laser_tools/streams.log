@@ -1,0 +1,137 @@
+[0.035s] Invoking command in '/home/mvibot/floorCleaningRobot_ws/build/ira_laser_tools': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/mvibot/floorCleaningRobot_ws/src/ira_laser_tools -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools
+[0.309s] -- The C compiler identification is GNU 13.3.0
+[0.516s] -- The CXX compiler identification is GNU 13.3.0
+[0.573s] -- Detecting C compiler ABI info
+[0.867s] -- Detecting C compiler ABI info - done
+[0.915s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.915s] -- Detecting C compile features
+[0.917s] -- Detecting C compile features - done
+[0.949s] -- Detecting CXX compiler ABI info
+[1.297s] -- Detecting CXX compiler ABI info - done
+[1.326s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.326s] -- Detecting CXX compile features
+[1.329s] -- Detecting CXX compile features - done
+[1.360s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.899s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[2.169s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[2.396s] -- Found rclcpp: 28.1.18 (/opt/ros/jazzy/share/rclcpp/cmake)
+[2.582s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[2.632s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[2.690s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.763s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.266s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[3.287s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[3.693s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[3.824s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[3.954s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[4.333s] -- Found rclcpp_action: 28.1.18 (/opt/ros/jazzy/share/rclcpp_action/cmake)
+[4.548s] -- Found rclcpp_lifecycle: 28.1.18 (/opt/ros/jazzy/share/rclcpp_lifecycle/cmake)
+[4.825s] -- Found std_msgs: 5.3.7 (/opt/ros/jazzy/share/std_msgs/cmake)
+[4.868s] -- Found geometry_msgs: 5.3.7 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[4.919s] -- Found sensor_msgs: 5.3.7 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[4.975s] -- Found laser_geometry: 2.7.2 (/opt/ros/jazzy/share/laser_geometry/cmake)
+[5.023s] -- Found tf2_ros: 0.36.20 (/opt/ros/jazzy/share/tf2_ros/cmake)
+[5.327s] -- Found pcl_ros: 2.6.4 (/opt/ros/jazzy/share/pcl_ros/cmake)
+[5.962s] [33mCMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+[5.963s]   Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+[5.975s]   variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+[5.975s]   cmake_policy command to set the policy and suppress this warning.
+[5.975s] 
+[5.976s]   CMake variable FLANN_ROOT is set to:
+[5.976s] 
+[5.976s]     /usr
+[5.976s] 
+[5.977s]   For compatibility, find_package is ignoring the variable, but code in a
+[5.977s]   .cmake module might still use it.
+[5.977s] Call Stack (most recent call first):
+[5.978s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+[5.979s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+[5.979s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+[5.979s]   /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[5.979s]   /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+[5.979s]   /opt/ros/jazzy/share/pcl_ros/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[5.980s]   /opt/ros/jazzy/share/pcl_ros/cmake/pcl_rosConfig.cmake:41 (include)
+[5.985s]   CMakeLists.txt:31 (find_package)
+[5.987s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[5.988s] [0m
+[5.988s] -- Found flann version 1.9.2
+[6.820s] -- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+[6.822s] -- Found OpenMP: TRUE (found version "4.5") found components: CXX 
+[11.463s] -- Checking for module 'libusb-1.0'
+[11.543s] --   Found libusb-1.0, version 1.0.27
+[11.655s] -- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  
+[11.662s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[11.940s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[11.955s] -- Could NOT find Pcap (missing: PCAP_LIBRARIES PCAP_INCLUDE_DIRS) 
+[12.014s] -- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.3")  
+[12.058s] -- Found PNG: /usr/lib/x86_64-linux-gnu/libpng.so (found version "1.6.43") 
+[13.623s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[13.643s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[15.499s] -- Found Qhull version 8.0.2
+[17.458s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[19.481s] -- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  
+[19.481s] -- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  
+[19.500s] -- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  
+[19.509s] -- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  
+[19.510s] -- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  
+[19.514s] -- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  
+[19.515s] -- Found PCL_2D: /usr/include/pcl-1.14  
+[19.516s] -- Found PCL_GEOMETRY: /usr/include/pcl-1.14  
+[19.523s] -- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  
+[19.529s] -- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  
+[19.546s] -- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  
+[19.546s] -- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  
+[19.558s] -- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  
+[19.572s] -- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  
+[19.579s] -- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  
+[19.592s] -- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  
+[19.606s] -- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  
+[19.613s] -- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  
+[19.623s] -- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  
+[19.629s] -- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  
+[19.632s] -- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.14  
+[19.637s] -- Found PCL_MODELER: /usr/include/pcl-1.14  
+[19.641s] -- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.14  
+[19.644s] -- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  
+[19.649s] -- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  
+[19.882s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[19.914s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[19.932s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[20.399s] -- Configuring done (20.3s)
+[20.826s] -- Generating done (0.3s)
+[20.846s] -- Build files have been written to: /home/mvibot/floorCleaningRobot_ws/build/ira_laser_tools
+[20.930s] Invoked command in '/home/mvibot/floorCleaningRobot_ws/build/ira_laser_tools' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/mvibot/floorCleaningRobot_ws/src/ira_laser_tools -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools
+[20.944s] Invoking command in '/home/mvibot/floorCleaningRobot_ws/build/ira_laser_tools': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/mvibot/floorCleaningRobot_ws/build/ira_laser_tools -- -j8 -l8
+[107.707s] [ 25%] [32mBuilding CXX object CMakeFiles/laserscan_multi_merger.dir/src/laserscan_multi_merger.cpp.o[0m
+[107.713s] [ 50%] [32m[1mLinking CXX executable laserscan_multi_merger[0m
+[107.714s] [ 50%] Built target laserscan_multi_merger
+[107.714s] [ 75%] [32mBuilding CXX object CMakeFiles/laserscan_virtualizer.dir/src/laserscan_virtualizer.cpp.o[0m
+[159.329s] [100%] [32m[1mLinking CXX executable laserscan_virtualizer[0m
+[161.415s] [100%] Built target laserscan_virtualizer
+[161.567s] Invoked command in '/home/mvibot/floorCleaningRobot_ws/build/ira_laser_tools' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/mvibot/floorCleaningRobot_ws/build/ira_laser_tools -- -j8 -l8
+[161.569s] Invoking command in '/home/mvibot/floorCleaningRobot_ws/build/ira_laser_tools': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/mvibot/floorCleaningRobot_ws/build/ira_laser_tools
+[162.195s] -- Install configuration: "Release"
+[162.200s] -- Execute custom install script
+[162.207s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/lib/ira_laser_tools/laserscan_multi_merger
+[162.207s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/lib/ira_laser_tools/laserscan_virtualizer
+[162.207s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/launch/laserscan_multi_merger.launch
+[162.208s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/launch/laserscan_virtualizer.launch
+[162.208s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/launch/merge_multi.launch.py
+[162.208s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/launch/laserscan_merge.yaml
+[162.210s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ament_index/resource_index/package_run_dependencies/ira_laser_tools
+[162.211s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ament_index/resource_index/parent_prefix_path/ira_laser_tools
+[162.211s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/environment/ament_prefix_path.sh
+[162.212s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/environment/ament_prefix_path.dsv
+[162.212s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/environment/path.sh
+[162.212s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/environment/path.dsv
+[162.212s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/local_setup.bash
+[162.213s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/local_setup.sh
+[162.213s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/local_setup.zsh
+[162.215s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/local_setup.dsv
+[162.215s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/package.dsv
+[162.215s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ament_index/resource_index/packages/ira_laser_tools
+[162.215s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/cmake/ament_cmake_export_dependencies-extras.cmake
+[162.223s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/cmake/ira_laser_toolsConfig.cmake
+[162.223s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/cmake/ira_laser_toolsConfig-version.cmake
+[162.262s] -- Symlinking: /home/mvibot/floorCleaningRobot_ws/install/ira_laser_tools/share/ira_laser_tools/package.xml
+[162.570s] Invoked command in '/home/mvibot/floorCleaningRobot_ws/build/ira_laser_tools' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/mvibot/floorCleaningRobot_ws/install/opennav_coverage_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/mvibot/floorCleaningRobot_ws/build/ira_laser_tools

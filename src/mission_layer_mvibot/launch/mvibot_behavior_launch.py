@@ -39,7 +39,7 @@ def generate_launch_description():
         executable='behavior_server',
         namespace=[TextSubstitution(text='/'),mvibot_seri],
         name='behavior_server',
-        respawn=True,
+        respawn=False,
         output='screen',
         parameters=[configured_behavior_params]
     )

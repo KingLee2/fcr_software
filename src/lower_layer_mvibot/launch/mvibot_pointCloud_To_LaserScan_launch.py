@@ -9,7 +9,6 @@ def generate_launch_description():
 		default_value="mvibot"
 	)
 	pointcloud_to_laserscan1_node=Node(
-		# namespace=[TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri")],
 		namespace=LaunchConfiguration("mvibot_seri"),
 		name="PointCloud_To_LaserScan1",
 		package="pointcloud_to_laserscan",
@@ -22,21 +21,20 @@ def generate_launch_description():
 		parameters=[{
 			"target_frame": [LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/base_link")],
 			"transform_tolerance": 0.01,
-			"min_height": 0.05,
-			"max_height": 1.5, #2.0
+			"min_height": 0.1,
+			"max_height": 2.0, #2.0
 			"angle_min": -1.57, #-3.1400001049,
 			"angle_max": 1.57, #3.1400001049,
 			"angle_increment": 0.0174532923847,
-			"scan_time": 0.3333,   #0.3333
+			"scan_time": 0.06666,   #0.3333
 			"range_min": 0.0,
 			"range_max": 3.0,   #3.0
 			"use_inf": True,
-			# "queue_size": 50
+			# "queue_size": 100
 			# "inf_epsilon": 1.0
 		}],
 	)
 	pointcloud_to_laserscan2_node=Node(
-		# namespace=[TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri")],
 		namespace=LaunchConfiguration("mvibot_seri"),
 		name="PointCloud_To_LaserScan2",
 		package="pointcloud_to_laserscan",
@@ -49,16 +47,16 @@ def generate_launch_description():
 		parameters=[{
 			"target_frame": [LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/base_link")],
 			"transform_tolerance": 0.01,
-			"min_height": 0.05,
-			"max_height": 1.5, #2.0
+			"min_height": 0.1,
+			"max_height": 2.0, #2.0
 			"angle_min": -1.57, #-3.1400001049,
 			"angle_max": 1.57, #3.1400001049,
 			"angle_increment": 0.0174532923847,
-			"scan_time": 0.3333,  #0.3333
+			"scan_time": 0.06666,  #0.3333
 			"range_min": 0.0,
 			"range_max": 3.0,     #3.0
 			"use_inf": True,
-			# "queue_size": 50
+			# "queue_size": 100
 			# "inf_epsilon": 1.0
 		}],
 	)

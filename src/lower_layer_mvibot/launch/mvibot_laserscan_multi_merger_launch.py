@@ -11,7 +11,6 @@ def generate_launch_description():
 	)
 	#Init node to merge 2 lidar data with base_link frame
 	LidarScan_Merge_BaseLink_node=Node(
-		# namespace=[TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri")],
 		namespace=LaunchConfiguration("mvibot_seri"),
 		name="laserscan_multi_merge1",
 		package="ira_laser_tools",
@@ -28,12 +27,11 @@ def generate_launch_description():
 			"angle_increment": 0.01745329251,
 			"scan_time": 0.0333333,
 			"range_min": 0.0,
-			"range_max": 16.0,
+			"range_max": 12.0,
 		}],
 	)
 	#Init node to merge 2 camera data with base_link frame
 	CameraScan_Merge_BaseLink_node=Node(
-		# namespace=[TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri")],
 		namespace=LaunchConfiguration("mvibot_seri"),
 		name="laserscan_multi_merge2",
 		package="ira_laser_tools",
@@ -43,13 +41,14 @@ def generate_launch_description():
 		parameters=[{
 				"destination_frame": [LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/base_link")],
 				"scan_destination_topic": [TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/camera/scanf")],
+				# "laserscan_topics": [TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/camera2/scan")],
 				"laserscan_topics": [TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/camera1/scan /"),LaunchConfiguration("mvibot_seri"), TextSubstitution(text="/camera2/scan")],
-					"angle_min": -0.58,
-					"angle_max": 0.58,
-					"angle_increment": 0.01745329251,
-					"scan_time": 0.0333333,
-					"range_min": 0.0,
-					"range_max": 5.0,
+				"angle_min": -0.58,
+				"angle_max": 0.58,
+				"angle_increment": 0.01745329251,
+				"scan_time": 0.0333333,
+				"range_min": 0.0,
+				"range_max": 5.0,
 			}],
 	)
 	#Init node to change lidar1's frame from lidar frame to base_link frame

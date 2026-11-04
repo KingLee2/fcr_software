@@ -63,34 +63,25 @@ class navigation_function : public rclcpp::Node{
                     json json;
                     std::vector<opennav_coverage_msgs::msg::Coordinates> polygons;
                     opennav_coverage_msgs::msg::Coordinates outer_boundary;
-                    RCLCPP_WARN(this->get_logger(), "parse json");
                     json = json::parse(msg.data);
-                    RCLCPP_WARN(this->get_logger(), "parse json complete");
                     if (!json.contains("polygon") || !json["polygon"].is_array()) {
                         RCLCPP_WARN(this->get_logger(), "JSON invalid: missing 'polygon' array!");
                         return;
                     }
-                    RCLCPP_WARN(this->get_logger(), "get polygon");
                     const auto& polygon_json = json["polygon"];
-                    RCLCPP_WARN(this->get_logger(), "get polygon complete");
                     for (const auto& point_json : polygon_json) {
                         opennav_coverage_msgs::msg::Coordinate pt;
-                        RCLCPP_WARN(this->get_logger(), "get point");
                         pt.axis1 = std::stod(point_json.value("x", "0.0"));
                         pt.axis2 = std::stod(point_json.value("y", "0.0"));
-                        RCLCPP_WARN(this->get_logger(), "pt.axis1: %f, pt.axis2: %f", pt.axis1, pt.axis2);
                         outer_boundary.coordinates.push_back(pt);
                     }
-                    RCLCPP_WARN(this->get_logger(), "close polygon");
                     // Close polygon (push first point again)
                     if (!outer_boundary.coordinates.empty()) {
                         outer_boundary.coordinates.push_back(outer_boundary.coordinates.front());
                     }
                     //
-                    RCLCPP_WARN(this->get_logger(), "complete polygon");
                     polygons.push_back(outer_boundary);
                     //compute coverage path
-                    RCLCPP_WARN(this->get_logger(), "compute path");
                     Compute_CoveragePath(polygons,"map");
                 }catch (const std::exception& e) {
                     RCLCPP_ERROR(this->get_logger(), "Exception in receive data compute coverage path: %s", e.what());
@@ -108,7 +99,7 @@ class navigation_function : public rclcpp::Node{
                 else if(msg.data == "stop") {
                     if(st == 1){
                         pub_stop_robot();
-                        if(mode == "go_to_pose")cancel_navToPose();
+                        if(mode == "go_to_pose") cancel_navToPose();
                         else if (mode == "go_through_poses"){
                             many_goal_position_.erase(many_goal_position_.begin(), many_goal_position_.end() - number_of_poses_remaining);
                             cancel_navThroughPoses();
@@ -124,7 +115,7 @@ class navigation_function : public rclcpp::Node{
                     status = Stop_;
                 }
                 else if(msg.data == "error") {
-                    if(mode == "go_to_pose")cancel_navToPose();
+                    if(mode == "go_to_pose") cancel_navToPose();
                     else if (mode == "go_through_poses") cancel_navThroughPoses();
                     else if (mode == "navigate_coverage") cancel_navCompleteCoverage();
                     else if (mode == "line_follow"){
@@ -132,14 +123,22 @@ class navigation_function : public rclcpp::Node{
                         cancel_followPath();
                     }
                     status = Error_;
-                    request = 0;
-                    step = 0;
+                    request = 1;
+                    // step = 0;
                 }
                 else if(msg.data == "cancel") {
                     request = 0;
                     status = Cancel_;
                 }
                 else if(msg.data == "finish") {
+                    if(mode == "go_to_pose") cancel_navToPose();
+                    else if (mode == "go_through_poses") cancel_navThroughPoses();
+                    else if (mode == "navigate_coverage") cancel_navCompleteCoverage();
+                    else if (mode == "line_follow"){
+                        cancel_getPathToPose();
+                        cancel_followPath();
+                    }
+                    step = 0;
                     request = 0;
                     status = Finish_;
                 }

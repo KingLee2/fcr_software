@@ -169,6 +169,7 @@ mvibot_server: /opt/ros/jazzy/lib/libnav2_msgs__rosidl_typesupport_introspection
 mvibot_server: /opt/ros/jazzy/lib/libnav2_msgs__rosidl_typesupport_cpp.so
 mvibot_server: /opt/ros/jazzy/lib/libnav2_msgs__rosidl_generator_py.so
 mvibot_server: /opt/ros/jazzy/lib/librclcpp_lifecycle.so
+mvibot_server: /usr/lib/x86_64-linux-gnu/libcurl.so
 mvibot_server: /opt/ros/jazzy/lib/libnav2_msgs__rosidl_typesupport_c.so
 mvibot_server: /opt/ros/jazzy/lib/libnav2_msgs__rosidl_generator_c.so
 mvibot_server: /opt/ros/jazzy/lib/libgeographic_msgs__rosidl_typesupport_fastrtps_c.so

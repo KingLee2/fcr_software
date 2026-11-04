@@ -39,7 +39,7 @@ def generate_launch_description():
         executable='bt_navigator',
         namespace=[TextSubstitution(text='/'),mvibot_seri],
         name='bt_navigator',
-        respawn=True,
+        respawn=False,
         output='screen',
         parameters=[configured_bt_navigator_params]
     )

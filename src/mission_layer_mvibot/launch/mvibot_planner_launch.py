@@ -52,7 +52,7 @@ def generate_launch_description():
         executable='planner_server',
         namespace=[TextSubstitution(text='/'),mvibot_seri],
         name='planner_server',
-        respawn=True,
+        respawn=False,
         output='screen',
         parameters=[configured_planner_params,configured_costmap_params]
     )

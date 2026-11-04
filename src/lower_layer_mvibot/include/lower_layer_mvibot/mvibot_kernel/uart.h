@@ -108,12 +108,14 @@ void uart_read(){
         // system(system_command.c_str());
         //
         // system("systemctl stop ros_startup1.service");
-        // system("systemctl stop ros_startup.service");       
+        //system("sudo systemctl stop robot_startup.service");
         //system("pkill roslaunch");
-        sleep(2);
+        //sleep(2);
         if(send_command_shutdown==1) system("sudo systemctl poweroff -i");
+	// system("sudo systemctl poweroff -i");
         //system("shutdown -h now");
         else if(send_command_shutdown==2) system("sudo systemctl reboot -i");
+	// system("sudo systemctl reboot -i");
         //system("reboot");
         exit(0);
     }

@@ -9,7 +9,8 @@ class socket_client_node : public rclcpp::Node{
                 sleep(1);
             }
             rclcpp::QoS qos_profile(rclcpp::KeepLast(10));
-            qos_profile.best_effort();
+            qos_profile.reliable();
+	    qos_profile.durability_volatile();
             mvibot_seri_ = this->get_namespace();
             data_tran.resize(num_byte_pc_stm);
             data_tran[0]=byte_start0;
@@ -44,15 +45,25 @@ class socket_client_node : public rclcpp::Node{
             };
             robot_shutdown_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/robot_shutdown",qos_profile,robot_shutdown_callback);
             //init timer
+	    auto read_socket_data_timer_callback = [this]()->void{
+                rclcpp::Time now = this->get_clock()->now();
+                if (check_time_socket_read.nanoseconds() > 0) {
+                    rclcpp::Duration dt = now - check_time_socket_read;
+                    RCLCPP_INFO(this->get_logger(), "data socket read period: %.6f s", dt.seconds());
+                }
+                check_time_socket_read = now;
+                read_data_socket();
+            };
+            read_data_socket_timer_ = this->create_wall_timer(50ms,read_socket_data_timer_callback);
             auto socket_data_timer_callback = [this]()->void{
                 std::lock_guard<std::mutex> lock(mutex_socket);
                 rclcpp::Time now = this->get_clock()->now();
                 if (check_time_socket.nanoseconds() > 0) {
                     rclcpp::Duration dt = now - check_time_socket;
-                    RCLCPP_INFO(this->get_logger(), "data socket send/read period: %.6f s", dt.seconds());
+                    RCLCPP_INFO(this->get_logger(), "data socket send period: %.6f s", dt.seconds());
                 }
                 check_time_socket = now;
-                read_data_socket();
+                // read_data_socket();
                 process_data_socket();
                 send_data_socket(data_tran);
             };
@@ -89,6 +100,7 @@ class socket_client_node : public rclcpp::Node{
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr robot_shutdown_sub_;
         //declare timer//
         rclcpp::TimerBase::SharedPtr socket_data_timer_;
+	rclcpp::TimerBase::SharedPtr read_data_socket_timer_;
         //
         std::vector<uint8_t> data_receive={};
         std::vector<uint8_t> data_tran={};
@@ -116,7 +128,7 @@ class socket_client_node : public rclcpp::Node{
         //
         float local_robot_shutdown;
         //var check time pub
-        rclcpp::Time check_time_socket;
+        rclcpp::Time check_time_socket, check_time_socket_read;
 };
 void socket_client_node::view_data(string name, std::vector<uint8_t> data){
     cout<<name;
@@ -141,6 +153,25 @@ void socket_client_node::process_data_uart_read(){
             // read status error motor
             motor_right_state_error=(int)data_receive[motor1_error_re];
             motor_left_state_error=(int)data_receive[motor2_error_re];
+	    // motor error code
+            motor_right_error_code_H=(int)data_receive[io9_re];
+            motor_right_error_code_L=(int)data_receive[io10_re];
+            motor_left_error_code_H=(int)data_receive[io11_re];
+            motor_left_error_code_L=(int)data_receive[io12_re];
+            if(motor_right_error_code_H != 0 || motor_right_error_code_L != 0 || motor_left_error_code_H != 0 || motor_left_error_code_L != 0){
+                if(error_triger == 0){
+                    his_content["type"] = "device";
+                    his_content["state"] = "error";
+                    his_content["description"] = "motor error with code, motor right byte H("
+                    +to_string(motor_right_error_code_H)+"), motor right byte L("
+                    +to_string(motor_right_error_code_L)+"), motor left byte H("
+                    +to_string(motor_left_error_code_H)+"), motor left byte L("
+                    +to_string(motor_left_error_code_L)+")";
+                    send_history("error", his_content.dump());
+                    error_triger = 1;
+                }
+            }
+            else error_triger = 0;
             // read torque
             tr=(float)data_receive[motor1_torque_L_re]/100;
             tl=(float)data_receive[motor2_torque_L_re]/100;
@@ -252,25 +283,18 @@ void socket_client_node::process_data_uart_read(){
         // }
 	// RCLCPP_INFO(rclcpp::get_logger("Data_receive"), "byte lift_suction: %d, byte 41: %d", (int)data_receive[cylinder_suction_control_re], (int)data_receive[41]);
 	// RCLCPP_INFO(rclcpp::get_logger("Data_receive"), "byte 41: %d, byte 42: %d, byte 43: %d, byte 44: %d, byte 45: %d, byte 46: %d, byte 47: %d, byte 48: %d", (int)data_receive[41], (int)data_receive[42], (int)data_receive[43], (int)data_receive[44], (int)data_receive[45], (int)data_receive[46], (int)data_receive[47], (int)data_receive[48]);
-	RCLCPP_INFO(rclcpp::get_logger("Data_receive"), 
-        "soc: %d, vol_H: %d, vol_L: %d, mah_now_H: %d, mah_now_L: %d, mah_max_H: %d, mah_max_L: %d,current_H: %d, current_L: %d, battery_1: %d, battery_2: %d", 
-        (int)data_receive[battery_soc_re], (int)data_receive[battery_vol_H_re],(int)data_receive[battery_vol_L_re], (int)data_receive[battery_mah_now_H_re], (int)data_receive[battery_mah_now_L_re], (int)data_receive[battery_mah_max_H_re],
-        (int)data_receive[battery_mah_max_L_re], (int)data_receive[battery_current_H_re],(int)data_receive[battery_current_L_re],(int)data_receive[battery_temperature1_re],(int)data_receive[battery_temperature1_re]);
+	// RCLCPP_INFO(rclcpp::get_logger("Data_receive"), 
+        // "soc: %d, vol_H: %d, vol_L: %d, mah_now_H: %d, mah_now_L: %d, mah_max_H: %d, mah_max_L: %d,current_H: %d, current_L: %d, battery_1: %d, battery_2: %d", 
+        // (int)data_receive[battery_soc_re], (int)data_receive[battery_vol_H_re],(int)data_receive[battery_vol_L_re], (int)data_receive[battery_mah_now_H_re], (int)data_receive[battery_mah_now_L_re], (int)data_receive[battery_mah_max_H_re],
+        // (int)data_receive[battery_mah_max_L_re], (int)data_receive[battery_current_H_re],(int)data_receive[battery_current_L_re],(int)data_receive[battery_temperature1_re],(int)data_receive[battery_temperature1_re]);
 	std_msgs::msg::String msg_test;
         msg_test.data = "byte 41: " + to_string(data_receive[41]) + ",byte 42: " + to_string(data_receive[42]) + ",byte 43: " + to_string(data_receive[43]) + ",byte 44: " + to_string(data_receive[44])
         + ",byte 45: " + to_string(data_receive[45]) + ",byte 46: " + to_string(data_receive[46]) + ",byte 47: " + to_string(data_receive[47]) + ",byte 48: " + to_string(data_receive[48]) + ",byte 6: " + to_string(data_receive[6]) + ",byte 21: " + to_string(data_receive[21])
 	+ ",motor right H: " + to_string(data_receive[motor1_speed_H_re]) + ",motor right L: " + to_string(data_receive[motor1_speed_L_re]) + ",veloc right tran: " + to_string(local_vr_out) + ",veloc right receive: " + to_string(vr)
-        + ",motor left H: " + to_string(data_receive[motor2_speed_H_re]) + ",motor left L: " + to_string(data_receive[motor2_speed_L_re]) + ",veloc left tran: " + to_string(local_vl_out) + ",veloc left receive: " + to_string(vl);
+        + ",motor left H: " + to_string(data_receive[motor2_speed_H_re]) + ",motor left L: " + to_string(data_receive[motor2_speed_L_re]) + ",veloc left tran: " + to_string(local_vl_out) + ",veloc left receive: " + to_string(vl)
+	+ ",robot_shutdown: "+ to_string(robot_shutdown);
+	// msg_test.data = "cylinder_suction_high_value_stm_to_pc: " + to_string(data_receive[cylinder_suction_high_value_re]) + ",cylinder_suction_low_value_stm_to_pc: " + to_string(data_receive[cylinder_suction_low_value_re]);
         test_pub_->publish(msg_test);
-	//
-        if(fabs(local_vr_out - local_vl_out) <0.3){
-            if(fabs(local_vr_out/vr - local_vl_out/vl) > 0.3){
-                std_msgs::msg::String check_motor_msg;
-                check_motor_msg.data = ",motor right H: " + to_string(data_receive[motor1_speed_H_re]) + ",motor right L: " + to_string(data_receive[motor1_speed_L_re]) + ",veloc right tran: " + to_string(local_vr_out) + ",veloc right receive: " + to_string(vr)
-                + ",motor left H: " + to_string(data_receive[motor2_speed_H_re]) + ",motor left L: " + to_string(data_receive[motor2_speed_L_re]) + ",veloc left tran: " + to_string(local_vl_out) + ",veloc left receive: " + to_string(vl);
-                check_motor_veloc_pub_->publish(check_motor_msg);
-            }
-        }
     }
 }
 void socket_client_node::process_data_uart_write(){
@@ -291,7 +315,11 @@ void socket_client_node::process_data_uart_write(){
         local_led_l = led_l;
         local_led_r = led_r;
         local_led_b = led_b;
-        //
+	// RCLCPP_INFO(rclcpp::get_logger("LED"), "red: %d, green: %d, blue: %d, led_l: %d", (int)red, (int)green, (int)blue, (int)led_l);
+        std_msgs::msg::String check_motor_msg;
+        check_motor_msg.data = "red: " + to_string(red) +",green: " + to_string(green) + ",blue: " + to_string(blue) + ",led_l: " + to_string(led_l);
+        check_motor_veloc_pub_->publish(check_motor_msg);
+//
         local_output_user = output_user;
     }
     {
@@ -415,6 +443,7 @@ void socket_client_node::read_data_socket(){
     memset(data_receive_socket_local,0, sizeof(data_receive_socket_local));
     num_byte=read( sock , data_receive_socket_local, 999);
     // cout<<num_byte<<endl;
+    std::lock_guard<std::mutex> lock(mutex_socket);
     data_socket_ready = 0;
     if(num_byte>0){
         data_receive.resize(num_byte);

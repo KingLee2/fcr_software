@@ -6,9 +6,7 @@ import os
 
 def generate_launch_description():
     name_seri_arg = DeclareLaunchArgument("mvibot_seri", default_value=TextSubstitution(text="mvibot"))
-    # seri_camera1_arg= DeclareLaunchArgument("serial_no_1", default_value=TextSubstitution(text="_109622074579"))
     seri_camera1_arg= DeclareLaunchArgument("serial_no_1", default_value=TextSubstitution(text="_336222075697"))
-    # seri_camera2_arg= DeclareLaunchArgument("serial_no_2", default_value=TextSubstitution(text="_317622072985"))
     seri_camera2_arg= DeclareLaunchArgument("serial_no_2", default_value=TextSubstitution(text="_243222076688"))
     camera_D435_param_file_arg=DeclareLaunchArgument(
         'camera_D435_param_file',
@@ -27,11 +25,9 @@ def generate_launch_description():
             LaunchConfiguration('camera_D435_param_file'),
             {"serial_no": LaunchConfiguration("serial_no_1"),
             "base_frame_id": LaunchConfiguration("mvibot_seri"),
-            #"diagnostics_period": "1.0",
-            # "respawn": "true"
 	}],
         output = "screen",
-	respawn=True,
+	    respawn=True,
         respawn_delay=5.0
     )
     camera_D435i_node = Node(
@@ -43,11 +39,9 @@ def generate_launch_description():
             LaunchConfiguration('camera_D435i_param_file'),
             {"serial_no": LaunchConfiguration("serial_no_2"),
             "base_frame_id": LaunchConfiguration("mvibot_seri"),
-            #"diagnostics_period": "1.0",
-            #"respawn": "true"
 	}],
         output = "screen",
-	respawn=True,
+	    respawn=True,
         respawn_delay=5.0
     )
     ld = LaunchDescription()
@@ -57,6 +51,5 @@ def generate_launch_description():
     ld.add_action(camera_D435_param_file_arg)
     ld.add_action(camera_D435i_param_file_arg)
     ld.add_action(camera_D435_node)
-    #ld.add_action(camera_D435i_node)
     ld.add_action(camera_D435i_node)
     return ld

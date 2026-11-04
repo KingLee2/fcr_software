@@ -16,6 +16,16 @@ def generate_launch_description():
     )
     mvibot_seri=LaunchConfiguration('mvibot_seri')
     #path include file
+    amcl_include=os.path.join(
+        get_package_share_directory('mission_layer_mvibot'),
+        'launch',
+        'mvibot_amcl_launch.py'
+    )
+    mission_include=os.path.join(
+        get_package_share_directory('mission_layer_mvibot'),
+        'launch',
+        'mvibot_mission_launch.py'
+    )
     planner_server_include=os.path.join(
         get_package_share_directory('mission_layer_mvibot'),
         'launch',
@@ -70,6 +80,15 @@ def generate_launch_description():
     navigation_group=GroupAction(
         actions=[
             # PushROSNamespace(namespace=mvibot_namespace),
+	    IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(amcl_include),
+                launch_arguments={
+                    'mvibot_seri': mvibot_seri
+                }.items()
+            ),
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(mission_include)
+            ),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(planner_server_include),
                 launch_arguments={
@@ -132,7 +151,6 @@ def generate_launch_description():
             #),
         ]
     )
-
     lifecycle_group=TimerAction(
         period=2.0,
         actions=[

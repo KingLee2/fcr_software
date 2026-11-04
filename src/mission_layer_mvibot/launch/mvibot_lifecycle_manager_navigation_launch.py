@@ -33,7 +33,7 @@ def generate_launch_description():
         executable='lifecycle_manager',
         namespace=[TextSubstitution(text='/'),mvibot_seri],
         name='lifecycle_manager_navigation',
-        respawn=True,
+        respawn=False,
         output='screen',
         parameters=[{'autostart': autostart}, {'node_names': lifecycle_nodes}]
     )

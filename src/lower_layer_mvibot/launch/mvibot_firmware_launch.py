@@ -145,86 +145,9 @@ def generate_launch_description():
             ),
         ]
     )
-    # stage1 = GroupAction(
-    #     actions=[
-    #         IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource(urdf_include),
-    #             launch_arguments={
-    #                 'mvibot_seri': mvibot_seri
-    #             }.items()
-    #         ),
-
-    #         IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource(radar_include),
-    #             launch_arguments={
-    #                 'mvibot_seri': mvibot_seri
-    #             }.items()
-    #         ),
-
-    #         IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource(core_include)
-    #         ),
-    #     ]
-    # )
-
-    # stage2 = TimerAction(
-    #     period=2.0,
-    #     actions=[
-    #         IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource(camera_include),
-    #             launch_arguments={
-    #                 'mvibot_seri': mvibot_seri,
-    #                 'serial_no_1': serial_no_1,
-    #                 'serial_no_2': serial_no_2
-    #             }.items()
-    #         )
-    #     ]
-    # )
-
-    # stage3 = TimerAction(
-    #     period=6.0,
-    #     actions=[
-    #         IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource(pointCloud_to_laserScan_include),
-    #             launch_arguments={
-    #                 'mvibot_seri': mvibot_seri
-    #             }.items()
-    #         ),
-
-    #         IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource(laserScan_multi_merger_include),
-    #             launch_arguments={
-    #                 'mvibot_seri': mvibot_seri
-    #             }.items()
-    #         ),
-
-    #         IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource(scan_filter_include),
-    #             launch_arguments={
-    #                 'mvibot_seri': mvibot_seri
-    #             }.items()
-    #         ),
-    #     ]
-    # )
-
-    # stage4 = TimerAction(
-    #     period=8.0,
-    #     actions=[
-    #         IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource(robot_localization_include),
-    #             launch_arguments={
-    #                 'mvibot_seri': mvibot_seri
-    #             }.items()
-    #         )
-    #     ]
-    # )
     ld=LaunchDescription()
     ld.add_action(mvibot_seri_arg)
     ld.add_action(seri_camera1_arg)
     ld.add_action(seri_camera2_arg)
     ld.add_action(firmware_group)
-    # ld.add_action(stage1)
-    # ld.add_action(stage2)
-    # ld.add_action(stage3)
-    # ld.add_action(stage4)
     return ld

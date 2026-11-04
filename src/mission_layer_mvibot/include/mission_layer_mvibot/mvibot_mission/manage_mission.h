@@ -37,6 +37,7 @@ class manage_mission : public rclcpp::Node{
         int motor_left_ready = 0;
         int motor_right_ready = 0;
         int valve_status = 0, valve_status_f = 0;
+        int water_level = 0, check_water_level = 0;
         int battery_soc = 50, battery_soc_f = 50, battery_filter = 50;
         float battery_vol = 25.0, battery_vol_f = 25.0, battery_vol_filter = 25.0;
         const float ANPHA_BATTERY_FILTER = 0.1;
@@ -53,6 +54,7 @@ class manage_mission : public rclcpp::Node{
         double ts_execute_callback = 0.05;
         json his_content;
         string learning_path_name = "";
+        vector<double> robot_pose;
         //curl
         CURL* curl;
         CURLcode result;
@@ -117,6 +119,8 @@ class manage_mission : public rclcpp::Node{
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr initialpose_function_state_pub_;
         //history
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr history_pub_;
+        //monitor
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr monitor_pub_;
         //led
         rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr led_pub_;
         //sound
@@ -131,6 +135,10 @@ class manage_mission : public rclcpp::Node{
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr reset_mission_sub_;
         //get valve status
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr valve_status_sub_;
+        //get water level
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr water_level_sub_;
+        //check water level
+        rclcpp::Subscription<std_msgs::msg::String>::SharedPtr check_water_level_sub_;
         //get request robot (stop,continues)
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr get_request_robot_sub_;
         //get request learning path
@@ -146,6 +154,8 @@ class manage_mission : public rclcpp::Node{
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr charge_status_sub_;
         //get status function
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr function_state_sub_;
+        //get pose
+        rclcpp::Subscription<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr robot_pose_sub_;
         //timer
         rclcpp::TimerBase::SharedPtr execute_mission_timer_;
         rclcpp::TimerBase::SharedPtr controll_timer_;
@@ -154,8 +164,12 @@ class manage_mission : public rclcpp::Node{
             mvibot_seri_ = this->get_namespace();
             mvibot_seri_f_ = mvibot_seri_;
             mvibot_seri_f_.erase(0,1);
+            robot_pose.resize(4);
             rclcpp::QoS qos_profile(rclcpp::KeepLast(10));
             qos_profile.best_effort();
+            rclcpp::QoS qos_profile1(rclcpp::KeepLast(10));
+            qos_profile1.reliable();
+            qos_profile1.durability_volatile();
             //transform
             tf_Buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
             tf_Listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_Buffer_);
@@ -197,6 +211,8 @@ class manage_mission : public rclcpp::Node{
             robot_position_pub_ = this->create_publisher<std_msgs::msg::String>("robot_position",1);
             //send history
             history_pub_ = this->create_publisher<std_msgs::msg::String>("history",1);
+            //send monitor
+            monitor_pub_ = this->create_publisher<std_msgs::msg::String>("monitor",1);
             //set led
             led_pub_ = this->create_publisher<std_msgs::msg::Float32MultiArray>("set_led",1);
             //set sound
@@ -266,17 +282,20 @@ class manage_mission : public rclcpp::Node{
                         }
                     }
                 }
-                RCLCPP_INFO(this->get_logger(),"battery_soc: %d, battery_vol: %.2f, battery_vol_filter: %.2f",battery_filter,battery_vol, battery_vol_filter);
+                // RCLCPP_INFO(this->get_logger(),"battery_soc: %d, battery_vol: %.2f, battery_vol_filter: %.2f",battery_filter,battery_vol, battery_vol_filter);
             };
             battery_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/battery_status", qos_profile, battery_status_callback);
             //charge status
             //
             auto charge_callback = [this](std_msgs::msg::String msg)->void{
                 char ch_last = msg.data.back();
-                if( ch_last=='0') charge_state = 0;
-                else if(ch_last == '1') {
+                if( ch_last=='0'){
+                    if(charge_state == 1) send_monitor("charge", "finish", "turn off charging");
+                    charge_state = 0;
+                }
+                else if(ch_last == '1'){
+                    if(charge_state == 0) send_monitor("charge", "active", "turn on charging");
                     charge_state = 1;
-                    // battery_mission_trigger = 2;
                 }
                 else if(ch_last == '2') charge_state = 2;
                 cout << "charge_state: "<<charge_state<<endl;
@@ -289,12 +308,26 @@ class manage_mission : public rclcpp::Node{
                 else if(ch_last == '1') valve_status = 1;
             };
             valve_status_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/valve_status", qos_profile, valve_callback);
+            auto water_level_callback = [this](std_msgs::msg::String msg)->void{
+                char ch_last = msg.data.back();
+                if( ch_last=='0') water_level = 0;
+                else if(ch_last == '1') water_level = 1;
+                else if(ch_last == '2') water_level = 2;
+                else if(ch_last == '3') water_level = 3;
+            };
+            water_level_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/water_level", qos_profile, water_level_callback);
+            auto check_water_level_callback = [this](std_msgs::msg::String msg)->void{
+                if(msg.data=="0") check_water_level = 0;
+                else if(msg.data == "1") check_water_level = 1;
+            };
+            check_water_level_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/check_water_level", qos_profile, check_water_level_callback);
             auto reset_mission_callback = [this](std_msgs::msg::String msg)->void{
                 if(status != Active_){
                     his_content["type"] = action_mode_mission;
                     his_content["state"] = "reset";
                     his_content["description"] = mission_.mission_name;
                     send_history("warning", his_content.dump());
+                    send_monitor(action_mode_mission, "reset", his_content["description"]);
 		            mission_.reset();
                     reset_function();
                     action_mode_mission = "N_A";
@@ -303,7 +336,7 @@ class manage_mission : public rclcpp::Node{
                     RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
                 }
             };
-            reset_mission_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/reset_mission", qos_profile, reset_mission_callback);
+            reset_mission_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/reset_mission", qos_profile1, reset_mission_callback);
             //status motor
             auto motor_left_status_callback = [this](std_msgs::msg::String msg)->void{
                 static string_Iv2 data;
@@ -393,7 +426,7 @@ class manage_mission : public rclcpp::Node{
                     }
                 }
             };
-            get_mission_executed_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/executed_mission", qos_profile, mission_executed_callback);
+            get_mission_executed_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/executed_mission", qos_profile1, mission_executed_callback);
             //get request "learning path"
             auto learning_path_callback = [this](std_msgs::msg::String msg)->void{
                 json data;
@@ -404,17 +437,19 @@ class manage_mission : public rclcpp::Node{
                         learning_path_name = data["path_name"].get<string>();
                         learning_path_time = get_time_string();
                         pub_learning_path_status(learning_path_name,"start");
+                        send_monitor(action_mode_mission, "active", learning_path_name);
                     }
                 }
                 else if(action_mode_mission == "learning_path"){
                     if(data["status"].get<string>() == "finish"){
                         action_mode_mission = "N_A";
                         pub_learning_path_status(learning_path_name,"finish");
+                        send_monitor(action_mode_mission, "finish", learning_path_name);
                         learning_path_name = "";
                     }
                 }
             };
-            learning_path_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/learning_path", qos_profile, learning_path_callback);
+            learning_path_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/learning_path", qos_profile1, learning_path_callback);
             //get state of function
             auto function_state_callback = [this](std_msgs::msg::String msg)->void{
                 if(msg.data == "stop") state = Stop_;
@@ -425,7 +460,16 @@ class manage_mission : public rclcpp::Node{
                 else if(msg.data == "true") state = True_;
                 else if(msg.data == "false") state = False_;
             };
-            function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/function_state", qos_profile, function_state_callback);
+            function_state_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/function_state", qos_profile1, function_state_callback);
+            auto robot_position_callback = [this](geometry_msgs::msg::PoseWithCovarianceStamped msg)->void{
+                geometry_msgs::msg::PoseWithCovarianceStamped robot_pose_;
+                robot_pose_ = msg;
+                robot_pose[0] = robot_pose_.pose.pose.position.x;
+                robot_pose[1] = robot_pose_.pose.pose.position.y;
+                robot_pose[2] = robot_pose_.pose.pose.orientation.z;
+                robot_pose[3] = robot_pose_.pose.pose.orientation.w;
+            };
+            robot_pose_sub_ = this->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(mvibot_seri_ + "/amcl_pose",qos_profile,robot_position_callback);
             //init timer//
             auto execute_mission_timer_callback = [this]()->void{
                 execute_mission();
@@ -435,17 +479,17 @@ class manage_mission : public rclcpp::Node{
                 //set led
                 set_led(action_mode_mission);
                 //set sound
-                set_sound(action_mode_mission);
+                set_sound();
                 //pub covered pose and learning path
                 std_msgs::msg::String msg;
-                double * robot_pose;
+                // double * robot_pose;
                 string data;
                 json covered_pose_json, learning_pose_json;
                 static rclcpp::Time last_movement_time = this->now();
                 static double x_f = 0, y_f = 0, z_f, w_f, x_l, y_l;
                 static double dis = 0, angle1 = 0, angle2 = 0, denta_angle = 0, no_move_duration;
                 static bool is_stuck = false, valve_pause_stuck = false;
-                robot_pose = get_position_tf("map",mvibot_seri_f_+"/base_footprint");
+                // robot_pose = get_position_tf("map",mvibot_seri_f_+"/base_footprint");
                 //pub robot position
                 data = mvibot_seri_f_+"|x:"+to_string(robot_pose[0])+"|y:"+to_string(robot_pose[1])+"|thz:"+to_string(robot_pose[2])+"|thw:"+to_string(robot_pose[3]);
                 pub_robot_position(data);
@@ -489,8 +533,56 @@ class manage_mission : public rclcpp::Node{
                 else{
                     no_move_duration = 0.0;
                     is_stuck = false;
+                    // pub_state_brush(0);
                     if (status == Finish_) valve_pause_stuck = false;
                 }
+                // if(status != Finish_){
+                //     if(status == Active_){
+                //         if(type != "navigation" && type != "marker"){
+                //             is_stuck = false;
+                //             valve_pause_stuck = false;
+                //             no_move_duration = 0.0;
+                //             // Reset reference pose
+                //             x_l = robot_pose[0];
+                //             y_l = robot_pose[1];
+                //             last_movement_time = now_time;
+                //             RCLCPP_INFO(this->get_logger(),"type=brush -> reset stuck detection");
+                //         }
+                //         else{
+                //             dis = std::hypot(robot_pose[0]-x_l, robot_pose[1]-y_l);
+                //             if(dis > 0.5){ //1.0
+                //                 x_l = robot_pose[0];
+                //                 y_l = robot_pose[1];
+                //                 last_movement_time = now_time;
+                //                 is_stuck = false;
+                //             }
+                //             else{
+                //                 no_move_duration = (now_time - last_movement_time).seconds();
+                //                 if (no_move_duration > 5.0) is_stuck = true;
+                //             }
+                //             RCLCPP_INFO(this->get_logger(),"dis: %f, no_move_duration: %.2f, is_stuck=%d", dis, no_move_duration, is_stuck);
+                //             if (valve_status == 1 && is_stuck){
+                //                 pub_state_brush(0);
+                //                 valve_pause_stuck = true;
+                //                 RCLCPP_WARN(this->get_logger(),"turn OFF brush when Robot stucked");
+                //             }
+                //             if (valve_pause_stuck && !is_stuck){
+                //                 pub_state_brush(1);
+                //                 valve_pause_stuck = false;
+                //                 RCLCPP_INFO(this->get_logger(),"Robot recovered from stuck -> turn ON brush");
+                //             }
+                //         }
+                //     }
+                //     else if(status == Stop_ && status == Error_){
+                //         no_move_duration = 0.0;
+                //         is_stuck = false;
+                //     }
+                // }
+                // else{
+                //     no_move_duration = 0.0;
+                //     is_stuck = false;
+                //     valve_pause_stuck = false;
+                // }
                 //save coverage pose and learning path
                 if(action_mode_mission == "mopping_mission"){
                     dis = std::hypot(robot_pose[0]-x_f, robot_pose[1]-y_f);
@@ -542,6 +634,7 @@ class manage_mission : public rclcpp::Node{
         float getyaw(double data1, double data2);
         double *get_position_tf(string name1, string name2);
         void send_history(string status, string info);
+        void send_monitor(string mode, string status, string info);
         void pub_robot_position(string data);
         void pub_state_valve(int st);
         void pub_state_brush(int st);
@@ -550,7 +643,7 @@ class manage_mission : public rclcpp::Node{
         void pub_state_lift_suction(int st);
         void pub_led(float red, float green, float blue, float ll, float lr, float lb, float lf);
         void set_led(string mode_action);
-        void set_sound(string mode_action);
+        void set_sound();
         void pub_stop_robot();
         void pub_active_mission_info(string type, string mission_id, string content_id, string content_sum);
         void pub_learning_path_status(string path_name, string status);
@@ -635,7 +728,7 @@ float manage_mission::getyaw(double data1, double data2){
     return yaw;
 }
 double *manage_mission::get_position_tf(string source_frame, string target_frame){
-    static double data[2];
+    static double data[4];
     //get position
     static double x,y,z,thz,thw;
     static geometry_msgs::msg::TransformStamped transformStamped;
@@ -662,6 +755,15 @@ void manage_mission::send_history(string status, string info){
     history_json["content"] = info;
     history_msg.data = history_json.dump();
     history_pub_->publish(history_msg);
+}
+void manage_mission::send_monitor(string mode, string status, string info){
+    std_msgs::msg::String monitor_msg;
+    json monitor_json;
+    monitor_json["mode"] = mode;
+    monitor_json["status"] = status;
+    monitor_json["content"] = info;
+    monitor_msg.data = monitor_json.dump();
+    monitor_pub_->publish(monitor_msg);
 }
 void manage_mission::pub_robot_position(string data){
     std_msgs::msg::String msg;
@@ -729,22 +831,22 @@ void manage_mission::set_led(string mode_action){
         else pub_led(100,100,0,1,1,1,1);
     }
 }
-void manage_mission::set_sound(string mode_action){
+void manage_mission::set_sound(){
     std_msgs::msg::Float32 msg;
-    if(mode_action == "learning_path") {
-        msg.data = 4;
+    if(status == Active_){
+        msg.data = 3;
+        sound_pub_->publish(msg);
+    }
+    else if(status == Error_){
+        msg.data = 1;
         sound_pub_->publish(msg);
     }
     else{
-        if(status == Active_){
-            msg.data = 3;
-            sound_pub_->publish(msg);
-        }
-        else if(status == Error_) {
+        if(water_level == 2 && check_water_level == 1){
             msg.data = 2;
             sound_pub_->publish(msg);
         }
-        else {
+        else{
             msg.data = 0;
             sound_pub_->publish(msg);
         }
@@ -814,16 +916,17 @@ int manage_mission::handle_content(const json& content, const double& time_out, 
         RCLCPP_INFO(this->get_logger(),"send state function");
         if(timer>time_out && time_out != -1){
             RCLCPP_INFO(this->get_logger(),"timer lon hon timeout");
-            state_msg.data = "active";
+            state_msg.data = "error";
             state_pub->publish(state_msg);
             timer = 0.0;
-            step_handle_content = 0;
+            // step_handle_content = 0;
             his_content["type"] = action_mode_mission;
-            his_content["state"] = "warning";
-            his_content["description"] = content["type"].get<string>() + " ," + content["name"].get<string>();
-            send_history("warning", his_content.dump());
-            // return Error_;
-            return Active_;
+            his_content["state"] = "error";
+            his_content["description"] = content["name"].get<string>() + " timed out";
+            send_history("error", his_content.dump());
+            send_monitor(action_mode_mission, "error", his_content["description"]);
+            return Error_;
+            // return Active_;
         }
         else{
             if(state == Finish_){
@@ -870,15 +973,25 @@ int manage_mission::handle_content(const json& content, const double& time_out, 
                 return False_;
             }
             else if(state == Error_){
-                RCLCPP_INFO(this->get_logger(),"state error");
-                timer = 0.0;
-                step_handle_content = 0;
-                state = N_A_;
-                his_content["type"] = action_mode_mission;
-                his_content["state"] = "error";
-                his_content["description"] = content["type"].get<string>() + " ," + content["name"].get<string>();
-                send_history("error", his_content.dump());
-                return Error_;
+                if(status == Active_){
+                    RCLCPP_INFO(this->get_logger(),"state error, status active");
+                    timer = 0.0;
+                    // step_handle_content = 0;
+                    state = N_A_;
+                    his_content["type"] = action_mode_mission;
+                    his_content["state"] = "error";
+                    his_content["description"] = content["name"].get<string>();
+                    send_history("error", his_content.dump());
+                    send_monitor(action_mode_mission, "error", his_content["description"]);
+                    return Error_;
+                }
+                else if(status == Stop_){
+                    RCLCPP_INFO(this->get_logger(),"state error, status stop");
+                    state_msg.data = "stop";
+                    state_pub->publish(state_msg);
+                    return Stop_;
+                }
+                else return Error_;
             }
             else {
                 RCLCPP_INFO(this->get_logger(),"state N/A");
@@ -1084,7 +1197,11 @@ void manage_mission::execute_mission(){
     json mission_json;
     string api_str="";
     if(motor_left_ready==0 || motor_right_ready==0) {
-        if(status == Active_) status = Stop_;
+        if(status == Active_){
+            status = Stop_;
+            valve_status_f = valve_status;
+            pub_state_brush(0);
+        }
         RCLCPP_INFO(this->get_logger(),"motor is not ready");
     }
     //check battery
@@ -1093,6 +1210,7 @@ void manage_mission::execute_mission(){
             //
             status = Stop_;
             mission_.reset();
+            step_handle_content = 0;
             reset_function();
             pub_state_brush(0);
             pub_state_suction(0);
@@ -1101,22 +1219,22 @@ void manage_mission::execute_mission(){
             //send notification
             // sendNotification("Moshi", "low battery", battery_filter, "none", "Low battery, I need to go to a charging station.");
             //set trigger goto charging
-            action_mode_mission = "battery_charge_mission";
+            action_mode_mission = "sub_mission";
             battery_mission_trigger = 1;
             RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
         }
     }
-    else {
-        if(action_mode_mission == "N_A" && charge_state!=0 && battery_filter >= MAX_BATTERY_SOC && battery_mission_trigger == 2){
-            //send notification
-            // sendNotification("Moshi", "full battery", battery_filter, "none", "Full battery, I need to go to the docking");
-            //set trigger goto the docking
-            action_mode_mission = "battery_charge_mission";
-            battery_mission_trigger = 3;
-            RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
-            //
-        }
-    }
+    // else {
+    //     if(action_mode_mission == "N_A" && charge_state!=0 && battery_filter >= MAX_BATTERY_SOC && battery_mission_trigger == 2){
+    //         //send notification
+    //         // sendNotification("Moshi", "full battery", battery_filter, "none", "Full battery, I need to go to the docking");
+    //         //set trigger goto the docking
+    //         action_mode_mission = "sub_mission";
+    //         battery_mission_trigger = 3;
+    //         RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
+    //         //
+    //     }
+    // }
     //run mission
     if(status==Finish_){
         RCLCPP_INFO(this->get_logger(),"continue execute mission, status finish");
@@ -1190,6 +1308,7 @@ void manage_mission::execute_mission(){
                         his_content["state"] = "run";
                         his_content["description"] = mission_.mission_name;
                         send_history("normal", his_content.dump());
+                        send_monitor(action_mode_mission, "active", his_content["description"]);
                         RCLCPP_INFO(this->get_logger(),"start mission_");
                         break;
                     }
@@ -1220,9 +1339,6 @@ void manage_mission::execute_mission(){
                 RCLCPP_INFO(this->get_logger(),"continue execute mission, status error");
                 //pub stop robot
                 pub_stop_robot();
-                //send notification
-                // sendNotification("Moshi", "Error", battery_filter, mission_.mission_name, "Robot is error, help me!!!");
-                // status = Error_;
             }
         }
         else {
@@ -1243,14 +1359,16 @@ void manage_mission::execute_mission(){
                 valve_status_f = valve_status;
                 pub_state_brush(0);
                 status = Error_;
+                //send notification to telegram
+                // sendNotification("Moshi", "Error", battery_filter, mission_.mission_name, "Robot is error, help me!!!");
             }
             else if(res == Finish_){
                 if(queue_content.empty()){
-                    if(action_mode_mission == "battery_charge_mission" && battery_mission_trigger == 1){
-                        // battery_mission_trigger = 2;
+                    if(action_mode_mission == "sub_mission" && battery_mission_trigger == 1){
+                        battery_mission_trigger = 2;
                         RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
                     }
-                    else if(action_mode_mission == "battery_charge_mission" && battery_mission_trigger == 3) {
+                    else if(action_mode_mission == "sub_mission" && battery_mission_trigger == 3) {
                         battery_mission_trigger = 0;
                         RCLCPP_INFO(this->get_logger(),"battery_mission_trigger: %d", battery_mission_trigger);
                     }
@@ -1262,6 +1380,7 @@ void manage_mission::execute_mission(){
                     his_content["state"] = "finish";
                     his_content["description"] = mission_.mission_name;
                     send_history("normal", his_content.dump());
+                    send_monitor(action_mode_mission, "finish", his_content["description"]);
                     //send notification
                     // sendNotification("Moshi", "Finish mission", battery_filter, mission_.mission_name, "None");
                     action_mode_mission = "N_A";

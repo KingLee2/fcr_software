@@ -20,6 +20,7 @@ class loadmap_function : public rclcpp::Node{
         int result_srv = 0;
         //declare pub
         rclcpp::Publisher<std_msgs::msg::String>::SharedPtr function_state_pub_;
+        rclcpp::Publisher<std_msgs::msg::String>::SharedPtr map_update_pub_;
         //declare sub
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr loadmap_info_sub_;
         rclcpp::Subscription<std_msgs::msg::String>::SharedPtr loadmap_function_status_sub_;
@@ -37,6 +38,7 @@ class loadmap_function : public rclcpp::Node{
             mvibot_seri_f_.erase(0,1);
             //init publisher
             function_state_pub_ = this->create_publisher<std_msgs::msg::String>("function_state",1);
+            map_update_pub_ = this->create_publisher<std_msgs::msg::String>("request_map",1);
             //init subscriber
             //
             auto loadmap_info_callback = [this](std_msgs::msg::String msg)->void{
@@ -152,6 +154,9 @@ int loadmap_function::action(){
             result_srv = 0;
             status = Finish_;
             request = 0;
+            std_msgs::msg::String msg;
+            msg.data = "request:1|action:update_map|name_map:" + map_name;
+            map_update_pub_->publish(msg);
             return Finish_;
         }
     }else{

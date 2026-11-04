@@ -39,7 +39,7 @@ def generate_launch_description():
         namespace=[TextSubstitution(text='/'),mvibot_seri],
         name='coverage_server',
         # plugin='opennav_coverage::CoverageServer',
-        respawn=True,
+        respawn=False,
         output='screen',
         parameters=[configured_opennav_coverage_params]
     )

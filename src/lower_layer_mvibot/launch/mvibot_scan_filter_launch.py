@@ -45,7 +45,6 @@ def generate_launch_description():
 		description="Path to param config of laser filter 4",
         )
 	laser_filter1_node=Node(
-		# namespace=[TextSubstitution(text="/"), LaunchConfiguration("mvibot_seri")],
 		namespace = LaunchConfiguration("mvibot_seri"),
 		name="laser_filter1",
 		package="laser_filters",

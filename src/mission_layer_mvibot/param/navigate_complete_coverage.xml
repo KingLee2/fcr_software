@@ -1,35 +1,37 @@
 <root BTCPP_format="4" main_tree_to_execute="MainTree">
   <BehaviorTree ID="MainTree">
 
-    <Sequence name="NavigateWithoutReplanning">
+    <RecoveryNode number_of_retries="100" name="RetryCoverageNavigation">
 
-      <!-- Compute coverage path -->
-      <ComputeCoveragePath 
-          nav_path="{path}" 
-          polygons="{field_polygon}" 
-          polygons_frame_id="{polygon_frame_id}" 
-          error_code_id="{compute_coverage_error_code}"/>
+      <!-- Main -->
+      <Sequence>
 
-      <!-- Retry FollowPath 6 times -->
-      <RecoveryNode number_of_retries="100" name="RetryFollowPath">
+        <!-- Recompute path every retry -->
+        <ComputeCoveragePath
+            nav_path="{path}"
+            polygons="{field_polygon}"
+            polygons_frame_id="{polygon_frame_id}"
+            error_code_id="{compute_coverage_error_code}"/>
 
-        <!-- Main -->
-        <Sequence name="FollowPathSequence">
-          <FollowPath 
-              path="{path}" 
-              controller_id="FollowPath" 
-              error_code_id="{follow_path_error_code}"/>
-        </Sequence>
+        <FollowPath
+            path="{path}"
+            controller_id="FollowPath"
+            error_code_id="{follow_path_error_code}"/>
 
-        <!-- Recovery -->
-        <Sequence name="WaitBeforeRetry">
-	  <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
-          <Wait wait_duration="2.0"/>
-        </Sequence>
+      </Sequence>
 
-      </RecoveryNode>
+      <!-- Recovery -->
+      <Sequence>
 
-    </Sequence>
+        <ClearEntireCostmap
+            name="ClearLocalCostmap"
+            service_name="local_costmap/clear_entirely_local_costmap"/>
+
+        <Wait wait_duration="2.0"/>
+
+      </Sequence>
+
+    </RecoveryNode>
 
   </BehaviorTree>
 </root>
