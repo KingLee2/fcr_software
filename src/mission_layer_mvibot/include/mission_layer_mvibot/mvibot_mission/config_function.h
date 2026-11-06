@@ -5,6 +5,8 @@
 #include "../common/stof.h"
 #include "mission_define.h"
 #include <nlohmann/json.hpp>
+#include <cstdint>
+#include <mutex>
 
 using namespace std;
 using json = nlohmann::json;
@@ -36,7 +38,8 @@ class config_function : public rclcpp::Node{
                 parameters = json::parse(msg.data);
                 // cout<<parameters<<endl;
                 process_data();
-                // request = 1;
+                request = 1;
+                status = Active_;
             };
             config_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/config_info", qos_profile, config_info_callback);
             //
@@ -94,6 +97,16 @@ class config_function : public rclcpp::Node{
         string desired_linear_vel = "";
         //avoid obstacle
         string avoid_obstacle = "";
+        bool set_result_vel = false;
+        bool set_done_vel = false;
+        bool set_result_avoid_ob = false;
+        bool set_done_avoid_ob = false;
+        bool set_result_local = false;
+        bool set_done_local = false;
+        bool set_result_global = false;
+        bool set_done_global = false;
+        std::uint64_t config_generation_ = 0;
+        std::mutex config_mutex_;
         //declare service
         //footprint padding
         rclcpp::Client<rcl_interfaces::srv::SetParameters>::SharedPtr set_footprint_padding_local_client_;
@@ -127,106 +140,113 @@ void config_function::pub_function_state(int st){
 }
 void config_function::process_data(){
     cout<<parameters<<endl;
-    desired_linear_vel = parameters["desired_linear_vel"].get<string>();
-    footprint_padding = parameters["footprint_padding"].get<string>();
-    avoid_obstacle = parameters["avoid_obstacle"].get<string>();
+    const string desired_linear_vel_value = parameters["desired_linear_vel"].get<string>();
+    const string footprint_padding_value = parameters["footprint_padding"].get<string>();
+    const string avoid_obstacle_value = parameters["avoid_obstacle"].get<string>();
+    std::lock_guard<std::mutex> lock(config_mutex_);
+    desired_linear_vel = desired_linear_vel_value;
+    footprint_padding = footprint_padding_value;
+    avoid_obstacle = avoid_obstacle_value;
+    set_result_vel = false;
+    set_done_vel = false;
+    set_result_local = false;
+    set_done_local = false;
+    set_result_global = false;
+    set_done_global = false;
+    set_result_avoid_ob = false;
+    set_done_avoid_ob = false;
+    ++config_generation_;
 }
 
 int config_function::action(){
-    static int value_return;
-    static bool set_result_vel = false;
-    static bool set_done_vel = false;
-    static bool set_result_avoid_ob = false;
-    static bool set_done_avoid_ob = false;
-    static bool set_result_local = false;
-    static bool set_done_local = false;
-    static bool set_result_global = false;
-    static bool set_done_global = false;
     cout<<"config|status: "<<status<<endl;
-    if(status==Active_){
-        value_return=Finish_;
-        //desired_linear_vel
-        if(desired_linear_vel != ""){
-            double desired_linear_vel_set = stod_f(desired_linear_vel);
-            if(stod_f(desired_linear_vel)> 0.5) desired_linear_vel_set = 0.5;
-            if(!set_done_vel){
-                check_param(set_desired_linear_vel_client_,get_desired_linear_vel_client_,"FollowPath.desired_linear_vel",desired_linear_vel_set,
-                    [&](bool res){
-                        set_result_vel = res;
-                    }
-                );
-                set_done_vel = true;
-            }
-            if(!set_result_vel) value_return = Active_;
-            else {
-                set_result_vel = false;
-                set_done_vel = false;
-            }
-        }
-        if(footprint_padding != ""){
-            double footprint_padding_set = stod_f(footprint_padding);
-            if(footprint_padding_set < 0.0) footprint_padding_set = 0.0;
-            //local costmap
-            if(!set_done_local){
-                check_param(set_footprint_padding_local_client_,get_footprint_padding_local_client_,"footprint_padding",footprint_padding_set,
-                    [&](bool res){
-                        set_result_local = res;
-                    }
-                );
-                set_done_local = true;
-            }
-            if(!set_result_local) value_return = Active_;
-            else {
-                set_result_local = false;
-                set_done_local = false;
-            }
-            //global costmap
-            if(!set_done_global){
-                check_param(set_footprint_padding_global_client_,get_footprint_padding_global_client_,"footprint_padding",footprint_padding_set,
-                    [&](bool res){
-                        set_result_global = res;
-                    }
-                );
-                set_done_global = true;
-            }
-            if(!set_result_global) value_return = Active_;
-            else {
-                set_result_global = false;
-                set_done_global = false;
-            }
-        }
-        if(avoid_obstacle != ""){
-            bool avoid_obstacle_set = false;
-            if(avoid_obstacle == "true") avoid_obstacle_set = true;
-            else avoid_obstacle_set = false;
-            if(!set_done_avoid_ob){
-                check_param(set_avoid_obstacle_client_,get_avoid_obstacle_client_,"obstacle_layer.enabled",avoid_obstacle_set,
-                    [&](bool res){
-                        set_result_avoid_ob = res;
-                    }
-                );
-                set_done_avoid_ob = true;
-            }
-            if(!set_result_avoid_ob) value_return = Active_;
-            else {
-                set_result_avoid_ob = false;
-                set_done_avoid_ob = false;
-            }
-        }
-        if(value_return == Finish_){
-            status = Finish_;
-            request = 0;
-        }
-        return value_return;
-    }else{
-        set_result_vel = false;
-        set_done_vel = false;
-        set_result_avoid_ob = false;
-        set_done_avoid_ob = false;
-        set_result_local = false;
-        set_done_local = false;
-        set_result_global = false;
-        set_done_global = false;
-        return status;
+    if(status != Active_) return status;
+
+    string desired_linear_vel_value;
+    string footprint_padding_value;
+    string avoid_obstacle_value;
+    std::uint64_t generation;
+    {
+        std::lock_guard<std::mutex> lock(config_mutex_);
+        desired_linear_vel_value = desired_linear_vel;
+        footprint_padding_value = footprint_padding;
+        avoid_obstacle_value = avoid_obstacle;
+        generation = config_generation_;
     }
+
+    auto process_parameter = [this, generation](
+        bool& result_flag,
+        bool& done_flag,
+        const auto& set_client,
+        const auto& get_client,
+        const string& name,
+        const auto& value) {
+        bool start_request = false;
+        bool already_complete = false;
+        {
+            std::lock_guard<std::mutex> lock(config_mutex_);
+            if(generation != config_generation_) return true;
+            already_complete = result_flag;
+            if(!already_complete && !done_flag){
+                done_flag = true;
+                start_request = true;
+            }
+        }
+        if(already_complete) return false;
+        if(start_request){
+            bool* result_flag_ptr = &result_flag;
+            bool* done_flag_ptr = &done_flag;
+            check_param(set_client, get_client, name, value,
+                [this, generation, result_flag_ptr, done_flag_ptr](bool res){
+                    std::lock_guard<std::mutex> lock(config_mutex_);
+                    if(generation != config_generation_) return;
+                    *result_flag_ptr = res;
+                    if(!res) *done_flag_ptr = false;
+                }
+            );
+        }
+        return true;
+    };
+
+    if(desired_linear_vel_value != ""){
+        double desired_linear_vel_set = stod_f(desired_linear_vel_value);
+        if(desired_linear_vel_set > 0.5) desired_linear_vel_set = 0.5;
+        if(process_parameter(set_result_vel, set_done_vel,
+            set_desired_linear_vel_client_, get_desired_linear_vel_client_,
+            "FollowPath.desired_linear_vel", desired_linear_vel_set)){
+            return Active_;
+        }
+    }
+
+    if(footprint_padding_value != ""){
+        double footprint_padding_set = stod_f(footprint_padding_value);
+        if(footprint_padding_set < 0.0) footprint_padding_set = 0.0;
+        if(process_parameter(set_result_local, set_done_local,
+            set_footprint_padding_local_client_, get_footprint_padding_local_client_,
+            "footprint_padding", footprint_padding_set)){
+            return Active_;
+        }
+        if(process_parameter(set_result_global, set_done_global,
+            set_footprint_padding_global_client_, get_footprint_padding_global_client_,
+            "footprint_padding", footprint_padding_set)){
+            return Active_;
+        }
+    }
+
+    if(avoid_obstacle_value != ""){
+        const bool avoid_obstacle_set = avoid_obstacle_value == "true";
+        if(process_parameter(set_result_avoid_ob, set_done_avoid_ob,
+            set_avoid_obstacle_client_, get_avoid_obstacle_client_,
+            "obstacle_layer.enabled", avoid_obstacle_set)){
+            return Active_;
+        }
+    }
+
+    {
+        std::lock_guard<std::mutex> lock(config_mutex_);
+        if(generation != config_generation_) return Active_;
+    }
+    status = Finish_;
+    request = 0;
+    return Finish_;
 }

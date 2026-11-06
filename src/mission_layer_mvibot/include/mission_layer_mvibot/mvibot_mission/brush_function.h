@@ -46,7 +46,8 @@ class brush_function : public rclcpp::Node{
                 parameters = json::parse(msg.data);
                 // cout<<parameters<<endl;
                 process_data();
-                // request = 1;
+                request = 1;
+		status = Active_;
             };
             brush_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/brush_info", qos_profile, brush_info_callback);
             //

@@ -10,26 +10,20 @@
 // #include "../include/lower_layer_mvibot/mvibot_kernel/security.h"
 //
 #include "../include/lower_layer_mvibot/mvibot_kernel/mvibot_kernel_init.h"
+#include <array>
+#include <cerrno>
+#include <fcntl.h>
 //  
 using namespace std;
 // socket var 
 #define PORT 9080 
-int socket_port[1000];
+int socket_port = -1;
 int server_fd;
 struct sockaddr_in address; 
-int opt = 1; 
-int addrlen = sizeof(address); 
 int n_client;
-char str_cli_ip[INET_ADDRSTRLEN];
-struct sockaddr_in* ip_client;
-class port_receive{
-    public:
-        string ip;
-        int port;
-};
-port_receive port_clinet_receive[1000];
 float time_out_socket=0.0;
-int max_n_clinet=1000;
+bool socket_timeout_reported = false;
+vector<uint8_t> socket_frame_buffer;
 //
 // create function system
 void modify_socket();
@@ -44,109 +38,138 @@ void function5();
 void time_now(string data);
 //
 void modify_socket(){
-    A:
-    // creat file socket
-    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) 
+    server_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (server_fd < 0)
     { 
         perror("socket failed"); 
         exit(EXIT_FAILURE); 
     }  
-    struct timeval tv;
-    tv.tv_sec = 0;
-    tv.tv_usec = 500000;
-    // add for socket
-    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, (const char*)&tv, sizeof tv))
+    int reuse_address = 1;
+    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &reuse_address, sizeof(reuse_address)) < 0)
     { 
         perror("setsockopt"); 
+        close(server_fd);
         exit(EXIT_FAILURE); 
     } 
     address.sin_family = AF_INET; 
-    address.sin_addr.s_addr = INADDR_ANY; 
+    address.sin_addr.s_addr = htonl(INADDR_LOOPBACK); 
     address.sin_port = htons( PORT );  
-    // bind ip
-    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address))<0) 
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0)
     { 
         perror("bind failed"); 
         close(server_fd);
-        goto A;
         exit(EXIT_FAILURE); 
     }
+    if (listen(server_fd, 1) < 0)
+    {
+        perror("listen failed");
+        close(server_fd);
+        exit(EXIT_FAILURE);
+    }
+}
+void disconnect_socket_client(const char *reason){
+    if(socket_port >= 0){
+        cerr << "Socket client disconnected: " << reason << endl;
+        close(socket_port);
+        socket_port = -1;
+    }
+    n_client = 0;
+    time_out_socket = 0;
+    socket_timeout_reported = false;
+    socket_frame_buffer.clear();
+    data_receive_socket.clear();
+    data_tran_uart = data_tran_uart_defaunt;
 }
 void send_data_socket_server(){
-        if(n_client>0){
-            static uint8_t data_send_socket_local[num_byte_stm_pc];
-            std::copy(data_tran_socket.begin(), data_tran_socket.end(), data_send_socket_local);
-            cout<<"data send socket:";
-            for(size_t i=0;i<sizeof(data_send_socket_local);i++)
-            printf("0x%x ",data_send_socket_local[i]);
-            cout<<endl;
-            send(socket_port[n_client-1], data_send_socket_local,sizeof data_send_socket_local, MSG_NOSIGNAL );  
-            //MSG_NOSIGNAL no exit when the core close socket
-        }
+    if(socket_port < 0 || data_tran_socket.size() != num_byte_stm_pc) return;
+    view_data("data_send_socket: ", data_tran_socket);
+    const ssize_t sent = send(socket_port, data_tran_socket.data(),
+                              data_tran_socket.size(), MSG_NOSIGNAL);
+    if(sent < 0 && errno != EAGAIN && errno != EWOULDBLOCK && errno != EINTR){
+        const string reason = strerror(errno);
+        disconnect_socket_client(reason.c_str());
+    }else if(sent >= 0 && static_cast<size_t>(sent) != data_tran_socket.size()){
+        disconnect_socket_client("partial frame send");
+    }
 }
 void check_time_out_socket(){
-        if(n_client>0){            
-            time_out_socket+=(float)ts_socket;
-            if(time_out_socket>=0.250){
-                time_out_socket=0.250;
-                cout<<"Time out socket\n";
-                data_tran_uart=data_tran_uart_defaunt;
-            }else{
-                data_tran_uart=data_receive_socket;
+    if(socket_port >= 0){
+        time_out_socket += static_cast<float>(ts_socket);
+        if(time_out_socket >= 0.250F){
+            time_out_socket = 0.250F;
+            data_tran_uart = data_tran_uart_defaunt;
+            if(!socket_timeout_reported){
+                cerr << "Time out socket: no complete valid frame for 250 ms" << endl;
+                socket_timeout_reported = true;
             }
-        }else{
-            data_tran_uart=data_tran_uart_defaunt;
+        }else if(!data_receive_socket.empty()){
+            data_tran_uart = data_receive_socket;
         }
+    }else{
+        data_tran_uart = data_tran_uart_defaunt;
+    }
 }
 void read_data_socket_server(){
-    if(n_client>0){
-        static int num_byte;
-        static int count;
-        static int data_error;
-        static uint8_t support[999];
-        static int i;
-        memset(support, 0, sizeof support); 
-        i=n_client-1;
-        if(n_client>0) num_byte=read( socket_port[i], support, 999);    
-        lock();     
-            if(num_byte>0){
-                time_out_socket=0;
-                //
-                cout<<"data receive socket: ";
-                for(int j=0;j<num_byte;j++){
-                    printf("0x%x ",support[j]);
-                }
-                cout<<endl;
-                //
-                for(int j=num_byte;j>=2;j--){
-                    count=0;
-                    data_error=1;
-                    if(support[j]==byte_end2 &&  support[j-1]==byte_end1 &&  support[j-2]==byte_end0){
-                        for(int k=j;k>=0;k--){
-                            count++;
-                            if(support[k]==byte_start0 && support[k+1]==byte_start1 && support[k+2]==byte_start2){
-                                data_error=0;
-                                data_receive_socket.resize(count);
-                                for(int h=k;h<=j;h++){
-                                    data_receive_socket[h-k]=support[h];
-                                }
-                                break;
-                            }
-                        }
-                        if(data_error==0) break;
-                    }
-                }
-                //  
-                if(data_error==1) data_receive_socket=data_tran_uart_defaunt;
-                else{
-                        cout<<"data process socket: ";
-                        for(size_t i=0;i<data_receive_socket.size();i++)
-                        printf("0x%x ",data_receive_socket[i]);
-                        cout<<endl;
-                }
-            }
+    lock();
+    if(socket_port < 0){
         unlock();
+        return;
     }
+
+    uint8_t support[999];
+    const ssize_t num_byte = read(socket_port, support, sizeof(support));
+    if(num_byte == 0){
+        disconnect_socket_client("peer closed connection");
+        unlock();
+        return;
+    }
+    if(num_byte < 0){
+        if(errno != EAGAIN && errno != EWOULDBLOCK && errno != EINTR){
+            const string reason = strerror(errno);
+            disconnect_socket_client(reason.c_str());
+        }
+        unlock();
+        return;
+    }
+
+    socket_frame_buffer.insert(socket_frame_buffer.end(), support, support + num_byte);
+    bool received_valid_frame = false;
+    const std::array<uint8_t, 3> start_marker{byte_start0, byte_start1, byte_start2};
+    while(socket_frame_buffer.size() >= 3){
+        auto start = std::search(socket_frame_buffer.begin(), socket_frame_buffer.end(),
+                                 start_marker.begin(), start_marker.end());
+        if(start == socket_frame_buffer.end()){
+            if(socket_frame_buffer.size() > 2){
+                socket_frame_buffer.erase(socket_frame_buffer.begin(), socket_frame_buffer.end() - 2);
+            }
+            break;
+        }
+        if(start != socket_frame_buffer.begin()){
+            socket_frame_buffer.erase(socket_frame_buffer.begin(), start);
+        }
+        if(socket_frame_buffer.size() < static_cast<size_t>(num_byte_pc_stm)) break;
+
+        const size_t end = static_cast<size_t>(num_byte_pc_stm);
+        if(socket_frame_buffer[end - 3] == byte_end0 &&
+           socket_frame_buffer[end - 2] == byte_end1 &&
+           socket_frame_buffer[end - 1] == byte_end2){
+            data_receive_socket.assign(socket_frame_buffer.begin(),
+                                       socket_frame_buffer.begin() + end);
+            socket_frame_buffer.erase(socket_frame_buffer.begin(),
+                                      socket_frame_buffer.begin() + end);
+            received_valid_frame = true;
+        }else{
+            socket_frame_buffer.erase(socket_frame_buffer.begin());
+        }
+    }
+
+    if(received_valid_frame){
+        time_out_socket = 0;
+        socket_timeout_reported = false;
+        data_tran_uart = data_receive_socket;
+        view_data("data_receive_socket: ", data_receive_socket);
+    }
+    unlock();
 }
 int main(int argc, char** argv){
     // check match hardware
@@ -236,36 +259,38 @@ void time_now(string name){
 }
 void function1(){
     while(1){
-        cout<<"Function 1 at |"<<get_time()<<endl;
-        while(n_client<max_n_clinet){
-            //listen
-            if (listen(server_fd, max_n_clinet) < 0) 
-            { 
-                perror("listen"); 
-                exit(EXIT_FAILURE); 
-            } 
-            //accept 
-            if ((socket_port[n_client] = accept(server_fd, (struct sockaddr *)&address,(socklen_t*)&addrlen))<0) 
-            { 
-                perror("accept"); 
-                exit(EXIT_FAILURE); 
-            }
-            sleep(1);
-            lock();
-                ip_client= (struct sockaddr_in*)&address;
-                inet_ntop(AF_INET, &ip_client->sin_addr, str_cli_ip, INET_ADDRSTRLEN);
-                //
-                port_clinet_receive[n_client].ip=str_cli_ip;
-                port_clinet_receive[n_client].port=ntohs(ip_client->sin_port);
-                n_client++;
-                cout<<"accept: "<<n_client<<endl;
-                ////CAP NHAT SAU
-                // system_command="echo ";
-                // system_command=system_command+"robot accept socket at: `date` "+">> "+define_path+"history/startup.log";
-                // system(system_command.c_str());
-            unlock();
+        sockaddr_in client_address{};
+        socklen_t client_address_length = sizeof(client_address);
+        const int accepted_socket = accept(server_fd,
+                                           reinterpret_cast<sockaddr *>(&client_address),
+                                           &client_address_length);
+        if(accepted_socket < 0){
+            if(errno == EINTR) continue;
+            perror("accept");
+            usleep(100000);
+            continue;
         }
-        usleep(1000000);
+
+        const int socket_flags = fcntl(accepted_socket, F_GETFL, 0);
+        if(socket_flags < 0 || fcntl(accepted_socket, F_SETFL, socket_flags | O_NONBLOCK) < 0){
+            perror("fcntl accepted socket");
+            close(accepted_socket);
+            continue;
+        }
+
+        char client_ip[INET_ADDRSTRLEN]{};
+        inet_ntop(AF_INET, &client_address.sin_addr, client_ip, sizeof(client_ip));
+        lock();
+        if(socket_port >= 0) disconnect_socket_client("replaced by a new local client");
+        socket_port = accepted_socket;
+        n_client = 1;
+        time_out_socket = 0;
+        socket_timeout_reported = false;
+        socket_frame_buffer.clear();
+        data_receive_socket.clear();
+        data_tran_uart = data_tran_uart_defaunt;
+        cout << "accept: 1 from " << client_ip << ":" << ntohs(client_address.sin_port) << endl;
+        unlock();
     }  
 
 }

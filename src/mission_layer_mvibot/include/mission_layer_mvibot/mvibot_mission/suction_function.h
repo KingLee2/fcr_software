@@ -45,7 +45,8 @@ class suction_function : public rclcpp::Node{
                 parameters = json::parse(msg.data);
                 // cout<<parameters<<endl;
                 process_data();
-                // request = 1;
+                request = 1;
+		status = Active_;
             };
             suction_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/suction_info", qos_profile, suction_info_callback);
             //

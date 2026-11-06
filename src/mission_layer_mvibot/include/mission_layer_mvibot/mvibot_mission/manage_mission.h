@@ -904,8 +904,8 @@ int manage_mission::handle_content(const json& content, const double& time_out, 
             state = N_A_;
             info_msg.data = content["parameters"].dump();
             info_pub->publish(info_msg);
-            state_msg.data = "active";
-            state_pub->publish(state_msg);
+            // state_msg.data = "active";
+            // state_pub->publish(state_msg);
             timer += ts_execute_callback;
             step_handle_content = 1;
             return Active_;

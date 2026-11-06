@@ -113,7 +113,8 @@ class variable_function : public rclcpp::Node{
                 // cout<<parameters<<endl;
                 process_data();
                 print(1);
-                // request = 1;
+                request = 1;
+		status = Active_;
             };
             variable_info_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/variable_info", qos_profile, variable_info_callback);
             //
