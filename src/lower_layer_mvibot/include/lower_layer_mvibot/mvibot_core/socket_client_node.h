@@ -1,5 +1,7 @@
 #include "../common/data_uart.h"
 #include "../mvibot_core/mvibot_core_init.h"
+#include <cerrno>
+#include <cstring>
 using namespace std;
 using json = nlohmann::json;
 class socket_client_node : public rclcpp::Node{
@@ -26,6 +28,9 @@ class socket_client_node : public rclcpp::Node{
 	    check_motor_veloc_pub_ = this->create_publisher<std_msgs::msg::String>("check_motor_velocity",1);
             //init sub//
             //shutdown robot
+	    shutdown_group_ = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+	    rclcpp::SubscriptionOptions options;
+            options.callback_group = shutdown_group_;
             auto robot_shutdown_callback = [this](std_msgs::msg::String msg)->void{
                 // std::lock_guard<std::mutex> lock(mutex_tool);
                 if(msg.data =="1"){
@@ -43,7 +48,7 @@ class socket_client_node : public rclcpp::Node{
                     send_history("normal", his_content.dump());
                 }
             };
-            robot_shutdown_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/robot_shutdown",qos_profile,robot_shutdown_callback);
+            robot_shutdown_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/robot_shutdown",qos_profile,robot_shutdown_callback,options);
             //init timer
 	    auto read_socket_data_timer_callback = [this]()->void{
                 rclcpp::Time now = this->get_clock()->now();
@@ -89,6 +94,8 @@ class socket_client_node : public rclcpp::Node{
     private:
         //declare var
         string mvibot_seri_;
+	//
+        rclcpp::CallbackGroup::SharedPtr shutdown_group_;
         //history
         json his_content;
         //declare pub history
@@ -441,7 +448,20 @@ void socket_client_node::read_data_socket(){
     static int count;
     static int data_error;
     memset(data_receive_socket_local,0, sizeof(data_receive_socket_local));
-    num_byte=read( sock , data_receive_socket_local, 999);
+    // num_byte=read( sock , data_receive_socket_local, 999);
+    num_byte = recv(sock, data_receive_socket_local, sizeof(data_receive_socket_local), MSG_DONTWAIT);
+    if (num_byte < 0) {
+        const int error = errno;
+        if (error == EAGAIN || error == EWOULDBLOCK || error == EINTR) {
+            return;
+        }
+        RCLCPP_ERROR(this->get_logger(),"Socket receive failed: %s",std::strerror(error));
+        return;
+    }
+    if (num_byte == 0) {
+        RCLCPP_ERROR(this->get_logger(),"Socket connection closed by kernel");
+        return;
+    }
     // cout<<num_byte<<endl;
     std::lock_guard<std::mutex> lock(mutex_socket);
     data_socket_ready = 0;

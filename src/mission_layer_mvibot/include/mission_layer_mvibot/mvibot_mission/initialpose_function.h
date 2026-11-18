@@ -33,7 +33,7 @@ class initialpose_function : public rclcpp::Node{
             rclcpp::QoS qos_profile(rclcpp::KeepLast(10));
             qos_profile.best_effort();
             rclcpp::QoS qos_amcl(rclcpp::KeepLast(1));
-            qos_amcl.best_effort();
+            qos_amcl.reliable();
             qos_amcl.durability_volatile();
             mvibot_seri_ = this->get_namespace();
             mvibot_seri_f_ = mvibot_seri_;

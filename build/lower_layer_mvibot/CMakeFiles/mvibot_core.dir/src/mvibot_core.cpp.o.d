@@ -995,4 +995,7 @@ CMakeFiles/mvibot_core.dir/src/mvibot_core.cpp.o: \
  /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../mvibot_core/../common/library_ros.h \
  /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/odometry_node.h \
  /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/control_node.h \
- /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/wifi_node.h
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/wifi_node.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/camera_calibration_node.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/set_get_param.h \
+ /home/mvibot/floorCleaningRobot_ws/src/lower_layer_mvibot/src/../include/lower_layer_mvibot/mvibot_core/../common/library_ros.h

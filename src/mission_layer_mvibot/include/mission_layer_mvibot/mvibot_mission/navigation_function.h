@@ -91,14 +91,12 @@ class navigation_function : public rclcpp::Node{
             compute_coverage_path_sub_ = this->create_subscription<std_msgs::msg::String>(mvibot_seri_+"/compute_cover_path", qos_profile, compute_coverage_path_callback);
             //get state of function
             auto navigation_function_status_callback = [this](std_msgs::msg::String msg)->void{
-		        static int st = 0;
                 if(msg.data == "active"){
-		            st = 1;
                     request = 1;
                     status = Active_;
                 }
                 else if(msg.data == "stop") {
-                    if(st == 1){
+                    if(status == Active_ || status == Error_){
                         pub_stop_robot();
                         if(mode == "go_to_pose") cancel_navToPose();
                         else if (mode == "go_through_poses"){
@@ -110,7 +108,6 @@ class navigation_function : public rclcpp::Node{
                             cancel_getPathToPose();
                             cancel_followPath();
                         }
-                        st = 0;
                     }
                     request = 1;
                     status = Stop_;

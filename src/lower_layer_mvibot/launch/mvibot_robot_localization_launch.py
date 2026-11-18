@@ -40,7 +40,7 @@ def generate_launch_description():
 		# namespace=mvibot_seri,
 		name='robot_localization',
 		package='robot_localization',
-		executable='ukf_node',
+		executable='ekf_node',
 		output='screen',
 		respawn=True,
 		# parameters=[param_file],

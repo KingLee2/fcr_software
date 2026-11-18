@@ -27,7 +27,7 @@ string robot_information::get_cmd_update_database(string data1_,string data2_){
     }
     try{
         free_res();
-        res = stmt->executeQuery("SELECT COUNT(*) AS cnt FROM `"+data1_+"` WHERE name_seri='" + data.data1[0] + "'");
+        res = stmt->executeQuery("SELECT COUNT(*) AS cnt FROM `"+data1_+"` WHERE robot_id='" + to_string(robot_id) + "'");
         if(res->next() && res->getInt("cnt") > 0){
             std::cout << data1_<<" had" << std::endl;
         }
@@ -177,8 +177,8 @@ void robot_information::update_status_robot(int n){
         cout << " (MySQL error code: " << e.getErrorCode();
         cout << ", SQLState: " << e.getSQLState() << " )" << endl;
     }
-    if(n==1) cmd="update `robot_status` set status='1' where robot_id="+robot_id;
-    else cmd="update `robot_status` set status='0' where robot_id="+robot_id;
+    if(n==1) cmd="update `robot_status` set status='1' where robot_id="+to_string(robot_id);
+    else cmd="update `robot_status` set status='0' where robot_id="+to_string(robot_id);
     try{
         stmt->execute(cmd);
     }catch (sql::SQLException &e) {

@@ -5,6 +5,9 @@ echo start
 source /opt/ros/jazzy/setup.bash
 source /home/mvibot/floorCleaningRobot_ws/install/setup.bash
 export ROS_DOMAIN_ID=10
+# export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export CYCLONEDDS_URI=${CYCLONEDDS_URI:-"<CycloneDDS><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>120</MaxAutoParticipantIndex></Discovery></CycloneDDS>"}
 echo clean
 rm -rf ~/.ros/log/*
 

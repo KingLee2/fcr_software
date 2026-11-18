@@ -60,7 +60,7 @@ def generate_launch_description():
         namespace=[TextSubstitution(text="/"),mvibot_seri],
         name='lifecycle_manager_amcl',
         output='screen',
-        parameters=[{'autostart': autostart}, {'node_names': lifecycle_nodes}],
+        parameters=[{'autostart': autostart}, {'node_names': lifecycle_nodes}, {'bond_timeout': 10.0}],
     )
     ld = LaunchDescription()
 

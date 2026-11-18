@@ -77,18 +77,37 @@ def generate_launch_description():
         'mvibot_bt_navigator_launch.py'
     )
     #run
-    navigation_group=GroupAction(
+    amcl_group=GroupAction(
         actions=[
-            # PushROSNamespace(namespace=mvibot_namespace),
-	    IncludeLaunchDescription(
+            IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(amcl_include),
                 launch_arguments={
                     'mvibot_seri': mvibot_seri
                 }.items()
-            ),
+            )
+        ]
+    )
+    mission_group=TimerAction(
+        period=2.0,
+        actions=[
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(mission_include)
-            ),
+            )
+        ]
+    )
+    navigation_group=TimerAction(
+        period=4.0,
+        actions=[
+            # PushROSNamespace(namespace=mvibot_namespace),
+	        # IncludeLaunchDescription(
+            #     PythonLaunchDescriptionSource(amcl_include),
+            #     launch_arguments={
+            #         'mvibot_seri': mvibot_seri
+            #     }.items()
+            # ),
+            # IncludeLaunchDescription(
+            #     PythonLaunchDescriptionSource(mission_include)
+            # ),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(planner_server_include),
                 launch_arguments={
@@ -152,7 +171,7 @@ def generate_launch_description():
         ]
     )
     lifecycle_group=TimerAction(
-        period=2.0,
+        period=6.0,
         actions=[
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(lifecycle_manager_navigation_include),
@@ -165,6 +184,8 @@ def generate_launch_description():
 
     ld=LaunchDescription()
     ld.add_action(mvibot_seri_arg)
+    ld.add_action(amcl_group)
+    ld.add_action(mission_group)
     ld.add_action(navigation_group)
     ld.add_action(lifecycle_group)
     return ld
